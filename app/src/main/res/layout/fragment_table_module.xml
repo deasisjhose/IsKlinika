@@ -32,18 +32,27 @@
             app:rippleColor="@color/light">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="115dp"
+                    android:layout_height="180px"
+                    android:src="@drawable/first_aid_kit__1_" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Clinic Visit"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -66,12 +75,21 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="115dp"
+                    android:layout_height="180px"
+                    android:src="@drawable/phonendoscope"
+                    app:srcCompat="@drawable/phonendoscope" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Health Assessment"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </TableRow>
@@ -101,12 +119,20 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="115dp"
+                    android:layout_height="180px"
+                    android:src="@drawable/virus__2_" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Disease Surveillance"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -129,12 +155,20 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="115dp"
+                    android:layout_height="180px"
+                    android:src="@drawable/clipboard__2_" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Medical History"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -165,12 +199,19 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="115dp"
+                    android:layout_height="180px"
+                    android:src="@drawable/syringe" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Immunization"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -192,12 +233,19 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="115dp"
+                    android:layout_height="180px"
+                    android:src="@drawable/medication__2_" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Medication"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
