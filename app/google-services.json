@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "683224252670",
+    "firebase_url": "https://clinical-informatics-manresa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "clinical-informatics-manresa",
+    "storage_bucket": "clinical-informatics-manresa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683224252670:android:c11ce930fb97ff4df765af",
+        "android_client_info": {
+          "package_name": "com.capstone.capstone_group.isklinika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683224252670-vg7h3cm04jina2nagrd9nasai4n5fhl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8pDo7e6r8aG9uSDXvk8k63nS2nRql3Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683224252670-vg7h3cm04jina2nagrd9nasai4n5fhl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

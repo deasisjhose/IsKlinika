@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:gravity="center"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardElevation="32dp"
+    app:cardForegroundColor="@android:color/transparent"
+    app:cardMaxElevation="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_top_left_round"
+            android:elevation="32dp"
+            android:foregroundGravity="fill"
+            app:backgroundTint="@android:color/transparent"
+            app:backgroundTintMode="src_over"
+            app:elevation="32dp"
+            app:icon="@drawable/ic_home"
+            app:iconGravity="top"
+            app:iconTint="@color/active_nav_btn"
+            app:rippleColor="@color/inactive_nav_btn" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:elevation="32dp"
+            android:foregroundGravity="fill"
+            app:backgroundTint="@android:color/transparent"
+            app:backgroundTintMode="src_over"
+            app:elevation="32dp"
+            app:icon="@drawable/ic_people"
+            app:iconGravity="top"
+            app:iconTint="@color/inactive_nav_btn"
+            app:rippleColor="@color/inactive_nav_btn" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nav_mail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:elevation="32dp"
+            android:foregroundGravity="fill"
+            app:backgroundTint="@android:color/transparent"
+            app:backgroundTintMode="src_over"
+            app:elevation="32dp"
+            app:icon="@drawable/ic_mail"
+            app:iconGravity="top"
+            app:iconTint="@color/inactive_nav_btn"
+            app:rippleColor="@color/inactive_nav_btn" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nav_modules"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_top_right_round"
+            android:elevation="32dp"
+            android:foregroundGravity="fill"
+            app:backgroundTint="@android:color/transparent"
+            app:backgroundTintMode="src_over"
+            app:elevation="32dp"
+            app:icon="@drawable/ic_view_module"
+            app:iconGravity="top"
+            app:iconTint="@color/inactive_nav_btn"
+            app:rippleColor="@color/inactive_nav_btn" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

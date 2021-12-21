@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="primary_blue">#4e73df</color>
+    <color name="secondary_blue">#9ad9ea</color>
+    <color name="tertiary_blue">#21277b</color>
+    <color name="quarternary_blue">#5f83b1</color>
+
+    <color name="app_background">#EBF1FF</color>
+    <color name="accent_layout">#F8FAFF</color>
+    <color name="light">#FFFFFF</color>
+
+    <color name="success_container">#1cc88a</color>
+    <color name="warning_container">#f6c23e</color>
+    <color name="error_container">#e74a3b</color>
+
+    <color name="active_nav_btn">#4e73df</color>
+    <color name="inactive_nav_btn">#9CB4F8</color>
+
+    <color name="primary_Text">#252525</color>
+    <color name="information_text">#3E3E3E</color>
+    <color name="active_input_text">#575757</color>
+    <color name="hint">#818181</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#e74a3b</color>
+    <color name="orange">#ff781f</color>
+    <color name="yellow">#FFD774</color>
+    <color name="green">#1cc88a</color>
+    <color name="blue">#0077FF</color>
+    <color name="indigo">#00418d</color>
+    <color name="violet">#A54DCD</color>
+    <color name="pink">#f282a7</color>
+    <color name="brown">#9a7b4f</color>
+
+    <color name="pastel_red">#FF919A</color>
+    <color name="pastel_orange">#FFB198</color>
+    <color name="pastel_yellow">#FFDE7D</color>
+    <color name="pastel_green">#B3E678</color>
+    <color name="pastel_bluegreen">#74D4FF</color>
+    <color name="pastel_purple">#BAA0FF</color>
+
+
+
+
+
+</resources>

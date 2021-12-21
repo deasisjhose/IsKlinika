@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.IsKlinika" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryInverse">@color/app_background</item>
+        <item name="colorPrimaryContainer">@color/app_background</item>
+        <item name="colorOnPrimaryContainer">@color/app_background</item>
+<!--        <item name="colorSecondaryContainer">@color/my_app_secondary_container</item>-->
+<!--        <item name="colorOnSecondaryContainer">@color/my_app_on_secondary_container</item>-->
+<!--        <item name="colorTertiary">@color/my_app_tertiary</item>-->
+<!--        <item name="colorOnTertiary">@color/my_app_on_tertiary</item>-->
+<!--        <item name="colorTertiaryContainer">@color/my_app_tertiary_container</item>-->
+<!--        <item name="colorOnTertiaryContainer">@color/my_app_on_tertiary_container</item>-->
+<!--        <item name="colorSurfaceVariant">@color/my_app_surface_variant</item>-->
+<!--        <item name="colorOnSurfaceVariant">@color/my_app_on_surface_variant</item>-->
+<!--        <item name="colorSurfaceInverse">@color/my_app_inverse_surface</item>-->
+<!--        <item name="colorOnSurfaceInverse">@color/my_app_inverse_on_surface</item>-->
+<!--        <item name="colorOutline">@color/my_app_outline</item>-->
+        <item name="colorErrorContainer">@color/error_container</item>
+        <item name="colorOnErrorContainer">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="Theme.IsKlinika.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.IsKlinika.NavigationDrawer"  parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:state_checked">@color/green</item>
+    </style>
+
+</resources>
