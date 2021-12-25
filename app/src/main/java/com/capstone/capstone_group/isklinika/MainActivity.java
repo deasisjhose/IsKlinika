@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
             } else if(radio_clinician.isChecked()){ // if user is clinician
 
-                intent = new Intent(getBaseContext(), Activity_Landing.class);
+                intent = new Intent(getBaseContext(), ActivityClinicianLanding.class);
                 intent.putExtra("userType", "Clinician") ;
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
