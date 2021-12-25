@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="4dp"
+    app:rippleColor="@color/pastel_orange_inactive">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:orientation="vertical"
+        android:paddingBottom="3dp">
+
+        <TextView
+            android:id="@+id/tv_examinationSY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_round"
+            android:backgroundTint="@color/pastel_orange"
+            android:fontFamily="@font/helvetica"
+            android:paddingStart="5dp"
+            android:text="SY***"
+            android:textColor="@color/primary_Text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Date"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView88"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Attending Physician"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/tv_examinationDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="date of examination"
+                android:textColor="@color/information_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_examinationPhysician"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:text="Physician name"
+                android:textColor="@color/information_text"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView90"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Weght"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView91"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Height"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView92"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="BMI"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <TextView
+                    android:id="@+id/tv_examinationWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dinpro"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_examinationWeightStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_circle"
+                    android:backgroundTint="@color/error_container"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Underweight"
+                    android:textColor="@color/light"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <TextView
+                    android:id="@+id/tv_examinationHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dinpro"
+                    android:text="TextView"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_examinationHeightStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_circle"
+                    android:backgroundTint="@color/green"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Normal"
+                    android:textColor="@color/light"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <TextView
+                    android:id="@+id/tv_examinationBMI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dinpro"
+                    android:text="TextView"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_examinationBMIStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_circle"
+                    android:backgroundTint="@color/error_container"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Obese "
+                    android:textColor="@color/light"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView99"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/helvetica"
+            android:text="Problem/Anormal Findings"
+            android:textColor="@color/primary_Text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_examinationFindings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/dinpro"
+            android:text="TextView"
+            android:textColor="@color/information_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView101"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/helvetica"
+            android:text="Assessment/Recommendations"
+            android:textColor="@color/primary_Text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_examinationRecommendations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/dinpro"
+            android:text="TextView"
+            android:textColor="@color/information_text"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/check_examinationNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="-18dp"
+            android:buttonTint="@color/checkbox_recycle_pae"
+            android:fontFamily="@font/dinpro"
+            android:scaleX="0.80"
+            android:scaleY="0.80"
+            android:text="Essentially Normal P.E
+"
+            android:textColor="@color/information_text"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

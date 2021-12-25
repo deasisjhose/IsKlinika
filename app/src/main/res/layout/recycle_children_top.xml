@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mcv_nameButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardBackgroundColor="#BF6767"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="16dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Child Name" />
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+    android:layout_gravity="center_vertical"
+    android:layout_margin="2dp"
+    android:layout_marginRight="4dp"
+    android:paddingLeft="2dp"
+    android:paddingTop="2dp"
+    android:paddingRight="2dp"
+    android:paddingBottom="2dp"
+    android:text="Child Name"
+    android:textAllCaps="false"
+    android:textSize="9sp"
+    app:backgroundTint="@color/primary_Text"
+    app:cornerRadius="20dp"
+    app:rippleColor="@color/active_nav_btn" />

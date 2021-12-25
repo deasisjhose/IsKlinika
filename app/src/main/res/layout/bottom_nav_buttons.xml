@@ -4,15 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="35dp"
     android:gravity="center"
+    android:outlineProvider="none"
     app:cardBackgroundColor="@android:color/transparent"
-    app:cardElevation="32dp"
-    app:cardForegroundColor="@android:color/transparent"
-    app:cardMaxElevation="32dp">
+    app:cardElevation="3dp"
+    app:cardForegroundColor="@android:color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent">
+        android:background="@drawable/shape_bottom_nav"
+        android:gravity="center"
+        android:outlineProvider="none">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_nav_home"
@@ -20,8 +22,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/shape_top_left_round"
-            android:elevation="32dp"
+            android:elevation="60dp"
             android:foregroundGravity="fill"
+            android:outlineProvider="paddedBounds"
             app:backgroundTint="@android:color/transparent"
             app:backgroundTintMode="src_over"
             app:elevation="32dp"
@@ -36,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
-            android:elevation="32dp"
+            android:elevation="60dp"
             android:foregroundGravity="fill"
             app:backgroundTint="@android:color/transparent"
             app:backgroundTintMode="src_over"
@@ -52,7 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
-            android:elevation="32dp"
+            android:elevation="60dp"
             android:foregroundGravity="fill"
             app:backgroundTint="@android:color/transparent"
             app:backgroundTintMode="src_over"
@@ -68,8 +71,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/shape_top_right_round"
-            android:elevation="32dp"
+            android:elevation="60dp"
             android:foregroundGravity="fill"
+            android:outlineProvider="paddedBounds"
             app:backgroundTint="@android:color/transparent"
             app:backgroundTintMode="src_over"
             app:elevation="32dp"

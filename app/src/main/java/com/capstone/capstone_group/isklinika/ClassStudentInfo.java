@@ -3,18 +3,18 @@ package com.capstone.capstone_group.isklinika;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Class_StudentInfo implements Parcelable {
+public class ClassStudentInfo implements Parcelable {
 
     private String address, age, birthday, dentistContact, dentistEmail, dentistName, fatherContact, fatherEmail,fatherName, firstName, grade, guardianContact,
             guardianEmail, guardianName, hasSpecialNeeds, hospitalAddress, idNum, lastName, middleName, motherContact, motherEmail, motherName, nationality,
             pediaContact, pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType ;
 
 
-    public Class_StudentInfo(){
+    public ClassStudentInfo(){
 
     }
 
-    protected Class_StudentInfo(Parcel in) {
+    protected ClassStudentInfo(Parcel in) {
         address = in.readString();
         age = in.readString();
         birthday = in.readString();
@@ -88,15 +88,15 @@ public class Class_StudentInfo implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Class_StudentInfo> CREATOR = new Creator<Class_StudentInfo>() {
+    public static final Creator<ClassStudentInfo> CREATOR = new Creator<ClassStudentInfo>() {
         @Override
-        public Class_StudentInfo createFromParcel(Parcel in) {
-            return new Class_StudentInfo(in);
+        public ClassStudentInfo createFromParcel(Parcel in) {
+            return new ClassStudentInfo(in);
         }
 
         @Override
-        public Class_StudentInfo[] newArray(int size) {
-            return new Class_StudentInfo[size];
+        public ClassStudentInfo[] newArray(int size) {
+            return new ClassStudentInfo[size];
         }
     };
 
@@ -350,6 +350,10 @@ public class Class_StudentInfo implements Parcelable {
 
     public String getFullName(){
         return firstName + " " + middleName + " " + lastName ;
+    }
+
+    public String getIdNumGradeSection() {
+        return idNum + " / " + "Grade " + grade + " - " + section ;
     }
 
     @Override

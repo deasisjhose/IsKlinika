@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tr_status"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_recycleVaccineName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica"
+        android:gravity="fill_vertical"
+        android:hint="Vaccine Name"
+        android:paddingLeft="3dp"
+        android:textColor="#424242"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_recycleVaccineExpectedAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center_vertical"
+        android:hint="Expected age"
+        android:paddingStart="3dp"
+        android:textColor="#4E4D4D"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleVaccineDose"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center|center_vertical"
+        android:hint="Dosage"
+        android:paddingLeft="3dp"
+        android:textColor="#4E4D4D"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleVaccineStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:hint="Status"
+        android:scaleX="0.75"
+        android:scaleY="0.85"
+        android:textColor="#272525"
+        android:textSize="10sp" />
+
+</TableRow>

@@ -1,286 +1,394 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingBottom="45dp">
 
-    <LinearLayout
-        android:id="@+id/layout_studentUserType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="4dp">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginRight="4dp"
+        android:clickable="true"
+        app:cardElevation="0dp"
+        app:rippleColor="@color/active_nav_btn">
 
-            <TextView
-                android:id="@+id/tv_pStudentFullName"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/border_bottom"
-                android:fontFamily="@font/dinpro"
-                android:text="Full Name"
-                android:textColor="@color/primary_Text"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/btn_editPersonal"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_edit"
-                android:tint="@color/primary_blue" />
-
-            <ImageButton
-                android:id="@+id/btn_savePersonal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:src="@drawable/check_ic"
-                android:visibility="gone" />
-        </TableRow>
-
-        <TextView
-            android:id="@+id/tv_pchildIdNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:text="Id Number"
-            android:textColor="@color/active_nav_btn"
-            android:textSize="11sp" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_baseline_cake_24"
-                android:drawableTint="@color/red"
-                android:fontFamily="@font/dinpro"
-                android:gravity="center_vertical"
-                android:text="Birthday"
-                android:textColor="@color/primary_Text"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView14"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_baseline_123_24"
-                android:drawableTint="@color/orange"
-                android:fontFamily="@font/dinpro"
-                android:gravity="center_vertical"
-                android:text="Age"
-                android:textColor="@color/primary_Text"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_pBirthday"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:fontFamily="@font/helvetica"
-                android:foreground="?attr/selectableItemBackground"
-                android:hint="MM-DD-YYYY"
-                android:textColor="@color/information_text"
-                android:textSize="12sp" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_pAge"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:clickable="false"
-                android:editable="false"
-                android:fontFamily="@font/helvetica"
-                android:hint="No info available"
-                android:textColor="@color/information_text"
-                android:textSize="12sp" />
-
-        </TableRow>
-
-        <TextView
-            android:id="@+id/textView31"
+        <view
+            android:id="@+id/view8"
+            class="com.google.android.material.textview.MaterialTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_baseline_house_24"
-            android:drawableTint="@color/indigo"
+            android:background="@color/accent_layout_tester"
+            android:backgroundTint="@color/accent_layout_tester"
+            android:drawableLeft="@drawable/ic_edit"
+            android:drawableTint="@color/active_nav_btn"
             android:fontFamily="@font/dinpro"
             android:gravity="center_vertical"
-            android:text="Address"
-            android:textColor="@color/primary_Text"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:padding="4dp"
+            android:text="EDIT PROFILE"
+            android:textColor="@color/primary_blue"
+            android:textSize="10sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tv_pAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:clickable="false"
-            android:editable="false"
-            android:fontFamily="@font/helvetica"
-            android:hint="No info available"
-            android:maxLines="2"
-            android:textAllCaps="false"
-            android:textColor="@color/information_text"
-            android:textSize="12sp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <TableRow
+    <view
+        android:id="@+id/card_personal"
+        class="com.google.android.material.card.MaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:outlineAmbientShadowColor="@color/indigo"
+        android:outlineProvider="background"
+        android:outlineSpotShadowColor="@color/indigo"
+        app:cardBackgroundColor="@color/accent_layout"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvpersonal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_bottom"
+                    android:drawableLeft="@drawable/ic_person"
+                    android:drawableTint="@color/active_nav_btn"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Personal Information"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_editPersonal"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_edit"
+                    android:tint="@color/primary_blue"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/btn_savePersonal"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/check_ic"
+                    android:visibility="gone" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_cake_24"
+                    android:drawableTint="@color/red"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Birthday"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_123_24"
+                    android:drawableTint="@color/orange"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Age"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_pBirthday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="MM-DD-YYYY"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_pAge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+            </TableRow>
 
             <TextView
-                android:id="@+id/textView26"
-                android:layout_width="0dp"
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_venus_mars_solid"
-                android:drawableTint="@color/pink"
+                android:layout_marginTop="4dp"
+                android:drawableLeft="@drawable/ic_baseline_house_24"
+                android:drawableTint="@color/indigo"
                 android:fontFamily="@font/dinpro"
                 android:gravity="center_vertical"
-                android:text="Sex"
+                android:text="Address"
                 android:textColor="@color/primary_Text"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView36"
-                android:layout_width="0dp"
+                android:id="@+id/tv_pAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_baseline_school_24"
-                android:drawableTint="@color/blue"
-                android:fontFamily="@font/dinpro"
-                android:text="Student Type"
-                android:textColor="@color/primary_Text"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_pSex"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:clickable="false"
-                android:editable="false"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_profile_info"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
                 android:textColor="@color/information_text"
                 android:textSize="12sp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_pStudentType"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:clickable="false"
-                android:editable="false"
-                android:fontFamily="@font/helvetica"
-                android:hint="No info available"
-                android:textColor="@color/information_text"
-                android:textSize="12sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView43"
-                android:layout_width="0dp"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_baseline_church_24"
-                android:drawableTint="@color/brown"
-                android:fontFamily="@font/dinpro"
-                android:gravity="center_vertical"
-                android:text="Religion"
-                android:textColor="@color/primary_Text"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="4dp">
 
-            <TextView
-                android:id="@+id/textView45"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_venus_mars_solid"
+                    android:drawableTint="@color/pink"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Sex"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_school_24"
+                    android:drawableTint="@color/blue"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Student Type"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_baseline_flag_24"
-                android:drawableTint="@color/pastel_green"
-                android:fontFamily="@font/dinpro"
-                android:gravity="center_vertical"
-                android:text="Nationality"
-                android:textColor="@color/primary_Text"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="4dp">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/tv_pSex"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_pStudentType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_pReligion"
-                android:layout_width="0dp"
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:clickable="false"
-                android:editable="false"
-                android:fontFamily="@font/helvetica"
-                android:hint="No info available"
-                android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:layout_marginTop="4dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_pNationality"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:clickable="false"
-                android:editable="false"
-                android:fontFamily="@font/helvetica"
-                android:hint="No info available"
-                android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView43"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_church_24"
+                    android:drawableTint="@color/brown"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Religion"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_flag_24"
+                    android:drawableTint="@color/pastel_green"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Nationality"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:id="@+id/tv_pReligion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_pNationality"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textSize="12sp" />
+
+            </TableRow>
+
+        </LinearLayout>
+    </view>
+
+    <view
+        android:id="@+id/card_guardian"
+        class="com.google.android.material.card.MaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:outlineAmbientShadowColor="@color/tertiary_blue"
+        android:outlineProvider="background"
+        android:outlineSpotShadowColor="@color/tertiary_blue"
+        app:cardBackgroundColor="@color/accent_layout"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvguardian"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_bottom"
+                    android:drawableLeft="@drawable/ic_baseline_family_restroom_24"
+                    android:drawableTint="@color/active_nav_btn"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Guardian Information"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_editGuardian"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_edit"
+                    android:tint="@color/primary_blue"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/btn_saveGuardian"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/check_ic"
+                    android:visibility="gone" />
+            </TableRow>
 
             <TextView
                 android:id="@+id/textView19"
@@ -296,15 +404,16 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_pGuardian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:clickable="false"
-                android:editable="false"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/bg_profile_info"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
+                android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="12sp" />
 
@@ -317,6 +426,7 @@
                     android:id="@+id/Email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
                     android:drawableTint="@color/yellow"
@@ -347,41 +457,62 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tv_guardianEmail"
+                <TextView
+                    android:id="@+id/tv_pGuardianEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
+                    android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tv_guardianContact"
+                <TextView
+                    android:id="@+id/tv_pGuardianContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
+                    android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
             </LinearLayout>
 
+
         </LinearLayout>
+
+    </view>
+
+    <view
+        android:id="@+id/card_healthcare"
+        class="com.google.android.material.card.MaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="8dp"
+        android:outlineAmbientShadowColor="@color/tertiary_blue"
+        android:outlineProvider="background"
+        android:outlineSpotShadowColor="@color/tertiary_blue"
+        app:cardBackgroundColor="@color/accent_layout"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:id="@+id/layout_healthInformation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -394,22 +525,13 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_bottom"
                     android:drawableLeft="@drawable/ic_baseline_business_24"
-                    android:drawableTint="@color/red"
+                    android:drawableTint="@color/active_nav_btn"
                     android:fontFamily="@font/dinpro"
                     android:gravity="center_vertical"
                     android:text="Healthcare Provider Information"
                     android:textColor="@color/primary_Text"
                     android:textSize="13sp"
                     android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/btn_editHealthC"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_edit"
-                    android:tint="@color/primary_blue" />
 
                 <ImageButton
                     android:id="@+id/btn_saveHealthc"
@@ -426,7 +548,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_baseline_child_friendly_24"
                 android:drawableTint="@color/pink"
                 android:fontFamily="@font/dinpro"
@@ -436,13 +557,13 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_pPedia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:editable="false"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/bg_profile_info"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
                 android:textColor="@color/information_text"
@@ -457,6 +578,7 @@
                     android:id="@+id/textView58"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
                     android:drawableTint="@color/yellow"
@@ -485,31 +607,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/tv_pediaEmail"
+                <TextView
+                    android:id="@+id/tv_pPediaEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
+                    android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
 
-                <EditText
-                    android:id="@+id/tv_pediaContact"
+                <TextView
+                    android:id="@+id/tv_pPediaContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
+                    android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -530,12 +652,14 @@
                 android:id="@+id/tv_pDentist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/bg_profile_info"
                 android:clickable="false"
                 android:editable="false"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
-                android:text="No info available"
+                android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="12sp" />
 
@@ -548,6 +672,7 @@
                     android:id="@+id/textView64"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
                     android:drawableTint="@color/yellow"
@@ -576,31 +701,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/tv_dentistEmail"
+                <TextView
+                    android:id="@+id/tv_pDentistEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available."
+                    android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
 
-                <EditText
-                    android:id="@+id/tv_dentistContact"
+                <TextView
+                    android:id="@+id/tv_pDentistContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available."
+                    android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -619,15 +744,15 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_pHospital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:editable="false"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_profile_info"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
+                android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="12sp" />
 
@@ -635,6 +760,7 @@
                 android:id="@+id/textView70"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:drawableLeft="@drawable/ic_baseline_business_24"
                 android:drawableTint="@color/active_input_text"
                 android:fontFamily="@font/dinpro"
@@ -649,23 +775,24 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/tv_hospitalAddress"
+                <TextView
+                    android:id="@+id/tv_pHospitalAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:background="@drawable/bg_profile_info"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:scrollHorizontally="false"
                     android:textColor="@color/information_text"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:paddingLeft="2dp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </view>
+
 </LinearLayout>

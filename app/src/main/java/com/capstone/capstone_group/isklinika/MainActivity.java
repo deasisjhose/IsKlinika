@@ -86,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             edit_user.setText("");
             edit_user.setHint("email");
             edit_user.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS);
+            edit_password.setText("") ;
         } else{
             tv_username.setText("Id Number");
             edit_user.setText("");
             edit_user.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
             edit_user.setHint("id number");
+            edit_password.setText("") ;
         }
 
         Toast.makeText(this, radioButton.getText() + " Selected" ,
@@ -126,8 +128,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     studentInfoReference.child(idNum).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            Class_StudentInfo studentInfoUser = new Class_StudentInfo() ;
-                                            studentInfoUser= snapshot.getValue(Class_StudentInfo.class) ;
+                                            ClassStudentInfo studentInfoUser = new ClassStudentInfo() ;
+                                            studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
 
                                             Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
                                             intent = new Intent(getBaseContext(), Activity_Landing.class);
@@ -189,8 +191,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     parentInfoReference.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            Class_ParentInfo parentUser = new Class_ParentInfo() ;
-                                            parentUser = snapshot.getValue(Class_ParentInfo.class) ;
+                                            ClassParentInfo parentUser = new ClassParentInfo() ;
+                                            parentUser = snapshot.getValue(ClassParentInfo.class) ;
 
                                             for (DataSnapshot postSnapshot: snapshot.child("children").getChildren()){
                                                 parentUser.addChild(postSnapshot.getValue().toString());
@@ -223,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if(radio_clinician.isChecked()){ // if user is clinician
 
                 intent = new Intent(getBaseContext(), Activity_Landing.class);
-                intent.putExtra("username", edit_user.getText().toString()) ;
+                intent.putExtra("userType", "Clinician") ;
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
                 Query query = clinicReference.child(idNum);

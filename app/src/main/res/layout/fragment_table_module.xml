@@ -8,7 +8,7 @@
     android:background="@android:color/transparent"
     android:gravity="center"
     android:paddingBottom="35dp"
-    tools:context=".Fragment_Module">
+    tools:context=".FragmentModule">
 
     <TableRow
         android:layout_width="match_parent"
@@ -24,10 +24,14 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:outlineAmbientShadowColor="@color/red"
+            android:outlineProvider="none"
+            android:outlineSpotShadowColor="@color/red"
             android:padding="4dp"
             app:cardBackgroundColor="@color/pastel_red"
             app:cardCornerRadius="16dp"
-            app:cardPreventCornerOverlap="false"
+            app:cardElevation="4dp"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="false"
             app:rippleColor="@color/light">
 
@@ -41,7 +45,7 @@
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="115dp"
-                    android:layout_height="180px"
+                    android:layout_height="60dp"
                     android:src="@drawable/first_aid_kit__1_" />
 
                 <TextView
@@ -49,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:letterSpacing="0.02"
                     android:text="Clinic Visit"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -64,8 +69,13 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:outlineAmbientShadowColor="@color/orange"
+            android:outlineProvider="none"
+            android:outlineSpotShadowColor="@color/orange"
             app:cardBackgroundColor="@color/pastel_orange"
             app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardPreventCornerOverlap="true"
             app:rippleColor="@color/light">
 
             <LinearLayout
@@ -78,7 +88,7 @@
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="115dp"
-                    android:layout_height="180px"
+                    android:layout_height="60dp"
                     android:src="@drawable/phonendoscope"
                     app:srcCompat="@drawable/phonendoscope" />
 
@@ -87,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:letterSpacing="0.02"
                     android:text="Health Assessment"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -108,8 +119,13 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:outlineAmbientShadowColor="@color/yellow"
+            android:outlineProvider="none"
+            android:outlineSpotShadowColor="@color/yellow"
             app:cardBackgroundColor="@color/pastel_yellow"
             app:cardCornerRadius="16dp"
+            app:cardElevation="14dp"
+            app:cardPreventCornerOverlap="true"
             app:rippleColor="@color/light">
 
             <LinearLayout
@@ -122,7 +138,7 @@
                 <ImageView
                     android:id="@+id/imageView14"
                     android:layout_width="115dp"
-                    android:layout_height="180px"
+                    android:layout_height="60dp"
                     android:src="@drawable/virus__2_" />
 
                 <TextView
@@ -130,6 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:letterSpacing="0.02"
                     android:text="Disease Surveillance"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -144,8 +161,13 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:outlineAmbientShadowColor="@color/green"
+            android:outlineProvider="none"
+            android:outlineSpotShadowColor="@color/green"
             app:cardBackgroundColor="@color/pastel_green"
             app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardPreventCornerOverlap="true"
             app:rippleColor="@color/light">
 
             <LinearLayout
@@ -158,7 +180,8 @@
                 <ImageView
                     android:id="@+id/imageView15"
                     android:layout_width="115dp"
-                    android:layout_height="180px"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="-5dp"
                     android:src="@drawable/clipboard__2_" />
 
                 <TextView
@@ -166,6 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:letterSpacing="0.02"
                     android:text="Medical History"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -187,9 +211,15 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:layout_weight="1"
+            android:backgroundTintMode="src_atop"
             android:clickable="true"
+            android:outlineAmbientShadowColor="@color/blue"
+            android:outlineProvider="none"
+            android:outlineSpotShadowColor="@color/blue"
             app:cardBackgroundColor="@color/pastel_bluegreen"
             app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardPreventCornerOverlap="true"
             app:rippleColor="@color/light">
 
             <LinearLayout
@@ -202,13 +232,14 @@
                 <ImageView
                     android:id="@+id/imageView10"
                     android:layout_width="115dp"
-                    android:layout_height="180px"
+                    android:layout_height="60dp"
                     android:src="@drawable/syringe" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:letterSpacing="0.02"
                     android:text="Immunization"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -222,8 +253,12 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:clickable="true"
+            android:outlineAmbientShadowColor="@color/violet"
+            android:outlineProvider="none"
+            android:outlineSpotShadowColor="@color/violet"
             app:cardBackgroundColor="@color/pastel_purple"
             app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
             app:rippleColor="@color/light">
 
             <LinearLayout
@@ -236,13 +271,14 @@
                 <ImageView
                     android:id="@+id/imageView17"
                     android:layout_width="115dp"
-                    android:layout_height="180px"
+                    android:layout_height="60dp"
                     android:src="@drawable/medication__2_" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:letterSpacing="0.02"
                     android:text="Medication"
                     android:textColor="@color/black"
                     android:textSize="14sp" />

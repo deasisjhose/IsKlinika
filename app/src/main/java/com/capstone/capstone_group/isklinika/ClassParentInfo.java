@@ -6,16 +6,16 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Class_ParentInfo implements Parcelable {
+public class ClassParentInfo implements Parcelable {
 
     private List<String> childrenIds  = new ArrayList<>() ;
     private String email;
 
-    public Class_ParentInfo(){
+    public ClassParentInfo(){
 
     }
 
-    protected Class_ParentInfo(Parcel in) {
+    protected ClassParentInfo(Parcel in) {
         childrenIds = in.createStringArrayList();
         email = in.readString() ;
     }
@@ -31,15 +31,15 @@ public class Class_ParentInfo implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Class_ParentInfo> CREATOR = new Creator<Class_ParentInfo>() {
+    public static final Creator<ClassParentInfo> CREATOR = new Creator<ClassParentInfo>() {
         @Override
-        public Class_ParentInfo createFromParcel(Parcel in) {
-            return new Class_ParentInfo(in);
+        public ClassParentInfo createFromParcel(Parcel in) {
+            return new ClassParentInfo(in);
         }
 
         @Override
-        public Class_ParentInfo[] newArray(int size) {
-            return new Class_ParentInfo[size];
+        public ClassParentInfo[] newArray(int size) {
+            return new ClassParentInfo[size];
         }
     };
 

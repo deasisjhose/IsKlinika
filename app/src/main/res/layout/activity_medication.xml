@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pastel_purple"
+    tools:context=".ActivityMedication">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/float_addPrescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        app:backgroundTint="@color/pastel_purple"
+        app:layout_anchor="@id/layout_medication"
+        app:layout_anchorGravity="bottom|right"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        app:rippleColor="#FFFFFF"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/button_back"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/medication__2_" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/helveticacompressed"
+                android:gravity="center_vertical"
+                android:letterSpacing="0.05"
+                android:text="Medication"
+                android:textColor="@color/primary_Text"
+                android:textSize="30sp" />
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_childrenMedication"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_medication"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="145dp"
+        android:background="@drawable/shape_bottom_nav"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:paddingRight="16dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_medicationPrescription"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_immune_left"
+                android:backgroundTint="@color/pastel_yellow_inactive"
+                android:fontFamily="@font/helvetica"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:letterSpacing="-0.04"
+                android:text="Prescriptions"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_medicationAllowedMedicine"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/pastel_yellow_inactive"
+                android:fontFamily="@font/helvetica"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:letterSpacing="-0.06"
+                android:text="Allowed Medicines"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_medicationIntakeHistory"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_immune_right"
+                android:backgroundTint="@color/pastel_yellow_inactive"
+                android:fontFamily="@font/helvetica"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:letterSpacing="-0.04"
+                android:text="Intake History"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+        </TableRow>
+
+        <LinearLayout
+            android:id="@+id/layout_medicationPrescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spinner_medicationStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_medicationPrescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_medicationAllowedMedicine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:visibility="gone">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center_vertical"
+                    android:text="Allowed Medication"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_editAM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:tint="@color/violet"
+                    app:srcCompat="@drawable/ic_edit" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_saveAM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:tint="@color/warning_container"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/check_ic" />
+
+            </TableRow>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/accent_layout"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:padding="6dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="4dp">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Last updated: "
+                            android:textColor="@color/active_input_text"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_allowedMedicineLastUpdated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:fontFamily="@font/dinpro"
+                            android:text="TextView"
+                            android:textColor="@color/violet"
+                            android:textSize="12sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Paracetamol"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:buttonTintMode="src_in"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Paracetamol"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp"
+                            app:buttonTint="@color/checkbox_medication" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Mefenamic"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Mefenamic acid"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Ibuprofen"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Ibuprofen"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Salbutamol"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Salbutamol nebules"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Antacid"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Antacid (Kremil-S)"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Epinephrine"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Epinephrine"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/OralRehydration"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Oral rehydration (Hydrite)"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Clonidine"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Clonidine (Catapres)"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Cetirizine"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Anti-allergy (Cetirizine} "
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Loratidine"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Anti-allergy (Loratidine} "
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Decolgen"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Cold Medicine (Decolgen)"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/Neozep"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/checkbox_medication"
+                            android:clickable="false"
+                            android:fontFamily="@font/dinpro"
+                            android:text="Cold medicine (Neozep)"
+                            android:textColor="@color/information_text"
+                            android:textSize="13sp" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layot_intakeHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Intake History"
+                android:textColor="@color/primary_Text"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="end">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_intakeHistoryFromDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/pastel_purple"
+                    app:cardCornerRadius="8dp"
+                    app:contentPadding="4dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="right"
+                        android:text="MM-DD-YYYY"
+                        android:textColor="@color/information_text"
+                        android:textSize="10sp" />
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:fontFamily="@font/helveticabold"
+                    android:text="-"
+                    android:textColor="@color/information_text"
+                    android:textSize="14sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_intakeHistoryToDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/pastel_yellow"
+                    app:cardCornerRadius="8dp"
+                    app:contentPadding="4dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dinpro"
+                        android:text="MM-DD-YYYY"
+                        android:textColor="@color/information_text"
+                        android:textSize="10sp" />
+                </androidx.cardview.widget.CardView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/textView80"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Medicine"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView85"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Amount"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView81"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Date"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView84"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Time"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView86"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Clinic Visit"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_intakeHistory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

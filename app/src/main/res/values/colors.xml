@@ -5,8 +5,9 @@
     <color name="tertiary_blue">#21277b</color>
     <color name="quarternary_blue">#5f83b1</color>
 
-    <color name="app_background">#EBF1FF</color>
+    <color name="app_background">#BEDEE8F4</color>
     <color name="accent_layout">#F8FAFF</color>
+    <color name="accent_layout_tester">#EEF0F4</color>
     <color name="light">#FFFFFF</color>
 
     <color name="success_container">#1cc88a</color>
@@ -40,8 +41,13 @@
     <color name="pastel_bluegreen">#74D4FF</color>
     <color name="pastel_purple">#BAA0FF</color>
 
+    <color name="pastel_red_inactive">#99FF919A</color>
+    <color name="pastel_orange_inactive">#D9FFB198</color>
+    <color name="pastel_yellow_inactive">#99FFDE7D</color>
+    <color name="pastel_green_inactive">#99B3E678</color>
+    <color name="pastel_bluegreen_inactive">#A3E3FF</color>
+    <color name="pastel_purple_inactive">#99BAA0FF</color>
 
-
-
+    <color name="tester">#E6FFC0C5</color>
 
 </resources>
