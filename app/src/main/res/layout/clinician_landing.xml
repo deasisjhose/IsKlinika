@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    android:orientation="vertical"
+    tools:context=".ActivityClinicianLanding">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/drop_shadow"
+        android:elevation="3dp">
+
+        <EditText
+            android:id="@+id/searchStudentEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/search_bar"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:fontFamily="@font/dinpro"
+            android:hint="Enter student id here..."
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/primary_blue"
+            android:textSize="12sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <FrameLayout
+            android:id="@+id/searchList"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="12dp"
+                app:srcCompat="@drawable/search" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/search_icon" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/studentInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="31dp"
+            app:srcCompat="@drawable/_2pxfirst_aid_kit" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/studentNameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:text="Student Name"
+                android:textColor="@color/primary_blue"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/idNumTv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="121206"
+                android:textColor="@color/primary_blue"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/gradeSectionTv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="Grade 1 - Truthfulness"
+                android:textColor="@color/primary_blue"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/studentTypeTv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:text="New Student"
+                android:textColor="@color/primary_blue"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+            <LinearLayout
+                android:id="@+id/personalInfoModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/infoIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/personal_info" />
+
+                    <TextView
+                        android:id="@+id/personalInfoTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Personal Information"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/growthMonitoringModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/growthIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/growth" />
+
+                    <TextView
+                        android:id="@+id/growthMonitoringTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Growth Monitoring"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/clinicVisitModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/visitIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/clinician_visit" />
+
+                    <TextView
+                        android:id="@+id/clinicVisitTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Clinic Visit"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/immunizationModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/immunizationIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/clinician_immunization" />
+
+                    <TextView
+                        android:id="@+id/immunizationTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Immunization"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/medicalHistoryModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/historyIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/clinician_medical_history" />
+
+                    <TextView
+                        android:id="@+id/medicalHistoryTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Medical History"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/allergyModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/allergyIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/clinician_allergy" />
+
+                    <TextView
+                        android:id="@+id/allergyTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Allergy"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/medicationModule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="23dp"
+                android:background="@drawable/drop_shadow"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/clinician_module"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/medicationIcon"
+                        android:layout_width="55dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="15dp"
+                        app:srcCompat="@drawable/clinician_medication" />
+
+                    <TextView
+                        android:id="@+id/medicationTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:text="Medication"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

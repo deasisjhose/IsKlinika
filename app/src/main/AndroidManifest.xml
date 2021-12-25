@@ -13,7 +13,7 @@
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"></activity>
         <activity
-            android:name=".Activity_Landing"
+            android:name=".ActivityClinicianLanding"
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"/>
         <activity
