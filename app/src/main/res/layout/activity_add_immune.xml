@@ -49,7 +49,7 @@
             tools:layout_editor_absoluteY="32dp">
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinner_immuneChild"
+                android:id="@+id/spinner_addImmuneChild"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -70,7 +70,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_immuneVax" />
+                app:layout_constraintTop_toBottomOf="@+id/spinner_addImmuneVax" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView3"
@@ -91,7 +91,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:background="#80DAF4FF"
+                android:clickable="true"
+                android:fontFamily="@font/helvetica"
                 android:text="MM/DD/YYYY"
+                android:textColor="@color/information_text"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,14 +106,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:background="#80DAF4FF"
                 android:hint="(optional)"
+                android:textColor="@color/information_text"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinner_immuneVax"
+                android:id="@+id/spinner_addImmuneVax"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -140,10 +146,10 @@
                 android:textColor="@color/primary_Text"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_immuneChild" />
+                app:layout_constraintTop_toBottomOf="@+id/spinner_addImmuneChild" />
 
             <view
-                android:id="@+id/view2"
+                android:id="@+id/mbtn_addImmuneCancel"
                 class="com.google.android.material.button.MaterialButton"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
@@ -154,11 +160,11 @@
                 app:backgroundTint="@color/error_container"
                 app:cornerRadius="8dp"
                 app:icon="@drawable/close"
-                app:layout_constraintEnd_toStartOf="@+id/view3"
+                app:layout_constraintEnd_toStartOf="@+id/mbtn_addImmuneAdd"
                 app:layout_constraintTop_toBottomOf="@+id/mtv_immuneDate" />
 
             <view
-                android:id="@+id/view3"
+                android:id="@+id/mbtn_addImmuneAdd"
                 class="com.google.android.material.button.MaterialButton"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"

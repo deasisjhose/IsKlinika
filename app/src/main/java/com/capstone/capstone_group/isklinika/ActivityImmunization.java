@@ -81,6 +81,15 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
         this.float_addImmune = findViewById(R.id.float_addImmune) ;
         this.mbtg_immuneTab = findViewById(R.id.mbtg_immuneTab) ;
 
+        float_addImmune.setOnClickListener(view -> {
+            intent = new Intent(getBaseContext(), ActivityAddImmune.class) ;
+            intent.putParcelableArrayListExtra("children", children) ;
+            intent.putExtra("currentSelect", spinner_vaccineList.getSelectedItemPosition()) ;
+            intent.putParcelableArrayListExtra("children", children) ;
+            intent.putParcelableArrayListExtra("vaccineArrayList", vaccineArrayList) ;
+            startActivity(intent);
+        });
+
         mbtg_immuneTab.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
             public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
@@ -89,7 +98,8 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
                         checkActive = 10 ;
                         MaterialButton mbtn_immuneStatus = findViewById(R.id.mbtn_immuneStatus);
                         mbtn_immuneStatus.setTypeface(null, Typeface.BOLD);
-                        float_addImmune.setVisibility(View.GONE);
+                        if(userType.equals("Parent"))
+                            float_addImmune.setVisibility(View.GONE);
                         layout_immune_history.setVisibility(View.VISIBLE);
                         layout_vaccineInformation.setVisibility(View.GONE);
                         retrieveDataVaxList();
@@ -97,7 +107,8 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
                         checkActive = 20 ;
                         MaterialButton mbtn_immuneInformation = findViewById(R.id.mbtn_immuneInformation);
                         mbtn_immuneInformation.setTypeface(null, Typeface.BOLD);
-                        float_addImmune.setVisibility(View.VISIBLE);
+                        if(userType.equals("Parent"))
+                            float_addImmune.setVisibility(View.VISIBLE);
                         layout_immune_history.setVisibility(View.GONE);
                         layout_vaccineInformation.setVisibility(View.VISIBLE);
                         retrieveDataVaxList();
@@ -129,6 +140,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
             case "Student":
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_immuneFullName.setText(studentInfo.getFullName());
+                float_addImmune.setVisibility(View.GONE);
                 studentId = studentInfo.getIdNum() ;
                 retrieveDataVaxList();
                 break;
@@ -312,6 +324,10 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
     //This function is used to update the information about the selected vaccine. vaccineInformation = tab is blue
     public void updateVaccineInfo(ClassVaccine getVaxxed){
         tv_viVaxName.setText(getVaxxed.getVaccineName());
+        tv_viDoses.setText(getVaxxed.getDoses());
+        tv_viPurpose.setText(getVaxxed.getPurpose());
+        tv_viAgeRange.setText(getVaxxed.getExpectedAge());
+        tv_viNotes.setText(getVaxxed.getNotes());
     }
 
     public void setImmunizationList(ArrayList<ClassImmuneRecord> immunizationList){

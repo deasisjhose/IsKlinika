@@ -283,6 +283,7 @@
                                 android:id="@+id/tv_viPurpose"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@color/accent_layout_tester"
                                 android:textColor="@color/active_input_text"
                                 android:textSize="12sp" />
 
@@ -294,6 +295,7 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
+                                    android:layout_marginRight="2dp"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/helvetica"
                                     android:gravity="center|center_horizontal|left|center_vertical"
@@ -308,7 +310,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/helvetica"
-                                    android:text="Expected age of vaccination"
+                                    android:text="Expected vaccination age"
                                     android:textColor="@color/primary_Text"
                                     android:textSize="12sp"
                                     android:textStyle="bold" />
@@ -323,7 +325,9 @@
                                     android:id="@+id/tv_viDoses"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginRight="2dp"
                                     android:layout_weight="1"
+                                    android:background="@color/accent_layout_tester"
                                     android:textColor="@color/information_text"
                                     android:textSize="12sp" />
 
@@ -332,6 +336,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:background="@color/accent_layout_tester"
                                     android:textColor="@color/information_text"
                                     android:textSize="12sp" />
 
@@ -352,6 +357,7 @@
                                 android:id="@+id/tv_viNotes"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@color/accent_layout_tester"
                                 android:fontFamily="@font/helvetica"
                                 android:textColor="@color/information_text"
                                 android:textSize="12sp" />

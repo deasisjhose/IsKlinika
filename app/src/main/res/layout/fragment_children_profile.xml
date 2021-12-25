@@ -189,7 +189,7 @@
                     android:drawableTint="@color/pink"
                     android:fontFamily="@font/dinpro"
                     android:gravity="center_vertical"
-                    android:text="Sex"
+                    android:text="Gender"
                     android:textColor="@color/primary_Text"
                     android:textSize="12sp"
                     android:textStyle="bold" />

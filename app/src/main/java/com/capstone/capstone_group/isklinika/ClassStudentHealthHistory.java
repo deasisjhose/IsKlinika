@@ -13,8 +13,4 @@ public class ClassStudentHealthHistory {
     private ArrayList<ClassMedication> medicationHistory ;
     private ArrayList<ClassSpecialNeeds> specialNeeds ;
 
-
-
-
-
 }
