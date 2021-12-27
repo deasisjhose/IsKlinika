@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_intakeMed"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica"
+        android:gravity="left|center_vertical"
+        android:textColor="#2C2B2B"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tv_intakeAmt"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:fontFamily="@font/helveticalight"
+        android:gravity="center|center_vertical"
+        android:textColor="#2C2B2B"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_intakeDate"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/helveticalight"
+        android:gravity="center|center_vertical"
+        android:textColor="#2C2B2B"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_intakeTime"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/helveticalight"
+        android:gravity="center"
+        android:textColor="#2C2B2B"
+        android:textSize="12sp" />
+
+    <CheckBox
+        android:id="@+id/check_intakeClinicVisit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:buttonTint="@color/checkbox_medication"
+        android:clickable="false" />
+</TableRow>

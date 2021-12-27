@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
 
                                             Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
-                                            intent = new Intent(getBaseContext(), Activity_Landing.class);
+                                            intent = new Intent(getBaseContext(), ActivityLanding.class);
                                             intent.putExtra("userType", "Student") ;
                                             intent.putExtra("studentInfo", studentInfoUser ) ;
 //                                                intent.putExtra("studentId",idNum);
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                 parentUser.addChild(postSnapshot.getValue().toString());
                                             }
 
-                                            intent = new Intent(getBaseContext(), Activity_Landing.class);
+                                            intent = new Intent(getBaseContext(), ActivityLanding.class);
                                             intent.putExtra("userType", "Parent") ;
 //                                            intent.putExtra("parentKey", key) ;
                                             intent.putExtra("parentInfo", parentUser);

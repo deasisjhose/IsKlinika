@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">IsKlinika</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="medication_status">
+        <item>Currently Taking</item>
+        <item>Stopped</item>
+        <item>Three</item>
+    </string-array>
+
+<!--    <string-array name="dosage_num">-->
+<!--        <item>1</item>-->
+<!--        <item>2</item>-->
+<!--        <item>3</item>-->
+<!--        <item>Boost</item>-->
+<!--    </string-array>-->
+
+    <string-array name="charts">
+        <item>BMI</item>
+        <item>Height and Weight</item>
+    </string-array>
+
 </resources>

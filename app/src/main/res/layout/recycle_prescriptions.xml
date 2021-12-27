@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:checkable="false"
+    android:clickable="false"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Medicine"
+                android:textColor="#494949"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Status"
+                android:textColor="#494949"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_editMH"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:tint="@color/darkpurple"
+                app:srcCompat="@drawable/ic_edit" />
+
+            <ImageView
+                android:id="@+id/img_saveMH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/darkpastelOrange"
+                android:visibility="gone"
+                app:srcCompat="@drawable/check_ic" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/txt_medName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:clickable="false"
+                android:editable="false"
+                android:fontFamily="@font/helvetica"
+                android:hint="No information available"
+                android:textColor="#656565"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/spinner_medStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/check_ic" />
+
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica"
+            android:text="Purpose"
+            android:textColor="#494949"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txt_medPurpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:clickable="false"
+            android:editable="false"
+            android:fontFamily="@font/helvetica"
+            android:hint="No information available"
+            android:textColor="#656565"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/helvetica"
+            android:text="Medicine Intake"
+            android:textColor="#494949"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/txt_medDosage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:clickable="false"
+                android:editable="false"
+                android:fontFamily="@font/helvetica"
+                android:hint="Amount per interval"
+                android:textColor="#656565"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/txt_medInterval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:clickable="false"
+                android:editable="false"
+                android:fontFamily="@font/helvetica"
+                android:hint="Times in a day"
+                android:textColor="#656565"
+                android:textSize="12sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Start Date"
+                android:textColor="#494949"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="End Date"
+                android:textColor="#494949"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_medStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:hint="MM-DD-YYYY"
+                android:textColor="#656565"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txt_medEnd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:hint="MM-DD-YYYY"
+                android:textColor="#656565"
+                android:textSize="12sp" />
+        </TableRow>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

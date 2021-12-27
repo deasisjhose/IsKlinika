@@ -15,7 +15,7 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
     private MaterialCardView mcard_clinicVisit, mcard_healthAssess, mcard_diseaseSurveillance,
                                 mcard_medicalHistory, mcard_immunization, mcard_medication ;
 
-    private Activity_Landing activity_landing ;
+    private ActivityLanding activity_landing ;
 
     public FragmentModule() {
     }
@@ -27,7 +27,7 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_table_module, container, false);
 
-        this.activity_landing = (Activity_Landing) getActivity() ;
+        this.activity_landing = (ActivityLanding) getActivity() ;
 
         this. mcard_clinicVisit = view.findViewById(R.id.mcard_clinicVisit) ;
         this. mcard_healthAssess = view.findViewById(R.id.mcard_healthAssess) ;
@@ -70,13 +70,21 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
                                     break;
                                 case "Parent":
                                     intent.putParcelableArrayListExtra("children", activity_landing.getChildren()) ;
-                                    intent.putExtra("userType", activity_landing.getUserType()) ;
                                     break;
                             }
                             startActivity(intent);
 
                         }else if(view.getId() == R.id.mcard_medication){
                                 Intent intent = new Intent(getContext(), ActivityMedication.class) ;
+                                intent.putExtra("userType", activity_landing.getUserType()) ;
+                                switch (activity_landing.getUserType()){
+                                    case "Student":
+                                        intent.putExtra("studentInfo", activity_landing.getStudentInfo()) ;
+                                        break;
+                                    case "Parent":
+                                        intent.putParcelableArrayListExtra("children", activity_landing.getChildren()) ;
+                                        break;
+            }
                                 startActivity(intent);
 
                         }

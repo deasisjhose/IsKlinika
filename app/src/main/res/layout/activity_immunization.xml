@@ -43,54 +43,10 @@
                 android:textSize="30sp" />
         </TableRow>
 
-        <LinearLayout
+        <include
+            layout="@layout/module_child_name_recycle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <view
-                android:id="@+id/shapeImg_immuneProfileChild"
-                class="com.google.android.material.imageview.ShapeableImageView"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
-                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                app:srcCompat="@drawable/sample_prof_pic" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_immuneFullName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="3dp"
-                    android:fontFamily="@font/dinpro"
-                    android:text="Full Name"
-                    android:textColor="@color/primary_Text"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/mbtg_immuneChildren"
-                    android:layout_width="match_parent"
-                    android:layout_height="28dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="16dp"
-                    android:visibility="gone"
-                    app:selectionRequired="true"
-                    app:singleSelection="true" />
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
@@ -283,7 +239,7 @@
                                 android:id="@+id/tv_viPurpose"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/accent_layout_tester"
+                                android:background="#F7F9FF"
                                 android:textColor="@color/active_input_text"
                                 android:textSize="12sp" />
 
@@ -327,7 +283,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="2dp"
                                     android:layout_weight="1"
-                                    android:background="@color/accent_layout_tester"
+                                    android:background="#F7F9FF"
                                     android:textColor="@color/information_text"
                                     android:textSize="12sp" />
 
@@ -336,7 +292,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:background="@color/accent_layout_tester"
+                                    android:background="#F7F9FF"
                                     android:textColor="@color/information_text"
                                     android:textSize="12sp" />
 
@@ -357,7 +313,7 @@
                                 android:id="@+id/tv_viNotes"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/accent_layout_tester"
+                                android:background="#F7F9FF"
                                 android:fontFamily="@font/helvetica"
                                 android:textColor="@color/information_text"
                                 android:textSize="12sp" />

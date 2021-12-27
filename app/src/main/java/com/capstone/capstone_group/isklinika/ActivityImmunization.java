@@ -76,7 +76,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 
     @Override
     public void buildViews() {
-        this.tv_immuneFullName = findViewById(R.id.tv_immuneFullName) ;
+        this.tv_immuneFullName = findViewById(R.id.tv_moduleFullName) ;
         this.layout_immune_history = findViewById(R.id.layout_immune_history) ;
         this.float_addImmune = findViewById(R.id.float_addImmune) ;
         this.mbtg_immuneTab = findViewById(R.id.mbtg_immuneTab) ;
@@ -147,7 +147,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
             case "Parent":
                 this.children = intent.getParcelableArrayListExtra("children") ;
                 tv_immuneFullName.setText(children.get(0).getFullName());
-                this.mbtg_immuneChildren = findViewById(R.id.mbtg_immuneChildren) ;
+                this.mbtg_immuneChildren = findViewById(R.id.mbtg_moduleChildren) ;
                 mbtg_immuneChildren.setVisibility(View.VISIBLE);
                 dataInToggleChildren();
                 retrieveDataVaxList();

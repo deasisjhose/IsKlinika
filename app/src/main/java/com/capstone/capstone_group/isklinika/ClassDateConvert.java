@@ -66,7 +66,7 @@ public class ClassDateConvert {
     }
 
     public String getConverted(){
-        return month + "/" + day + "/" + year ;
+        return month + "-" + day + "-" + year ;
     }
 
 

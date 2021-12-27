@@ -32,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Activity_Landing extends AppCompatActivity implements InterfaceIsklinika, View.OnClickListener{
+public class ActivityLanding extends AppCompatActivity implements InterfaceIsklinika, View.OnClickListener{
 
     //Firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database

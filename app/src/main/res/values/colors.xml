@@ -49,5 +49,6 @@
     <color name="pastel_purple_inactive">#99BAA0FF</color>
 
     <color name="tester">#E6FFC0C5</color>
-
+    <color name="darkpastelOrange">#F67E57</color>
+    <color name="darkpurple">#7744FD</color>
 </resources>
