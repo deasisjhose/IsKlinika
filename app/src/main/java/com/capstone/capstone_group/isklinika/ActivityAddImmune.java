@@ -147,6 +147,7 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
     public void makeSpinnerVaccine(ArrayList<ClassVaccine> vaccines){
         ArrayAdapter<ClassVaccine> adapter = new ArrayAdapter<>(this, R.layout.spinner_immune, vaccines) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
+//        if(adapter.)
         spinner_addImmuneVaccine.setAdapter(adapter);
 
         spinner_addImmuneVaccine.setSelection(currentSelected);
@@ -181,9 +182,4 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
         mtv_immuneDate.setText("");
         mtv_immuneDate.setText("MM/DD/YYYY");
     }
-
-
-
-
-
 }

@@ -53,7 +53,17 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
 
 
         }else if(view.getId() == R.id.mcard_healthAssess){
-
+            Intent intent = new Intent(getContext(), ActivityHealthAssessment.class) ;
+            intent.putExtra("userType", activity_landing.getUserType()) ;
+            switch (activity_landing.getUserType()){
+                case "Student":
+                    intent.putExtra("studentInfo", activity_landing.getStudentInfo()) ;
+                    break;
+                case "Parent":
+                    intent.putParcelableArrayListExtra("children", activity_landing.getChildren()) ;
+                    break;
+            }
+            startActivity(intent);
 
             }else if(view.getId() == R.id.mcard_diseaseSurveillance){
 

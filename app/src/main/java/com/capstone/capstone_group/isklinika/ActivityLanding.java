@@ -80,7 +80,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         buildBar();
         buildViews();
 
-        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, new FragmentHome()).commit() ;
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, new FragmentModule()).commit() ;
     }
 
 
@@ -137,6 +137,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         this.layout_pageTitle_Children = findViewById(R.id.layout_pageTitle_Children) ;
 
         this.mtv_pageTitle = findViewById(R.id.mtv_pageTitle) ;
+        mtv_pageTitle.setVisibility(View.VISIBLE);
 
     }
 
@@ -240,12 +241,13 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
             setBtnInactive();
             botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
             checkActive = 10 ; //check ative activity
-            mtv_pageTitle.setVisibility(View.VISIBLE);
             layout_pageTitle_Children.setVisibility(View.GONE);
-            nestedScrollView.setNestedScrollingEnabled(true);
+            mtv_pageTitle.setVisibility(View.VISIBLE);
+            mtv_pageTitle.setText("Child Health");
+            mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_home, null), null, null, null);
 
-            selectedFragment = new FragmentHome() ;
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit() ;
+            selectedFragment = new FragmentModule() ;
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
 
         }else if(view.getId() == R.id.btn_nav_profile){
 
@@ -255,7 +257,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                 nestedScrollView.setNestedScrollingEnabled(false);
                 mtv_pageTitle.setVisibility(View.GONE);
                 layout_pageTitle_Children.setVisibility(View.VISIBLE);
-//                mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_child_friendly_24, null), null, null, null);
 
                switch (userType){
                    case "Student":
@@ -263,6 +264,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                        mtv_profileChildIdNum.setText(studentInfo.getIdNumGradeSection());
                        selectedFragment = new FragmentChildrenProfile() ;
                        mbtg_childrenButton.setVisibility(View.GONE);
+
                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
                        break;
                    case "Parent":
@@ -293,19 +295,20 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit() ;
 
 
-                }else if(view.getId() == R.id.btn_nav_modules){
-                        mbtg_childrenButton.clearChecked();
-                        setBtnInactive();
-                        botNav.btn_nav_modules.setIconTint(getColorStateList(R.color.active_nav_btn));
-                        checkActive = 40 ; //check ative activity
-                        layout_pageTitle_Children.setVisibility(View.GONE);
-                        mtv_pageTitle.setVisibility(View.VISIBLE);
-                        mtv_pageTitle.setText("Child Health");
-                        mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_view_module, null), null, null, null);
-
-                        selectedFragment = new FragmentModule() ;
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
                 }
+//                    else if(view.getId() == R.id.btn_nav_modules){
+//                        mbtg_childrenButton.clearChecked();
+//                        setBtnInactive();
+//                        botNav.btn_nav_modules.setIconTint(getColorStateList(R.color.active_nav_btn));
+//                        checkActive = 40 ; //check ative activity
+//                        layout_pageTitle_Children.setVisibility(View.GONE);
+//                        mtv_pageTitle.setVisibility(View.VISIBLE);
+//                        mtv_pageTitle.setText("Child Health");
+//                        mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_view_module, null), null, null, null);
+//
+//                        selectedFragment = new FragmentModule() ;
+//                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
+//                    }
     }
 
     public void setBtnInactive(){

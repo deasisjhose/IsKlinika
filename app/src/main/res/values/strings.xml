@@ -7,12 +7,12 @@
         <item>Three</item>
     </string-array>
 
-<!--    <string-array name="dosage_num">-->
-<!--        <item>1</item>-->
-<!--        <item>2</item>-->
-<!--        <item>3</item>-->
-<!--        <item>Boost</item>-->
-<!--    </string-array>-->
+    <!--    <string-array name="dosage_num">-->
+    <!--        <item>1</item>-->
+    <!--        <item>2</item>-->
+    <!--        <item>3</item>-->
+    <!--        <item>Boost</item>-->
+    <!--    </string-array>-->
 
     <string-array name="charts">
         <item>BMI</item>

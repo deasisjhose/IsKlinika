@@ -4,6 +4,7 @@
     <color name="secondary_blue">#9ad9ea</color>
     <color name="tertiary_blue">#21277b</color>
     <color name="quarternary_blue">#5f83b1</color>
+    <color name="active_edit">#8CA7F4</color>
 
     <color name="app_background">#BEDEE8F4</color>
     <color name="accent_layout">#F8FAFF</color>

@@ -1,4 +1,3 @@
-
 <com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -43,14 +42,10 @@
                 android:textSize="30sp" />
         </TableRow>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_childrenHealthAssess"
+        <include
+            layout="@layout/module_child_name_recycle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="4dp" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -60,15 +55,18 @@
         android:layout_height="match_parent"
         android:layout_marginTop="145dp"
         android:background="@drawable/shape_bottom_nav"
+        android:backgroundTint="@color/accent_layout"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingTop="4dp"
         android:paddingRight="16dp">
 
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/mBtnToggle_healthAssess"
+            android:id="@+id/mbtg_healthAssess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:checkedButton="@id/mBtn_growthChart"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.button.MaterialButton
@@ -76,6 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="33dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/healthassess_tab"
                 android:fontFamily="@font/helvetica"
                 android:gravity="center"
                 android:letterSpacing="0.07"
@@ -89,13 +88,14 @@
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:theme="@style/Widget.Material3.Button.TextButton"
-                app:backgroundTint="@color/pastel_orange" />
+                app:backgroundTint="@color/healthassess_tab" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/mBtn_ape"
                 android:layout_width="0dp"
                 android:layout_height="33dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/healthassess_tab"
                 android:fontFamily="@font/helvetica"
                 android:gravity="center"
                 android:paddingLeft="4dp"
@@ -107,13 +107,14 @@
                 android:textColor="@color/black"
                 android:textSize="11sp"
                 android:theme="@style/Widget.Material3.Button.TextButton"
-                app:backgroundTint="#F2C7D5FD" />
+                app:backgroundTint="@color/healthassess_tab" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/mBtn_dental"
                 android:layout_width="0dp"
                 android:layout_height="33dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/healthassess_tab"
                 android:fontFamily="@font/helvetica"
                 android:gravity="center"
                 android:paddingLeft="4dp"
@@ -125,63 +126,93 @@
                 android:textColor="@color/black"
                 android:textSize="11sp"
                 android:theme="@style/Widget.Material3.Button.TextButton"
-                app:backgroundTint="#F2C7D5FD" />
+                app:backgroundTint="@color/healthassess_tab" />
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
-
-        <TableRow
+        <LinearLayout
+            android:id="@+id/layout_growthChart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <Spinner
+                android:id="@+id/spinner_growthOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:orientation="vertical">
+
+                <!--                <com.github.mikephil.charting.charts.LineChart-->
+                <!--                    android:id="@+id/lineChart_growth"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_above="@+id/seekBar1"-->
+                <!--                    android:background="@drawable/border_edge" />-->
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_ape"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:visibility="gone">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/mtv_growthChart"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/shape_immune_left"
-                android:backgroundTint="@color/pastel_orange"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:fontFamily="@font/helvetica"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:letterSpacing="-0.04"
-                android:text="Growth Chart"
-                android:textColor="@color/primary_Text"
+                android:text="Annual Physical Examination"
+                android:textColor="@color/darkpastelOrange"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/mtv_medicationAllowedMedicine"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#A9E4FF"
-                android:backgroundTint="@color/pastel_bluegreen_inactive"
-                android:fontFamily="@font/helvetica"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:letterSpacing="-0.06"
-                android:text="APE"
-                android:textColor="@color/primary_Text"
-                android:textSize="13sp" />
+            <ExpandableListView
+                android:id="@+id/expand_ape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/mtv_medicationIntakeHistory"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/shape_immune_right"
-                android:backgroundTint="@color/pastel_bluegreen_inactive"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_ape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_dental"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:fontFamily="@font/helvetica"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center"
-                android:letterSpacing="-0.04"
-                android:text="Dental"
-                android:textColor="@color/primary_Text"
-                android:textSize="13sp" />
-        </TableRow>
+                android:text="Dental Examination"
+                android:textColor="#0077FF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_dental"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

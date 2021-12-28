@@ -10,6 +10,7 @@
     android:paddingBottom="45dp">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_editProfile"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="right"
@@ -20,7 +21,6 @@
         tools:ignore="TouchTargetSizeCheck">
 
         <view
-            android:id="@+id/view8"
             class="com.google.android.material.textview.MaterialTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,6 +33,36 @@
             android:padding="4dp"
             android:text="EDIT PROFILE"
             android:textColor="@color/primary_blue"
+            android:textSize="10sp"
+            tools:ignore="TextContrastCheck" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_saveProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginRight="4dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:cardElevation="0dp"
+        app:rippleColor="@color/success_container"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <view
+            class="com.google.android.material.textview.MaterialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/accent_layout_tester"
+            android:backgroundTint="@color/accent_layout_tester"
+            android:drawableLeft="@drawable/check_ic"
+            android:drawableTint="@color/green"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_vertical"
+            android:padding="4dp"
+            android:text="SAVE PROFILE"
+            android:textColor="@color/success_container"
             android:textSize="10sp"
             tools:ignore="TextContrastCheck" />
 
@@ -122,13 +152,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp">
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/tv_pBirthday"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="MM-DD-YYYY"
                     android:paddingLeft="2dp"
@@ -141,6 +174,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:clickable="false"
+                    android:editable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
@@ -163,15 +199,20 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
                 android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
                 android:textSize="12sp" />
 
             <TableRow
@@ -228,7 +269,7 @@
                     android:textColor="@color/information_text"
                     android:textSize="12sp" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pStudentType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -283,29 +324,39 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pReligion"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pNationality"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
 
             </TableRow>
@@ -370,17 +421,22 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pGuardian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -423,7 +479,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pGuardianEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -431,23 +487,33 @@
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pGuardianContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -523,16 +589,21 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pPedia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
                 android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -576,29 +647,39 @@
                 android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pPediaEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pPediaContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -614,7 +695,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pDentist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -627,6 +708,8 @@
                 android:hint="No info available"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -670,29 +753,39 @@
                 android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pDentistEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available."
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pDentistContact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available."
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -710,16 +803,21 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pHospital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/helvetica"
                 android:hint="No info available"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
                 android:textSize="12sp" />
 
             <TextView
@@ -741,19 +839,24 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_pHospitalAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="No info available"
+                    android:paddingLeft="2dp"
                     android:scrollHorizontally="false"
                     android:textColor="@color/information_text"
-                    android:textSize="12sp"
-                    android:paddingLeft="2dp" />
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

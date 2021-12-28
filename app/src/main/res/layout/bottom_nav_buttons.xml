@@ -74,6 +74,7 @@
             android:elevation="60dp"
             android:foregroundGravity="fill"
             android:outlineProvider="paddedBounds"
+            android:visibility="gone"
             app:backgroundTint="@android:color/transparent"
             app:backgroundTintMode="src_over"
             app:elevation="32dp"

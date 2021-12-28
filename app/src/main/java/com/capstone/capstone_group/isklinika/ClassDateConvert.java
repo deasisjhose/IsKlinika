@@ -13,6 +13,13 @@ public class ClassDateConvert {
         convertDateYear();
     }
 
+    public ClassDateConvert(String constraintDate, int different){
+        this.date = constraintDate ;
+        this.month = date.substring(0,1) ;
+        this.day = date.substring(4, 5) ;
+        this.year = date.substring(7, 10) ;
+    }
+
 
     public void convertDateMonth(){
         String wordMonth = date.substring(0,3);
@@ -69,6 +76,27 @@ public class ClassDateConvert {
         return month + "-" + day + "-" + year ;
     }
 
+    public int getMonth() {
+        return Integer.parseInt(month);
+    }
 
+    public void setMonth(String month) {
+        this.month = month;
+    }
 
+    public int getDay() {
+        return Integer.parseInt(day);
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public int getYear() {
+        return Integer.parseInt(year);
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
 }

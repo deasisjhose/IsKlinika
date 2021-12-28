@@ -226,9 +226,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                         retrieveIntakeHistory();
                         break;
                 }
-
-
-
             }else{
                 MaterialButton buttonCheck = findViewById(checkedId);
                 buttonCheck.setBackgroundColor(Color.parseColor("#7744FD"));
