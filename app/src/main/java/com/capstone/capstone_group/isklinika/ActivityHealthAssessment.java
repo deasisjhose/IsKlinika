@@ -20,6 +20,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -136,7 +143,8 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
-                retrieveDataAPE();
+                //retrieveDataAPE();
+                makeGrowthChart(studentId);
                 break;
             case "Parent":
                 this.children = intent.getParcelableArrayListExtra("children") ;
@@ -175,6 +183,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                 studentId = studentInfo.getIdNum() ;
                 switch (checkActive){
                     case 10:
+                        makeGrowthChart(studentId);
                         break;
                     case 20:
                         retrieveDataAPE();
@@ -196,6 +205,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
     //checkActive == 10
     //functions
     public void makeGrowthChartSpinner(){
+
         this.spinner_growthOptions = findViewById(R.id.spinner_growthOptions) ;
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.charts,R.layout.spinner_immune) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
@@ -207,11 +217,128 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "onItemSelected: selectedSort = " + spinner_growthOptions.getSelectedItem());
+                makeGrowthChart(studentId);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    public void makeChart(ArrayList<Integer> dataAge, ArrayList<Double> dataHeight, ArrayList<Double> dataWeight, ArrayList<Double> dataBMI ){
+        Log.d(TAG,"age1: " + dataAge.get(0));
+        LineChart lineChart = findViewById(R.id.lineChart_growth);
+        ArrayList<Entry> heightSet = new ArrayList<>();
+        ArrayList<Entry> weightSet = new ArrayList<>();
+        ArrayList<Entry> bmiSet = new ArrayList<>();
+        Description desc = new Description();
+
+        for (int x = 0; x < dataAge.size(); x++) { //x axis
+            for (int y = 0; y < dataHeight.size(); y++) { //y axis
+                if (x == y) { //to match what height is for a certain age
+                    heightSet.add(new Entry(dataAge.get(x).intValue(), dataHeight.get(y).floatValue()));
+                }
+            }
+            for (int w = 0; w < dataWeight.size(); w++) { //y axis
+                if (x == w) { //to match what weight is for a certain age
+                    weightSet.add(new Entry(dataAge.get(x).intValue(), dataWeight.get(w).floatValue()));
+                }
+            }
+            for (int b = 0; b < dataBMI.size(); b++) { //y axis
+                if (x == b) { //to match what weight is for a certain age
+                    bmiSet.add(new Entry(dataAge.get(x).intValue(), dataBMI.get(b).floatValue()));
+                }
+            }
+        }
+
+
+        String selected = spinner_growthOptions.getSelectedItem().toString();
+        Log.d(TAG, selected);
+        if(selected.equalsIgnoreCase("BMI")){
+            Log.d(TAG,"inside BMI");
+            LineDataSet bmiDataSet = new LineDataSet(bmiSet, "BMI Data");
+            bmiDataSet.setColor(Color.BLUE);
+            bmiDataSet.setValueTextSize(9);
+
+            XAxis xAxis = lineChart.getXAxis();
+            YAxis yAxisLeft = lineChart.getAxisLeft();
+            YAxis yAxisRight = lineChart.getAxisRight();
+
+            xAxis.setAxisMinimum(5);
+            xAxis.setAxisMaximum(13);
+            xAxis.setLabelCount(dataHeight.size());
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+
+            yAxisLeft.setAxisMaximum(20);
+            yAxisLeft.setAxisMinimum(5);
+            yAxisLeft.setTextColor(Color.BLUE);
+            yAxisRight.setAxisMaximum(20);
+            yAxisRight.setAxisMinimum(5);
+            yAxisRight.setTextColor(Color.BLUE);
+
+            LineData lineData = new LineData(bmiDataSet);
+            //To set which Yaxis is the line dependent on:
+            //bmiDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+
+            desc.setText("BMI by Age");
+            desc.setTextColor(Color.BLACK);
+            desc.setTextSize(10);
+            lineChart.setBackgroundColor(Color.parseColor("#FFF4F1"));
+            lineChart.setDrawGridBackground(true);
+            lineChart.setBorderColor(Color.BLACK);
+            lineChart.setDescription(desc);
+
+            lineChart.setData(lineData);
+            lineChart.invalidate();
+        }
+        else{
+            Log.d(TAG,"inside height and weight");
+            LineDataSet heightDataSet = new LineDataSet(heightSet, "Height Data");
+            LineDataSet weightDataSet = new LineDataSet(weightSet, "Weight Data");
+
+            heightDataSet.setColor(Color.BLUE);
+            heightDataSet.setValueTextSize(9);
+            weightDataSet.setColor(Color.RED);
+            weightDataSet.setValueTextSize(9);
+
+            XAxis xAxis = lineChart.getXAxis();
+            YAxis yAxisLeft = lineChart.getAxisLeft();
+            YAxis yAxisRight = lineChart.getAxisRight();
+
+            xAxis.setAxisMinimum(5);
+            xAxis.setAxisMaximum(13);
+            xAxis.setLabelCount(dataHeight.size());
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+            //weight in kg
+            yAxisLeft.setAxisMaximum(60);
+            yAxisLeft.setAxisMinimum(0);
+            yAxisLeft.setTextColor(Color.RED);
+
+            //height in cm
+            yAxisRight.setAxisMaximum(200);
+            yAxisRight.setAxisMinimum(0);
+            yAxisRight.setTextColor(Color.BLUE);
+
+            LineData lineData = new LineData(heightDataSet,weightDataSet);
+            //To set which Yaxis is the line dependent on:
+            heightDataSet.setAxisDependency(YAxis.AxisDependency.RIGHT);
+            weightDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+
+            desc.setText("Height and Weight by Age");
+            desc.setTextColor(Color.BLACK);
+            desc.setTextSize(10);
+            lineChart.setBackgroundColor(Color.parseColor("#FFF4F1"));
+            lineChart.setDrawGridBackground(true);
+            lineChart.setBorderColor(Color.BLACK);
+            lineChart.setDescription(desc);
+
+            lineChart.setData(lineData);
+            lineChart.invalidate();
+        }
+
+
     }
 
     //checkActive == 20
@@ -309,6 +436,58 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
             }
         }) ;
+    }
+
+    public void makeGrowthChart(String id){
+        ArrayList<Integer> dataAge = new ArrayList<>();
+        ArrayList<Double> dataHeight = new ArrayList<>();
+        ArrayList<Double> dataWeight = new ArrayList<>();
+        ArrayList<Double> dataBMI = new ArrayList<>();
+
+        LineChart lineChart = findViewById(R.id.lineChart_growth);
+        ArrayList<Entry> heightSet = new ArrayList<>();
+        ArrayList<Entry> weightSet = new ArrayList<>();
+        ArrayList<Entry> bmiSet = new ArrayList<>();
+        Description desc = new Description();
+
+        Log.d(TAG,id);
+
+        databaseApe.child(id).child("ape").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
+                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
+                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getValue());
+                    Integer age = Integer.parseInt(postSnapshot.child("age").getValue().toString());
+                    double height = Double.parseDouble(postSnapshot.child("height").getValue().toString());
+                    double weight = Double.parseDouble(postSnapshot.child("weight").getValue().toString());
+                    double bmi = Double.parseDouble(postSnapshot.child("bmi").getValue().toString());
+                    dataAge.add(age);
+                    dataHeight.add(height);
+                    dataWeight.add(weight);
+                    dataBMI.add(bmi);
+                }
+                Log.d(TAG,"age size: " + dataAge.size());
+                if(dataAge.isEmpty() || dataHeight.isEmpty()){
+
+                    lineChart.setNoDataText("No Data Yet");
+                    lineChart.setNoDataTextColor(Color.BLACK);
+
+                    lineChart.invalidate();
+                    lineChart.clear();
+                }
+                else{
+                    makeChart(dataAge,dataHeight,dataWeight,dataBMI);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
