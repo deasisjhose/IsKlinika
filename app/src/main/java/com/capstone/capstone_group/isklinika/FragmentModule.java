@@ -50,7 +50,17 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.mcard_clinicVisit){
-
+            Intent intent = new Intent(getContext(), ActivityClinicVisit.class) ;
+            intent.putExtra("userType", activity_landing.getUserType()) ;
+            switch (activity_landing.getUserType()){
+                case "Student":
+                    intent.putExtra("studentInfo", activity_landing.getStudentInfo()) ;
+                    break;
+                case "Parent":
+                    intent.putParcelableArrayListExtra("children", activity_landing.getChildren()) ;
+                    break;
+            }
+            startActivity(intent);
 
         }else if(view.getId() == R.id.mcard_healthAssess){
             Intent intent = new Intent(getContext(), ActivityHealthAssessment.class) ;
@@ -66,10 +76,30 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
             startActivity(intent);
 
             }else if(view.getId() == R.id.mcard_diseaseSurveillance){
-
+                    Intent intent = new Intent(getContext(), ActivityDiseaseSurveillance.class) ;
+                    intent.putExtra("userType", activity_landing.getUserType()) ;
+                    switch (activity_landing.getUserType()){
+                        case "Student":
+                            intent.putExtra("studentInfo", activity_landing.getStudentInfo()) ;
+                            break;
+                        case "Parent":
+                            intent.putParcelableArrayListExtra("children", activity_landing.getChildren()) ;
+                            break;
+                    }
+                    startActivity(intent);
 
                 }else if(view.getId() == R.id.mcard_medicalHistory){
-
+                        Intent intent = new Intent(getContext(), ActivityMedicalHistory.class) ;
+                        intent.putExtra("userType", activity_landing.getUserType()) ;
+                        switch (activity_landing.getUserType()){
+                            case "Student":
+                                intent.putExtra("studentInfo", activity_landing.getStudentInfo()) ;
+                                break;
+                            case "Parent":
+                                intent.putParcelableArrayListExtra("children", activity_landing.getChildren()) ;
+                                break;
+                        }
+                        startActivity(intent);
 
                     }else if(view.getId() == R.id.mcard_immunization){
                             Intent intent = new Intent(getContext(), ActivityImmunization.class) ;

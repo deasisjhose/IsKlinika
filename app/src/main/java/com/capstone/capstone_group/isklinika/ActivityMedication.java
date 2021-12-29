@@ -56,6 +56,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     //module tab children
     private ShapeableImageView shapeImg_moduleProfileChild ;
     private MaterialButtonToggleGroup mbtg_medication ;
+    private Spinner spinner_childNameModules ;
     private TextView tv_moduleFullName ;
 
     //prescription tab
@@ -184,35 +185,30 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                 this.children = intent.getParcelableArrayListExtra("children") ;
                 tv_moduleFullName.setText(children.get(0).getFullName());
                 this.mbtg_medication = findViewById(R.id.mbtg_moduleChildren) ;
-                mbtg_medication.setVisibility(View.VISIBLE);
-                dataInToggleChildren();
+                mbtg_medication.setVisibility(View.GONE);
+                makeSpinnerChildren();
+//                dataInToggleChildren();
                 break;
         }
     }
 
     //This function is used to make the toggle buttons of the children
-    private void dataInToggleChildren(){
-        mbtg_medication.removeAllViews();
+    public void makeSpinnerChildren(){
 
-        for(int j = 0 ; j < children.size() ; j++){
-            MaterialButton button = (MaterialButton) getLayoutInflater().inflate(R.layout.button_naem, null);
-            button.setId(j);
-            button.setText(children.get(j).getFirstName());
-            button.setBackgroundColor(Color.parseColor("#7744FD"));
-            button.setTextColor(Color.WHITE);
-            mbtg_medication.addView(button, -2, -1);
-
-        }
+        this.spinner_childNameModules = findViewById(R.id.spinner_childNameModules) ;
+        spinner_childNameModules.setVisibility(View.VISIBLE);
+        ArrayAdapter<ClassStudentInfo> adapter = new ArrayAdapter<>(this, R.layout.spinner_child_medication, children) ;
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_childNameModules.setAdapter(adapter);
+        spinner_childNameModules.setSelection(0);
 
         tv_moduleFullName.setText(children.get(0).getFullName());
         studentId = children.get(0).getIdNum() ;
 
-        mbtg_medication.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
-            if(isChecked){
-                MaterialButton button3 = findViewById(checkedId);
-                button3.setBackgroundColor(Color.WHITE);
-                button3.setTextColor(Color.BLACK);
-                studentInfo = children.get(checkedId);
+        spinner_childNameModules.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                studentInfo = children.get(position);
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
                 switch (checkActive){
@@ -220,27 +216,24 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                         retrieveDataMedications(studentId) ;
                         break;
                     case 20:
+                        tv_allowedMedicineLastUpdated.setText("");
                         retrieveDataAllowedMedicines();
                         break;
                     case 30:
                         retrieveIntakeHistory();
                         break;
                 }
-            }else{
-                MaterialButton buttonCheck = findViewById(checkedId);
-                buttonCheck.setBackgroundColor(Color.parseColor("#7744FD"));
-                buttonCheck.setTextColor(Color.WHITE);
             }
-
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
-        mbtg_medication.check(0);
-
     }
 
     //check == 10 ; From makeSpinnerPrescription() to retrieveDataMedications()
     /*This function is used to create the spinner/dropdown for the prescription sort. MEDICATIONS TAB*/
     public void makeSpinnerPrescription(){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.medication_status,R.layout.spinner_immune) ;
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.medication_status,R.layout.spinner_medication) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
         spinner_medicationStatus.setAdapter(adapter);
         spinner_medicationStatus.setSelection(0);
@@ -420,7 +413,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         antacid.setClickable(false);
 
         Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = df.format(date);
         tv_allowedMedicineLastUpdated.setText(formattedDate);
 

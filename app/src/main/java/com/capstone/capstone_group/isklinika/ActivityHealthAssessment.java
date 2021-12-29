@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 /**To do
  * 1. Indicators line 55, 119, 192
- * 2. Reuse some of the old codes na lang from capstone mobile 
+ * 2. Reuse some of the old codes na lang from capstone mobile
  * */
 public class ActivityHealthAssessment extends AppCompatActivity {
 
@@ -62,6 +62,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
     private ShapeableImageView shapeImg_moduleProfileChild ;
     private MaterialButtonToggleGroup mbtg_moduleChildren, mbtg_healthAssess  ;
     private TextView tv_moduleFullName ;
+    private Spinner spinner_childNameModules ;
 
     //growthChart tab
     private LinearLayout layout_growthChart ;
@@ -131,7 +132,6 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         this.layout_growthChart = findViewById(R.id.layout_growthChart) ;
         makeGrowthChartSpinner();
 
-
         this.layout_ape = findViewById(R.id.layout_ape) ;
 
     }
@@ -150,35 +150,30 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                 this.children = intent.getParcelableArrayListExtra("children") ;
                 tv_moduleFullName.setText(children.get(0).getFullName());
                 this.mbtg_moduleChildren = findViewById(R.id.mbtg_moduleChildren) ;
-                mbtg_moduleChildren.setVisibility(View.VISIBLE);
-                dataInToggleChildren();
+//                mbtg_moduleChildren.setVisibility(View.VISIBLE);
+                makeSpinnerChildren();
+//                dataInToggleChildren();
                 break;
         }
     }
 
     //This function is used to make the toggle buttons of the children
-    private void dataInToggleChildren(){
-        mbtg_moduleChildren.removeAllViews();
+    public void makeSpinnerChildren(){
 
-        for(int j = 0 ; j < children.size() ; j++){
-            MaterialButton button = (MaterialButton) getLayoutInflater().inflate(R.layout.button_naem, null);
-            button.setId(j);
-            button.setText(children.get(j).getFirstName());
-            button.setBackgroundColor(Color.parseColor("#F67E57"));
-            button.setTextColor(Color.WHITE);
-            mbtg_moduleChildren.addView(button, -2, -1);
-
-        }
+        this.spinner_childNameModules = findViewById(R.id.spinner_childNameModules) ;
+        spinner_childNameModules.setVisibility(View.VISIBLE);
+        ArrayAdapter<ClassStudentInfo> adapter = new ArrayAdapter<>(this, R.layout.spinner_child_healthassess, children) ;
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_childNameModules.setAdapter(adapter);
+        spinner_childNameModules.setSelection(0);
 
         tv_moduleFullName.setText(children.get(0).getFullName());
         studentId = children.get(0).getIdNum() ;
 
-        mbtg_moduleChildren.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
-            if(isChecked){
-                MaterialButton button3 = findViewById(checkedId);
-                button3.setBackgroundColor(Color.WHITE);
-                button3.setTextColor(Color.BLACK);
-                studentInfo = children.get(checkedId);
+        spinner_childNameModules.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                studentInfo = children.get(position);
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
                 switch (checkActive){
@@ -191,23 +186,21 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                     case 30:
                         break;
                 }
-            }else{
-                MaterialButton buttonCheck = findViewById(checkedId);
-                buttonCheck.setBackgroundColor(Color.parseColor("#F67E57"));
-                buttonCheck.setTextColor(Color.WHITE);
             }
-
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
-        mbtg_moduleChildren.check(0);
-
     }
+
+
 
     //checkActive == 10
     //functions
     public void makeGrowthChartSpinner(){
 
         this.spinner_growthOptions = findViewById(R.id.spinner_growthOptions) ;
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.charts,R.layout.spinner_immune) ;
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.charts,R.layout.spinner_healthassess) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
         spinner_growthOptions.setAdapter(adapter);
         spinner_growthOptions.setSelection(0);
@@ -250,7 +243,6 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                 }
             }
         }
-
 
         String selected = spinner_growthOptions.getSelectedItem().toString();
         Log.d(TAG, selected);
@@ -337,7 +329,6 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             lineChart.setData(lineData);
             lineChart.invalidate();
         }
-
 
     }
 
@@ -480,7 +471,6 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                     makeChart(dataAge,dataHeight,dataWeight,dataBMI);
 
                 }
-
             }
 
             @Override

@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/shape_bottom_nav"
+        android:backgroundTint="@color/white"
         android:gravity="center"
         android:outlineProvider="none">
 
@@ -66,19 +67,18 @@
             app:rippleColor="@color/inactive_nav_btn" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_nav_modules"
+            android:id="@+id/btn_nav_parent_profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/shape_top_right_round"
+            android:background="@color/white"
             android:elevation="60dp"
             android:foregroundGravity="fill"
             android:outlineProvider="paddedBounds"
-            android:visibility="gone"
             app:backgroundTint="@android:color/transparent"
             app:backgroundTintMode="src_over"
             app:elevation="32dp"
-            app:icon="@drawable/ic_view_module"
+            app:icon="@drawable/ic_person"
             app:iconGravity="top"
             app:iconTint="@color/inactive_nav_btn"
             app:rippleColor="@color/inactive_nav_btn" />

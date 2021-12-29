@@ -2,6 +2,7 @@ package com.capstone.capstone_group.isklinika;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,6 +46,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 
     private TextView tv_immuneFullName ;
     private MaterialButtonToggleGroup mbtg_immuneChildren, mbtg_immuneTab ;
+    private Spinner spinner_childNameModules ;
     private LinearLayout layout_immune_history, layout_vaccineInformation ;
     private FloatingActionButton float_addImmune ;
     private AdapterImmunization adapterImmunization;
@@ -148,8 +151,8 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
                 this.children = intent.getParcelableArrayListExtra("children") ;
                 tv_immuneFullName.setText(children.get(0).getFullName());
                 this.mbtg_immuneChildren = findViewById(R.id.mbtg_moduleChildren) ;
-                mbtg_immuneChildren.setVisibility(View.VISIBLE);
-                dataInToggleChildren();
+                mbtg_immuneChildren.setVisibility(View.GONE);
+                makeSpinnerChildren();
                 retrieveDataVaxList();
                 break;
         }
@@ -192,6 +195,31 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 //               String vaccineSelected = spinner_vaccineList.getSelectedItem().toString() ;
                 updateVaccineInfo(vaccines.get(position));
                 retrieveImmunizationHistory();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    public void makeSpinnerChildren(){
+        this.spinner_childNameModules = findViewById(R.id.spinner_childNameModules) ;
+        spinner_childNameModules.setVisibility(View.VISIBLE);
+        ArrayAdapter<ClassStudentInfo> adapter = new ArrayAdapter<>(this, R.layout.spinner_child_immune, children) ;
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_childNameModules.setAdapter(adapter);
+        spinner_childNameModules.setSelection(0);
+
+        tv_immuneFullName.setText(children.get(0).getFullName());
+        studentId = children.get(0).getIdNum() ;
+
+        spinner_childNameModules.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                studentInfo = children.get(position);
+                tv_immuneFullName.setText(studentInfo.getFullName());
+                studentId = studentInfo.getIdNum() ;
+                retrieveDataVaxList();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

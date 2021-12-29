@@ -15,9 +15,9 @@ public class ClassDateConvert {
 
     public ClassDateConvert(String constraintDate, int different){
         this.date = constraintDate ;
-        this.month = date.substring(0,1) ;
-        this.day = date.substring(4, 5) ;
-        this.year = date.substring(7, 10) ;
+        this.month = date.substring(5,6) ;
+        this.day = date.substring(8, 9) ;
+        this.year = date.substring(0, 3) ;
     }
 
 
@@ -65,7 +65,7 @@ public class ClassDateConvert {
     }
 
     public void convertDateDay(){
-        this.day = date.substring(4, 6) ;
+        this.day = date.substring(4 ,6) ;
     }
 
     public void convertDateYear(){
@@ -73,7 +73,7 @@ public class ClassDateConvert {
     }
 
     public String getConverted(){
-        return month + "-" + day + "-" + year ;
+        return year + "-" + month + "-" + day ;
     }
 
     public int getMonth() {

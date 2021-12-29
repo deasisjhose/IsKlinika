@@ -6,7 +6,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -15,9 +14,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.button.MaterialButton;
@@ -42,7 +43,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
     //Variables
     private ClassBotnav botNav ;
     private Intent intent ;
-    private int checkActive, prevActive ; // 10 = home 20 = profile 30 = mail 40 = modules
+    private int checkActive, prevActive ; // 10 = home 20 = profile 30 = mail 40 = modules  //not followed
     private final String TAG ="LANDING//" ;
 
     //data sent from user login
@@ -64,7 +65,8 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
     private ShapeableImageView shapeImg_profileChildIdPic ;
     private MaterialTextView mtv_profileChildIdNum, mtv_profileChildFullName ;
     private MaterialButtonToggleGroup mbtg_childrenButton ;
-    private RecyclerView recycle_profileChildrenName ;
+    private Spinner spinner_childName ;
+    private int lastSelected  = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +122,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         //set active btn tint
         botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
 
-
         //profile fragment top
         this.shapeImg_profileChildIdPic = findViewById(R.id.shapeImg_profileChildIdPic) ;
         this.mtv_profileChildIdNum = findViewById(R.id.mtv_profileChildIdNum) ;
@@ -173,15 +174,12 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                         if(postSnapshot.getKey().equals(parentInfo.getIdNumber(i))){
                             ClassStudentInfo child = postSnapshot.getValue(ClassStudentInfo.class) ;
                             childrenInfo.add(child) ;
-//                            Log.d(TAG, "onDataChange: parentChild = " + child.toString());
                         }
                     }
                 }
 
-
-
-//                setChildren(childrenInfo);
-                dataInToggleChildren(childrenInfo);
+                 makeSpinnerChildren(childrenInfo);
+//                dataInToggleChildren(childrenInfo);
 
             }
             @Override
@@ -191,9 +189,33 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         });
     }
 
+    public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){
+        this.children = new ArrayList<>() ;
+        children = childrenArrayList ;
+        this.spinner_childName = findViewById(R.id.spinner_childName) ;
+        ArrayAdapter<ClassStudentInfo> adapter = new ArrayAdapter<>(this, R.layout.spinner_child_profile, childrenArrayList) ;
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_childName.setAdapter(adapter);
+        spinner_childName.setSelection(0);
 
+        spinner_childName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onItemSelected: selectedSort = " + spinner_childName.getSelectedItem());
+                studentInfo = children.get(position);
+                mtv_profileChildFullName.setText(children.get(position).getFullName());
+                mtv_profileChildIdNum.setText(children.get(position).getIdNumGradeSection());
+                lastSelected = position;
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new FragmentChildrenProfile()).commit() ;
+                checkActive = 25 ;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
 
-    private void dataInToggleChildren(ArrayList<ClassStudentInfo> childrenArrayList){
+    public void dataInToggleChildren(ArrayList<ClassStudentInfo> childrenArrayList){
         this.children = new ArrayList<>() ;
         children = childrenArrayList ;
 
@@ -240,7 +262,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
             mbtg_childrenButton.clearChecked();
             setBtnInactive();
             botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
-            checkActive = 10 ; //check ative activity
+//            checkActive = 10 ; //check ative activity
             layout_pageTitle_Children.setVisibility(View.GONE);
             mtv_pageTitle.setVisibility(View.VISIBLE);
             mtv_pageTitle.setText("Child Health");
@@ -253,7 +275,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
 
                 setBtnInactive();
                 botNav.btn_nav_profile.setIconTint(getColorStateList(R.color.active_nav_btn));
-                checkActive = 20 ; //check ative activity
                 nestedScrollView.setNestedScrollingEnabled(false);
                 mtv_pageTitle.setVisibility(View.GONE);
                 layout_pageTitle_Children.setVisibility(View.VISIBLE);
@@ -263,22 +284,15 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                        mtv_profileChildFullName.setText(studentInfo.getFullName());
                        mtv_profileChildIdNum.setText(studentInfo.getIdNumGradeSection());
                        selectedFragment = new FragmentChildrenProfile() ;
-                       mbtg_childrenButton.setVisibility(View.GONE);
-
+                       spinner_childName.setVisibility(View.GONE);
                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
                        break;
                    case "Parent":
-//                       MaterialButton button = findViewById(0) ;
-//                       button.setBackgroundColor(Color.WHITE);
-//                       button.setTextColor(Color.BLACK);
+                       mbtg_childrenButton.check(lastSelected);
+                       studentInfo = children.get(lastSelected) ;
 
-                       mbtg_childrenButton.check(0);
-                       studentInfo = children.get(0) ;
-
-                       mtv_profileChildFullName.setText(children.get(0).getFullName());
-                       mtv_profileChildIdNum.setText(children.get(0).getIdNumGradeSection());
-                       Log.d(TAG, "dataInToggleChildren: onNAVCLICK");
-//                       getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, new FragmentChildrenProfile()).commit() ;
+                       if(checkActive == 25)
+                           getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, new FragmentChildrenProfile()).commit() ;
 
                        break;
                }
@@ -286,7 +300,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                     mbtg_childrenButton.clearChecked();
                     setBtnInactive();
                     botNav.btn_nav_mail.setIconTint(getColorStateList(R.color.active_nav_btn));
-                    checkActive = 30 ; //check ative activity
+//                    checkActive = 30 ; //check ative activity
                     mtv_pageTitle.setVisibility(View.VISIBLE);
                     layout_pageTitle_Children.setVisibility(View.GONE);
                     nestedScrollView.setNestedScrollingEnabled(true);
@@ -316,11 +330,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         botNav.btn_nav_profile.setIconTint(getColorStateList(R.color.inactive_nav_btn));
         botNav.btn_nav_mail.setIconTint(getColorStateList(R.color.inactive_nav_btn));
         botNav.btn_nav_modules.setIconTint(getColorStateList(R.color.inactive_nav_btn));
-    }
-
-    private void setChildren(ArrayList<ClassStudentInfo> childrenArrayList){
-        this.children = new ArrayList<>() ;
-        children = childrenArrayList ;
     }
 
     public ClassStudentInfo getStudentInfo(){

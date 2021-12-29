@@ -248,7 +248,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="4dp"
                             android:fontFamily="@font/dinpro"
-                            android:text="TextView"
                             android:textColor="@color/violet"
                             android:textSize="12sp" />
                     </TableRow>

@@ -78,6 +78,7 @@
             android:onClick="checkRadioChecked"
             android:text="Student"
             android:textSize="13sp"
+            android:textStyle="bold"
             app:buttonTint="@color/pastel_red" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -90,6 +91,7 @@
             android:onClick="checkRadioChecked"
             android:text="Parent"
             android:textSize="13sp"
+            android:textStyle="bold"
             app:buttonTint="@color/yellow" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -102,6 +104,7 @@
             android:onClick="checkRadioChecked"
             android:text="Clinician"
             android:textSize="13sp"
+            android:textStyle="bold"
             app:buttonTint="@color/quarternary_blue" />
     </RadioGroup>
 
@@ -146,7 +149,8 @@
                 android:textColorHint="@color/hint"
                 android:textColorLink="@color/active_input_text"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_password"
@@ -172,7 +176,8 @@
                 android:textColorHint="@color/hint"
                 android:textColorLink="@color/active_input_text"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

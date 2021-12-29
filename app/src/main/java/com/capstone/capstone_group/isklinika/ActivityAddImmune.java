@@ -74,7 +74,7 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
     //This function is used to add to a new immunization record
     public void addImmunization() {
 
-        if(mtv_immuneDate.getText().toString().equals("") || mtv_immuneDate.getText().toString().equals("MM/DD/YYYY")){
+        if(mtv_immuneDate.getText().toString().equals("") || mtv_immuneDate.getText().toString().equals("YYYY-MM-DD")){
             Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
             mtv_immuneDate.setBackgroundColor(Color.parseColor("#FFFD6868"));
         } else {
@@ -112,7 +112,7 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
         mtv_immuneDate.setOnClickListener(this);
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
-        builder.setTitleText("Select Immunization Date") ;
+        builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;
         builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
 
 

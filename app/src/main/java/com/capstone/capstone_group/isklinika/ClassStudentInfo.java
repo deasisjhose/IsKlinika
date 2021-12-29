@@ -358,6 +358,6 @@ public class ClassStudentInfo implements Parcelable {
 
     @Override
     public String toString() {
-        return firstName + " " + middleName + " " + lastName + " / " + "Grade " + grade + " - " + section;
+        return firstName ;
     }
 }

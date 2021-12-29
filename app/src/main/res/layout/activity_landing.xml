@@ -54,7 +54,7 @@
                 android:orientation="vertical"
                 android:paddingStart="15dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="5dp">
 
                 <view
                     android:id="@+id/shapeImg_profileChildIdPic"
@@ -92,13 +92,25 @@
                     app:layout_constraintStart_toEndOf="@+id/shapeImg_profileChildIdPic"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Spinner
+                    android:id="@+id/spinner_childName"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:dropDownWidth="wrap_content"
+                    android:gravity="center"
+                    android:overlapAnchor="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mtv_profileChildIdNum" />
+
                 <com.google.android.material.button.MaterialButtonToggleGroup
                     android:id="@+id/mbtg_childrenButton"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="3dp"
                     android:addStatesFromChildren="false"
-
+                    android:gravity="center"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/shapeImg_profileChildIdPic"

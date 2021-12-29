@@ -42,16 +42,25 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <Spinner
+                android:id="@+id/spinner_childNameModules"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="2dp"
+                android:overlapAnchor="false"
+                android:visibility="gone" />
+
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/mbtg_moduleChildren"
-                app:selectionRequired="true"
-                app:singleSelection="true"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="16dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:selectionRequired="true"
+                app:singleSelection="true" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

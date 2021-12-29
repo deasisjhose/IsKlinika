@@ -153,27 +153,27 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
 
         holder.txt_medName.setClickable(false) ;
         holder.txt_medName.setInputType(InputType.TYPE_NULL);
-        holder.txt_medName.setBackgroundColor(Color.TRANSPARENT);
+        holder.txt_medName.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
         holder.txt_medPurpose.setClickable(false) ;
         holder.txt_medPurpose.setInputType(InputType.TYPE_NULL);
-        holder.txt_medPurpose.setBackgroundColor(Color.TRANSPARENT);
+        holder.txt_medPurpose.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
         holder.txt_medDosage.setClickable(false) ;
         holder.txt_medDosage.setInputType(InputType.TYPE_NULL);
-        holder.txt_medDosage.setBackgroundColor(Color.TRANSPARENT);
+        holder.txt_medDosage.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
         holder.txt_medInterval.setClickable(false) ;
         holder.txt_medInterval.setInputType(InputType.TYPE_NULL);
-        holder.txt_medInterval.setBackgroundColor(Color.TRANSPARENT);
+        holder.txt_medInterval.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
         holder.txt_medStart.setClickable(false) ;
         holder.txt_medStart.setInputType(InputType.TYPE_NULL);
-        holder.txt_medStart.setBackgroundColor(Color.TRANSPARENT);
+        holder.txt_medStart.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
         holder.txt_medEnd.setClickable(true) ;
         holder.txt_medEnd.setInputType(InputType.TYPE_NULL);
-        holder.txt_medEnd.setBackgroundColor(Color.TRANSPARENT);
+        holder.txt_medEnd.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
         holder.spinner_medStatus.setEnabled(false);
 

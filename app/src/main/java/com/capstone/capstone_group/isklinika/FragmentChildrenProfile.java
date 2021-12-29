@@ -229,7 +229,7 @@ public class FragmentChildrenProfile extends Fragment {
 
             // Calculating age
             String birthdayInput = tv_pBirthday.getText().toString();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate birthDate = LocalDate.parse(birthdayInput, formatter);
             Period period = Period.between(birthDate, LocalDate.now());
             String age = String.valueOf(period.getYears());
