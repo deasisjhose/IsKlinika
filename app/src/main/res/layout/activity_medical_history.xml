@@ -7,6 +7,20 @@
     android:background="@color/pastel_green"
     tools:context=".ActivityMedicalHistory">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/pastel_green"
+        app:layout_anchor="@id/layoutmedhisoty"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        app:rippleColor="#FFFFFF"
+        android:clickable="true"
+        app:backgroundTint="@color/pastel_green"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -51,10 +65,65 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutmedhisoty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="145dp"
         android:background="@drawable/shape_bottom_nav"
         android:backgroundTint="@color/accent_layout"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:paddingRight="16dp">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/mbtg_medicalHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:checkedButton="@id/mBtn_pastIllness"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mBtn_pastIllness"
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/medicalhistory_tab"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:letterSpacing="0.07"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="Past Illnesses"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:theme="@style/Widget.Material3.Button.TextButton"
+                app:backgroundTint="@color/medicalhistory_tab" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mBtn_allergies"
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/medicalhistory_tab"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="Allergies"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:theme="@style/Widget.Material3.Button.TextButton"
+                app:backgroundTint="@color/medicalhistory_tab" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+    </LinearLayout>
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

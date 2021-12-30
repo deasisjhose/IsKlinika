@@ -28,6 +28,7 @@
                 android:id="@+id/imageView7"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
                 app:srcCompat="@drawable/phonendoscope" />
 
             <com.google.android.material.textview.MaterialTextView

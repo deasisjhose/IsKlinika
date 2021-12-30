@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="primary_blue">#4e73df</color>
-    <color name="secondary_blue">#9ad9ea</color>
+    <color name="secondary_blue">#638AFA</color>
     <color name="tertiary_blue">#21277b</color>
     <color name="quarternary_blue">#5f83b1</color>
     <color name="active_edit">#8CA7F4</color>
@@ -16,7 +16,7 @@
     <color name="error_container">#e74a3b</color>
 
     <color name="active_nav_btn">#4e73df</color>
-    <color name="inactive_nav_btn">#9CB4F8</color>
+    <color name="inactive_nav_btn">#ABBDF1</color>
 
     <color name="primary_Text">#252525</color>
     <color name="information_text">#3E3E3E</color>
@@ -27,7 +27,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#e74a3b</color>
     <color name="orange">#ff781f</color>
-    <color name="yellow">#FFD774</color>
+    <color name="yellow">#FDD980</color>
     <color name="green">#1cc88a</color>
     <color name="blue">#0077FF</color>
     <color name="indigo">#00418d</color>

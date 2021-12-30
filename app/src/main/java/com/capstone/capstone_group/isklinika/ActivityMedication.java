@@ -108,18 +108,24 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                     buttonCheck.setTypeface(null, Typeface.BOLD);
                     if(checkedId == R.id.mbtn_prescription){
                         checkActive = 10 ;
+                        if(userType.equals("Parent"))
+                            float_addPrescription.setVisibility(View.VISIBLE);
                         layout_medicationPrescription.setVisibility(View.VISIBLE);
                         layout_medicationAllowedMedicine.setVisibility(View.GONE);
                         layot_intakeHistory.setVisibility(View.GONE);
                         retrieveDataMedications(studentId) ;
                     }else if(checkedId == R.id.mbtn_allowedMedicines){
                         checkActive = 20 ;
+                        if(userType.equals("Parent"))
+                            float_addPrescription.setVisibility(View.GONE);
                         layout_medicationPrescription.setVisibility(View.GONE);
                         layout_medicationAllowedMedicine.setVisibility(View.VISIBLE);
                         layot_intakeHistory.setVisibility(View.GONE);
                         retrieveDataAllowedMedicines();
                     }else if(checkedId == R.id.mbtn_intakeHistory){
                         checkActive = 30 ;
+                        if(userType.equals("Parent"))
+                            float_addPrescription.setVisibility(View.GONE);
                         layout_medicationPrescription.setVisibility(View.GONE);
                         layout_medicationAllowedMedicine.setVisibility(View.GONE);
                         layot_intakeHistory.setVisibility(View.VISIBLE);
@@ -186,6 +192,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                 tv_moduleFullName.setText(children.get(0).getFullName());
                 this.mbtg_medication = findViewById(R.id.mbtg_moduleChildren) ;
                 mbtg_medication.setVisibility(View.GONE);
+                float_addPrescription.setVisibility(View.VISIBLE);
                 makeSpinnerChildren();
 //                dataInToggleChildren();
                 break;

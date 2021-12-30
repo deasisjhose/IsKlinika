@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
-    android:backgroundTint="@color/primary_blue"
+    android:layout_height="match_parent"
+    android:background="@color/primary_blue"
     android:orientation="vertical"
     tools:context=".ActivityClinicianLanding">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/drop_shadow"
         android:elevation="3dp">
@@ -26,7 +26,7 @@
             android:background="@drawable/search_bar"
             android:drawablePadding="8dp"
             android:ems="10"
-            android:fontFamily="@font/dinpro"
+            android:fontFamily="@font/helvetica"
             android:hint="Enter student id here..."
             android:inputType="textPersonName"
             android:maxLines="1"
@@ -64,15 +64,17 @@
         android:id="@+id/studentInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginLeft="31dp"
-            app:srcCompat="@drawable/_2pxfirst_aid_kit" />
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:srcCompat="@drawable/sample_prof_pic" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,44 +84,44 @@
 
             <TextView
                 android:id="@+id/studentNameTv"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
                 android:maxLines="1"
                 android:text="Student Name"
-                android:textColor="@color/primary_blue"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/idNumTv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
                 android:text="121206"
-                android:textColor="@color/primary_blue"
-                android:textSize="18sp" />
+                android:textColor="@color/white"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/gradeSectionTv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
                 android:maxLines="2"
                 android:text="Grade 1 - Truthfulness"
-                android:textColor="@color/primary_blue"
-                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textSize="13sp"
                 android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/studentTypeTv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
                 android:maxLines="1"
                 android:text="New Student"
-                android:textColor="@color/primary_blue"
-                android:textSize="14sp" />
+                android:textColor="@color/white"
+                android:textSize="13sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -128,24 +130,26 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_bottom_nav"
+        android:backgroundTint="@color/accent_layout"
         android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/accent_layout"
             android:orientation="vertical"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:paddingBottom="25dp"
+            android:paddingBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
             <LinearLayout
-                android:id="@+id/personalInfoModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -153,16 +157,20 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/personalInfoModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/infoIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/personal_info" />
 
@@ -170,18 +178,18 @@
                         android:id="@+id/personalInfoTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/helvetica"
                         android:text="Personal Information"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/growthMonitoringModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -189,16 +197,20 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/growthMonitoringModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/growthIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/growth" />
 
@@ -206,18 +218,17 @@
                         android:id="@+id/growthMonitoringTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
                         android:text="Growth Monitoring"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/clinicVisitModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -225,16 +236,20 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/clinicVisitModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/visitIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/clinician_visit" />
 
@@ -242,18 +257,18 @@
                         android:id="@+id/clinicVisitTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/helvetica"
                         android:text="Clinic Visit"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/immunizationModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -261,16 +276,20 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/immunizationModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/immunizationIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/clinician_immunization" />
 
@@ -278,18 +297,18 @@
                         android:id="@+id/immunizationTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/helvetica"
                         android:text="Immunization"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/medicalHistoryModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -297,16 +316,20 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/medicalHistoryModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/historyIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/clinician_medical_history" />
 
@@ -314,18 +337,18 @@
                         android:id="@+id/medicalHistoryTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/helvetica"
                         android:text="Medical History"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/allergyModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -333,16 +356,20 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/allergyModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/allergyIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/clinician_allergy" />
 
@@ -350,36 +377,40 @@
                         android:id="@+id/allergyTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/helvetica"
                         android:text="Allergy"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/medicationModule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="23dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/drop_shadow"
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/medicationModule"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@drawable/clinician_module"
+                    android:backgroundTint="@color/secondary_blue"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/medicationIcon"
-                        android:layout_width="55dp"
-                        android:layout_height="70dp"
+                        android:layout_width="35dp"
+                        android:layout_height="45dp"
                         android:layout_marginLeft="15dp"
                         app:srcCompat="@drawable/clinician_medication" />
 
@@ -387,12 +418,13 @@
                         android:id="@+id/medicationTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/helvetica"
                         android:text="Medication"
                         android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
