@@ -2,7 +2,6 @@ package com.capstone.capstone_group.isklinika;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -18,7 +17,6 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -220,7 +218,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
     public void makeChart(ArrayList<Integer> dataAge, ArrayList<Double> dataHeight, ArrayList<Double> dataWeight, ArrayList<Double> dataBMI ){
         Log.d(TAG,"age1: " + dataAge.get(0));
-        LineChart lineChart = findViewById(R.id.lineChart_growth);
+        LineChart lineChart = findViewById(R.id.lineChart_diseaseTrend);
         ArrayList<Entry> heightSet = new ArrayList<>();
         ArrayList<Entry> weightSet = new ArrayList<>();
         ArrayList<Entry> bmiSet = new ArrayList<>();
@@ -435,7 +433,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         ArrayList<Double> dataWeight = new ArrayList<>();
         ArrayList<Double> dataBMI = new ArrayList<>();
 
-        LineChart lineChart = findViewById(R.id.lineChart_growth);
+        LineChart lineChart = findViewById(R.id.lineChart_growthChart);
         ArrayList<Entry> heightSet = new ArrayList<>();
         ArrayList<Entry> weightSet = new ArrayList<>();
         ArrayList<Entry> bmiSet = new ArrayList<>();

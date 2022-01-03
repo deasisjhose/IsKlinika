@@ -1,17 +1,28 @@
 package com.capstone.capstone_group.isklinika;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.data.Entry;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -23,6 +34,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity {
     private int checkActive ;
     private String userType, studentId ;
     public String TAG="DISEASESURVEILLANCE//";
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
+    public DatabaseReference databaseClinicVisit = db.getReference("clinicVisit");
 
     //module tab children
     private ShapeableImageView shapeImg_moduleProfileChild ;
@@ -101,5 +115,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity {
             }
         });
     }
+
+    
+
 
 }

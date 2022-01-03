@@ -155,7 +155,7 @@
                 app:contentPadding="4dp">
 
                 <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/lineChart_growth"
+                    android:id="@+id/lineChart_growthChart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@+id/seekBar1" />

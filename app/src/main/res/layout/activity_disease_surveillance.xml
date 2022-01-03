@@ -57,5 +57,125 @@
             android:layout_marginTop="145dp"
             android:background="@drawable/shape_bottom_nav"
             android:backgroundTint="@color/accent_layout"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="163dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="#FFF4F1"
+                        app:cardCornerRadius="8dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:contentPadding="4dp">
+
+
+                        <LinearLayout
+                            android:id="@+id/top5Disease"
+                            android:layout_width="391dp"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"></LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="163dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="#FFF4F1"
+                        app:cardCornerRadius="8dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:contentPadding="4dp">
+
+
+                        <LinearLayout
+                            android:id="@+id/top5Complaints"
+                            android:layout_width="391dp"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"></LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="163dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="#FFF4F1"
+                        app:cardCornerRadius="8dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:contentPadding="4dp">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/lineChart_diseaseTrend"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                        <!--android:background="@drawable/border_edge"-->
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="163dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="#FFF4F1"
+                        app:cardCornerRadius="8dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:contentPadding="4dp">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/barChart_diseaseCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                        <!--android:background="@drawable/border_edge"-->
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="163dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="#FFF4F1"
+                        app:cardCornerRadius="8dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:contentPadding="4dp">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/lineChart_complaintTrend"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                        <!--android:background="@drawable/border_edge"-->
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="163dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="#FFF4F1"
+                        app:cardCornerRadius="8dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:contentPadding="4dp">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/lineChart_complaintCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                        <!--android:background="@drawable/border_edge"-->
+
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
