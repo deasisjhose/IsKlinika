@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pastel_green"
+    tools:context=".ActivityAddAllergy">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <view
+            android:id="@+id/view"
+            class="com.google.android.material.textview.MaterialTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helveticacompressed"
+            android:gravity="center"
+            android:text="Add Prescription"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/shape_bottom_nav"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="24dp"
+        android:paddingRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="32dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_addAllergyChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:overlapAnchor="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
+                android:text="Child Name"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/helvetica"
+                android:text="Allergy on"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_addAllergyChild" />
+
+            <view
+                android:id="@+id/mbtn_addAllergyCancel"
+                class="com.google.android.material.button.MaterialButton"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="4dp"
+                android:text="Cancel"
+                android:textSize="10sp"
+                app:backgroundTint="@color/error_container"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/close"
+                app:layout_constraintEnd_toStartOf="@+id/mbtn_addAllergyAdd"
+                app:layout_constraintTop_toBottomOf="@+id/tv_addAllergyLast" />
+
+            <view
+                android:id="@+id/mbtn_addAllergyAdd"
+                class="com.google.android.material.button.MaterialButton"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:text="Add"
+                android:textSize="12sp"
+                app:backgroundTint="@color/green"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/check_ic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mbtn_addAllergyCancel" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/helvetica"
+                android:text="Type"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyAllergy" />
+
+            <EditText
+                android:id="@+id/edit_addAllergyAllergy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/border_circle"
+                android:backgroundTint="#CCDDF6C0"
+                android:fontFamily="@font/helvetica"
+                android:hint="e.g Nuts"
+                android:inputType="textPersonName"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textSize="12.5sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <EditText
+                android:id="@+id/edit_addAllergyType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/border_circle"
+                android:backgroundTint="#CCDDF6C0"
+                android:fontFamily="@font/helvetica"
+                android:hint="e.g. food /  skin"
+                android:inputType="textPersonName"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/information_text"
+                android:textSize="12.5sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/helvetica"
+                android:text="Last Occurence"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/edit_addAllergyType"
+                app:layout_constraintHorizontal_bias="0.379"
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyType" />
+
+            <TextView
+                android:id="@+id/tv_addAllergyLast"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border_circle"
+                android:backgroundTint="#CCDDF6C0"
+                android:clickable="true"
+                android:fontFamily="@font/helvetica"
+                android:hint="(YYYY-MM-DD)"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/information_text"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_addAllergyType"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView24"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+            <TextView
+                android:id="@+id/tv_addAllergyDate"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border_circle"
+                android:backgroundTint="#CCDDF6C0"
+                android:clickable="true"
+                android:fontFamily="@font/helvetica"
+                android:hint="(YYYY-MM-DD)"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/information_text"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/helvetica"
+                android:text="Date of Diagnosis"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyType" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

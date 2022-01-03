@@ -96,7 +96,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
 
     public void buildBar(){
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
-
         this.mbtg_medication = findViewById(R.id.mbtg_medication) ;
 
         mbtg_medication.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
@@ -263,8 +262,16 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
 
     //This function is used to create the recycler view of the medications of the student
     public void dataInMedHistory(ArrayList<ClassMedication> medHistoryList, String studentId){
+        ArrayList<ClassMedication> medMatchSpinnerList = new ArrayList<>() ;
+
+        for(int i = 0 ; i < medHistoryList.size() ; i++){
+            if(prescriptionStatus.equals(medHistoryList.get(i).getStatus())){
+                medMatchSpinnerList.add(medHistoryList.get(i)) ;
+            }
+        }
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        this.adapterMedPrescriptions = new AdapterMedPrescriptions(getBaseContext(), medHistoryList, studentId, prescriptionStatus) ;
+        this.adapterMedPrescriptions = new AdapterMedPrescriptions(getBaseContext(), medMatchSpinnerList, studentId, prescriptionStatus) ;
         adapterMedPrescriptions.setUserType(userType);
         this.recycle_medicationPrescription = findViewById(R.id.recycle_medicationPrescription) ;
         recycle_medicationPrescription.setLayoutManager(layoutManager);
@@ -276,19 +283,25 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         this.medHistoryList = new ArrayList<>() ;
 
         //for medication
-        databaseStudentHealthHistory.child(studentId).child("medicationHistory").addValueEventListener(new ValueEventListener() {
+        databaseStudentHealthHistory.child(studentId).child("prescriptionHistory").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(medHistoryList.size() != 0){
-                    medHistoryList.clear(); ;
+                    medHistoryList.clear();
                 }
                 for (DataSnapshot postSnapshot: snapshot.getChildren()){
-                    ClassMedication medHistory = postSnapshot.getValue(ClassMedication.class) ;
-                    assert medHistory != null;
-                    if(medHistory.getStatus().equals(prescriptionStatus)){
-                        medHistory.setKey(postSnapshot.getKey());
-                        medHistoryList.add(medHistory) ;
-                    }
+                    ClassMedication medHistory = new ClassMedication() ;
+                    medHistory.setAmount(postSnapshot.child("amount").getValue().toString());
+                    medHistory.setEndMed(postSnapshot.child("endMed").getValue().toString());
+                    medHistory.setInterval(postSnapshot.child("interval").getValue().toString());
+                    medHistory.setMedicine(postSnapshot.child("medicine").getValue().toString());
+                    medHistory.setPurpose(postSnapshot.child("purpose").getValue().toString());
+                    medHistory.setStartMed(postSnapshot.child("startMed").getValue().toString());
+                    medHistory.setStatus(postSnapshot.child("status").getValue().toString());
+                    Log.d(TAG, "onDataChange: medication = " + medHistory.toString());
+                    medHistory.setKey(postSnapshot.getKey());
+                    medHistoryList.add(medHistory) ;
+
                 }
 
 
@@ -356,9 +369,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                 case "salbutamol":
                     salbutamol.setChecked(allowedMeds.getIsAllowed(i));
                     break;
-
             }
-
         }
     }
 
@@ -396,9 +407,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         neozep.setClickable(true);
         decolgen.setClickable(true);
         antacid.setClickable(true);
-
-
-
     }
 
     //This function is used to save the changes in the allowed medications of the student/child
@@ -433,7 +441,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         allowedMedication.put(studentId + "/allowedMedicines" + "/clonidine/" + "/isAllowed/", clonidine.isChecked()) ;
         allowedMedication.put(studentId + "/allowedMedicines" + "/hydrite/" + "/isAllowed/", oralRehydration.isChecked()) ;
         allowedMedication.put(studentId + "/allowedMedicines" + "/loratidine/" + "/isAllowed/", loratidine.isChecked()) ;
-        allowedMedication.put(studentId + "/allowedMedicines" + "/cetirizine /" + "/isAllowed/", citirizine.isChecked()) ;
+        allowedMedication.put(studentId + "/allowedMedicines" + "/cetirizine/" + "/isAllowed/", citirizine.isChecked()) ;
         allowedMedication.put(studentId + "/allowedMedicines" + "/neozep/" + "/isAllowed/", neozep.isChecked()) ;
         allowedMedication.put(studentId + "/allowedMedicines" + "/decolgen/" + "/isAllowed/", decolgen.isChecked()) ;
         allowedMedication.put(studentId + "/allowedMedicines" + "/antacid/" + "/isAllowed/", antacid.isChecked()) ;
@@ -450,8 +458,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     //This function is used to retrieve the student data on their allowed medications in the clinic
     public void retrieveDataAllowedMedicines(){
         ArrayList<ClassMedicineAllowed> medsAllowed = new ArrayList<>() ;
-        Log.d(TAG, "retrieveDataAllowedMedicines: studentId = " + studentId);
-
 
         allowed_resetCheck();  //remove all the check to make sure that the fields are uncheck
         databaseStudentHealthHistory.child(studentId).child("allowedMedicines").addValueEventListener(new ValueEventListener() {
@@ -463,7 +469,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                 }
                 for (DataSnapshot postSnapshot: snapshot.getChildren()){
                     if(!postSnapshot.getKey().equals("lastUpdated")){
-                        Log.d(TAG, "onDataChange: value = " + postSnapshot.getKey() + " " + postSnapshot.getValue());
                         ClassMedicineAllowed medicineAllowed = postSnapshot.getValue(ClassMedicineAllowed.class) ;
                         medicineAllowed.setMedicineName(postSnapshot.getKey());
                         medsAllowed.add(medicineAllowed) ;
@@ -501,7 +506,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     //This function is used to retrieve the student data on their intake history
     public void retrieveIntakeHistory(){
         ArrayList<ClassIntakeHistory> intakeHistoryList = new ArrayList<>() ;
-        Log.d(TAG, "retrieveIntakeHistory: studentId = " + studentId);
 
         databaseStudentHealthHistory.child(studentId).child("intakeHistory").addValueEventListener(new ValueEventListener() {
             @Override
@@ -540,6 +544,11 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
             allowed_edit();
         }if (view.getId() == R.id.ibtn_saveAM){
             allowed_save();
+        }if(view.getId() == R.id.float_addPrescription){
+            intent = new Intent(getBaseContext(), ActivityAddPrescription.class) ;
+            intent.putParcelableArrayListExtra("children", children) ;
+            intent.putExtra("currentSelect", spinner_childNameModules.getSelectedItemPosition()) ;
+            startActivity(intent);
         }
     }
 }

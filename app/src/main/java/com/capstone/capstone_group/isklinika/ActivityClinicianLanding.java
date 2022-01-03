@@ -2,7 +2,6 @@ package com.capstone.capstone_group.isklinika;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -17,7 +16,7 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.clinician_landing);
+        setContentView(R.layout.activity_clinician_landing);
 
 
 

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +35,7 @@ public class AdapterHealthAssessAPE extends RecyclerView.Adapter<AdapterHealthAs
     @NonNull
     @Override
     public AdapterHealthAssessAPE.HealthAssessHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_ape, parent, false) ;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.expand_ape, parent, false) ;
         AdapterHealthAssessAPE.HealthAssessHolder myViewHolder = new AdapterHealthAssessAPE.HealthAssessHolder(v, tvListener) ;
         return myViewHolder ;
     }

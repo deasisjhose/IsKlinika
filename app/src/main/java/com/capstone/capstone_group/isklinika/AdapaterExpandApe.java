@@ -92,7 +92,7 @@ public class AdapaterExpandApe extends BaseExpandableListAdapter {
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
         if (view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.recycle_ape, null);
+            view = inflater.inflate(R.layout.expand_ape, null);
         }
 
         tv_examinationDate = view.findViewById(R.id.tv_examinationDate) ;
