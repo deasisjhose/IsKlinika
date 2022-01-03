@@ -92,6 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginRight="45dp"
                 android:background="@drawable/border_circle"
                 android:backgroundTint="#99C4E8F8"
                 android:clickable="true"
@@ -111,6 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginRight="45dp"
                 android:background="@drawable/border_circle"
                 android:backgroundTint="#99C4E8F8"
                 android:fontFamily="@font/helvetica"
@@ -129,7 +131,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:clipChildren="false"
                 android:spinnerMode="dialog"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView4" />

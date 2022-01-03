@@ -53,7 +53,7 @@ public class AdapterImmunizationHistory extends RecyclerView.Adapter<AdapterImmu
         holder.tv_recycleVaccineFrequency.setText(vaccine.getDoses());
 
         if(position % 2 == 0){
-            holder.tr_status.setBackgroundColor(Color.parseColor("#BEDEE8F4"));
+            holder.tr_status.setBackgroundColor(Color.parseColor("#99B3E8FF"));
         }
 
         int j ;

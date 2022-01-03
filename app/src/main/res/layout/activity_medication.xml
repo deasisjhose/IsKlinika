@@ -60,7 +60,7 @@
         </TableRow>
 
         <include
-            layout="@layout/module_child_name_recycle"
+            layout="@layout/module_child_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

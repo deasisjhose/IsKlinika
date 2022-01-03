@@ -2,14 +2,36 @@ package com.capstone.capstone_group.isklinika;
 
 public class ClassMedication {
 
-    private String dosageAmount, endDate, interval, name, purpose, startDate,status, key ;
+    private String amount, endMed, interval, medicine, purpose, startMed, status, key;
 
-    public String getDosageAmount() {
-        return dosageAmount;
+    public ClassMedication() {
+
     }
 
-    public void setDosageAmount(String dosageAmount) {
-        this.dosageAmount = dosageAmount;
+    public ClassMedication(String amount, String endMed, String interval, String medicine, String purpose, String startMed, String status) {
+        this.amount = amount;
+        this.endMed = endMed;
+        this.interval = interval;
+        this.medicine = medicine;
+        this.purpose = purpose;
+        this.startMed = startMed;
+        this.status = status;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getEndMed() {
+        return endMed;
+    }
+
+    public void setEndMed(String endMed) {
+        this.endMed = endMed;
     }
 
     public String getInterval() {
@@ -20,12 +42,12 @@ public class ClassMedication {
         this.interval = interval;
     }
 
-    public String getName() {
-        return name;
+    public String getMedicine() {
+        return medicine;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
     }
 
     public String getPurpose() {
@@ -36,28 +58,20 @@ public class ClassMedication {
         this.purpose = purpose;
     }
 
+    public String getStartMed() {
+        return startMed;
+    }
+
+    public void setStartMed(String startMed) {
+        this.startMed = startMed;
+    }
+
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
     }
 
     public String getKey() {

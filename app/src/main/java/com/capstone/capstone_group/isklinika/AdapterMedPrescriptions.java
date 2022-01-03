@@ -66,19 +66,24 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
     public void onBindViewHolder(@NonNull MedPrescriptionsHolder holder, int position) {
         ClassMedication medHistory = tvData.get(position) ;
 
-            holder.txt_medName.setText(medHistory.getName());
+            holder.txt_medName.setText(medHistory.getMedicine());
             holder.txt_medPurpose.setText(medHistory.getPurpose());
-            holder.txt_medDosage.setText(medHistory.getDosageAmount());
+            holder.txt_medDosage.setText(medHistory.getAmount());
             holder.txt_medInterval.setText(medHistory.getInterval());
-            holder.txt_medStart.setText(medHistory.getStartDate());
-            holder.txt_medEnd.setText(medHistory.getEndDate());
+            holder.txt_medStart.setText(medHistory.getStartMed());
+            holder.txt_medEnd.setText(medHistory.getEndMed());
 
-            ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(tvContext, R.array.medication_status, R.layout.spinner_med_selected) ;
+            ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(tvContext, R.array.add_medication_status, R.layout.spinner_med_selected) ;
             spinAdapter.setDropDownViewResource(R.layout.spinner_med_down);
             holder.spinner_medStatus.setAdapter(spinAdapter);
             holder.spinner_medStatus.setSelection(getStatus(holder.spinner_medStatus, medHistory.getStatus()));
             holder.spinner_medStatus.setEnabled(false);
 
+            if(medHistory.getStatus().equals("From clinic")){
+                holder.img_editMH.setVisibility(View.GONE);
+                holder.img_saveMH.setVisibility(View.GONE);
+
+            }
             if(userType.equals("Student")){
                 holder.img_editMH.setVisibility(View.INVISIBLE);
                 holder.txt_medStart.setClickable(false);
@@ -181,13 +186,13 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
         //change 121206 to idNum
         HashMap medHistoryValues = new HashMap();
         //dosageAmount, interval, name, purpose, status
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/dosageAmount", holder.txt_medDosage.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/endDate", holder.txt_medEnd.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/interval", holder.txt_medInterval.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/name", holder.txt_medName.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/purpose", holder.txt_medPurpose.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/startDate", holder.txt_medStart.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/medicationHistory/" + medHistory.getKey() + "/status", holder.spinner_medStatus.getSelectedItem().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/amount", holder.txt_medDosage.getText().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/endMed", holder.txt_medEnd.getText().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/interval", holder.txt_medInterval.getText().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/medicine", holder.txt_medName.getText().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/purpose", holder.txt_medPurpose.getText().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/startMed", holder.txt_medStart.getText().toString());
+        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/status", holder.spinner_medStatus.getSelectedItem().toString());
 
         database.updateChildren(medHistoryValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
             Toast.makeText(tvContext, "Data successfully updated!", Toast.LENGTH_SHORT).show();

@@ -44,7 +44,7 @@
         </TableRow>
 
         <include
-            layout="@layout/module_child_name_recycle"
+            layout="@layout/module_child_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -239,7 +239,7 @@
                                 android:id="@+id/tv_viPurpose"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="#F7F9FF"
+                                android:background="#99DAF1FA"
                                 android:textColor="@color/active_input_text"
                                 android:textSize="12sp" />
 
@@ -283,7 +283,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="2dp"
                                     android:layout_weight="1"
-                                    android:background="#F7F9FF"
+                                    android:background="#99DAF1FA"
                                     android:textColor="@color/information_text"
                                     android:textSize="12sp" />
 
@@ -292,7 +292,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:background="#F7F9FF"
+                                    android:background="#99DAF1FA"
                                     android:textColor="@color/information_text"
                                     android:textSize="12sp" />
 
@@ -313,7 +313,7 @@
                                 android:id="@+id/tv_viNotes"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="#F7F9FF"
+                                android:background="#99DAF1FA"
                                 android:fontFamily="@font/helvetica"
                                 android:textColor="@color/information_text"
                                 android:textSize="12sp" />

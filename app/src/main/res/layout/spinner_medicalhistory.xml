@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/border_circle"
-    android:backgroundTint="#99B9E5F8"
+    android:backgroundTint="#CCDDF6C0"
     android:fontFamily="@font/helvetica"
     android:paddingLeft="6dp"
     android:paddingTop="2dp"
     android:paddingBottom="2dp"
-    android:textColor="@color/information_text"
+    android:textColor="@color/primary_Text"
     android:textSize="14sp">
 
 </TextView>

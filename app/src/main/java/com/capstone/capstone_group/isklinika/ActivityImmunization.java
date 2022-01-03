@@ -87,9 +87,8 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
         float_addImmune.setOnClickListener(view -> {
             intent = new Intent(getBaseContext(), ActivityAddImmune.class) ;
             intent.putParcelableArrayListExtra("children", children) ;
-            intent.putExtra("currentSelect", spinner_vaccineList.getSelectedItemPosition()) ;
-            intent.putParcelableArrayListExtra("children", children) ;
             intent.putParcelableArrayListExtra("vaccineArrayList", vaccineArrayList) ;
+            intent.putExtra("currentSelect", spinner_vaccineList.getSelectedItemPosition()) ;
             startActivity(intent);
         });
 
@@ -227,44 +226,6 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
         });
     }
 
-    //This function is used to make the toggle buttons of the children
-    private void dataInToggleChildren(){
-        mbtg_immuneChildren.removeAllViews();
-
-        for(int j = 0 ; j < children.size() ; j++){
-            MaterialButton button = (MaterialButton) getLayoutInflater().inflate(R.layout.button_naem, null);
-            button.setId(j);
-            button.setText(children.get(j).getFirstName());
-            button.setBackgroundColor(Color.parseColor("#4e73df"));
-            button.setTextColor(Color.WHITE);
-            mbtg_immuneChildren.addView(button, -2, -1);
-
-        }
-
-        tv_immuneFullName.setText(children.get(0).getFullName());
-        studentId = children.get(0).getIdNum() ;
-
-        mbtg_immuneChildren.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
-            if(isChecked){
-                MaterialButton button3 = findViewById(checkedId);
-                button3.setBackgroundColor(Color.WHITE);
-                button3.setTextColor(Color.BLACK);
-                studentInfo = children.get(checkedId);
-                tv_immuneFullName.setText(studentInfo.getFullName());
-                studentId = studentInfo.getIdNum() ;
-                retrieveDataVaxList();
-
-            }else{
-                MaterialButton buttonCheck = findViewById(checkedId);
-                buttonCheck.setBackgroundColor(Color.parseColor("#4e73df"));
-                buttonCheck.setTextColor(Color.WHITE);
-            }
-
-        });
-        mbtg_immuneChildren.check(0);
-
-    }
-
     //This function is used to retrieve the list of vaccine in the database
     public void retrieveDataVaxList(){
         this.vaccineArrayList = new ArrayList<>() ;
@@ -311,7 +272,8 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
                 if(!immunizationList.isEmpty())
                     immunizationList.clear();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()){
-                    ClassImmuneRecord immunization = postSnapshot.getValue(ClassImmuneRecord.class) ;
+                    ClassImmuneRecord immunization = new ClassImmuneRecord() ;
+                    immunization= postSnapshot.getValue(ClassImmuneRecord.class) ;
 
                     switch (checkActive){
                         case 10:

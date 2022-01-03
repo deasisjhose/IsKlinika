@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="4dp"
+    app:rippleColor="@color/pastel_orange_inactive">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:orientation="vertical"
+        android:paddingBottom="3dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Disease"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView88"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Status"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/tv_pastDisease"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="#CCEEFFDC"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/information_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_pastStatus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCEEFFDC"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:textColor="@color/information_text"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Start Date"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="End Date"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_pastStart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="#CCEEFFDC"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/information_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_pastEnd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCEEFFDC"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:textColor="@color/information_text"
+                android:textSize="12sp" />
+
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView90"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/helvetica"
+            android:padding="1dp"
+            android:text="Treatment"
+            android:textColor="@color/primary_Text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_pastTreatment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CCEEFFDC"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/information_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView99"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/helvetica"
+            android:text="Notes"
+            android:textColor="@color/primary_Text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_pastNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="4dp"
+            android:background="#CCEEFFDC"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/information_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView101"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/helvetica"
+            android:text="Management Plan"
+            android:textColor="@color/primary_Text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_examinationRecommendations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/dinpro"
+            android:text="none"
+            android:textColor="@color/information_text"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

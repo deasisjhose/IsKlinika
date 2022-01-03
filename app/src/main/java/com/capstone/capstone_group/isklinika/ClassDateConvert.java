@@ -9,8 +9,10 @@ public class ClassDateConvert {
     public ClassDateConvert(String materialDate){
         this.date = materialDate ;
         convertDateMonth();
-        convertDateDay();
-        convertDateYear();
+        if(materialDate.length() == 11)
+            convert11();
+        else
+            convert12();
     }
 
     public ClassDateConvert(String constraintDate, int different){
@@ -64,13 +66,16 @@ public class ClassDateConvert {
         }
     }
 
-    public void convertDateDay(){
+    public void convert12(){
         this.day = date.substring(4 ,6) ;
-    }
-
-    public void convertDateYear(){
         this.year = date.substring(8, 12) ;
     }
+
+    public void convert11(){
+        this.day = "0"+ date.substring(4 ,5) ;
+        this.year = date.substring(7, 11) ;
+    }
+
 
     public String getConverted(){
         return year + "-" + month + "-" + day ;

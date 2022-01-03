@@ -4,7 +4,14 @@
     <string-array name="medication_status">
         <item>Currently Taking</item>
         <item>Stopped</item>
-        <item>Three</item>
+        <item>Completed</item>
+        <item>From clinic</item>
+    </string-array>
+
+    <string-array name="add_medication_status">
+        <item>Currently Taking</item>
+        <item>Stopped</item>
+        <item>Completed</item>
     </string-array>
 
     <!--    <string-array name="dosage_num">-->

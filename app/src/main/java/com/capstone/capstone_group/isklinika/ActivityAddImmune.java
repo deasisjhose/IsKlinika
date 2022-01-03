@@ -78,22 +78,15 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
             Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
             mtv_immuneDate.setBackgroundColor(Color.parseColor("#FFFD6868"));
         } else {
-            ClassRandomString randomString = new ClassRandomString() ;
-            mtv_immuneDate.setBackgroundResource(R.drawable.border_bottom);
-            String key = randomString.createRandom(9) ;
+            ClassImmuneRecord immuneRecord = new ClassImmuneRecord( mtv_immuneDate.getText().toString(), mEdit_immuneBrand.getText().toString(), vaccineSelected) ;
 
-            //updating studentHealthHistory information
-            HashMap immunization = new HashMap();
-            immunization.put("/studentHealthHistory/" + idNum + "/immuneHistory/" +  key + "/dateGiven/" , mtv_immuneDate.getText().toString());
-            immunization.put("/studentHealthHistory/" + idNum + "/immuneHistory/" + key + "/name/", mEdit_immuneBrand.getText().toString());
-            immunization.put("/studentHealthHistory/" + idNum + "/immuneHistory/" + key + "/purpose/", vaccineSelected);
-
-            databaseReference.updateChildren(immunization).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+            databaseReference.child("studentHealthHistory/" +idNum + "/immuneHistory/").push().setValue(immuneRecord).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
                 Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
                 resetViews();
             }).addOnFailureListener((error) -> {
                 Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
-            });
+            }); ;
+
         }
     }
 
@@ -173,13 +166,12 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
             addImmunization();
         }else if(v.getId() == R.id.mtv_immuneDate){
                 materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
-
         }
     }
 
     public void resetViews(){
         mEdit_immuneBrand.setText("");
         mtv_immuneDate.setText("");
-        mtv_immuneDate.setText("MM/DD/YYYY");
+        mtv_immuneDate.setText("MM-DD-YYYY");
     }
 }

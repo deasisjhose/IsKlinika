@@ -26,4 +26,13 @@ public class ClassImmuneRecord {
     public void setPurpose(String purpose) {
         this.purpose = purpose;
     }
+
+    public ClassImmuneRecord(String dateGiven, String name, String purpose) {
+        this.dateGiven = dateGiven;
+        this.name = name;
+        this.purpose = purpose;
+    }
+
+    public ClassImmuneRecord() {
+    }
 }
