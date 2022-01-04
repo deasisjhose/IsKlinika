@@ -51,131 +51,251 @@
 
         </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="145dp"
+        android:background="@drawable/shape_bottom_nav"
+        android:backgroundTint="@color/accent_layout"
+        android:orientation="vertical">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="145dp"
-            android:background="@drawable/shape_bottom_nav"
-            android:backgroundTint="@color/accent_layout"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="163dp"
-                        android:orientation="vertical"
-                        app:cardBackgroundColor="#FFF4F1"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true"
-                        app:contentPadding="4dp">
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp">
 
 
-                        <LinearLayout
-                            android:id="@+id/top5Disease"
-                            android:layout_width="391dp"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"></LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="163dp"
-                        android:orientation="vertical"
-                        app:cardBackgroundColor="#FFF4F1"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true"
-                        app:contentPadding="4dp">
-
+                    <LinearLayout
+                        android:id="@+id/dates"
+                        android:layout_width="391dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/top5Complaints"
-                            android:layout_width="391dp"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"></LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="163dp"
-                        android:orientation="vertical"
-                        app:cardBackgroundColor="#FFF4F1"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true"
-                        app:contentPadding="4dp">
-
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/lineChart_diseaseTrend"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_above="@+id/seekBar1" />
-                        <!--android:background="@drawable/border_edge"-->
+                            android:orientation="vertical">
 
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/ds_startDate"
+                                    android:layout_width="185dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:fontFamily="@font/helvetica"
+                                    android:text="Start Date"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintEnd_toEndOf="@+id/edit_addAllergyType"
+                                    app:layout_constraintHorizontal_bias="0.379"
+                                    app:layout_constraintStart_toEndOf="@+id/textView21"
+                                    app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyType" />
+
+                                <TextView
+                                    android:id="@+id/ds_endDate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:fontFamily="@font/helvetica"
+                                    android:text="End Date"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyType" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/input_startDate"
+                                    android:layout_width="185dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:background="@drawable/border_circle"
+                                    android:backgroundTint="#CCDDF6C0"
+                                    android:clickable="true"
+                                    android:fontFamily="@font/helvetica"
+                                    android:hint="(YYYY-MM-DD)"
+                                    android:paddingLeft="6dp"
+                                    android:paddingTop="2dp"
+                                    android:paddingBottom="2dp"
+                                    android:textColor="@color/information_text"
+                                    android:textSize="12sp"
+                                    app:layout_constraintEnd_toEndOf="@+id/edit_addAllergyType"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toStartOf="@+id/textView24"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+                                <TextView
+                                    android:id="@+id/input_endDate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:background="@drawable/border_circle"
+                                    android:backgroundTint="#CCDDF6C0"
+                                    android:clickable="true"
+                                    android:fontFamily="@font/helvetica"
+                                    android:hint="(YYYY-MM-DD)"
+                                    android:paddingLeft="6dp"
+                                    android:paddingTop="2dp"
+                                    android:paddingBottom="2dp"
+                                    android:textColor="@color/information_text"
+                                    android:textSize="12sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp">
+
+
+                    <LinearLayout
+                        android:id="@+id/top5Diseases"
+                        android:layout_width="391dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp"
+                    app:layout_anchor="@+id/linearLayout4"
+                    app:layout_anchorGravity="center">
+
+
+                    <LinearLayout
+                        android:id="@+id/top5Complaints"
+                        android:layout_width="391dp"
+                        android:layout_height="134dp"
+                        android:orientation="horizontal"></LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lineChart_diseaseTrend"
                         android:layout_width="match_parent"
-                        android:layout_height="163dp"
-                        android:orientation="vertical"
-                        app:cardBackgroundColor="#FFF4F1"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true"
-                        app:contentPadding="4dp">
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/seekBar1" />
+                    <!--android:background="@drawable/border_edge"-->
 
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/barChart_diseaseCount"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_above="@+id/seekBar1" />
-                        <!--android:background="@drawable/border_edge"-->
+                </com.google.android.material.card.MaterialCardView>
 
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart_diseaseCount"
                         android:layout_width="match_parent"
-                        android:layout_height="163dp"
-                        android:orientation="vertical"
-                        app:cardBackgroundColor="#FFF4F1"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true"
-                        app:contentPadding="4dp">
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/seekBar1" />
+                    <!--android:background="@drawable/border_edge"-->
 
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/lineChart_complaintTrend"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_above="@+id/seekBar1" />
-                        <!--android:background="@drawable/border_edge"-->
+                </com.google.android.material.card.MaterialCardView>
 
-                    </com.google.android.material.card.MaterialCardView>
-                    <com.google.android.material.card.MaterialCardView
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lineChart_complaintTrend"
                         android:layout_width="match_parent"
-                        android:layout_height="163dp"
-                        android:orientation="vertical"
-                        app:cardBackgroundColor="#FFF4F1"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:cardUseCompatPadding="true"
-                        app:contentPadding="4dp">
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/seekBar1" />
+                    <!--android:background="@drawable/border_edge"-->
 
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/lineChart_complaintCount"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_above="@+id/seekBar1" />
-                        <!--android:background="@drawable/border_edge"-->
+                </com.google.android.material.card.MaterialCardView>
 
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-            </ScrollView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="163dp"
+                    android:orientation="vertical"
+                    app:cardBackgroundColor="#FFF4F1"
+                    app:cardCornerRadius="8dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="4dp">
 
-        </LinearLayout>
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart_complaintCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/seekBar1" />
+                    <!--android:background="@drawable/border_edge"-->
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
 
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

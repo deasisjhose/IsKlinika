@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/activity_disease_surveillance.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/activity_add_allergy.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/activity_disease_surveillance.xml" value="0.264" />
         <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/activity_health_assessment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/activity_landing.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/activity_physical_exam.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/Sofia Cuevas/Desktop/CAPSTONE/IsKlinika/app/src/main/res/layout/module_child_name_recycle.xml" value="0.12360688956433637" />
       </map>

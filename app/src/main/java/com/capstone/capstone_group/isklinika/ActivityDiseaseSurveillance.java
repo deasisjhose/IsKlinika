@@ -17,6 +17,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
 import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,8 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class ActivityDiseaseSurveillance extends AppCompatActivity {
+public class ActivityDiseaseSurveillance extends AppCompatActivity implements View.OnClickListener{
 
     private ArrayList<ClassStudentInfo> children ;
     private ClassStudentInfo studentInfo ;
@@ -44,6 +46,10 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity {
     private Spinner spinner_childNameModules ;
     private TextView tv_moduleFullName ;
 
+    private TextView input_startDate, input_endDate ;
+    private int selectedDate;
+    private MaterialDatePicker materialDatePicker ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +61,45 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity {
         buildBar();
         buildView();
         checkUser();
+
     }
 
     public void buildBar(){
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
 
+
     }
 
     public void buildView(){
+        this.input_startDate = findViewById(R.id.input_startDate);
+        this.input_endDate = findViewById(R.id.input_endDate);
+
+        input_startDate.setOnClickListener(this);
+        input_endDate.setOnClickListener(this);
+
+
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
+        builder.setTitleText("Select Date (MM-DD-YY)") ;
+        builder.setTheme(R.style.ThemeOverlay_App_DatePicker_MedicalHistory) ;
+        builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
+
+
+        this.materialDatePicker = builder.build() ;
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+
+            ClassDateConvert dateConvert = new ClassDateConvert(materialDatePicker.getHeaderText()) ;
+
+            switch (selectedDate){
+                case 10:
+                    input_startDate.setText(dateConvert.getConverted());
+                    break;
+                case 20:
+                    input_endDate.setText(dateConvert.getConverted());
+                    getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                    break;
+            }
+        }) ;
+
 
     }
 
@@ -73,6 +110,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity {
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
+
                 break;
             case "Parent":
                 this.children = intent.getParcelableArrayListExtra("children") ;
@@ -116,7 +154,47 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity {
         });
     }
 
-    
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.input_startDate){
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 10 ;
+
+        }else if(view.getId() == R.id.input_endDate){
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 20 ;
+        }
+    }
+
+    public void getTop5(String start, String end){
+        String stringStart=start;
+        String stringEnd=end;
+
+
+        databaseClinicVisit.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
+                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
+                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getValue());
+                    Log.d(TAG,"Start Date: " + stringStart);
+                    Log.d(TAG,"End Date: " + stringEnd);
+                    Log.d(TAG, "Data: " + snapshot);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+
+
 
 
 }
