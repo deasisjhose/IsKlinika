@@ -25,7 +25,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class ActivityDiseaseSurveillance extends AppCompatActivity implements View.OnClickListener{
@@ -166,23 +170,142 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         }
     }
 
-    public void getTop5(String start, String end){
-        String stringStart=start;
-        String stringEnd=end;
+    private static class nameCount{
+        public String name;
+        public int count;
 
+        public nameCount(String name, Integer count){
+            this.name = name;
+            this.count = count;
+        }
+    }
+
+    //This function is used to get and show the top 5 disease and visitReasons
+    public void getTop5(String start, String end){
 
         databaseClinicVisit.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
-                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
-                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getValue());
-                    Log.d(TAG,"Start Date: " + stringStart);
-                    Log.d(TAG,"End Date: " + stringEnd);
-                    Log.d(TAG, "Data: " + snapshot);
 
+                String stringStart=start;
+                String stringEnd=end;
+                String vDate;
+                String[] parts1;
+                String[] parts2;
+                String[] parts3;
+
+                ArrayList<nameCount> top5DiseaseTemp = new ArrayList<nameCount>();
+                ArrayList<nameCount> top5ComplaintsTemp = new ArrayList<nameCount>();
+                ArrayList<nameCount> top5DiseaseFinal = new ArrayList<nameCount>();
+                ArrayList<nameCount> top5ComplaintsFinal = new ArrayList<nameCount>();
+
+                parts1=stringStart.split("-");
+                parts2=stringEnd.split("-");
+                Calendar startDate = Calendar.getInstance();
+                startDate.set(Calendar.YEAR, Integer.parseInt(parts1[0]));
+                startDate.set(Calendar.MONTH, Integer.parseInt(parts1[1])-1);
+                startDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts1[2]));
+                Calendar endDate = Calendar.getInstance();
+                endDate.set(Calendar.YEAR, Integer.parseInt(parts2[0]));
+                endDate.set(Calendar.MONTH, Integer.parseInt(parts2[1])-1);
+                endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]));
+                Integer checker,checker2,i;
+                nameCount object1;
+
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
+                    checker=0;
+                    checker2=0;
+//                    Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
+//                    //Log.d(TAG,"postSnapshot Value:"+ postSnapshot.getValue());
+//                    Log.d(TAG,"visitDate:"+ postSnapshot.child("visitDate").getValue());
+                    vDate= postSnapshot.child("visitDate").getValue().toString();
+                    parts3=vDate.split("-");
+                    Calendar dataDate = Calendar.getInstance();
+                    dataDate.set(Calendar.YEAR, Integer.parseInt(parts3[0]));
+                    dataDate.set(Calendar.MONTH, Integer.parseInt(parts3[1])-1);
+                    dataDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts3[2]));
+//                    Log.d(TAG,"Start Date: " + startDate);
+//                    Log.d(TAG,"End Date: " + endDate);
+//                    Log.d(TAG,"Data Date: " + dataDate);
+                    //Used to filter based on chosen date range and group according to the diagnosis/visitReason
+                    if( ((startDate.before(dataDate)) ||(startDate.equals(dataDate))) && ((dataDate.before(endDate)) ||(dataDate.equals(endDate)))){
+                        if(top5DiseaseTemp.size()==0){
+                            object1= new nameCount(postSnapshot.child("diagnosis").getValue().toString(),1);
+                            top5DiseaseTemp.add(object1);
+                        }
+                        else{
+                            for(i=0; i<top5DiseaseTemp.size();i++){
+                                if(postSnapshot.child("diagnosis").getValue().equals(top5DiseaseTemp.get(i).name)){
+                                    top5DiseaseTemp.get(i).count=top5DiseaseTemp.get(i).count+1;
+                                    checker=1;
+                                }
+                            }
+                            if(checker==0){
+                                object1= new nameCount(postSnapshot.child("diagnosis").getValue().toString(),1);
+                                top5DiseaseTemp.add(object1);
+                            }
+                        }
+
+                        if(top5ComplaintsTemp.size()==0){
+                            object1= new nameCount(postSnapshot.child("visitReason").getValue().toString(),1);
+                            top5ComplaintsTemp.add(object1);
+                        }
+                        else{
+                            for(i=0; i<top5ComplaintsTemp.size();i++){
+                                if(postSnapshot.child("visitReason").getValue().equals(top5ComplaintsTemp.get(i).name)){
+                                    top5ComplaintsTemp.get(i).count=top5ComplaintsTemp.get(i).count+1;
+                                    checker2=1;
+                                }
+                            }
+                            if(checker2==0){
+                                object1= new nameCount(postSnapshot.child("visitReason").getValue().toString(),1);
+                                top5ComplaintsTemp.add(object1);
+                            }
+                        }
+                    }
                 }
 
+                //Used to sort the arraylist in descending order based on the count
+                Collections.sort(top5DiseaseTemp, new Comparator<nameCount>() {
+                    @Override
+                    public int compare(nameCount object1, nameCount object2) {
+                        return Integer.valueOf(object2.count).compareTo(object1.count);
+                    }
+                });
+                Collections.sort(top5ComplaintsTemp, new Comparator<nameCount>() {
+                    @Override
+                    public int compare(nameCount object1, nameCount object2) {
+                        return Integer.valueOf(object2.count).compareTo(object1.count);
+                    }
+                });
+
+                if(top5DiseaseTemp.size()<=5){
+                    for(i=0;i<top5DiseaseTemp.size();i++){
+                        object1=new nameCount(top5DiseaseTemp.get(i).name,top5DiseaseTemp.get(i).count);
+                        top5DiseaseFinal.add(object1);
+                    }
+                }
+                else{
+                    for(i=0;i<5;i++){
+                        object1=new nameCount(top5DiseaseTemp.get(i).name,top5DiseaseTemp.get(i).count);
+                        top5DiseaseFinal.add(object1);
+                    }
+                }
+
+                if(top5ComplaintsTemp.size()<=5){
+                    for(i=0;i<top5ComplaintsTemp.size();i++){
+                        object1=new nameCount(top5ComplaintsTemp.get(i).name,top5ComplaintsTemp.get(i).count);
+                        top5ComplaintsFinal.add(object1);
+                    }
+                }
+                else{
+                    for(i=0;i<5;i++){
+                        object1=new nameCount(top5ComplaintsTemp.get(i).name,top5ComplaintsTemp.get(i).count);
+                        top5ComplaintsFinal.add(object1);
+                    }
+                }
+
+                //ADD CODE TO SHOW IN FRONTEND
             }
 
             @Override
