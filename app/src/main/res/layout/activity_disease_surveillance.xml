@@ -176,7 +176,7 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="163dp"
+                    android:layout_height="206dp"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
@@ -189,12 +189,33 @@
                         android:id="@+id/top5Diseases"
                         android:layout_width="391dp"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"></LinearLayout>
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_topDisease"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Top Disease" />
+
+                            <EditText
+                                android:id="@+id/topDiseaseList"
+                                android:layout_width="match_parent"
+                                android:layout_height="153dp"
+                                android:ems="10"
+                                android:gravity="start|top"
+                                android:inputType="textMultiLine" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="163dp"
+                    android:layout_height="206dp"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
@@ -209,12 +230,33 @@
                         android:id="@+id/top5Complaints"
                         android:layout_width="391dp"
                         android:layout_height="134dp"
-                        android:orientation="horizontal"></LinearLayout>
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txt_topComplaints"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Top Complaints" />
+
+                            <EditText
+                                android:id="@+id/topComplaintsList"
+                                android:layout_width="match_parent"
+                                android:layout_height="153dp"
+                                android:ems="10"
+                                android:gravity="start|top"
+                                android:inputType="textMultiLine" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="163dp"
+                    android:layout_height="206dp"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
@@ -238,7 +280,7 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="163dp"
+                    android:layout_height="206dp"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
