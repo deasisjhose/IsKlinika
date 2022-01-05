@@ -144,14 +144,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 studentInfo = children.get(position);
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
-                switch (checkActive){
-                    case 10:
-                        break;
-                    case 20:
-                        break;
-                    case 30:
-                        break;
-                }
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -311,8 +304,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                     }
                 }
 
-                makeSpinnerDisease(top5DiseaseFinal);
-                makeSpinnerComplaints(top5ComplaintsFinal);
+                makeSpinnerDisease(top5DiseaseFinal,stringStart,stringEnd);
+                makeSpinnerComplaints(top5ComplaintsFinal,stringStart,stringEnd);
                 //ADD CODE TO SHOW IN FRONTEND
             }
 
@@ -324,7 +317,47 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     }
 
-    public void getCountBySection(String start, String end, String grade, String section,String selectedDisease, String selectedComplaint){
+    public void makeSpinnerDisease(ArrayList<nameCount> top5DiseaseFinal,String start, String end){
+        this.spinnerDisease = findViewById(R.id.spinner_disease) ;
+        ArrayAdapter<nameCount> adapter = new ArrayAdapter<nameCount>(this, R.layout.spinner_child_diseasesurveillance, top5DiseaseFinal) ;
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerDisease.setAdapter(adapter);
+        spinnerDisease.setSelection(0);
+
+        spinnerDisease.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               String selectedDisease = top5DiseaseFinal.get(position).name;
+
+               //retrieveDataVaxList();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    public void makeSpinnerComplaints(ArrayList<nameCount> top5ComplaintsFinal, String start, String end){
+        this.spinnerComplaints = findViewById(R.id.spinner_complaints) ;
+        ArrayAdapter<nameCount> adapter = new ArrayAdapter<nameCount>(this, R.layout.spinner_child_diseasesurveillance, top5ComplaintsFinal) ;
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerComplaints.setAdapter(adapter);
+        spinnerComplaints.setSelection(0);
+
+        spinnerComplaints.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedComplaints = top5ComplaintsFinal.get(position).name;
+
+                //retrieveDataVaxList();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    public void getCountBySection(String start, String end, String grade, String section,String selectedDisease){
 
         databaseClinicVisit.addValueEventListener(new ValueEventListener() {
 
@@ -551,48 +584,6 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             }
         });
     }
-
-
-    public void makeSpinnerDisease(ArrayList<nameCount> top5DiseaseFinal){
-        this.spinnerDisease = findViewById(R.id.spinner_disease) ;
-        ArrayAdapter<nameCount> adapter = new ArrayAdapter<nameCount>(this, R.layout.spinner_child_diseasesurveillance, top5DiseaseFinal) ;
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerDisease.setAdapter(adapter);
-        spinnerDisease.setSelection(0);
-
-        spinnerDisease.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               String selectedDisease = top5DiseaseFinal.get(position).name;
-
-               //retrieveDataVaxList();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
-
-    public void makeSpinnerComplaints(ArrayList<nameCount> top5ComplaintsFinal){
-        this.spinnerComplaints = findViewById(R.id.spinner_complaints) ;
-        ArrayAdapter<nameCount> adapter = new ArrayAdapter<nameCount>(this, R.layout.spinner_child_diseasesurveillance, top5ComplaintsFinal) ;
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerComplaints.setAdapter(adapter);
-        spinnerComplaints.setSelection(0);
-
-        spinnerComplaints.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedComplaints = top5ComplaintsFinal.get(position).name;
-
-                //retrieveDataVaxList();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
-
 
 
 }
