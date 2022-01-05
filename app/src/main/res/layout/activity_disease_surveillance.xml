@@ -222,24 +222,10 @@
                     app:cardUseCompatPadding="true"
                     app:contentPadding="4dp">
 
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/lineChart_diseaseTrend"
+                    <Spinner
+                        android:id="@+id/spinner_disease"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@+id/seekBar1" />
-                    <!--android:background="@drawable/border_edge"-->
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="163dp"
-                    android:orientation="vertical"
-                    app:cardBackgroundColor="#FFF4F1"
-                    app:cardCornerRadius="8dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    app:contentPadding="4dp">
+                        android:layout_height="wrap_content" />
 
                     <com.github.mikephil.charting.charts.BarChart
                         android:id="@+id/barChart_diseaseCount"
@@ -260,24 +246,10 @@
                     app:cardUseCompatPadding="true"
                     app:contentPadding="4dp">
 
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/lineChart_complaintTrend"
+                    <Spinner
+                        android:id="@+id/spinner_complaints"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@+id/seekBar1" />
-                    <!--android:background="@drawable/border_edge"-->
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="163dp"
-                    android:orientation="vertical"
-                    app:cardBackgroundColor="#FFF4F1"
-                    app:cardCornerRadius="8dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    app:contentPadding="4dp">
+                        android:layout_height="wrap_content" />
 
                     <com.github.mikephil.charting.charts.BarChart
                         android:id="@+id/barChart_complaintCount"

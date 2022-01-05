@@ -218,7 +218,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
     public void makeChart(ArrayList<Integer> dataAge, ArrayList<Double> dataHeight, ArrayList<Double> dataWeight, ArrayList<Double> dataBMI ){
         Log.d(TAG,"age1: " + dataAge.get(0));
-        LineChart lineChart = findViewById(R.id.lineChart_diseaseTrend);
+        LineChart lineChart = findViewById(R.id.lineChart_growthChart);
         ArrayList<Entry> heightSet = new ArrayList<>();
         ArrayList<Entry> weightSet = new ArrayList<>();
         ArrayList<Entry> bmiSet = new ArrayList<>();
