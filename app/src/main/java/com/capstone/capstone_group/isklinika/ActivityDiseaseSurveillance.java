@@ -525,7 +525,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         }
                     }
                 }
-                makeDiseaseCountChart(sectionCount);
+                makeDiseaseCountChart(sectionCount,selected);
             }
 
             @Override
@@ -679,7 +679,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         }
                     }
                 }
-                makeComplaintCountChart(sectionCount);
+                makeComplaintCountChart(sectionCount,selected);
             }
 
             @Override
@@ -689,7 +689,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         });
     }
 
-    public void makeDiseaseCountChart(ArrayList<nameCount> sectionCount){
+    public void makeDiseaseCountChart(ArrayList<nameCount> sectionCount, String selected){
         String grade = studentInfo.getGrade() ;
         int i;
         ArrayList<BarEntry> diseaseCountData = new ArrayList<BarEntry>();
@@ -697,6 +697,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
         BarChart diseaseCountBarChart = findViewById(R.id.barChart_diseaseCount);
         Description desc = new Description();
+        desc.setText(selected+ " in Grade " + grade);
 
         for(i=0;i<sectionCount.size();i++){
             diseaseCountData.add(new BarEntry(i,sectionCount.get(i).count));
@@ -712,13 +713,14 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
 
+        diseaseCountBarChart.setDescription(desc);
         diseaseCountBarChart.setData(barData);
         diseaseCountBarChart.invalidate();
 
 
     }
 
-    public void makeComplaintCountChart(ArrayList<nameCount> sectionCount){
+    public void makeComplaintCountChart(ArrayList<nameCount> sectionCount,String selected){
         String grade = studentInfo.getGrade() ;
         int i;
         ArrayList<BarEntry> complaintCountData = new ArrayList<BarEntry>();
@@ -726,6 +728,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
         BarChart complaintCountBarChart = findViewById(R.id.barChart_complaintCount);
         Description desc = new Description();
+        desc.setText(selected + " in Grade " + grade);
 
         for(i=0;i<sectionCount.size();i++){
             complaintCountData.add(new BarEntry(i,sectionCount.get(i).count));
@@ -741,6 +744,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
 
+        complaintCountBarChart.setDescription(desc);
         complaintCountBarChart.setData(barData);
         complaintCountBarChart.invalidate();
 
