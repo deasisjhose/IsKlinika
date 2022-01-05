@@ -153,6 +153,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 studentInfo = children.get(position);
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
+                if(!input_startDate.getText().toString().equals("") && !input_endDate.getText().toString().equals("")){
+                    getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                }
 
             }
             @Override
