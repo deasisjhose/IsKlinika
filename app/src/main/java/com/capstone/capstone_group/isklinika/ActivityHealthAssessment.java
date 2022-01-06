@@ -26,6 +26,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -262,6 +263,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
             xAxis.setAxisMinimum(5);
             xAxis.setAxisMaximum(13);
+
             xAxis.setLabelCount(dataHeight.size());
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
