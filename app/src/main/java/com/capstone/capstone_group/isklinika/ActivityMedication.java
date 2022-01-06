@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -182,9 +183,15 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
 
         switch (userType){
             case "Student":
+            case "Clinician":
+                if(userType.equals("Clinician")){
+                    ImageView img_logoHealthAssess = findViewById(R.id.img_logoHealthAssess) ;
+                    img_logoHealthAssess.setImageResource(R.drawable.clinician_medication);
+                }
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
+                ibtn_editAM.setVisibility(View.GONE);
                 break;
             case "Parent":
                 this.children = intent.getParcelableArrayListExtra("children") ;
@@ -283,7 +290,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         this.medHistoryList = new ArrayList<>() ;
 
         //for medication
-        databaseStudentHealthHistory.child(studentId).child("prescriptionHistory").addValueEventListener(new ValueEventListener() {
+        databaseStudentHealthHistory.child(studentId).child("prescriptionHistory").orderByChild("startMed").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(medHistoryList.size() != 0){
@@ -515,9 +522,8 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                 }
                 for (DataSnapshot postSnapshot: snapshot.getChildren()){
                     ClassIntakeHistory intakeHistory = new ClassIntakeHistory() ;
-                    intakeHistory = postSnapshot.getValue(ClassIntakeHistory.class) ;
-                    assert intakeHistory != null;
-                    intakeHistory.setClinicVisit(Boolean.parseBoolean(postSnapshot.child("isClinicVisit").getValue().toString()));
+                    String amount,date, medicineName,time ;
+
 
                     if(!intakeHistory.getMedicineName().equals(""))
                         intakeHistoryList.add(intakeHistory) ;

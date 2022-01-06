@@ -5,19 +5,22 @@ import android.os.Parcelable;
 
 public class ClassStudentInfo implements Parcelable {
 
-    private String address, age, birthday, dentistContact, dentistEmail, dentistName, fatherContact, fatherEmail,fatherName, firstName, grade, guardianContact,
-            guardianEmail, guardianName, hasSpecialNeeds, hospitalAddress, idNum, lastName, middleName, motherContact, motherEmail, motherName, nationality,
-            pediaContact, pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType ;
+    private String address, age, birthday, bmi, bmiStatus, dentistContact, dentistEmail, dentistName, fatherContact, fatherEmail,fatherName, firstName, grade, guardianContact,
+            guardianEmail, guardianName, hasSpecialNeeds, height, hospitalAddress, idNum, lastCheckedWandH, lastName, middleName, motherContact, motherEmail, motherName, nationality,
+            pediaContact, pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType, weight ;
 
 
     public ClassStudentInfo(){
 
     }
 
+
     protected ClassStudentInfo(Parcel in) {
         address = in.readString();
         age = in.readString();
         birthday = in.readString();
+        bmi = in.readString();
+        bmiStatus = in.readString();
         dentistContact = in.readString();
         dentistEmail = in.readString();
         dentistName = in.readString();
@@ -30,8 +33,10 @@ public class ClassStudentInfo implements Parcelable {
         guardianEmail = in.readString();
         guardianName = in.readString();
         hasSpecialNeeds = in.readString();
+        height = in.readString();
         hospitalAddress = in.readString();
         idNum = in.readString();
+        lastCheckedWandH = in.readString();
         lastName = in.readString();
         middleName = in.readString();
         motherContact = in.readString();
@@ -46,6 +51,7 @@ public class ClassStudentInfo implements Parcelable {
         section = in.readString();
         sex = in.readString();
         studentType = in.readString();
+        weight = in.readString();
     }
 
     @Override
@@ -53,6 +59,8 @@ public class ClassStudentInfo implements Parcelable {
         dest.writeString(address);
         dest.writeString(age);
         dest.writeString(birthday);
+        dest.writeString(bmi);
+        dest.writeString(bmiStatus);
         dest.writeString(dentistContact);
         dest.writeString(dentistEmail);
         dest.writeString(dentistName);
@@ -65,8 +73,10 @@ public class ClassStudentInfo implements Parcelable {
         dest.writeString(guardianEmail);
         dest.writeString(guardianName);
         dest.writeString(hasSpecialNeeds);
+        dest.writeString(height);
         dest.writeString(hospitalAddress);
         dest.writeString(idNum);
+        dest.writeString(lastCheckedWandH);
         dest.writeString(lastName);
         dest.writeString(middleName);
         dest.writeString(motherContact);
@@ -81,6 +91,7 @@ public class ClassStudentInfo implements Parcelable {
         dest.writeString(section);
         dest.writeString(sex);
         dest.writeString(studentType);
+        dest.writeString(weight);
     }
 
     @Override
@@ -359,5 +370,45 @@ public class ClassStudentInfo implements Parcelable {
     @Override
     public String toString() {
         return firstName ;
+    }
+
+    public String getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(String bmi) {
+        this.bmi = bmi;
+    }
+
+    public String getBmiStatus() {
+        return bmiStatus;
+    }
+
+    public void setBmiStatus(String bmiStatus) {
+        this.bmiStatus = bmiStatus;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getLastCheckedWandH() {
+        return lastCheckedWandH;
+    }
+
+    public void setLastCheckedWandH(String lastCheckedWandH) {
+        this.lastCheckedWandH = lastCheckedWandH;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 }

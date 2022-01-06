@@ -195,6 +195,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         this.spinner_childName = findViewById(R.id.spinner_childName) ;
         ArrayAdapter<ClassStudentInfo> adapter = new ArrayAdapter<>(this, R.layout.spinner_child_profile, childrenArrayList) ;
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_childName.setVisibility(View.VISIBLE);
         spinner_childName.setAdapter(adapter);
         spinner_childName.setSelection(0);
 
@@ -213,44 +214,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-    }
-
-    public void dataInToggleChildren(ArrayList<ClassStudentInfo> childrenArrayList){
-        this.children = new ArrayList<>() ;
-        children = childrenArrayList ;
-
-        mbtg_childrenButton.removeAllViews();
-
-        for(int j = 0 ; j < children.size() ; j++){
-            MaterialButton button = (MaterialButton) getLayoutInflater().inflate(R.layout.button_naem, null);
-            button.setId(j);
-            button.setText(children.get(j).getFirstName());
-            mbtg_childrenButton.addView(button, -2, -1);
-
-        }
-        mbtg_childrenButton.clearChecked();
-
-        mbtg_childrenButton.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
-            if(checkedId >= 0){
-                if(isChecked){
-                    MaterialButton button3 = findViewById(checkedId);
-                    button3.setBackgroundColor(Color.WHITE);
-                    button3.setTextColor(Color.BLACK);
-                    studentInfo = children.get(checkedId);
-                    mtv_profileChildFullName.setText(children.get(checkedId).getFullName());
-                    mtv_profileChildIdNum.setText(children.get(checkedId).getIdNumGradeSection());
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new FragmentChildrenProfile()).commit() ;
-
-                    Log.d(TAG, "onButtonChecked: checkId = " + checkedId);
-                }else{
-                    MaterialButton buttonCheck = findViewById(checkedId);
-                    buttonCheck.setBackgroundColor(Color.BLACK);
-                    buttonCheck.setTextColor(Color.WHITE);
-                    buttonCheck.setClickable(true);
-                }
-            }
-        });
-
     }
 
     @SuppressLint("ResourceAsColor")
@@ -284,7 +247,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                        mtv_profileChildFullName.setText(studentInfo.getFullName());
                        mtv_profileChildIdNum.setText(studentInfo.getIdNumGradeSection());
                        selectedFragment = new FragmentChildrenProfile() ;
-                       spinner_childName.setVisibility(View.GONE);
+//                       spinner_childName.setVisibility(View.GONE);
                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
                        break;
                    case "Parent":

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IsKlinika">
-        <activity android:name=".ActivityAddPrescription"></activity>
+        <activity android:name=".ActivityAddPastIllness"></activity>
+        <activity android:name=".ActivityAddPrescription" />
         <activity android:name=".ActivityAddAllergy" />
         <activity android:name=".ActivityMedicalHistory" />
         <activity android:name=".ActivityDiseaseSurveillance" />
@@ -22,7 +23,7 @@
         <activity android:name=".ActivityClinicianPersonalInfoModule" />
         <activity
             android:name=".ActivityClinicianLanding"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityLanding"

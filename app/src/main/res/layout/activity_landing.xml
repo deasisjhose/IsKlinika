@@ -35,7 +35,6 @@
             android:text="Welcome"
             android:textColor="@color/light"
             android:textSize="30sp"
-            android:visibility="gone"
             app:drawableTint="@color/light" />
 
         <LinearLayout
@@ -67,21 +66,9 @@
                     app:srcCompat="@drawable/sample_prof_pic" />
 
                 <view
-                    android:id="@+id/mtv_profileChildIdNum"
-                    class="com.google.android.material.textview.MaterialTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/helveticalight"
-                    android:text="id number here"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/mtv_profileChildFullName"
-                    app:layout_constraintTop_toBottomOf="@+id/mtv_profileChildFullName" />
-
-                <view
                     android:id="@+id/mtv_profileChildFullName"
                     class="com.google.android.material.textview.MaterialTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
@@ -89,8 +76,26 @@
                     android:text="Full name here"
                     android:textColor="@color/white"
                     android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/shapeImg_profileChildIdPic"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <view
+                    android:id="@+id/mtv_profileChildIdNum"
+                    class="com.google.android.material.textview.MaterialTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/helvetica"
+                    android:text="id number here"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/mtv_profileChildFullName"
+                    app:layout_constraintTop_toBottomOf="@+id/mtv_profileChildFullName" />
 
                 <Spinner
                     android:id="@+id/spinner_childName"
@@ -100,6 +105,7 @@
                     android:dropDownWidth="wrap_content"
                     android:gravity="center"
                     android:overlapAnchor="false"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mtv_profileChildIdNum" />
 

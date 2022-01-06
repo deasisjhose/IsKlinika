@@ -26,4 +26,9 @@
         <item>Height and Weight</item>
     </string-array>
 
+    <string-array name="sort_by">
+        <item>Latest</item>
+        <item>Oldest</item>
+    </string-array>
+
 </resources>

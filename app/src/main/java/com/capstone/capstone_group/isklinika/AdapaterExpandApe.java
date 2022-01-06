@@ -80,7 +80,7 @@ public class AdapaterExpandApe extends BaseExpandableListAdapter {
         String schoolYear = getGroup(i).toString();
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.group_ape, null);
+            view = inflater.inflate(R.layout.expand_title_group_ape, null);
         }
         this.item = view.findViewById(R.id.tv_expandSY);
         item.setTypeface(null, Typeface.BOLD);

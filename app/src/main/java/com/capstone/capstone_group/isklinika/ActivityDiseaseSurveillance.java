@@ -319,7 +319,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 }
 
                 for(i=0;i<top5DiseaseFinal.size();i++){
+
                     topDiseaseString=topDiseaseString+top5DiseaseFinal.get(i).name + "(Count: " + top5DiseaseFinal.get(i).count + ")" + "\n";
+
                 }
                 for(i=0;i<top5ComplaintsFinal.size();i++){
                     topComplaintString=topComplaintString+ top5ComplaintsFinal.get(i).name + "(Count: " + top5ComplaintsFinal.get(i).count + ")" + "\n";

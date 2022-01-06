@@ -107,6 +107,9 @@ public class FragmentChildrenProfile extends Fragment {
         tv_pHospital.setText(studentInfo.getPreferredHospital());
         tv_pHospitalAddress.setText(studentInfo.getHospitalAddress());
 
+
+        if(activity_landing.getUserType().equals("Student"))
+            mcard_editProfile.setVisibility(View.GONE);
         mcard_editProfile.setOnClickListener(view1 -> {
             mcard_saveProfile.setVisibility(View.VISIBLE);
             mcard_editProfile.setVisibility(View.GONE);
