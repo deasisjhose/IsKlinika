@@ -694,18 +694,38 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         int i;
         ArrayList<BarEntry> diseaseCountData = new ArrayList<BarEntry>();
         ArrayList<String> diseaseNames = new ArrayList<String>();
+        ArrayList<BarEntry> chosenDiseaseCountData = new ArrayList<BarEntry>();
+        ArrayList<String> chosenDiseaseNames = new ArrayList<String>();
+        ArrayList<String> finalNames = new ArrayList<String>();
 
         BarChart diseaseCountBarChart = findViewById(R.id.barChart_diseaseCount);
         Description desc = new Description();
         desc.setText(selected+ " in Grade " + grade);
 
         for(i=0;i<sectionCount.size();i++){
-            diseaseCountData.add(new BarEntry(i,sectionCount.get(i).count));
+            if(sectionCount.get(i).name.equals(studentInfo.getSection())){
+                Log.d(TAG,"sectionCount section:"+ sectionCount.get(i).name);
+                Log.d(TAG,"child section:"+ studentInfo.getSection());
+
+                chosenDiseaseCountData.add(new BarEntry(i,sectionCount.get(i).count));
+            }
+            else{
+                diseaseCountData.add(new BarEntry(i,sectionCount.get(i).count));
+            }
             diseaseNames.add(sectionCount.get(i).name);
         }
 
-        BarDataSet diseaseCount = new BarDataSet(diseaseCountData,"Disease count in Grade " + grade);
+        //finalNames.add(chosenDiseaseNames.get(0));
+        for(i=0;i<diseaseNames.size();i++){
+           finalNames.add(diseaseNames.get(i));
+        }
+
+        BarDataSet diseaseCount = new BarDataSet(diseaseCountData,"Disease count in other sections Grade " + grade);
+        diseaseCount.setColor(Color.BLUE);
+        BarDataSet chosenDiseaseCount = new BarDataSet(chosenDiseaseCountData,"Disease count in child's section");
+        chosenDiseaseCount.setColor(Color.RED);
         BarData barData = new BarData();
+        barData.addDataSet(chosenDiseaseCount);
         barData.addDataSet(diseaseCount);
 
         XAxis xAxis = diseaseCountBarChart.getXAxis();
@@ -722,22 +742,35 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     public void makeComplaintCountChart(ArrayList<nameCount> sectionCount,String selected){
         String grade = studentInfo.getGrade() ;
-        int i;
+        int i,j;
         ArrayList<BarEntry> complaintCountData = new ArrayList<BarEntry>();
         ArrayList<String> complaintNames = new ArrayList<String>();
+        ArrayList<BarEntry> chosenComplaintCountData = new ArrayList<BarEntry>();
+        ArrayList<String> chosenComplaintNames = new ArrayList<String>();
+        ArrayList<String> finalNames = new ArrayList<String>();
+
 
         BarChart complaintCountBarChart = findViewById(R.id.barChart_complaintCount);
         Description desc = new Description();
         desc.setText(selected + " in Grade " + grade);
 
         for(i=0;i<sectionCount.size();i++){
-            complaintCountData.add(new BarEntry(i,sectionCount.get(i).count));
+            if(sectionCount.get(i).name.equals(studentInfo.getSection())){
+                chosenComplaintCountData.add(new BarEntry(i,sectionCount.get(i).count));
+            }
+            else{
+                complaintCountData.add(new BarEntry(i,sectionCount.get(i).count));
+            }
             complaintNames.add(sectionCount.get(i).name);
         }
 
-        BarDataSet diseaseCount = new BarDataSet(complaintCountData,"Complaint count in Grade " + grade);
+        BarDataSet complaintCount = new BarDataSet(complaintCountData,"Complaint count in other sections Grade " + grade);
+        complaintCount.setColor(Color.BLUE);
+        BarDataSet chosenComplaintCount = new BarDataSet(chosenComplaintCountData,"Complaint count in child's section");
+        chosenComplaintCount.setColor((Color.RED));
         BarData barData = new BarData();
-        barData.addDataSet(diseaseCount);
+        barData.addDataSet(chosenComplaintCount);
+        barData.addDataSet(complaintCount);
 
         XAxis xAxis = complaintCountBarChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(complaintNames));
