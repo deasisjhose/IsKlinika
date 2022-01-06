@@ -264,7 +264,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             xAxis.setAxisMinimum(5);
             xAxis.setAxisMaximum(13);
 
-            xAxis.setLabelCount(dataHeight.size());
+            //xAxis.setLabelCount(dataHeight.size());
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
 
@@ -308,7 +308,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
             xAxis.setAxisMinimum(5);
             xAxis.setAxisMaximum(13);
-            xAxis.setLabelCount(dataHeight.size());
+            //xAxis.setLabelCount(dataHeight.size());
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
             //weight in kg
