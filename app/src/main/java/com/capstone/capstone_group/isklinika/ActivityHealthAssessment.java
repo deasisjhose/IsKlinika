@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -139,6 +140,11 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
         switch (userType){
             case "Student":
+            case "Clinician":
+                if(userType.equals("Clinician")){
+                    ImageView img_logoHealthAssess = findViewById(R.id.img_logoHealthAssess) ;
+                    img_logoHealthAssess.setImageResource(R.drawable.clinician_immunization);
+                }
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 studentId = studentInfo.getIdNum() ;
@@ -249,7 +255,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             Log.d(TAG,"inside BMI");
             LineDataSet bmiDataSet = new LineDataSet(bmiSet, "BMI Data");
             bmiDataSet.setColor(Color.BLUE);
-            bmiDataSet.setValueTextSize(9);
+            bmiDataSet.setValueTextSize(11);
 
             XAxis xAxis = lineChart.getXAxis();
             YAxis yAxisLeft = lineChart.getAxisLeft();
@@ -274,9 +280,11 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             //bmiDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
 
             desc.setText("BMI by Age");
+            desc.setTypeface(Typeface.DEFAULT_BOLD);
             desc.setTextColor(Color.BLACK);
-            desc.setTextSize(10);
-            lineChart.setBackgroundColor(Color.parseColor("#FFF4F1"));
+            desc.setTextSize(12);
+            lineChart.setGridBackgroundColor(Color.WHITE);
+//            lineChart.setBackgroundColor(Color.parseColor("#FFF4F1"));
             lineChart.setDrawGridBackground(true);
             lineChart.setBorderColor(Color.BLACK);
             lineChart.setDescription(desc);
@@ -286,13 +294,13 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         }
         else{
             Log.d(TAG,"inside height and weight");
-            LineDataSet heightDataSet = new LineDataSet(heightSet, "Height Data");
-            LineDataSet weightDataSet = new LineDataSet(weightSet, "Weight Data");
+            LineDataSet heightDataSet = new LineDataSet(heightSet, "Height Data (cm)");
+            LineDataSet weightDataSet = new LineDataSet(weightSet, "Weight Data (kg)");
 
             heightDataSet.setColor(Color.BLUE);
-            heightDataSet.setValueTextSize(9);
+            heightDataSet.setValueTextSize(11);
             weightDataSet.setColor(Color.RED);
-            weightDataSet.setValueTextSize(9);
+            weightDataSet.setValueTextSize(11);
 
             XAxis xAxis = lineChart.getXAxis();
             YAxis yAxisLeft = lineChart.getAxisLeft();
@@ -319,9 +327,11 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             weightDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
 
             desc.setText("Height and Weight by Age");
+            desc.setTypeface(Typeface.DEFAULT_BOLD);
             desc.setTextColor(Color.BLACK);
-            desc.setTextSize(10);
-            lineChart.setBackgroundColor(Color.parseColor("#FFF4F1"));
+            desc.setTextSize(12);
+            lineChart.setGridBackgroundColor(Color.WHITE);
+//            lineChart.setBackgroundColor(Color.parseColor("#FFF4F1"));
             lineChart.setDrawGridBackground(true);
             lineChart.setBorderColor(Color.BLACK);
             lineChart.setDescription(desc);
@@ -441,7 +451,6 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         ArrayList<Entry> bmiSet = new ArrayList<>();
         Description desc = new Description();
 
-        Log.d(TAG,id);
 
         databaseApe.child(id).child("ape").addValueEventListener(new ValueEventListener() {
             @Override

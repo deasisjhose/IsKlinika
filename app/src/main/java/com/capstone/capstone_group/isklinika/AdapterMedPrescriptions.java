@@ -73,7 +73,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
             holder.txt_medStart.setText(medHistory.getStartMed());
             holder.txt_medEnd.setText(medHistory.getEndMed());
 
-            ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(tvContext, R.array.add_medication_status, R.layout.spinner_med_selected) ;
+            ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(tvContext, R.array.medication_status, R.layout.spinner_med_selected) ;
             spinAdapter.setDropDownViewResource(R.layout.spinner_med_down);
             holder.spinner_medStatus.setAdapter(spinAdapter);
             holder.spinner_medStatus.setSelection(getStatus(holder.spinner_medStatus, medHistory.getStatus()));

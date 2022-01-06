@@ -27,7 +27,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     public DatabaseReference databaseReference= db.getReference();
 
     private Intent intent ;
-    public String TAG="MEDICATION//";
+    public String TAG="MEDICALHISTORY//";
     private String idNum ;
     private int selectedDate ; // selected from the activity_immune
 
@@ -66,9 +66,15 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         mbtn_addAllergyCancel.setOnClickListener(this);
         mbtn_addAllergyAdd.setOnClickListener(this);
 
+        tv_addAllergyDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            }
+        });
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
-        builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;
+        builder.setTitleText("Select Date (MM-DD-YY)") ;
         builder.setTheme(R.style.ThemeOverlay_App_DatePicker_MedicalHistory) ;
         builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
 

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -140,6 +141,11 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 
         switch (userType){
             case "Student":
+            case "Clinician":
+                if(userType.equals("Clinician")){
+                    ImageView img_logoHealthAssess = findViewById(R.id.img_logoHealthAssess) ;
+                    img_logoHealthAssess.setImageResource(R.drawable.clinician_immunization);
+                }
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_immuneFullName.setText(studentInfo.getFullName());
                 float_addImmune.setVisibility(View.GONE);
@@ -266,7 +272,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
         //db immune then set the views eme
         ArrayList<ClassImmuneRecord> immunizationList = new ArrayList<>() ;
 
-        databaseImmunization.child(studentId).child("immuneHistory").addValueEventListener(new ValueEventListener() {
+        databaseImmunization.child(studentId).child("immuneHistory").orderByChild("dateGiven").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(!immunizationList.isEmpty())

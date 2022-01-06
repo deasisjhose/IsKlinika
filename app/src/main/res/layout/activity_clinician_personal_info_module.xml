@@ -194,7 +194,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianIdNum"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/tv_clinicianGradeSection"
+                            android:id="@+id/tv_clinicianGradenSection"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -314,7 +314,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianBirthday"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -610,7 +610,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianFatherEmail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -694,7 +694,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianMotherEmail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -777,7 +777,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianGuardianEmail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -917,7 +917,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianPediaEmail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -969,7 +969,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="8dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/DentistEmail"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -1000,7 +1000,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp">
 
-                        <com.google.android.material.textview.MaterialTextView
+                        <TextView
                             android:id="@+id/tv_clinicianDentalEmail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"

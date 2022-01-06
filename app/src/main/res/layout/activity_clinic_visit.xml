@@ -26,10 +26,10 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/img_logoHealthAssess"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="3dp"
+                android:layout_marginRight="4dp"
                 app:srcCompat="@drawable/first_aid_kit__1_" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -57,5 +57,96 @@
         android:layout_marginTop="145dp"
         android:background="@drawable/shape_bottom_nav"
         android:backgroundTint="@color/accent_layout"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:paddingRight="16dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From:"
+                android:textColor="@color/pastel_red"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cvFromDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/border_circle_outline"
+                android:clickable="true"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="YYYY-MM-DD"
+                android:textColor="@color/information_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To"
+                android:textColor="@color/pastel_red"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cvToDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/border_circle_outline"
+                android:clickable="true"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="YYYY-MM-DD"
+                android:textColor="@color/information_text"
+                android:textSize="13sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by:"
+                android:textColor="@color/pastel_red"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_sort"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp" />
+
+        </TableRow>
+
+        <ExpandableListView
+            android:id="@+id/expand_clinicVisit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

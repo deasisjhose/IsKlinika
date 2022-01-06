@@ -25,10 +25,10 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/img_logoHealthAssess"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="3dp"
                 app:srcCompat="@drawable/phonendoscope" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -148,7 +148,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 android:orientation="vertical"
-                app:cardBackgroundColor="#FFF4F1"
                 app:cardCornerRadius="8dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"

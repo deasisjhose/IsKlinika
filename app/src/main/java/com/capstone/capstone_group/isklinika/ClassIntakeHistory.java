@@ -4,7 +4,6 @@ public class ClassIntakeHistory {
 
     private String amount ;
     private String date ;
-    private Boolean isClinicVisit ;
     private String medicineName ;
     private String time ;
 
@@ -32,14 +31,6 @@ public class ClassIntakeHistory {
         this.time = time;
     }
 
-    public Boolean getClinicVisit() {
-        return isClinicVisit;
-    }
-
-    public void setClinicVisit(Boolean clinicVisit) {
-        isClinicVisit = clinicVisit;
-    }
-
     public String getAmount() {
         return amount;
     }
@@ -53,7 +44,7 @@ public class ClassIntakeHistory {
         return "Class_IntakeHistory{" +
                 "amount='" + amount + '\'' +
                 ", date='" + date + '\'' +
-                ", isClinicVisit=" + isClinicVisit +
+                ", isClinicVisit=" +
                 ", medicineName='" + medicineName + '\'' +
                 ", time='" + time + '\'' +
                 '}';

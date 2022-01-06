@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -85,6 +86,10 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
     public void buildView(){
         this.fbtn_medicalHistory = findViewById(R.id.fbtn_medicalHistory) ;
         fbtn_medicalHistory.setOnClickListener(this);
+
+        //pastIllness
+        this.layout_pastIllness = findViewById(R.id.layout_pastIllness) ;
+
         //allergy tab
         this.layout_allergies = findViewById(R.id.layout_allergies) ;
 
@@ -104,6 +109,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 
                     }else if(checkedId == R.id.mBtn_allergies){
                         checkActive = 20 ;
+                        layout_pastIllness.setVisibility(View.GONE);
                         layout_allergies.setVisibility(View.VISIBLE);
                         retrieveDataMAllergies(studentId);
                     }
@@ -121,6 +127,16 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 
         switch (userType){
             case "Student":
+            case "Clinician":
+                if(userType.equals("Clinician")){
+                    ImageView img_logoHealthAssess = findViewById(R.id.img_logoHealthAssess) ;
+                    if (intent.getStringExtra("selected").equals("allergy")){
+                        img_logoHealthAssess.setImageResource(R.drawable.clinician_allergy);
+
+                    }else
+                        img_logoHealthAssess.setImageResource(R.drawable.clinician_medical_history);
+
+                }
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 fbtn_medicalHistory.setVisibility(View.GONE);
@@ -185,7 +201,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                 if (illnessHistoryArrayList.size() != 0){
                     dataInExpandPastIllness(illnessHistoryArrayList, studentId);
                 } else{
-                    Toast.makeText(ActivityMedicalHistory.this, "No data in medication history.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActivityMedicalHistory.this, "No data in past illnesses .", Toast.LENGTH_LONG).show();
                     if(layout_allergies.isShown()){
 //                        layout_prescriptionMed.setVisibility(View.VISIBLE);
                         dataInExpandPastIllness(illnessHistoryArrayList, studentId);
@@ -211,7 +227,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         this.allergyArrayList = new ArrayList<>() ;
 
         //for medication
-        databaseStudentHealthHistory.child(studentId).child("allergies").addValueEventListener(new ValueEventListener() {
+        databaseStudentHealthHistory.child(studentId).child("allergies").orderByChild("allergy").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(allergyArrayList.size() != 0){
@@ -230,7 +246,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                 if (allergyArrayList.size() != 0){
                     dataInAllergyList(allergyArrayList, studentId);
                 } else{
-                    Toast.makeText(ActivityMedicalHistory.this, "No data in medication history.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActivityMedicalHistory.this, "No data in allergies.", Toast.LENGTH_LONG).show();
                     if(layout_allergies.isShown()){
 //                        layout_prescriptionMed.setVisibility(View.VISIBLE);
                         dataInAllergyList(allergyArrayList, studentId);
@@ -258,9 +274,18 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.fbtn_medicalHistory){
-            intent = new Intent(getBaseContext(), ActivityAddAllergy.class) ;
-            intent.putParcelableArrayListExtra("children", children) ;
-            startActivity(intent);
+            switch (checkActive){
+                case 10:
+                    intent = new Intent(getBaseContext(), ActivityAddPastIllness.class) ;
+                    intent.putParcelableArrayListExtra("children", children) ;
+                    startActivity(intent);
+                    break;
+                case 20:
+                    intent = new Intent(getBaseContext(), ActivityAddAllergy.class) ;
+                    intent.putParcelableArrayListExtra("children", children) ;
+                    startActivity(intent);
+                    break;
+            }
         }
     }
 }

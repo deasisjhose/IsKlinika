@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="4dp"
+    app:rippleColor="@color/pastel_orange_inactive">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:orientation="vertical"
+        android:paddingBottom="3dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Attending Nurse"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView88"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Visit Date"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:id="@+id/tv_cvNurse"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_cvVisitDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:fontFamily="@font/helvetica"
+                android:gravity="start"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Time In: "
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cvTimeIn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Time Out:"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cvTimeOut"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Temperature"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Blood Pressure"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_cvTemp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_cvBP"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center_vertical"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:text="Pulse Rate"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cvPR"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:paddingStart="5dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center_vertical"
+                android:padding="1dp"
+                android:text="Respiration Rate"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cvRR"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#CCFFE0E3"
+                android:fontFamily="@font/dinpro"
+                android:padding="1dp"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+        </TableRow>
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/helvetica"
+            android:text="Complaint/Reason for Visit"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cvComplaint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CCFFE0E3"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textView90"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/helvetica"
+            android:padding="1dp"
+            android:text="Treatment"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cvTreatment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CCFFE0E3"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textView51"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/helvetica"
+            android:text="Disposition"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cvDisposition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:background="#CCFFE0E3"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica"
+            android:text="Diagnosis"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cvDiagnosis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:background="#CCFFE0E3"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textView99"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica"
+            android:text="Notes/Recommendations"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cvNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:background="#CCFFE0E3"
+            android:fontFamily="@font/dinpro"
+            android:textColor="@color/primary_Text"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

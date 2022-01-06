@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pastel_green"
     tools:context=".ActivityMedicalHistory">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,7 +40,7 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/img_logoHealthAssess"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/clipboard__2_" />
@@ -135,7 +136,7 @@
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Note: diagnosis with * are only impression from the school nurse from clinic visit" />
+                android:text="Note: " />
 
             <TableRow
                 android:layout_width="match_parent"

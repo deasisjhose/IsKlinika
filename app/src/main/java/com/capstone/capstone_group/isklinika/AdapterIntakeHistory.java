@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,7 +58,6 @@ public class AdapterIntakeHistory extends RecyclerView.Adapter<AdapterIntakeHist
         holder.tv_intakeAmt.setText(intakeHistory.getAmount());
         holder.tv_intakeDate.setText(intakeHistory.getDate());
         holder.tv_intakeTime.setText(intakeHistory.getTime());
-        holder.check_intakeClinicVisit.setChecked(intakeHistory.getClinicVisit());
 
     }
 
@@ -68,8 +68,8 @@ public class AdapterIntakeHistory extends RecyclerView.Adapter<AdapterIntakeHist
 
     public static class IntakeHistoryHolder extends RecyclerView.ViewHolder{
 
+        TableRow tr_intake ;
         TextView tv_intakeMed, tv_intakeAmt,  tv_intakeDate, tv_intakeTime ;
-        CheckBox check_intakeClinicVisit ;
 
         public IntakeHistoryHolder(@NonNull View itemView, OnItemClickListener listener){
             super(itemView);
@@ -78,7 +78,7 @@ public class AdapterIntakeHistory extends RecyclerView.Adapter<AdapterIntakeHist
             tv_intakeAmt = itemView.findViewById(R.id.tv_intakeAmt) ;
             tv_intakeDate = itemView.findViewById(R.id.tv_intakeDate) ;
             tv_intakeTime = itemView.findViewById(R.id.tv_intakeTime) ;
-            check_intakeClinicVisit = itemView.findViewById(R.id.check_intakeClinicVisit) ;
+            tr_intake = itemView.findViewById(R.id.tr_intake) ;
 
         }
     }
