@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
 
     private Intent intent ;
+    private ImageButton btn_back ;
     private ClassStudentInfo studentInfo ;
     private TextView tv_clinicStudentName, tv_clinicStudentID, tv_clinicGradeSection, tv_clinicianFullName, tv_clinicianIdNum, tv_clinicianGradenSection, tv_clinicianSex, tv_clinicianStudentType,
             tv_clinicianBirthday, tv_clinicianAge, tv_clinicianReligion, tv_clinicianNationality, tv_clinicianAddress, tv_clinicianBMI, tv_clinicianWeight, tv_clinicianHeight, tv_clinicianFather,
@@ -28,6 +30,9 @@ public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
     }
 
     public void buildViews(){
+        this.btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> finish());;
+
         this.tv_clinicStudentName = findViewById(R.id.tv_clinicStudentName) ;
         this.tv_clinicStudentID = findViewById(R.id.tv_clinicStudentID) ;
         this.tv_clinicGradeSection = findViewById(R.id.tv_clinicGradeSection) ;
@@ -80,19 +85,24 @@ public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
         tv_clinicianHeight.setText(studentInfo.getHeight());
         tv_clinicianFather.setText(studentInfo.getFatherName());
         tv_clinicianFatherEmail.setText(studentInfo.getFatherEmail());
-        tv_ClinicianFatherContact.setText(studentInfo.getFatherContact());
+        if(!studentInfo.getFatherContact().equals("0"))
+            tv_ClinicianFatherContact.setText(studentInfo.getFatherContact());
         tv_clinicianMother.setText(studentInfo.getMotherName());
         tv_clinicianMotherEmail.setText(studentInfo.getMotherEmail());
-        tv_ClinicianMotherContact.setText(studentInfo.getMotherContact());
+        if(!studentInfo.getMotherContact().equals("0"))
+            tv_ClinicianMotherContact.setText(studentInfo.getMotherContact());
         tv_clinicianGuardian.setText(studentInfo.getGuardianName());
         tv_clinicianGuardianEmail.setText(studentInfo.getGuardianEmail());
-        tv_ClinicianGuardianContact.setText(studentInfo.getGuardianContact());
+        if(!studentInfo.getGuardianContact().equals("0"))
+            tv_ClinicianGuardianContact.setText(studentInfo.getGuardianContact());
         tv_clinicianPediatrician.setText(studentInfo.getPediaName());
         tv_clinicianPediaEmail.setText(studentInfo.getPediaEmail());
-        tv_ClinicianPediaContact.setText(studentInfo.getPediaContact());
+        if(!studentInfo.getPediaContact().equals("0"))
+            tv_ClinicianPediaContact.setText(studentInfo.getPediaContact());
         tv_clinicianDentist.setText(studentInfo.getDentistName());
         tv_clinicianDentalEmail.setText(studentInfo.getDentistEmail());
-        tv_clinicianDentalContact.setText(studentInfo.getDentistContact());
+        if(!studentInfo.getDentistContact().equals("0"))
+            tv_clinicianDentalContact.setText(studentInfo.getDentistContact());
         tv_clinicianPreferredHospital.setText(studentInfo.getPreferredHospital());
         tv_clinicianHospitalAddress.setText(studentInfo.getHospitalAddress());
 

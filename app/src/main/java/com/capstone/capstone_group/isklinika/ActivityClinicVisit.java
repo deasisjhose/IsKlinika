@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
     private String userType, studentId ;
     public String TAG="CLINICVISIT//";
 
+    private ImageButton btn_back ;
     //module tab children
     private ShapeableImageView shapeImg_moduleProfileChild ;
     private MaterialButtonToggleGroup mbtg_medication ;
@@ -78,7 +80,8 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
 
     public void buildBar(){
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
-
+        this.btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> finish());;
     }
 
     public void buildView(){
@@ -104,10 +107,13 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
             switch (selectedDate){
                 case 10:
                     tv_cvFromDate.setText(dateConvert.getConverted());
+                    if(!tv_cvToDate.getText().toString().equals("YYYY-MM-DD"))
+                        retrieveClinicVisit();
                     break;
                 case 20:
                     tv_cvToDate.setText(dateConvert.getConverted());
-                    retrieveClinicVisit();
+                    if(!tv_cvFromDate.getText().toString().equals("YYYY-MM-DD"))
+                        retrieveClinicVisit();
                     break;
             }
         }) ;
@@ -194,11 +200,8 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
 
                     endDate.set(Calendar.YEAR, Integer.parseInt(parts2[0]));
                     endDate.set(Calendar.MONTH, Integer.parseInt(parts2[1]) - 1);
-                    endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]));
+                    endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]) + 1);
                 }
-
-
-
 
                 for (DataSnapshot postSnapshot: snapshot.getChildren()){
                     if(postSnapshot.child("id").getValue().toString().equals(studentId)){
@@ -210,6 +213,7 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
                             dataDate.set(Calendar.YEAR, Integer.parseInt(parts3[0]));
                             dataDate.set(Calendar.MONTH, Integer.parseInt(parts3[1])-1);
                             dataDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts3[2]));
+
 
                             if( ((startDate.before(dataDate)) ||(startDate.equals(dataDate))) && ((dataDate.before(endDate)) ||(dataDate.equals(endDate)))){
                                 String bodyTemp, diagnosis, diastolicBP, notes,  nurseName, pulseRateStatus, respRateStatus, status, systolicBP, timeIn, timeOut,
@@ -235,6 +239,8 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
                                 classClinicVisitArrayList.add(clinicVisit) ;
                             }
                         }else{
+                            Log.d(TAG, "onDataChange: else ng dataDate = ");
+
                             String bodyTemp, diagnosis, diastolicBP, notes,  nurseName, pulseRateStatus, respRateStatus, status, systolicBP, timeIn, timeOut,
                                     treatment, visitDate, visitReason ;
                             bodyTemp = postSnapshot.child("bodyTemp").getValue().toString() ;

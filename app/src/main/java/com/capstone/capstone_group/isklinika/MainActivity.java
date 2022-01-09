@@ -130,12 +130,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             ClassStudentInfo studentInfoUser = new ClassStudentInfo() ;
                                             studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
+                                            studentInfoUser.setIdNum(snapshot.getKey());
 
                                             Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
                                             intent = new Intent(getBaseContext(), ActivityLanding.class);
                                             intent.putExtra("userType", "Student") ;
                                             intent.putExtra("studentInfo", studentInfoUser ) ;
-//                                                intent.putExtra("studentId",idNum);
                                             startActivity(intent);
                                         }
 
@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             for (DataSnapshot postSnapshot: snapshot.child("children").getChildren()){
                                                 parentUser.addChild(postSnapshot.getValue().toString());
                                             }
+                                            parentUser.setKey(snapshot.getKey());
 
                                             intent = new Intent(getBaseContext(), ActivityLanding.class);
                                             intent.putExtra("userType", "Parent") ;
@@ -223,7 +224,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
             } else if(radio_clinician.isChecked()){ // if user is clinician
-
                 intent = new Intent(getBaseContext(), ActivityClinicianLanding.class);
                 intent.putExtra("userType", "Clinician") ;
                 startActivity(intent);

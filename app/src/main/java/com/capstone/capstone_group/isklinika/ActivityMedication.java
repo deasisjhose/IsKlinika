@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.checkbox.MaterialCheckBox;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.DataSnapshot;
@@ -53,7 +54,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     private int checkActive ;
     private String userType, studentId ;
     public String TAG="MEDICATION//";
-
+    private ImageButton btn_back ;
     //module tab children
     private ShapeableImageView shapeImg_moduleProfileChild ;
     private MaterialButtonToggleGroup mbtg_medication ;
@@ -80,6 +81,10 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     private LinearLayout layot_intakeHistory ;
     private AdapterIntakeHistory adapterIntakeHistory ;
     private RecyclerView recycle_intakeHistory ;
+    private TextView tv_cvFromDate, tv_cvToDate ;
+    private Spinner spinner_sort ;
+    private MaterialDatePicker materialDatePicker ;
+    private int selectedDate ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +101,9 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     }
 
     public void buildBar(){
+        this.btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> finish());
+
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
         this.mbtg_medication = findViewById(R.id.mbtg_medication) ;
 
@@ -175,7 +183,38 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
 
         //check == 30 Intake History
         this.layot_intakeHistory = findViewById(R.id.layot_intakeHistory) ;
+        this.tv_cvFromDate = findViewById(R.id.tv_cvFromDate) ;
+        this.tv_cvToDate = findViewById(R.id.tv_cvToDate) ;
+        this.spinner_sort = findViewById(R.id.spinner_sort2) ;
 
+        tv_cvFromDate.setOnClickListener(this);
+        tv_cvToDate.setOnClickListener(this);
+
+        makeSpinnerSort();
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
+        builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;
+        builder.setTheme(R.style.ThemeOverlay_App_DatePicker_Medication) ;
+        builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
+
+
+        this.materialDatePicker = builder.build() ;
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+
+            ClassDateConvert dateConvert = new ClassDateConvert(materialDatePicker.getHeaderText()) ;
+
+            switch (selectedDate){
+                case 10:
+                    tv_cvFromDate.setText(dateConvert.getConverted());
+                    if(!tv_cvToDate.getText().toString().equals("YYYY-MM-DD"))
+                        retrieveIntakeHistory();
+                    break;
+                case 20:
+                    tv_cvToDate.setText(dateConvert.getConverted());
+                    if(!tv_cvFromDate.getText().toString().equals("YYYY-MM-DD"))
+                        retrieveIntakeHistory();
+                    break;
+            }
+        }) ;
     }
 
 
@@ -514,26 +553,63 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     public void retrieveIntakeHistory(){
         ArrayList<ClassIntakeHistory> intakeHistoryList = new ArrayList<>() ;
 
-        databaseStudentHealthHistory.child(studentId).child("intakeHistory").addValueEventListener(new ValueEventListener() {
+
+        databaseStudentHealthHistory.child(studentId).child("intakeHistory").orderByChild("dateTaken").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(!intakeHistoryList.isEmpty()){
                     intakeHistoryList.clear();
                 }
-                for (DataSnapshot postSnapshot: snapshot.getChildren()){
-                    ClassIntakeHistory intakeHistory = new ClassIntakeHistory() ;
-                    String amount,date, medicineName,time ;
 
+                String stringStart=tv_cvFromDate.getText().toString();
+                String stringEnd=tv_cvToDate.getText().toString();
+                String vDate;
+                String[] parts1;
+                String[] parts2;
+                String[] parts3;
+                Calendar startDate = Calendar.getInstance();
+                Calendar endDate = Calendar.getInstance();
 
-                    if(!intakeHistory.getMedicineName().equals(""))
-                        intakeHistoryList.add(intakeHistory) ;
+                if(!tv_cvFromDate.getText().toString().equals("YYYY-MM-DD") && !tv_cvToDate.getText().toString().equals("YYYY-MM-DD")) {
+                    parts1 = stringStart.split("-");
+                    parts2 = stringEnd.split("-");
+
+                    startDate.set(Calendar.YEAR, Integer.parseInt(parts1[0]));
+                    startDate.set(Calendar.MONTH, Integer.parseInt(parts1[1]) - 1);
+                    startDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts1[2]));
+
+                    endDate.set(Calendar.YEAR, Integer.parseInt(parts2[0]));
+                    endDate.set(Calendar.MONTH, Integer.parseInt(parts2[1]) - 1);
+                    endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]) + 1);
                 }
 
-                if(intakeHistoryList.isEmpty()){
+                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+                    ClassIntakeHistory intakeHistory = new ClassIntakeHistory() ;
+
+                    if(!tv_cvFromDate.getText().toString().equals("YYYY-MM-DD") && !tv_cvToDate.getText().toString().equals("YYYY-MM-DD")) {
+                        vDate = postSnapshot.child("dateTaken").getValue().toString();
+                        parts3 = vDate.split("-");
+                        Calendar dataDate = Calendar.getInstance();
+                        dataDate.set(Calendar.YEAR, Integer.parseInt(parts3[0]));
+                        dataDate.set(Calendar.MONTH, Integer.parseInt(parts3[1]) - 1);
+                        dataDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts3[2]));
+
+                        if (((startDate.before(dataDate)) || (startDate.equals(dataDate))) && ((dataDate.before(endDate)) || (dataDate.equals(endDate)))) {
+                            intakeHistory = postSnapshot.getValue(ClassIntakeHistory.class) ;
+                            intakeHistoryList.add(intakeHistory) ;
+                        }
+                    }else{
+                        intakeHistory = postSnapshot.getValue(ClassIntakeHistory.class) ;
+                        intakeHistoryList.add(intakeHistory) ;
+                    }
+
+//
+                }
+
+                if(intakeHistoryList.isEmpty())
                     Toast.makeText(ActivityMedication.this, "No data in intake history.", Toast.LENGTH_LONG).show();
-                    dataInIntakeHistory(intakeHistoryList);
-                } else
-                    dataInIntakeHistory(intakeHistoryList);
+
+                dataInIntakeHistory(intakeHistoryList);
             }
 
             @Override
@@ -542,19 +618,46 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
             }
         }) ;
     }
+    public void makeSpinnerSort(){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,R.layout.spinner_medication2) ;
+        adapter.setDropDownViewResource(R.layout.spinner_immune_down);
+        spinner_sort.setAdapter(adapter);
+        spinner_sort.setSelection(0);
+//        prescriptionStatus = spinner_medicationStatus.getSelectedItem().toString() ;
+//        Log.d(TAG, "onItemSelected: selectedSort = " + spinner_medicationStatus.getSelectedItem());
+
+        spinner_sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onItemSelected: selectedSort = " + spinner_sort.getSelectedItem());
+                //sort function
+//                prescriptionStatus = spinner_medicationStatus.getSelectedItem().toString() ;
+                retrieveIntakeHistory();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
 
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.ibtn_editAM){
             allowed_edit();
-        }if (view.getId() == R.id.ibtn_saveAM){
+        }else if (view.getId() == R.id.ibtn_saveAM){
             allowed_save();
-        }if(view.getId() == R.id.float_addPrescription){
+        }else if(view.getId() == R.id.float_addPrescription){
             intent = new Intent(getBaseContext(), ActivityAddPrescription.class) ;
             intent.putParcelableArrayListExtra("children", children) ;
             intent.putExtra("currentSelect", spinner_childNameModules.getSelectedItemPosition()) ;
             startActivity(intent);
+        }else if(view.getId() == R.id.tv_cvFromDate){
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 10 ;
+        }else if(view.getId() == R.id.tv_cvToDate){
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 20 ;
         }
     }
 }

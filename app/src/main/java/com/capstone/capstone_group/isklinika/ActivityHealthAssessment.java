@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -57,7 +58,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
     private int checkActive ;
     private String userType, studentId ;
     public String TAG="HEALTHASSESSMENT//";
-
+    private ImageButton btn_back ;
     //module tab children
     private ShapeableImageView shapeImg_moduleProfileChild ;
     private MaterialButtonToggleGroup mbtg_moduleChildren, mbtg_healthAssess  ;
@@ -71,11 +72,14 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
     //ape tab
     private LinearLayout layout_ape ;
-    private RecyclerView recycle_ape ;
-    private AdapterHealthAssessAPE adapterHealthAssessAPE ;
     private String clinicUserName ;
     private ExpandableListView expand_ape ;
     private ExpandableListAdapter expandApeAdapter ;
+
+    //dental tab
+    private LinearLayout layout_dental ;
+    private ExpandableListView expand_dental ;
+    private ExpandableListAdapter expandDentalAdapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,15 +110,19 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                         checkActive = 10 ;
                         layout_growthChart.setVisibility(View.VISIBLE);
                         layout_ape.setVisibility(View.GONE);
+                        layout_dental.setVisibility(View.GONE);
                     }else if(checkedId == R.id.mBtn_ape){
                         checkActive = 20 ;
                         layout_growthChart.setVisibility(View.GONE);
                         layout_ape.setVisibility(View.VISIBLE);
+                        layout_dental.setVisibility(View.GONE);
                         retrieveDataAPE();
                     }else if(checkedId == R.id.mBtn_dental){
                         checkActive = 30 ;
                         layout_growthChart.setVisibility(View.GONE);
                         layout_ape.setVisibility(View.GONE);
+                        layout_dental.setVisibility(View.VISIBLE);
+                        retrieveDataDental() ;
                     }
 
                 } else {
@@ -133,6 +141,11 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         makeGrowthChartSpinner();
 
         this.layout_ape = findViewById(R.id.layout_ape) ;
+
+        this.layout_dental = findViewById(R.id.layout_dental) ;
+
+        this.btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> finish());
 
     }
 
@@ -189,6 +202,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
                         retrieveDataAPE();
                         break;
                     case 30:
+//                        retrieveDataDental() ;
                         break;
                 }
             }
@@ -197,8 +211,6 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             }
         });
     }
-
-
 
     //checkActive == 10
     //functions
@@ -342,6 +354,56 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
     }
 
+    public void makeGrowthChart(String id){
+        ArrayList<Integer> dataAge = new ArrayList<>();
+        ArrayList<Double> dataHeight = new ArrayList<>();
+        ArrayList<Double> dataWeight = new ArrayList<>();
+        ArrayList<Double> dataBMI = new ArrayList<>();
+
+        LineChart lineChart = findViewById(R.id.lineChart_growthChart);
+        ArrayList<Entry> heightSet = new ArrayList<>();
+        ArrayList<Entry> weightSet = new ArrayList<>();
+        ArrayList<Entry> bmiSet = new ArrayList<>();
+        Description desc = new Description();
+
+
+        databaseApe.child(id).child("ape").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
+                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
+                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getValue());
+                    Integer age = Integer.parseInt(postSnapshot.child("age").getValue().toString());
+                    double height = Double.parseDouble(postSnapshot.child("height").getValue().toString());
+                    double weight = Double.parseDouble(postSnapshot.child("weight").getValue().toString());
+                    double bmi = Double.parseDouble(postSnapshot.child("bmi").getValue().toString());
+                    dataAge.add(age);
+                    dataHeight.add(height);
+                    dataWeight.add(weight);
+                    dataBMI.add(bmi);
+                }
+                Log.d(TAG,"age size: " + dataAge.size());
+                if(dataAge.isEmpty() || dataHeight.isEmpty()){
+
+                    lineChart.setNoDataText("No Data Yet");
+                    lineChart.setNoDataTextColor(Color.BLACK);
+
+                    lineChart.invalidate();
+                    lineChart.clear();
+                }
+                else{
+                    makeChart(dataAge,dataHeight,dataWeight,dataBMI);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     //checkActive == 20
     //This function is used to create the expandable list view
     public void dataInApeExpand(ArrayList<ClassApe> apeList){
@@ -394,39 +456,41 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         databaseApe.child(studentId).child("ape").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!apeList.isEmpty())
+                if (!apeList.isEmpty())
                     apeList.clear();
 
-                for (DataSnapshot postSnapshot: snapshot.getChildren()){
-                    ClassApe ape  = new ClassApe();
-                        ape.setAge(postSnapshot.child("age").getValue().toString());
-                        ape.setAllergies(postSnapshot.child("allergies").getValue().toString());
-                        ape.setApeDate(postSnapshot.child("apeDate").getValue().toString());
-                        ape.setAssess(postSnapshot.child("assess").getValue().toString());
-                        ape.setBmi(postSnapshot.child("bmi").getValue().toString());
-                        ape.setBmiStatus(postSnapshot.child("bmiStatus").getValue().toString());
-                        ape.setClinician(postSnapshot.child("clinician").getValue().toString());
-                        ape.setConcern(postSnapshot.child("concern").getValue().toString());
-                        ape.setDiastolic(postSnapshot.child("diastolic").getValue().toString());
-                        ape.setHeight(postSnapshot.child("height").getValue().toString());
-                        ape.setId(postSnapshot.child("id").getValue().toString());
-                        ape.setMedProb(postSnapshot.child("medProb").getValue().toString());
-                        ape.setName(postSnapshot.child("name").getValue().toString());
-                        ape.setOdGlasses(postSnapshot.child("odGlasses").getValue().toString());
-                        ape.setOdVision(postSnapshot.child("odVision").getValue().toString());
-                        ape.setOsGlasses(postSnapshot.child("osGlasses").getValue().toString());
-                        ape.setOsVision(postSnapshot.child("osVision").getValue().toString());
-                        ape.setPr(postSnapshot.child("pr").getValue().toString());
-                        ape.setRr(postSnapshot.child("rr").getValue().toString());
-                        ape.setSchoolYear(postSnapshot.child("schoolYear").getValue().toString());
-                        ape.setSf(postSnapshot.child("sf").getValue().toString());
-                        ape.setSystolic(postSnapshot.child("systolic").getValue().toString());
-                        ape.setTemp(postSnapshot.child("temp").getValue().toString());
-                        ape.setWeight(postSnapshot.child("weight").getValue().toString());
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    ClassApe ape = new ClassApe();
 
-                        apeList.add(ape) ;
+                    assert postSnapshot.getValue(ClassApe.class) != null;
+                    ape = postSnapshot.getValue(ClassApe.class);
+//                        ape.setAge(postSnapshot.child("age").getValue().toString());
+//                        ape.setAllergies(postSnapshot.child("allergies").getValue().toString());
+//                        ape.setApeDate(postSnapshot.child("apeDate").getValue().toString());
+//                        ape.setAssess(postSnapshot.child("assess").getValue().toString());
+//                        ape.setBmi(postSnapshot.child("bmi").getValue().toString());
+//                        ape.setBmiStatus(postSnapshot.child("bmiStatus").getValue().toString());
+//                        ape.setClinician(postSnapshot.child("clinician").getValue().toString());
+//                        ape.setConcern(postSnapshot.child("concern").getValue().toString());
+//                        ape.setDiastolic(postSnapshot.child("diastolic").getValue().toString());
+//                        ape.setHeight(postSnapshot.child("height").getValue().toString());
+//                        ape.setId(postSnapshot.child("id").getValue().toString());
+//                        ape.setMedProb(postSnapshot.child("medProb").getValue().toString());
+//                        ape.setName(postSnapshot.child("name").getValue().toString());
+//                        ape.setOdGlasses(postSnapshot.child("odGlasses").getValue().toString());
+//                        ape.setOdVision(postSnapshot.child("odVision").getValue().toString());
+//                        ape.setOsGlasses(postSnapshot.child("osGlasses").getValue().toString());
+//                        ape.setOsVision(postSnapshot.child("osVision").getValue().toString());
+//                        ape.setPr(postSnapshot.child("pr").getValue().toString());
+//                        ape.setRr(postSnapshot.child("rr").getValue().toString());
+//                        ape.setSchoolYear(postSnapshot.child("schoolYear").getValue().toString());
+//                        ape.setSf(postSnapshot.child("sf").getValue().toString());
+//                        ape.setSystolic(postSnapshot.child("systolic").getValue().toString());
+//                        ape.setTemp(postSnapshot.child("temp").getValue().toString());
+//                        ape.setWeight(postSnapshot.child("weight").getValue().toString());
+                    apeList.add(ape);
                 }
-                if(!apeList.isEmpty()){
+                if (!apeList.isEmpty()) {
                     Log.d(TAG, "onDataChange: apeSIZE = " + apeList.size());
                     dataInApeExpand(apeList);
                 }
@@ -436,55 +500,82 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        }) ;
+        });
     }
 
-    public void makeGrowthChart(String id){
-        ArrayList<Integer> dataAge = new ArrayList<>();
-        ArrayList<Double> dataHeight = new ArrayList<>();
-        ArrayList<Double> dataWeight = new ArrayList<>();
-        ArrayList<Double> dataBMI = new ArrayList<>();
+    //checkActive == 30
+    //
+    public void retrieveDataDental(){
+        ArrayList<ClassDental> dentalArrayList = new ArrayList<>() ;
 
-        LineChart lineChart = findViewById(R.id.lineChart_growthChart);
-        ArrayList<Entry> heightSet = new ArrayList<>();
-        ArrayList<Entry> weightSet = new ArrayList<>();
-        ArrayList<Entry> bmiSet = new ArrayList<>();
-        Description desc = new Description();
-
-
-        databaseApe.child(id).child("ape").addValueEventListener(new ValueEventListener() {
+        databaseApe.child(studentId).child("ade").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
-                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
-                    //Log.d(TAG, "postSnapshot Key: "+postSnapshot.getValue());
-                    Integer age = Integer.parseInt(postSnapshot.child("age").getValue().toString());
-                    double height = Double.parseDouble(postSnapshot.child("height").getValue().toString());
-                    double weight = Double.parseDouble(postSnapshot.child("weight").getValue().toString());
-                    double bmi = Double.parseDouble(postSnapshot.child("bmi").getValue().toString());
-                    dataAge.add(age);
-                    dataHeight.add(height);
-                    dataWeight.add(weight);
-                    dataBMI.add(bmi);
-                }
-                Log.d(TAG,"age size: " + dataAge.size());
-                if(dataAge.isEmpty() || dataHeight.isEmpty()){
+                if (!dentalArrayList.isEmpty())
+                    dentalArrayList.clear();
 
-                    lineChart.setNoDataText("No Data Yet");
-                    lineChart.setNoDataTextColor(Color.BLACK);
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    ClassDental dental = new ClassDental() ;
+                    assert postSnapshot.getValue(ClassDental.class) != null;
+                    dental = postSnapshot.getValue(ClassDental.class);
 
-                    lineChart.invalidate();
-                    lineChart.clear();
+                    dentalArrayList.add(dental) ;
                 }
-                else{
-                    makeChart(dataAge,dataHeight,dataWeight,dataBMI);
 
+                if (!dentalArrayList.isEmpty()) {
+                    Log.d(TAG, "onDataChange: apeSIZE = " + dentalArrayList.size());
+                    dataInDentalExpand(dentalArrayList);
                 }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+    }
+
+    //This function is used to create the expandable list view
+    public void dataInDentalExpand(ArrayList<ClassDental> apeList){
+        List<String> groupListSY = new ArrayList<>() ;
+        Map<String, ClassDental> dentalMap ;
+        for(int i = 0 ; i < apeList.size() ; i++){
+            groupListSY.add(apeList.get(i).getSchoolYear()) ;
+        }
+        dentalMap = new HashMap<String, ClassDental>() ;
+        int i  ;
+        for(i = 0 ; i < groupListSY.size() ; i++){
+
+            for(int j = 0 ; j < apeList.size() ; j++){
+                if(groupListSY.get(i).equals(apeList.get(j).getSchoolYear())){
+                    Log.d(TAG, "dataInApeExpand: index of group = ");
+                    dentalMap.put(groupListSY.get(i), apeList.get(j)) ;
+                    break;
+                }
+            }
+        }
+
+
+        this.expand_dental = findViewById(R.id.expand_dental) ;
+        this.expandDentalAdapter = new AdapaterExpandDental(this, groupListSY, dentalMap) ;
+        expand_dental.setAdapter(expandDentalAdapter);
+        expand_dental.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            int lastExpandedPosition = -1;
+            @Override
+            public void onGroupExpand(int i) {
+                if(lastExpandedPosition != -1 && i != lastExpandedPosition){
+                    expand_dental.collapseGroup(lastExpandedPosition);
+                }
+                lastExpandedPosition = i;
+            }
+        });
+        expand_dental.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+
+                return true;
             }
         });
     }

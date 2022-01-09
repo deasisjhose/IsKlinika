@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Operation"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView76"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView78"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView79"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView82"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView86"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView93"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView94"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Condition"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textView95"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView96"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView97"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView98"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView102"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView104"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView105"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView106"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView107"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView108"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_square_black"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView113"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textView114"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="E"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView115"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="D"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView116"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="C"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView117"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView118"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="A"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView119"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="A"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView120"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView121"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="C"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView122"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="D"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView123"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="E"
+                android:textColor="@color/active_input_text"
+                android:textSize="12sp" />
+        </TableRow>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

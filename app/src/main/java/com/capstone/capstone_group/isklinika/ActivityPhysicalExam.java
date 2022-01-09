@@ -74,22 +74,30 @@ public class ActivityPhysicalExam extends AppCompatActivity implements View.OnCl
         tv_apeSY.setText("SY: " + ape.getSchoolYear());
         tv_apeDate.setText(ape.getApeDate());
         tv_apeDr.setText(ape.getClinician());
+
         tv_apeWeight.setText(ape.getWeight());
-//        tv_apeWeightStatus.setText(ape.get);
-//        if(tv_apeWeightStatus.getText().toString().equals()){
-//
-//        }
+        tv_apeWeightStatus.setText(ape.getWeightStatus());
+        if(!ape.getBmiStatus().equals("Normal")){
+            tv_apeWeightStatus.getBackground().setTint(ContextCompat.getColor(this, R.color.error_container));
+        }else
+            tv_apeWeightStatus.getBackground().setTint(ContextCompat.getColor(this, R.color.green));
+
         tv_apeHeight.setText(ape.getHeight());
-//        tv_apeHeightStatus.setText();
-//            if(tv_apeHeightStatus.getText().toString().equals()){
-//
-//            }
+        tv_apeHeightStatus.setText(ape.getHeightStatus());
+        if(!ape.getBmiStatus().equals("Normal")){
+            tv_apeWeightStatus.getBackground().setTint(ContextCompat.getColor(this, R.color.error_container));
+        }else
+            tv_apeWeightStatus.getBackground().setTint(ContextCompat.getColor(this, R.color.green));
+
         tv_apeBMI.setText(ape.getBmi());
         tv_apeBMIStatus.setText(ape.getBmiStatus());
             if(!ape.getBmiStatus().equals("Normal")){
                 tv_apeBMIStatus.getBackground().setTint(ContextCompat.getColor(this, R.color.error_container));
             }else
                 tv_apeBMIStatus.getBackground().setTint(ContextCompat.getColor(this, R.color.green));
+
+
+
         tv_apeVisionL.setText(ape.getOsVision());
         tv_apevisionR.setText(ape.getOdVision());
         tv_apevisionLGlass.setText(ape.getOsGlasses());

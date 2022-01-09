@@ -108,8 +108,10 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
                 ClassStudentInfo studentInfoUser = new ClassStudentInfo() ;
                 studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
 
-                if(studentInfoUser != null)
+                if(studentInfoUser != null){
+                    studentInfoUser.setIdNum(snapshot.getKey());
                     displayStudent(studentInfoUser);
+                }
                 else
                     Toast.makeText(getBaseContext(), "StudentID does not exist!", Toast.LENGTH_SHORT).show();
             }
@@ -134,7 +136,6 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
         gradeSectionTv.setText(studentInfoUser.getGrade() + "-" + studentInfoUser.getSection()); ;
         studentTypeTv.setText(studentInfoUser.getStudentType()); ;
     }
-
 
     @Override
     public void onClick(View view) {

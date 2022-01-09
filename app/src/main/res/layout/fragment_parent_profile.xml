@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_editProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="4dp"
+        android:clickable="true"
+        app:cardElevation="0dp"
+        app:rippleColor="@color/active_nav_btn"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <view
+            class="com.google.android.material.textview.MaterialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/accent_layout_tester"
+            android:backgroundTint="@color/accent_layout_tester"
+            android:drawableLeft="@drawable/ic_edit"
+            android:drawableTint="@color/active_nav_btn"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_vertical"
+            android:padding="4dp"
+            android:text="EDIT PROFILE"
+            android:textColor="@color/primary_blue"
+            android:textSize="10sp"
+            tools:ignore="TextContrastCheck" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_saveProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="4dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:cardElevation="0dp"
+        app:rippleColor="@color/success_container"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <view
+            class="com.google.android.material.textview.MaterialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/accent_layout_tester"
+            android:backgroundTint="@color/accent_layout_tester"
+            android:drawableLeft="@drawable/check_ic"
+            android:drawableTint="@color/green"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_vertical"
+            android:padding="4dp"
+            android:text="SAVE PROFILE"
+            android:textColor="@color/success_container"
+            android:textSize="10sp"
+            tools:ignore="TextContrastCheck" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <view
+        android:id="@+id/card_personal2"
+        class="com.google.android.material.card.MaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:outlineAmbientShadowColor="@color/indigo"
+        android:outlineProvider="background"
+        android:outlineSpotShadowColor="@color/indigo"
+        app:cardBackgroundColor="@color/accent_layout"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_bottom"
+                    android:drawableLeft="@drawable/ic_person"
+                    android:drawableTint="@color/active_nav_btn"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Personal Information"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_family_restroom_24"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:text="Name"
+                android:textColor="@color/primary_Text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_parentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/helvetica"
+                android:hint="No info available"
+                android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
+                    android:drawableTint="@color/yellow"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Email"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_baseline_phone_24"
+                    android:drawableTint="@color/violet"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Contact"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_parentEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_parentContact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_profile_info"
+                    android:backgroundTint="@color/profile_edit"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:fontFamily="@font/helvetica"
+                    android:hint="No info available"
+                    android:paddingLeft="2dp"
+                    android:textColor="@color/information_text"
+                    android:textColorHighlight="@color/active_edit"
+                    android:textColorLink="@color/active_nav_btn"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </view>
+</LinearLayout>

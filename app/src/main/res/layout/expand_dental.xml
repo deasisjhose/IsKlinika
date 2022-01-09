@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="4dp"
+    app:rippleColor="@color/pastel_orange_inactive">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbtn_dentalDetails"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:gravity="bottom|end"
+                android:paddingLeft="4dp"
+                android:paddingTop="0dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="0dp"
+                android:text="Click here to view details"
+                android:textColor="@color/darkpastelOrange"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView11"
+                app:rippleColor="@color/pastel_orange_inactive" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="1"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur1"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="2"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur2"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="3"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur3"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="4"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur4"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="5"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur5"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="6"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur6"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="7"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur7"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="8"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_ur8"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul1"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="1"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+
+                        android:id="@+id/tv_ul2"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="2"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul3"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="3"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul4"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="4"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul5"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="5"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul6"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="6"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul7"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="7"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ul8"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="8"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="240dp"
+                android:layout_height="340dp"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/dentalchart" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll8"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="8"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll7"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="7"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll6"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="6"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll5"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="5"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll4"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="4"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll3"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="3"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll2"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="2"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_ll1"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="1"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                </TableRow>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="8"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr8"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="7"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr7"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView53"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="6"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr6"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView57"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="5"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr5"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView66"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="4"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr4"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView71"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="3"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr3"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView74"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="2"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr2"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView77"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="3dp"
+                        android:fontFamily="@font/helveticabold"
+                        android:text="1"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_lr1"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="@drawable/border_square"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="11sp" />
+                </TableRow>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

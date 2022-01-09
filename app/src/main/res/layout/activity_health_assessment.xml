@@ -153,13 +153,22 @@
                 app:cardUseCompatPadding="true"
                 app:contentPadding="4dp">
 
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/lineChart_growthChart"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/seekBar1" />
-                <!--android:background="@drawable/border_edge"-->
+                    android:layout_height="match_parent">
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/lineChart_growthChart"
+                            android:layout_width="500dp"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/seekBar1" />
+                    </LinearLayout>
+                </HorizontalScrollView>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
@@ -205,15 +214,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="2dp"
                 android:fontFamily="@font/helvetica"
                 android:text="Dental Examination"
-                android:textColor="#0077FF"
+                android:textColor="@color/darkpastelOrange"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycle_dental"
+            <ExpandableListView
+                android:id="@+id/expand_dental"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

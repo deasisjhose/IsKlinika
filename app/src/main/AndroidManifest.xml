@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IsKlinika">
-        <activity android:name=".ActivityAddPastIllness"></activity>
+        <activity android:name=".ActivityAddIntake"></activity>
+        <activity android:name=".ActivityDentalExam" />
+        <activity android:name=".ActivityAddPastIllness" />
         <activity android:name=".ActivityAddPrescription" />
         <activity android:name=".ActivityAddAllergy" />
         <activity android:name=".ActivityMedicalHistory" />

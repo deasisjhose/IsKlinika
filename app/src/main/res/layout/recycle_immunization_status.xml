@@ -14,8 +14,8 @@
         android:gravity="fill_vertical"
         android:hint="Vaccine Name"
         android:paddingLeft="3dp"
-        android:textColor="#424242"
-        android:textSize="11sp"
+        android:textColor="@color/primary_Text"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
@@ -28,20 +28,20 @@
         android:gravity="center_vertical"
         android:hint="Expected age"
         android:paddingStart="3dp"
-        android:textColor="#4E4D4D"
-        android:textSize="11sp" />
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_recycleVaccineDose"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.7"
         android:fontFamily="@font/helvetica"
         android:gravity="center|center_vertical"
         android:hint="Dosage"
         android:paddingLeft="3dp"
-        android:textColor="#4E4D4D"
-        android:textSize="11sp" />
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_recycleVaccineStatus"
@@ -54,7 +54,7 @@
         android:hint="Status"
         android:scaleX="0.75"
         android:scaleY="0.85"
-        android:textColor="#272525"
-        android:textSize="10sp" />
+        android:textColor="@color/information_text"
+        android:textSize="11sp" />
 
 </TableRow>

@@ -2,25 +2,33 @@ package com.capstone.capstone_group.isklinika;
 
 public class ClassIntakeHistory {
 
-    private String amount ;
-    private String date ;
-    private String medicineName ;
+    private String dateTaken ;
+    private String specificAmount ;
+    private String specificMedicine ;
     private String time ;
 
-    public String getMedicineName() {
-        return medicineName;
+    public String getDateTaken() {
+        return dateTaken;
     }
 
-    public void setMedicineName(String medicineName) {
-        this.medicineName = medicineName;
+    public void setDateTaken(String dateTaken) {
+        this.dateTaken = dateTaken;
     }
 
-    public String getDate() {
-        return date;
+    public String getSpecificAmount() {
+        return specificAmount;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSpecificAmount(String specificAmount) {
+        this.specificAmount = specificAmount;
+    }
+
+    public String getSpecificMedicine() {
+        return specificMedicine;
+    }
+
+    public void setSpecificMedicine(String specificMedicine) {
+        this.specificMedicine = specificMedicine;
     }
 
     public String getTime() {
@@ -31,22 +39,5 @@ public class ClassIntakeHistory {
         this.time = time;
     }
 
-    public String getAmount() {
-        return amount;
-    }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-    @Override
-    public String toString() {
-        return "Class_IntakeHistory{" +
-                "amount='" + amount + '\'' +
-                ", date='" + date + '\'' +
-                ", isClinicVisit=" +
-                ", medicineName='" + medicineName + '\'' +
-                ", time='" + time + '\'' +
-                '}';
-    }
 }

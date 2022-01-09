@@ -62,121 +62,80 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:orientation="vertical"
-                    app:cardBackgroundColor="#FFF4F1"
-                    app:cardCornerRadius="8dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    app:contentPadding="4dp">
+                    android:layout_height="wrap_content"
+                    android:gravity="center|center_vertical">
 
+                    <TextView
+                        android:id="@+id/ds_startDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica"
+                        android:text="Start Date"
+                        android:textColor="#FFCF43"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:id="@+id/dates"
-                        android:layout_width="391dp"
+                    <TextView
+                        android:id="@+id/input_startDate"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/border_circle_outline_yellow"
+                        android:clickable="true"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:hint="YYYY-MM-DD"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="3dp"
+                        android:paddingBottom="2dp"
+                        android:textColor="@color/information_text"
+                        android:textSize="12sp" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/ds_endDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica"
+                        android:text="End Date"
+                        android:textColor="#FFCF43"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/ds_startDate"
-                                    android:layout_width="185dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:fontFamily="@font/helvetica"
-                                    android:text="Start Date"
-                                    android:textColor="@color/primary_Text"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintEnd_toEndOf="@+id/edit_addAllergyType"
-                                    app:layout_constraintHorizontal_bias="0.379"
-                                    app:layout_constraintStart_toEndOf="@+id/textView21"
-                                    app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyType" />
-
-                                <TextView
-                                    android:id="@+id/ds_endDate"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:fontFamily="@font/helvetica"
-                                    android:text="End Date"
-                                    android:textColor="@color/primary_Text"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/edit_addAllergyType" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/input_startDate"
-                                    android:layout_width="185dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
-                                    android:background="@drawable/border_circle"
-                                    android:backgroundTint="#CCDDF6C0"
-                                    android:clickable="true"
-                                    android:fontFamily="@font/helvetica"
-                                    android:hint="(YYYY-MM-DD)"
-                                    android:paddingLeft="6dp"
-                                    android:paddingTop="2dp"
-                                    android:paddingBottom="2dp"
-                                    android:textColor="@color/information_text"
-                                    android:textSize="12sp"
-                                    app:layout_constraintEnd_toEndOf="@+id/edit_addAllergyType"
-                                    app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toStartOf="@+id/textView24"
-                                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-                                <TextView
-                                    android:id="@+id/input_endDate"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
-                                    android:background="@drawable/border_circle"
-                                    android:backgroundTint="#CCDDF6C0"
-                                    android:clickable="true"
-                                    android:fontFamily="@font/helvetica"
-                                    android:hint="(YYYY-MM-DD)"
-                                    android:paddingLeft="6dp"
-                                    android:paddingTop="2dp"
-                                    android:paddingBottom="2dp"
-                                    android:textColor="@color/information_text"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/input_endDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/border_circle_outline_yellow"
+                        android:clickable="true"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center"
+                        android:hint="YYYY-MM-DD"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="3dp"
+                        android:paddingBottom="2dp"
+                        android:textColor="@color/information_text"
+                        android:textSize="12sp" />
+                </TableRow>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="206dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
@@ -187,7 +146,7 @@
 
                     <LinearLayout
                         android:id="@+id/top5Diseases"
-                        android:layout_width="391dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
@@ -200,36 +159,44 @@
                                 android:id="@+id/txt_topDisease"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Top Disease" />
+                                android:fontFamily="@font/helvetica"
+                                android:text="Top Disease"
+                                android:textColor="@color/primary_Text"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/topDiseaseList"
                                 android:layout_width="match_parent"
-                                android:layout_height="153dp"
-                                android:ems="10"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:enabled="false"
+                                android:fontFamily="@font/helvetica"
                                 android:gravity="start|top"
-                                android:inputType="textMultiLine" />
+                                android:inputType="textMultiLine"
+                                android:textColor="@color/information_text"
+                                android:textSize="16sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="206dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
                     app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="true"
                     app:contentPadding="4dp"
-                    app:layout_anchor="@+id/linearLayout4"
                     app:layout_anchorGravity="center">
 
 
                     <LinearLayout
                         android:id="@+id/top5Complaints"
-                        android:layout_width="391dp"
-                        android:layout_height="134dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -241,22 +208,32 @@
                                 android:id="@+id/txt_topComplaints"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Top Complaints" />
+                                android:fontFamily="@font/helvetica"
+                                android:text="Top Complaints"
+                                android:textColor="@color/primary_Text"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/topComplaintsList"
                                 android:layout_width="match_parent"
-                                android:layout_height="153dp"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
                                 android:ems="10"
+                                android:enabled="false"
+                                android:fontFamily="@font/helvetica"
                                 android:gravity="start|top"
-                                android:inputType="textMultiLine" />
+                                android:inputType="textMultiLine"
+                                android:textColor="@color/information_text"
+                                android:textSize="16sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="206dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
@@ -264,23 +241,38 @@
                     app:cardUseCompatPadding="true"
                     app:contentPadding="4dp">
 
-                    <Spinner
-                        android:id="@+id/spinner_disease"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart_diseaseCount"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@+id/seekBar1" />
-                    <!--android:background="@drawable/border_edge"-->
+                        <Spinner
+                            android:id="@+id/spinner_disease"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical" >
+
+                                <com.github.mikephil.charting.charts.BarChart
+                                    android:id="@+id/barChart_diseaseCount"
+                                    android:layout_width="500dp"
+                                    android:layout_height="180dp" />
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="206dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:cardBackgroundColor="#FFF4F1"
                     app:cardCornerRadius="8dp"
@@ -288,22 +280,34 @@
                     app:cardUseCompatPadding="true"
                     app:contentPadding="4dp">
 
-                    <Spinner
-                        android:id="@+id/spinner_complaints"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barChart_complaintCount"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@+id/seekBar1" />
-                    <!--android:background="@drawable/border_edge"-->
+                        <Spinner
+                            android:id="@+id/spinner_complaints"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <com.github.mikephil.charting.charts.BarChart
+                                    android:id="@+id/barChart_complaintCount"
+                                    android:layout_width="500dp"
+                                    android:layout_height="200dp" />
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-
-
 
             </LinearLayout>
         </ScrollView>

@@ -17,12 +17,12 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginTop="15dp" />
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:gravity="center">
 
             <ImageView
@@ -62,6 +62,20 @@
         android:paddingTop="4dp"
         android:paddingRight="16dp">
 
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/border_circle"
+            android:backgroundTint="@color/pastel_red"
+            android:fontFamily="@font/helvetica"
+            android:gravity="center"
+            android:text="Clinic Visit"
+            android:textColor="@color/primary_Text"
+            android:textStyle="bold" />
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,20 +83,12 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView34"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="From:"
-                android:textColor="@color/pastel_red"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/tv_cvFromDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
                 android:background="@drawable/border_circle_outline"
                 android:clickable="true"
                 android:paddingLeft="4dp"
@@ -97,7 +103,8 @@
                 android:id="@+id/textView42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To"
+                android:layout_gravity="center|center_vertical"
+                android:text="-"
                 android:textColor="@color/pastel_red"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -106,7 +113,8 @@
                 android:id="@+id/tv_cvToDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
                 android:background="@drawable/border_circle_outline"
                 android:clickable="true"
                 android:paddingLeft="4dp"
@@ -116,37 +124,20 @@
                 android:text="YYYY-MM-DD"
                 android:textColor="@color/information_text"
                 android:textSize="13sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/textView46"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sort by:"
-                android:textColor="@color/pastel_red"
-                android:textSize="13sp"
-                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner_sort"
-                android:layout_width="130dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="4dp" />
-
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp" />
         </TableRow>
 
         <ExpandableListView
             android:id="@+id/expand_clinicVisit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="12dp" />
 
     </LinearLayout>
 </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

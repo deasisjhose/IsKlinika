@@ -114,7 +114,9 @@ public class AdapaterExpandApe extends BaseExpandableListAdapter {
         tv_examinationDate.setText(ape.getApeDate());
         tv_examinationPhysician.setText(ape.getClinician());
         tv_examinationWeight.setText(ape.getWeight());
+        tv_examinationWeightStatus.setText(ape.getWeightStatus());
         tv_examinationHeight.setText(ape.getHeight());
+        tv_examinationHeightStatus.setText(ape.getHeightStatus());
         tv_examinationBMI.setText(ape.getBmi());
         tv_examinationBMIStatus.setText(ape.getBmiStatus());
 
@@ -123,6 +125,17 @@ public class AdapaterExpandApe extends BaseExpandableListAdapter {
         }else{
             tv_examinationBMIStatus.getBackground().setTint(ContextCompat.getColor(context, R.color.error_container));
         }
+        if(ape.getHeightStatus().equals("Normal")){
+            tv_examinationHeightStatus.getBackground().setTint(ContextCompat.getColor(context, R.color.green));
+        }else{
+            tv_examinationHeightStatus.getBackground().setTint(ContextCompat.getColor(context, R.color.error_container));
+        }
+        if(ape.getWeightStatus().equals("Normal")){
+            tv_examinationWeightStatus.getBackground().setTint(ContextCompat.getColor(context, R.color.green));
+        }else{
+            tv_examinationWeightStatus.getBackground().setTint(ContextCompat.getColor(context, R.color.error_container));
+        }
+
 
         tv_examinationFindings.setText(ape.getConcern());
         tv_examinationRecommendations.setText(ape.getAssess());

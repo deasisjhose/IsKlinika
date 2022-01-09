@@ -32,7 +32,7 @@
                 android:paddingStart="5dp"
                 android:text="Disease"
                 android:textColor="@color/primary_Text"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -44,11 +44,11 @@
                 android:padding="1dp"
                 android:text="Status"
                 android:textColor="@color/primary_Text"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/ibtn_editPast"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -56,7 +56,7 @@
                 app:srcCompat="@drawable/ic_edit" />
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/ibtn_savePast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -70,29 +70,35 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastDisease"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="#CCEEFFDC"
+                android:backgroundTint="@color/past_illness_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/dinpro"
                 android:padding="1dp"
                 android:paddingStart="5dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastStatus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#CCEEFFDC"
+                android:backgroundTint="@color/past_illness_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/dinpro"
                 android:padding="1dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -118,7 +124,7 @@
                 android:paddingStart="5dp"
                 android:text="Start Date"
                 android:textColor="@color/primary_Text"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -129,7 +135,7 @@
                 android:padding="1dp"
                 android:text="End Date"
                 android:textColor="@color/primary_Text"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
         </TableRow>
@@ -138,29 +144,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastStart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="#CCEEFFDC"
+                android:backgroundTint="@color/past_illness_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/dinpro"
                 android:padding="1dp"
                 android:paddingStart="5dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastEnd"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#CCEEFFDC"
+                android:backgroundTint="@color/past_illness_edit"
+                android:clickable="false"
+                android:enabled="false"
                 android:fontFamily="@font/dinpro"
                 android:padding="1dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
         </TableRow>
 
@@ -172,17 +184,20 @@
             android:padding="1dp"
             android:text="Treatment"
             android:textColor="@color/primary_Text"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tv_pastTreatment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#CCEEFFDC"
+            android:backgroundTint="@color/past_illness_edit"
+            android:clickable="false"
+            android:enabled="false"
             android:fontFamily="@font/dinpro"
             android:textColor="@color/information_text"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/textView99"
@@ -193,10 +208,10 @@
             android:fontFamily="@font/helvetica"
             android:text="Notes"
             android:textColor="@color/primary_Text"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tv_pastNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -204,9 +219,12 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="4dp"
             android:background="#CCEEFFDC"
+            android:backgroundTint="@color/past_illness_edit"
+            android:clickable="false"
+            android:enabled="false"
             android:fontFamily="@font/dinpro"
             android:textColor="@color/information_text"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/textView101"
@@ -217,7 +235,7 @@
             android:fontFamily="@font/helvetica"
             android:text="Management Plan"
             android:textColor="@color/primary_Text"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <TextView
@@ -230,7 +248,7 @@
             android:fontFamily="@font/dinpro"
             android:text="none"
             android:textColor="@color/information_text"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -41,10 +41,9 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:background="@color/primary_blue"
+            android:background="@drawable/ripple_search"
             android:backgroundTintMode="multiply"
             android:clickable="true"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:tint="@color/white"
             app:cardElevation="0dp"
             app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
@@ -186,10 +185,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -228,10 +225,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -269,10 +264,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -311,10 +304,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -353,10 +344,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -388,15 +377,15 @@
                     android:background="@drawable/drop_shadow"
                     android:backgroundTint="@color/pastel_green"
                     android:backgroundTintMode="add"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/allergyModule"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
@@ -438,10 +427,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="6dp"
-                        android:background="@drawable/clinician_module"
-                        android:backgroundTint="@color/secondary_blue"
+                        android:background="@drawable/ripple_module"
                         android:clickable="true"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:orientation="horizontal">
 
                         <ImageView

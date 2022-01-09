@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,6 +19,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,7 +37,7 @@ public class FragmentChildrenProfile extends Fragment {
     public DatabaseReference database = db.getReference();
     public DatabaseReference databaseReference= db.getReference("studentInfo");
 
-    private TextView tv_pBirthday, tv_pAge, tv_pSex, tv_pStudentType ;
+    private TextView tv_pBirthday, tv_pAge, tv_pSex, tv_pStudentType, tv_pBMI, tv_pBMIStatus, tv_pWeight, tv_pWeightStatus, tv_pHeight, tv_pHeightStatus ;
     private TextInputEditText tv_pAddress, tv_pReligion, tv_pNationality, tv_pGuardian, tv_pGuardianEmail,  tv_pGuardianContact, tv_pPedia, tv_pPediaEmail, tv_pPediaContact,
             tv_pDentist, tv_pDentistEmail, tv_pDentistContact, tv_pHospital, tv_pHospitalAddress;
     private MaterialCardView mcard_editProfile, mcard_saveProfile ;
@@ -45,7 +47,6 @@ public class FragmentChildrenProfile extends Fragment {
 
     public FragmentChildrenProfile() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +64,13 @@ public class FragmentChildrenProfile extends Fragment {
         this.tv_pStudentType = view.findViewById(R.id.tv_pStudentType) ;
         this.tv_pReligion = view.findViewById(R.id.tv_pReligion) ;
         this.tv_pNationality = view.findViewById(R.id.tv_pNationality) ;
+        this.tv_pBMI = view.findViewById(R.id.tv_pBMI) ;
+        this.tv_pBMIStatus = view.findViewById(R.id.tv_pBMIStatus) ;
+        this.tv_pWeight = view.findViewById(R.id.tv_pWeight) ;
+        this.tv_pWeightStatus = view.findViewById(R.id.tv_pWeightStatus) ;
+        this.tv_pHeight = view.findViewById(R.id.tv_pHeight) ;
+        this.tv_pHeightStatus = view.findViewById(R.id.tv_pHeightStatus) ;
+
 
         this.tv_pGuardian = view.findViewById(R.id.tv_pGuardian) ;
         this.tv_pGuardianEmail = view.findViewById(R.id.tv_pGuardianEmail) ;
@@ -93,23 +101,60 @@ public class FragmentChildrenProfile extends Fragment {
         tv_pStudentType.setText(studentInfo.getStudentType());
         tv_pReligion.setText(studentInfo.getReligion());
         tv_pNationality.setText(studentInfo.getNationality());
+        tv_pBMI.setText(studentInfo.getBmi());
+        tv_pBMIStatus.setText(studentInfo.getBmiStatus());
+        tv_pWeight.setText(studentInfo.getWeight());
+        tv_pWeightStatus.setText(studentInfo.getWeightStatus());
+        tv_pHeight.setText(studentInfo.getHeight());
+        tv_pHeightStatus.setText(studentInfo.getHeightStatus());
+
+        if(studentInfo.getBmiStatus().equals("Normal")){
+            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.green));
+        }else if(studentInfo.getBmiStatus().equals("")){
+            tv_pBMIStatus.setText("No data");
+            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.yellow)) ;
+        } else{
+            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.error_container));
+        }
+
+        if(studentInfo.getHeightStatus().equals("Normal") || studentInfo.getHeightStatus().equals("Above Normal")  ){
+            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.green));
+        }else if(studentInfo.getHeightStatus().equals("")){
+            tv_pHeightStatus.setText("No data");
+            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.yellow)) ;
+        } else{
+            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.error_container));
+        }
+        if(studentInfo.getWeightStatus().equals("Normal")){
+            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.green));
+        }else if(studentInfo.getWeightStatus().equals("")){
+            tv_pWeightStatus.setText("No data");
+            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.yellow)) ;
+        } else{
+            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.error_container));
+        }
+
 
         tv_pGuardian.setText(studentInfo.getGuardianName());
         tv_pGuardianEmail.setText(studentInfo.getGuardianEmail());
+        if(!studentInfo.getGuardianContact().equals("0"))
         tv_pGuardianContact.setText(studentInfo.getGuardianContact());
 
         tv_pPedia.setText(studentInfo.getPediaName());
-        tv_pPediaContact.setText(studentInfo.getPediaContact());
+        if(!studentInfo.getPediaContact().equals("0"))
+            tv_pPediaContact.setText(studentInfo.getPediaContact());
         tv_pPediaEmail.setText(studentInfo.getPediaEmail());
         tv_pDentist.setText(studentInfo.getDentistName());
         tv_pDentistEmail.setText(studentInfo.getDentistEmail());
-        tv_pDentistContact.setText(studentInfo.getDentistContact());
+        if(!studentInfo.getDentistContact().equals("0"))
+            tv_pDentistContact.setText(studentInfo.getDentistContact());
         tv_pHospital.setText(studentInfo.getPreferredHospital());
         tv_pHospitalAddress.setText(studentInfo.getHospitalAddress());
 
 
         if(activity_landing.getUserType().equals("Student"))
             mcard_editProfile.setVisibility(View.GONE);
+
         mcard_editProfile.setOnClickListener(view1 -> {
             mcard_saveProfile.setVisibility(View.VISIBLE);
             mcard_editProfile.setVisibility(View.GONE);
@@ -189,19 +234,19 @@ public class FragmentChildrenProfile extends Fragment {
 
                 HashMap<String, Object> personalValues = new HashMap<>();
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/birthday", tv_pBirthday.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/age", tv_pAge.getText().toString());
+                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/age", Long.parseLong(tv_pAge.getText().toString()));
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/address", tv_pAddress.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/nationality", tv_pNationality.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/religion", tv_pReligion.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianName", tv_pGuardian.getText().toString()) ;
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", tv_pGuardianContact.getText().toString()) ;
+                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianEmail", tv_pGuardianEmail.getText().toString()) ;
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaName", tv_pPedia.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaEmail", tv_pPediaEmail.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", tv_pPediaContact.getText().toString());
+                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistName", tv_pDentist.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistEmail", tv_pDentistEmail.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", tv_pDentistContact.getText().toString());
+                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", Long.parseLong(tv_pDentistContact.getText().toString()));
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/preferredHospital", tv_pHospital.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/hospitalAddress", tv_pHospitalAddress.getText().toString());
 

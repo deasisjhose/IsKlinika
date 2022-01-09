@@ -116,13 +116,15 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
             edit_addPastIllness.setBackgroundColor(Color.parseColor("#FFFD6868"));
         } else {
 
+            ClassPastIllness pastIllness = new ClassPastIllness(edit_addPastIllness.getText().toString(), tv_addPastEnd.getText().toString(), edit_addPastNote.getText().toString(),
+                    tv_addPastStart.getText().toString(), edit_addPastStatus.getText().toString(), edit_addPastTreatment.getText().toString()) ;
 
-//            databaseReference.child("studentHealthHistory/" +idNum + "/pastIllness/").push().setValue().addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-//                Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
-//                resetViews();
-//            }).addOnFailureListener((error) -> {
-//                Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
-//            });
+            databaseReference.child("studentHealthHistory/" +idNum + "/pastIllness/").push().setValue(pastIllness).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                resetViews();
+            }).addOnFailureListener((error) -> {
+                Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
+            });
 
         }
     }

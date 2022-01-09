@@ -6,10 +6,37 @@ import android.os.Parcelable;
 public class ClassApe implements Parcelable {
 
     private String age, allergies, apeDate, assess, bmi, bmiStatus, bp, clinician, concern, diastolic,
-            height, id, medProb, name, odGlasses, odVision, osGlasses, osVision, pr,rr, schoolYear,
-            sf, systolic, temp, weight ;
+            height,heightStatus, id, medProb, name, odGlasses, odVision, osGlasses, osVision, pr,rr, schoolYear,
+            sf, systolic, temp, weight, weightStatus ;
 
     public ClassApe() {
+        this.age = "" ;
+        this.allergies = "" ;
+        this.apeDate = "" ;
+        this.assess = "" ;
+        this.bmi = "" ;
+        this.bmiStatus = "" ;
+        this.bp = "" ;
+        this.clinician = "" ;
+        this.concern = "" ;
+        this.diastolic = "" ;
+        this.height = "" ;
+        this.heightStatus = "" ;
+        this.id = "" ;
+        this.medProb = "" ;
+        this.name = "" ;
+        this.odGlasses = "" ;
+        this.odVision = "" ;
+        this.osGlasses = "" ;
+        this.osVision = "" ;
+        this.pr = "" ;
+        this.rr = "" ;
+        this.schoolYear = "" ;
+        this.sf = "" ;
+        this.systolic = "" ;
+        this.temp = "" ;
+        this.weight = "" ;
+        this.weightStatus = "" ;
     }
 
     protected ClassApe(Parcel in) {
@@ -24,6 +51,7 @@ public class ClassApe implements Parcelable {
         concern = in.readString();
         diastolic = in.readString();
         height = in.readString();
+        heightStatus = in.readString();
         id = in.readString();
         medProb = in.readString();
         name = in.readString();
@@ -38,6 +66,7 @@ public class ClassApe implements Parcelable {
         systolic = in.readString();
         temp = in.readString();
         weight = in.readString();
+        weightStatus = in.readString();
     }
 
     @Override
@@ -53,6 +82,7 @@ public class ClassApe implements Parcelable {
         dest.writeString(concern);
         dest.writeString(diastolic);
         dest.writeString(height);
+        dest.writeString(heightStatus);
         dest.writeString(id);
         dest.writeString(medProb);
         dest.writeString(name);
@@ -67,6 +97,7 @@ public class ClassApe implements Parcelable {
         dest.writeString(systolic);
         dest.writeString(temp);
         dest.writeString(weight);
+        dest.writeString(weightStatus);
     }
 
     @Override
@@ -284,5 +315,21 @@ public class ClassApe implements Parcelable {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public String getHeightStatus() {
+        return heightStatus;
+    }
+
+    public void setHeightStatus(String heightStatus) {
+        this.heightStatus = heightStatus;
+    }
+
+    public String getWeightStatus() {
+        return weightStatus;
+    }
+
+    public void setWeightStatus(String weightStatus) {
+        this.weightStatus = weightStatus;
     }
 }

@@ -12,37 +12,40 @@
         android:fontFamily="@font/helvetica"
         android:gravity="left|center_vertical"
         android:textColor="#2C2B2B"
-        android:textSize="11sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_intakeAmt"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:fontFamily="@font/helveticalight"
         android:gravity="center|center_vertical"
         android:textColor="#2C2B2B"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_intakeDate"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:fontFamily="@font/helveticalight"
         android:gravity="center|center_vertical"
         android:textColor="#2C2B2B"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_intakeTime"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:fontFamily="@font/helveticalight"
         android:gravity="center"
         android:textColor="#2C2B2B"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
 </TableRow>

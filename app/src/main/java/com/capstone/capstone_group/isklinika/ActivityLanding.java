@@ -86,30 +86,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart: ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause: ");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop: ");
-    }
-
     @SuppressLint("ResourceAsColor")
     @Override
     public void buildBar() {
@@ -117,7 +93,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         botNav.btn_nav_home.setOnClickListener(this);
         botNav.btn_nav_profile.setOnClickListener(this);
         botNav.btn_nav_mail.setOnClickListener(this);
-        botNav.btn_nav_modules.setOnClickListener(this);
+        botNav.btn_nav_parent_profile.setOnClickListener(this);
 
         //set active btn tint
         botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
@@ -173,14 +149,13 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                     for(i = 0 ; i < parentInfo.getChildrenSize() ; i++){
                         if(postSnapshot.getKey().equals(parentInfo.getIdNumber(i))){
                             ClassStudentInfo child = postSnapshot.getValue(ClassStudentInfo.class) ;
+                            child.setIdNum(postSnapshot.getKey());
                             childrenInfo.add(child) ;
                         }
                     }
                 }
 
                  makeSpinnerChildren(childrenInfo);
-//                dataInToggleChildren(childrenInfo);
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -265,6 +240,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                     botNav.btn_nav_mail.setIconTint(getColorStateList(R.color.active_nav_btn));
 //                    checkActive = 30 ; //check ative activity
                     mtv_pageTitle.setVisibility(View.VISIBLE);
+                    mtv_pageTitle.setText("Notifications");
                     layout_pageTitle_Children.setVisibility(View.GONE);
                     nestedScrollView.setNestedScrollingEnabled(true);
 
@@ -272,27 +248,26 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit() ;
 
 
-                }
-//                    else if(view.getId() == R.id.btn_nav_modules){
-//                        mbtg_childrenButton.clearChecked();
-//                        setBtnInactive();
-//                        botNav.btn_nav_modules.setIconTint(getColorStateList(R.color.active_nav_btn));
+                } else if(view.getId() == R.id.btn_nav_parent_profile){
+                        mbtg_childrenButton.clearChecked();
+                        setBtnInactive();
+                        botNav.btn_nav_parent_profile.setIconTint(getColorStateList(R.color.active_nav_btn));
 //                        checkActive = 40 ; //check ative activity
-//                        layout_pageTitle_Children.setVisibility(View.GONE);
-//                        mtv_pageTitle.setVisibility(View.VISIBLE);
-//                        mtv_pageTitle.setText("Child Health");
-//                        mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_view_module, null), null, null, null);
-//
-//                        selectedFragment = new FragmentModule() ;
-//                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
-//                    }
+                        layout_pageTitle_Children.setVisibility(View.GONE);
+                        mtv_pageTitle.setVisibility(View.VISIBLE);
+                        mtv_pageTitle.setText("User Profile");
+                        mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_people, null), null, null, null);
+
+                        selectedFragment = new FragmentUserProfile() ;
+                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, selectedFragment).commit() ;
+                    }
     }
 
     public void setBtnInactive(){
         botNav.btn_nav_home.setIconTint(getColorStateList(R.color.inactive_nav_btn));
         botNav.btn_nav_profile.setIconTint(getColorStateList(R.color.inactive_nav_btn));
         botNav.btn_nav_mail.setIconTint(getColorStateList(R.color.inactive_nav_btn));
-        botNav.btn_nav_modules.setIconTint(getColorStateList(R.color.inactive_nav_btn));
+        botNav.btn_nav_parent_profile.setIconTint(getColorStateList(R.color.inactive_nav_btn));
     }
 
     public ClassStudentInfo getStudentInfo(){
@@ -303,5 +278,8 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
     }
     public String getUserType() {
         return userType;
+    }
+    public ClassParentInfo getParentInfo(){
+        return parentInfo ;
     }
 }

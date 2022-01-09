@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -44,6 +45,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
     private ClassStudentInfo studentInfo ;
     private int checkActive ;
     private String userType, studentId ;
+    private ImageButton btn_back ;
 
     private TextView tv_immuneFullName ;
     private MaterialButtonToggleGroup mbtg_immuneChildren, mbtg_immuneTab ;
@@ -75,7 +77,8 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 
     @Override
     public void buildBar() {
-
+        this.btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> finish());
     }
 
     @Override

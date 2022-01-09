@@ -1,6 +1,7 @@
 package com.capstone.capstone_group.isklinika;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,9 +55,11 @@ public class AdapterIntakeHistory extends RecyclerView.Adapter<AdapterIntakeHist
     public void onBindViewHolder(@NonNull AdapterIntakeHistory.IntakeHistoryHolder holder, int position) {
         ClassIntakeHistory intakeHistory = tvData.get(position) ;
 
-        holder.tv_intakeMed.setText(intakeHistory.getMedicineName());
-        holder.tv_intakeAmt.setText(intakeHistory.getAmount());
-        holder.tv_intakeDate.setText(intakeHistory.getDate());
+        if(position % 2 == 0)
+            holder.tr_intake.setBackgroundColor(Color.parseColor("#E1D6FF"));
+        holder.tv_intakeMed.setText(intakeHistory.getSpecificMedicine());
+        holder.tv_intakeAmt.setText(intakeHistory.getSpecificAmount());
+        holder.tv_intakeDate.setText(intakeHistory.getDateTaken());
         holder.tv_intakeTime.setText(intakeHistory.getTime());
 
     }

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="4dp">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/dentalchart" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="4dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView144"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center_horizontal"
+                android:text="Legend: Condition"
+                android:textColor="@color/darkpastelOrange"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView164"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="/"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView146"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="caries free"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView165"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="D"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="dental caries indicated for filling"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView166"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="\\"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="caries indicated for extraction"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView167"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="R"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView141"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="root fragment"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView168"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="M"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView140"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="missing due to caries"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView161"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="Mo"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView139"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="missing due to other causes"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView162"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView138"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="no sign of likely emergence"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView163"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="U"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView137"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="unerupted tooth"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView160"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="M"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView112"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="metal crown"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView159"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="AB"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView111"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="abutment"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView157"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="P"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView109"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="pontic"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView158"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="PJC"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView110"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="jacket corwn"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp"
+                        android:layout_marginLeft="3dp" />
+                </TableRow>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView147"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center_horizontal"
+                android:text="Legend: Operation"
+                android:textColor="@color/darkpastelOrange"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="*A"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="CF"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center"
+                        android:text="X"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView148"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="amalgam filling"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="composite filling"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dinpro"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="0.035"
+                        android:text="extracted due to other causes"
+                        android:textColor="@color/active_input_text"
+                        android:textSize="9sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

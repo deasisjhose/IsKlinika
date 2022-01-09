@@ -5,45 +5,86 @@ import android.os.Parcelable;
 
 public class ClassStudentInfo implements Parcelable {
 
-    private String address, age, birthday, bmi, bmiStatus, dentistContact, dentistEmail, dentistName, fatherContact, fatherEmail,fatherName, firstName, grade, guardianContact,
-            guardianEmail, guardianName, hasSpecialNeeds, height, hospitalAddress, idNum, lastCheckedWandH, lastName, middleName, motherContact, motherEmail, motherName, nationality,
-            pediaContact, pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType, weight ;
+    private Long  age,grade, dentistContact, fatherContact, guardianContact, motherContact, pediaContact;
+    private String address, birthday, bmi, bmiStatus, dentistEmail, dentistName, fatherEmail,fatherName, firstName,
+            guardianEmail, guardianName, hasSpecialNeeds, height, heightStatus, hospitalAddress, idNum, lastCheckedWandH, lastName, middleName,  motherEmail, motherName, nationality,
+            pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType, weight, weightStatus ;
 
 
     public ClassStudentInfo(){
+        this.address = "" ;
+        this.birthday = "" ;
+        this. bmi = "" ;
+        this.bmiStatus = "" ;
+        this.dentistEmail = "" ;
+        this.dentistName = "" ;
+        this.fatherEmail = "" ;
+        this.fatherName = "" ;
+        this.firstName = "" ;
+        this.guardianEmail = "" ;
+        this.guardianName = "" ;
+        this.hasSpecialNeeds = "" ;
+        this.height = "" ;
+        this.heightStatus = "" ;
+        this.hospitalAddress = "" ;
+        this.idNum = "" ;
+        this.lastCheckedWandH = "" ;
+        this.lastName = "" ;
+        this.middleName = "" ;
+        this.motherEmail = "" ;
+        this.motherName = "" ;
+        this.nationality = "" ;
+        this.pediaEmail = "" ;
+        this.pediaName = "" ;
+        this.preferredHospital = "" ;
+        this.religion = "" ;
+        this.section = "" ;
+        this.sex = "" ;
+        this.studentType = "" ;
+        this.weight = "" ;
+        this.weightStatus = "" ;
+
+        this.age = 0L ;
+        this.grade = 0L ;
+        this.dentistContact = 0L ;
+        this.fatherContact = 0L ;
+        this.guardianContact = 0L ;
+        this.motherContact = 0L ;
+        this.pediaContact = 0L ;
 
     }
 
 
     protected ClassStudentInfo(Parcel in) {
         address = in.readString();
-        age = in.readString();
+        age = in.readLong();
         birthday = in.readString();
         bmi = in.readString();
         bmiStatus = in.readString();
-        dentistContact = in.readString();
+        dentistContact = in.readLong();
         dentistEmail = in.readString();
         dentistName = in.readString();
-        fatherContact = in.readString();
+        fatherContact = in.readLong();
         fatherEmail = in.readString();
         fatherName = in.readString();
         firstName = in.readString();
-        grade = in.readString();
-        guardianContact = in.readString();
+        grade = in.readLong();
+        guardianContact = in.readLong();
         guardianEmail = in.readString();
         guardianName = in.readString();
         hasSpecialNeeds = in.readString();
         height = in.readString();
+        heightStatus = in.readString();
         hospitalAddress = in.readString();
         idNum = in.readString();
         lastCheckedWandH = in.readString();
         lastName = in.readString();
         middleName = in.readString();
-        motherContact = in.readString();
+        motherContact = in.readLong();
         motherEmail = in.readString();
         motherName = in.readString();
         nationality = in.readString();
-        pediaContact = in.readString();
+        pediaContact = in.readLong();
         pediaEmail = in.readString();
         pediaName = in.readString();
         preferredHospital = in.readString();
@@ -52,38 +93,40 @@ public class ClassStudentInfo implements Parcelable {
         sex = in.readString();
         studentType = in.readString();
         weight = in.readString();
+        weightStatus = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(address);
-        dest.writeString(age);
+        dest.writeLong(age);
         dest.writeString(birthday);
         dest.writeString(bmi);
         dest.writeString(bmiStatus);
-        dest.writeString(dentistContact);
+        dest.writeLong(dentistContact);
         dest.writeString(dentistEmail);
         dest.writeString(dentistName);
-        dest.writeString(fatherContact);
+        dest.writeLong(fatherContact);
         dest.writeString(fatherEmail);
         dest.writeString(fatherName);
         dest.writeString(firstName);
-        dest.writeString(grade);
-        dest.writeString(guardianContact);
+        dest.writeLong(grade);
+        dest.writeLong(guardianContact);
         dest.writeString(guardianEmail);
         dest.writeString(guardianName);
         dest.writeString(hasSpecialNeeds);
         dest.writeString(height);
+        dest.writeString(heightStatus);
         dest.writeString(hospitalAddress);
         dest.writeString(idNum);
         dest.writeString(lastCheckedWandH);
         dest.writeString(lastName);
         dest.writeString(middleName);
-        dest.writeString(motherContact);
+        dest.writeLong(motherContact);
         dest.writeString(motherEmail);
         dest.writeString(motherName);
         dest.writeString(nationality);
-        dest.writeString(pediaContact);
+        dest.writeLong(pediaContact);
         dest.writeString(pediaEmail);
         dest.writeString(pediaName);
         dest.writeString(preferredHospital);
@@ -92,6 +135,7 @@ public class ClassStudentInfo implements Parcelable {
         dest.writeString(sex);
         dest.writeString(studentType);
         dest.writeString(weight);
+        dest.writeString(weightStatus);
     }
 
     @Override
@@ -111,6 +155,110 @@ public class ClassStudentInfo implements Parcelable {
         }
     };
 
+
+    public void checkNull(){
+        if(address.equals(null)){
+            address = "" ;
+        }
+        if(birthday.equals(null)){
+            birthday = "" ;
+        }
+        if(bmi.equals(null)){
+            bmi = "" ;
+        }
+        if(bmiStatus.equals(null)){
+            bmiStatus = "" ;
+        }
+
+        if(dentistEmail.equals(null)){
+            dentistEmail = "" ;
+        }
+        if(dentistName.equals(null)){
+            dentistName = "" ;
+        }
+
+        if(fatherEmail.equals(null)){
+            fatherEmail = "" ;
+        }
+        if(fatherName.equals(null)){
+            fatherName = "" ;
+        }
+        if(firstName.equals(null)){
+            firstName = "" ;
+        }
+
+
+        if(guardianEmail.equals(null)){
+            guardianEmail = "" ;
+        }
+        if(guardianName.equals(null)){
+            guardianName = "" ;
+        }
+        if(hasSpecialNeeds.equals(null)){
+            hasSpecialNeeds = "" ;
+        }
+        if(height.equals(null)){
+            height = "" ;
+        }
+        if(heightStatus.equals(null)){
+            heightStatus = "" ;
+        }
+        if(hospitalAddress.equals(null)){
+            hospitalAddress = "" ;
+        }
+        if(idNum.equals(null)){
+            idNum = "" ;
+        }
+        if(lastCheckedWandH.equals(null)){
+            lastCheckedWandH = "" ;
+        }
+        if(lastName.equals(null)){
+            lastName = "" ;
+        }
+        if(middleName.equals(null)){
+            middleName = "" ;
+        }
+
+        if(motherEmail.equals(null)){
+            motherEmail = "" ;
+        }
+        if(motherName.equals(null)){
+            motherName = "" ;
+        }
+        if(nationality.equals(null)){
+            nationality = "" ;
+        }
+
+
+        if(pediaEmail.equals(null)){
+            pediaEmail = "" ;
+        }
+        if(pediaName.equals(null)){
+            pediaName = "" ;
+        }
+        if(preferredHospital.equals(null)){
+            preferredHospital = "" ;
+        }
+        if(religion.equals(null)){
+            religion = "" ;
+        }
+        if(section.equals(null)){
+            section = "" ;
+        }
+        if(sex.equals(null)){
+            sex = "" ;
+        }
+        if(studentType.equals(null)){
+            studentType = "" ;
+        }
+        if(weight.equals(null)){
+            weight = "" ;
+        }
+        if(weightStatus.equals(null)){
+            weightStatus = "" ;
+        }
+    }
+
     public String getAddress() {
         return address;
     }
@@ -120,10 +268,10 @@ public class ClassStudentInfo implements Parcelable {
     }
 
     public String getAge() {
-        return age;
+        return age.toString();
     }
 
-    public void setAge(String age) {
+    public void setAge(Long age) {
         this.age = age;
     }
 
@@ -136,10 +284,10 @@ public class ClassStudentInfo implements Parcelable {
     }
 
     public String getDentistContact() {
-        return dentistContact;
+        return dentistContact.toString();
     }
 
-    public void setDentistContact(String dentistContact) {
+    public void setDentistContact(Long dentistContact) {
         this.dentistContact = dentistContact;
     }
 
@@ -160,10 +308,10 @@ public class ClassStudentInfo implements Parcelable {
     }
 
     public String getFatherContact() {
-        return fatherContact;
+        return fatherContact.toString();
     }
 
-    public void setFatherContact(String fatherContact) {
+    public void setFatherContact(Long fatherContact) {
         this.fatherContact = fatherContact;
     }
 
@@ -192,18 +340,18 @@ public class ClassStudentInfo implements Parcelable {
     }
 
     public String getGrade() {
-        return grade;
+        return grade.toString();
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(Long grade) {
         this.grade = grade;
     }
 
     public String getGuardianContact() {
-        return guardianContact;
+        return guardianContact.toString();
     }
 
-    public void setGuardianContact(String guardianContact) {
+    public void setGuardianContact(Long guardianContact) {
         this.guardianContact = guardianContact;
     }
 
@@ -264,10 +412,10 @@ public class ClassStudentInfo implements Parcelable {
     }
 
     public String getMotherContact() {
-        return motherContact;
+        return motherContact.toString();
     }
 
-    public void setMotherContact(String motherContact) {
+    public void setMotherContact(Long motherContact) {
         this.motherContact = motherContact;
     }
 
@@ -296,10 +444,10 @@ public class ClassStudentInfo implements Parcelable {
     }
 
     public String getPediaContact() {
-        return pediaContact;
+        return pediaContact.toString();
     }
 
-    public void setPediaContact(String pediaContact) {
+    public void setPediaContact(long pediaContact) {
         this.pediaContact = pediaContact;
     }
 
@@ -410,5 +558,21 @@ public class ClassStudentInfo implements Parcelable {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public String getHeightStatus() {
+        return heightStatus;
+    }
+
+    public void setHeightStatus(String heightStatus) {
+        this.heightStatus = heightStatus;
+    }
+
+    public String getWeightStatus() {
+        return weightStatus;
+    }
+
+    public void setWeightStatus(String weightStatus) {
+        this.weightStatus = weightStatus;
     }
 }

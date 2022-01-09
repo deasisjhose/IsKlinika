@@ -10,20 +10,31 @@ public class ClassParentInfo implements Parcelable {
 
     private List<String> childrenIds  = new ArrayList<>() ;
     private String email;
+    private String key;
 
     public ClassParentInfo(){
 
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     protected ClassParentInfo(Parcel in) {
         childrenIds = in.createStringArrayList();
         email = in.readString() ;
+        key = in.readString() ;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringList(childrenIds);
         dest.writeString(email);
+        dest.writeString(key);
     }
 
     @Override

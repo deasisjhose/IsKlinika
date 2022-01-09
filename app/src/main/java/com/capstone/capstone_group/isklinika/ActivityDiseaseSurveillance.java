@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -46,6 +47,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     private int checkActive ;
     private String userType, studentId ;
     public String TAG="DISEASESURVEILLANCE//";
+    private ImageButton btn_back ;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
     public DatabaseReference databaseClinicVisit = db.getReference("clinicVisit");
@@ -78,7 +80,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     public void buildBar(){
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
-
+        this.btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> finish());
 
     }
 
@@ -94,7 +97,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
         builder.setTitleText("Select Date (MM-DD-YY)") ;
-        builder.setTheme(R.style.ThemeOverlay_App_DatePicker_MedicalHistory) ;
+        builder.setTheme(R.style.ThemeOverlay_App_DatePicker_DiseaseSurveillance) ;
         builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
 
 
@@ -106,15 +109,18 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             switch (selectedDate){
                 case 10:
                     input_startDate.setText(dateConvert.getConverted());
+                    if(!input_endDate.getText().toString().equals("")){
+                        getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                    }
+
                     break;
                 case 20:
                     input_endDate.setText(dateConvert.getConverted());
-                    getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                    if(!input_startDate.getText().toString().equals(""))
+                        getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
                     break;
             }
         }) ;
-
-
     }
 
     public void checkUser() {
