@@ -7,6 +7,16 @@ public class ClassIntakeHistory {
     private String specificMedicine ;
     private String time ;
 
+    public ClassIntakeHistory() {
+    }
+
+    public ClassIntakeHistory(String dateTaken, String specificAmount, String specificMedicine, String time) {
+        this.dateTaken = dateTaken;
+        this.specificAmount = specificAmount;
+        this.specificMedicine = specificMedicine;
+        this.time = time;
+    }
+
     public String getDateTaken() {
         return dateTaken;
     }

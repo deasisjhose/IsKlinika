@@ -124,7 +124,7 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
     public void addPrescription(){
         if(tv_addPrescriptionStart.getText().toString().equals("") || tv_addPrescriptionStart.getText().toString().equals("YYYY-MM-DD")){
             Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
-            tv_addPrescriptionStart.setBackgroundColor(Color.parseColor("#FFFD6868"));
+            tv_addPrescriptionStart.getBackground().setTint(Color.parseColor("#FFFD6868"));
         } else {
             String amount, endMed, interval, medicine, purpose, startMed,status ;
             amount =  edit_addPrescriptionAmount.getText().toString() ;
@@ -169,6 +169,5 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
         edit_addPrescriptionMedicine.setText("");
         tv_addPrescriptionStart.setText("");
         tv_addPrescriptionEnd.setText("");
-
     }
 }

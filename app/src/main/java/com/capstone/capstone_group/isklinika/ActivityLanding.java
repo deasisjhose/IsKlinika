@@ -33,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ActivityLanding extends AppCompatActivity implements InterfaceIsklinika, View.OnClickListener{
+public class ActivityLanding extends AppCompatActivity implements View.OnClickListener{
 
     //Firebase
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -87,7 +87,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
 
 
     @SuppressLint("ResourceAsColor")
-    @Override
     public void buildBar() {
         this.botNav = new ClassBotnav(this) ;
         botNav.btn_nav_home.setOnClickListener(this);
@@ -105,7 +104,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
         this.mbtg_childrenButton = findViewById(R.id.mbtg_childrenButton) ;
     }
 
-    @Override
     public void buildViews() {
         this.coordinatorLayout = findViewById(R.id.coordinatorLayout);
         this.appBar = findViewById(R.id.appbar) ;
@@ -118,7 +116,6 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
 
     }
 
-    @Override
     public void checkUser() {
         Log.d(TAG, "checkUser: ");
         switch (userType){
@@ -134,8 +131,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
     }
     
 
-    @Override
-    public void retrieveDataParentUser() {
+//    public void retrieveDataParentUser() {
 //        ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
 //
 //        database.child("studentInfo").addValueEventListener(new ValueEventListener() {
@@ -163,7 +159,7 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
 //
 //            }
 //        });
-    }
+//    }
 
     public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){
         this.children = new ArrayList<>() ;

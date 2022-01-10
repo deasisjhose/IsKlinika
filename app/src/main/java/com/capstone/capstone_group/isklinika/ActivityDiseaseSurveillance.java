@@ -367,33 +367,35 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         top5ComplaintsFinal.add(object1);
                     }
                 }
+
+                //DISPLAY TO FRONT END
                 if (!top5DiseaseFinal.isEmpty()){
                     for(i=0;i<top5DiseaseFinal.size();i++){
 
                         switch (i){
                             case 0:
                                 tr_disease1.setVisibility(View.VISIBLE);
-                                tv_disease1.setText(top5DiseaseFinal.get(i).name);
+                                tv_disease1.setText("1. " + top5DiseaseFinal.get(i).name);
                                 tv_diseaseCount1.setText(top5DiseaseFinal.get(i).getCount());
                                 break;
                             case 1:
                                 tr_disease2.setVisibility(View.VISIBLE);
-                                tv_disease2.setText(top5DiseaseFinal.get(i).name);
+                                tv_disease2.setText("2. " + top5DiseaseFinal.get(i).name);
                                 tv_diseaseCount2.setText(top5DiseaseFinal.get(i).getCount());
                                 break;
                             case 2:
                                 tr_disease3.setVisibility(View.VISIBLE);
-                                tv_disease3.setText(top5DiseaseFinal.get(i).name);
+                                tv_disease3.setText("3. " + top5DiseaseFinal.get(i).name);
                                 tv_diseaseCount3.setText(top5DiseaseFinal.get(i).getCount());
                                 break;
                             case 3:
                                 tr_disease4.setVisibility(View.VISIBLE);
-                                tv_disease4.setText(top5DiseaseFinal.get(i).name);
+                                tv_disease4.setText("4. " + top5DiseaseFinal.get(i).name);
                                 tv_diseaseCount4.setText(top5DiseaseFinal.get(i).getCount());
                                 break;
                             case 4:
                                 tr_disease5.setVisibility(View.VISIBLE);
-                                tv_disease5.setText(top5DiseaseFinal.get(i).name);
+                                tv_disease5.setText("5. " + top5DiseaseFinal.get(i).name);
                                 tv_diseaseCount5.setText(top5DiseaseFinal.get(i).getCount());
                                 break;
                         }
@@ -402,34 +404,34 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                     }
                 }
 
-
+                //DISPLAY TO FRONTEND
                 if(!top5ComplaintsFinal.isEmpty()){
                     for(i=0;i<top5ComplaintsFinal.size();i++){
 
                         switch (i){
                             case 0:
                                 tr_complaint1.setVisibility(View.VISIBLE);
-                                tv_complaint1.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaint1.setText("1. " + top5ComplaintsFinal.get(i).name);
                                 tv_complaintCount1.setText(top5ComplaintsFinal.get(i).getCount());
                                 break;
                             case 1:
                                 tr_complaint2.setVisibility(View.VISIBLE);
-                                tv_complaint2.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaint2.setText("2. " + top5ComplaintsFinal.get(i).name);
                                 tv_complaintCount2.setText(top5ComplaintsFinal.get(i).getCount());
                                 break;
                             case 2:
                                 tr_complaint3.setVisibility(View.VISIBLE);
-                                tv_complaint3.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaint3.setText("3. " + top5ComplaintsFinal.get(i).name);
                                 tv_complaintCount3.setText(top5ComplaintsFinal.get(i).getCount());
                                 break;
                             case 3:
                                 tr_complaint4.setVisibility(View.VISIBLE);
-                                tv_complaint4.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaint4.setText("4. " + top5ComplaintsFinal.get(i).name);
                                 tv_complaintCount4.setText(top5ComplaintsFinal.get(i).getCount());
                                 break;
                             case 4:
                                 tr_complaint5.setVisibility(View.VISIBLE);
-                                tv_complaint5.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaint5.setText("5. " + top5ComplaintsFinal.get(i).name);
                                 tv_complaintCount5.setText(top5ComplaintsFinal.get(i).getCount());
                                 break;
                         }
@@ -806,7 +808,10 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         TextView tv_chartDiseaseTitle ;
         tv_chartDiseaseTitle = findViewById(R.id.tv_chartDiseaseTitle) ;
         tv_chartDiseaseTitle.setVisibility(View.VISIBLE);
-        tv_chartDiseaseTitle.setText("Disease Count By Section From: " + input_startDate.getText().toString() + " To: " + input_endDate.getText().toString());
+        ClassDateConvert fromDate, toDate ;
+        fromDate = new ClassDateConvert(0, input_startDate.getText().toString()) ;
+        toDate = new ClassDateConvert(0, input_endDate.getText().toString()) ;
+        tv_chartDiseaseTitle.setText("Disease Count By Section From: " + fromDate.getReversed() + " To: " + toDate.getReversed());
 
         String grade = studentInfo.getGrade() ;
         int i;
@@ -863,7 +868,10 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         TextView tv_chartComplaintTitle ;
         tv_chartComplaintTitle = findViewById(R.id.tv_chartComplaintTitle) ;
         tv_chartComplaintTitle.setVisibility(View.VISIBLE);
-        tv_chartComplaintTitle.setText("Complaint Count By Section From: " + input_startDate.getText().toString() + " To: " + input_endDate.getText().toString());
+        ClassDateConvert fromDate, toDate ;
+        fromDate = new ClassDateConvert(0, input_startDate.getText().toString()) ;
+        toDate = new ClassDateConvert(0, input_endDate.getText().toString()) ;
+        tv_chartComplaintTitle.setText("Complaint Count By Section From: " + fromDate.getReversed() + " To: " + toDate.getReversed());
 
         String grade = studentInfo.getGrade() ;
         int i,j;

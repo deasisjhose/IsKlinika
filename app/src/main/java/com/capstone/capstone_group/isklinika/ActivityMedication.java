@@ -38,6 +38,7 @@ import com.google.firebase.database.annotations.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -85,6 +86,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     private Spinner spinner_sort ;
     private MaterialDatePicker materialDatePicker ;
     private int selectedDate ;
+    private ArrayList<ClassIntakeHistory> intakeHistoryListForSort ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +135,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                     }else if(checkedId == R.id.mbtn_intakeHistory){
                         checkActive = 30 ;
                         if(userType.equals("Parent"))
-                            float_addPrescription.setVisibility(View.GONE);
+                            float_addPrescription.setVisibility(View.VISIBLE);
                         layout_medicationPrescription.setVisibility(View.GONE);
                         layout_medicationAllowedMedicine.setVisibility(View.GONE);
                         layot_intakeHistory.setVisibility(View.VISIBLE);
@@ -520,7 +522,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                         medsAllowed.add(medicineAllowed) ;
                     }else
                         allowedMed.setLastUpdated(postSnapshot.getValue().toString());
-
                 }
                 if(medsAllowed.size() == 0)
                     Toast.makeText(ActivityMedication.this, "No data in allowed medications.", Toast.LENGTH_LONG).show();
@@ -528,9 +529,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
                     allowedMed.setAllowedMedicines(medsAllowed);
                     allowed_updateViews(allowedMed);
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -542,6 +541,13 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     //check == 30 ; From  to
     //this function is used to display the intake history
     public void dataInIntakeHistory(ArrayList<ClassIntakeHistory> intakeHistoryList){
+//        this.intakeHistoryListForSort = intakeHistoryList ;
+
+        if(spinner_sort.getSelectedItem().toString().equals("Latest") && intakeHistoryList.size() > 0){
+            Collections.reverse(intakeHistoryList);
+            Log.d(TAG, "dataInExpandClinicVisit: size = " +intakeHistoryList.size());
+        }
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         this.adapterIntakeHistory= new AdapterIntakeHistory(getBaseContext(), intakeHistoryList, studentId) ;
         this.recycle_intakeHistory = findViewById(R.id.recycle_intakeHistory) ;
@@ -622,17 +628,16 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,R.layout.spinner_medication2) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
         spinner_sort.setAdapter(adapter);
-        spinner_sort.setSelection(0);
-//        prescriptionStatus = spinner_medicationStatus.getSelectedItem().toString() ;
-//        Log.d(TAG, "onItemSelected: selectedSort = " + spinner_medicationStatus.getSelectedItem());
+//        spinner_sort.setSelection(0);
 
         spinner_sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "onItemSelected: selectedSort = " + spinner_sort.getSelectedItem());
-                //sort function
-//                prescriptionStatus = spinner_medicationStatus.getSelectedItem().toString() ;
+
+
                 retrieveIntakeHistory();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -648,9 +653,15 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         }else if (view.getId() == R.id.ibtn_saveAM){
             allowed_save();
         }else if(view.getId() == R.id.float_addPrescription){
-            intent = new Intent(getBaseContext(), ActivityAddPrescription.class) ;
-            intent.putParcelableArrayListExtra("children", children) ;
-            intent.putExtra("currentSelect", spinner_childNameModules.getSelectedItemPosition()) ;
+            if(checkActive == 10){
+                intent = new Intent(getBaseContext(), ActivityAddPrescription.class) ;
+                intent.putParcelableArrayListExtra("children", children) ;
+                intent.putExtra("currentSelect", spinner_childNameModules.getSelectedItemPosition()) ;
+            }else if(checkActive == 30){
+                intent = new Intent(getBaseContext(), ActivityAddIntake.class) ;
+                intent.putParcelableArrayListExtra("children", children) ;
+                intent.putExtra("currentSelect", spinner_childNameModules.getSelectedItemPosition()) ;
+            }
             startActivity(intent);
         }else if(view.getId() == R.id.tv_cvFromDate){
             materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");

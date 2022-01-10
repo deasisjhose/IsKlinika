@@ -260,14 +260,12 @@ public class FragmentChildrenProfile extends Fragment {
             }
         });
 
-
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
         builder.setTitleText("Select Immunization Date") ;
         builder.setTheme(R.style.ThemeOverlay_App_DatePicker_Profile) ;
         builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
         builder.setInputMode(MaterialDatePicker.INPUT_MODE_TEXT) ;
-
-
+        
         this.materialDatePicker = builder.build() ;
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
 

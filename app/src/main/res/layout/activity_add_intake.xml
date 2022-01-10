@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/helveticacompressed"
             android:gravity="center"
-            android:text="Add Prescription"
+            android:text="Add Intake"
             android:textColor="@color/black"
             android:textSize="30sp" />
     </LinearLayout>
@@ -49,7 +49,7 @@
             tools:layout_editor_absoluteY="32dp">
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinner_addPrescriptionChild"
+                android:id="@+id/spinner_addIntakeChild"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -83,24 +83,25 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_addPrescriptionChild" />
+                app:layout_constraintTop_toBottomOf="@+id/spinner_addIntakeChild" />
 
             <view
-                android:id="@+id/mbtn_addPrescriptionCancel"
+                android:id="@+id/mbtn_addIntakeCancel"
                 class="com.google.android.material.button.MaterialButton"
                 android:layout_width="110dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="8dp"
                 android:text="Cancel"
                 android:textSize="10sp"
                 app:backgroundTint="@color/error_container"
                 app:cornerRadius="8dp"
                 app:icon="@drawable/close"
-                app:layout_constraintEnd_toStartOf="@+id/mbtn_addIPrescriptionAdd"
-                tools:layout_editor_absoluteY="311dp" />
+                app:layout_constraintEnd_toStartOf="@+id/mbtn_addIntakeAdd"
+                app:layout_constraintTop_toBottomOf="@+id/tv_addIntakeEnd" />
 
             <view
-                android:id="@+id/mbtn_addIPrescriptionAdd"
+                android:id="@+id/mbtn_addIntakeAdd"
                 class="com.google.android.material.button.MaterialButton"
                 android:layout_width="110dp"
                 android:layout_height="40dp"
@@ -111,10 +112,10 @@
                 app:cornerRadius="8dp"
                 app:icon="@drawable/check_ic"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/mbtn_addPrescriptionCancel" />
+                app:layout_constraintTop_toTopOf="@+id/mbtn_addIntakeCancel" />
 
             <EditText
-                android:id="@+id/edit_addPrescriptionMedicine"
+                android:id="@+id/edit_addIntakeMedicine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -137,16 +138,17 @@
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/helvetica"
                 android:text="Amount"
                 android:textColor="@color/primary_Text"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_addPrescriptionMedicine" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_addIntakeMedicine" />
 
             <EditText
-                android:id="@+id/edit_addPrescriptionAmount"
+                android:id="@+id/edit_addIntakeAmount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -160,6 +162,7 @@
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/edit_addIntakeMedicine"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -174,23 +177,24 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_addPrescriptionAmount" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_addIntakeAmount" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="104dp"
                 android:fontFamily="@font/helvetica"
-                android:text="End Date"
+                android:text="Time"
                 android:textColor="@color/primary_Text"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="@+id/textView21"
-                tools:layout_editor_absoluteX="144dp" />
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toTopOf="@+id/textView21" />
 
             <TextView
-                android:id="@+id/tv_addPrescriptionStart"
-                android:layout_width="0dp"
+                android:id="@+id/tv_addIntakeStart"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
@@ -198,27 +202,27 @@
                 android:backgroundTint="#E1D6FF"
                 android:clickable="true"
                 android:fontFamily="@font/helvetica"
-                android:hint="(YYYY-MM-DD)"
+                android:hint="YYYY-MM-DD"
                 android:paddingLeft="6dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/tv_addPrescriptionEnd"
+                app:layout_constraintEnd_toStartOf="@+id/tv_addIntakeEnd"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
             <TextView
-                android:id="@+id/tv_addPrescriptionEnd"
-                android:layout_width="0dp"
+                android:id="@+id/tv_addIntakeEnd"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/border_circle"
                 android:backgroundTint="#E1D6FF"
                 android:clickable="true"
                 android:fontFamily="@font/helvetica"
-                android:hint="(YYYY-MM-DD)"
-                android:paddingLeft="6dp"
+                android:hint="00:00"
+                android:paddingLeft="8dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"

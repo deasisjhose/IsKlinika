@@ -22,6 +22,11 @@ public class ClassDateConvert {
         this.year = date.substring(0, 3) ;
     }
 
+    public ClassDateConvert(int chr, String date){
+        this.date = date ;
+        reverseConvertMonth();
+        reverseConvert();
+    }
 
     public void convertDateMonth(){
         String wordMonth = date.substring(0,3);
@@ -76,6 +81,60 @@ public class ClassDateConvert {
         this.year = date.substring(7, 11) ;
     }
 
+    public void reverseConvertMonth(){
+        String wordMonth = date.substring(5,7);
+
+        switch (wordMonth){
+            case "01":
+                month = "Jan" ;
+                break;
+            case "02":
+                month = "Feb" ;
+                break;
+            case "03":
+                month = "Mar" ;
+                break;
+            case "04":
+                month = "Apr" ;
+                break;
+            case "05":
+                month = "May" ;
+                break;
+            case "06":
+                month = "Jun" ;
+                break;
+            case "07":
+                month = "Jul" ;
+                break;
+            case "08":
+                month = "Aug" ;
+                break;
+            case "09":
+                month = "Sept" ;
+                break;
+            case "10":
+                month = "Oct" ;
+                break;
+            case "11":
+                month = "Nov" ;
+                break;
+            case "12":
+                month = "Dec" ;
+                break;
+        }
+    }
+
+    public void reverseConvert11(){
+
+    }
+    public void reverseConvert(){
+        this.year = date.substring(0,4) ;
+        this.day = date.substring(8, 10);
+    }
+
+    public String getReversed(){
+        return month + " " + day +"," + year ;
+    }
 
     public String getConverted(){
         return year + "-" + month + "-" + day ;
@@ -104,4 +163,11 @@ public class ClassDateConvert {
     public void setYear(String year) {
         this.year = year;
     }
+
+
+//    public static void main(String[] args) {
+//        ClassDateConvert dateConvert = new ClassDateConvert(0, "2021-01-01") ;
+//
+//        System.out.println(dateConvert.getReversed());
+//    }
 }
