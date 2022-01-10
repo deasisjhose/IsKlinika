@@ -198,6 +198,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     //
     public void buildTop5Builds(){
+        
         this.tr_disease1 = findViewById(R.id.tr_disease1) ;
         this.tr_disease2 = findViewById(R.id.tr_disease2) ;
         this.tr_disease3 = findViewById(R.id.tr_disease3) ;
@@ -257,6 +258,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 String[] parts1;
                 String[] parts2;
                 String[] parts3;
+                String[] checkDiagnosisSplit;
+                String[] checkVisitReasonSplit;
 
                 String topDiseaseString="", topComplaintString="";
 
@@ -264,6 +267,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 ArrayList<nameCount> top5ComplaintsTemp = new ArrayList<nameCount>();
                 ArrayList<nameCount> top5DiseaseFinal = new ArrayList<nameCount>();
                 ArrayList<nameCount> top5ComplaintsFinal = new ArrayList<nameCount>();
+
 
                 parts1=stringStart.split("-");
                 parts2=stringEnd.split("-");
@@ -275,7 +279,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 endDate.set(Calendar.YEAR, Integer.parseInt(parts2[0]));
                 endDate.set(Calendar.MONTH, Integer.parseInt(parts2[1])-1);
                 endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]));
-                Integer checker,checker2,i;
+                Integer checker,checker2,i,splitN;
                 nameCount object1;
 
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
@@ -291,37 +295,70 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
                     //Used to filter based on chosen date range and group according to the diagnosis/visitReason
                     if( ((startDate.before(dataDate)) ||(startDate.equals(dataDate))) && ((dataDate.before(endDate)) ||(dataDate.equals(endDate)))){
-                        if(top5DiseaseTemp.size()==0){
-                            object1= new nameCount(postSnapshot.child("diagnosis").getValue().toString(),1);
-                            top5DiseaseTemp.add(object1);
-                        }
-                        else{
-                            for(i=0; i<top5DiseaseTemp.size();i++){
-                                if( (postSnapshot.child("diagnosis").getValue().toString()).equalsIgnoreCase(top5DiseaseTemp.get(i).name)){
-                                    top5DiseaseTemp.get(i).count=top5DiseaseTemp.get(i).count+1;
-                                    checker=1;
-                                }
-                            }
-                            if(checker==0){
-                                object1= new nameCount(postSnapshot.child("diagnosis").getValue().toString(),1);
-                                top5DiseaseTemp.add(object1);
-                            }
+                        //DIAGNOSIS
+                        if(!postSnapshot.child("diagnosis").getValue().toString().equals("")){
+                            Log.d(TAG,postSnapshot.child("diagnosis").getValue().toString());
                         }
 
-                        if(top5ComplaintsTemp.size()==0){
-                            object1= new nameCount(postSnapshot.child("visitReason").getValue().toString(),1);
-                            top5ComplaintsTemp.add(object1);
+                        if(top5DiseaseTemp.size()==0){
+                            if(!postSnapshot.child("diagnosis").getValue().toString().equals("")){
+                                checkDiagnosisSplit= (postSnapshot.child("diagnosis").getValue().toString()).split(", ");
+                                for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
+                                    object1= new nameCount(checkDiagnosisSplit[splitN],1);
+                                    top5DiseaseTemp.add(object1);
+                                }
+
+                            }
+
                         }
                         else{
-                            for(i=0; i<top5ComplaintsTemp.size();i++){
-                                if( (postSnapshot.child("visitReason").getValue().toString()).equalsIgnoreCase(top5ComplaintsTemp.get(i).name)){
-                                    top5ComplaintsTemp.get(i).count=top5ComplaintsTemp.get(i).count+1;
-                                    checker2=1;
+                            if(!postSnapshot.child("diagnosis").getValue().toString().equals("")){
+                                checkDiagnosisSplit= (postSnapshot.child("diagnosis").getValue().toString()).split(", ");
+                                for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
+                                    checker=0;
+                                    for(i=0; i<top5DiseaseTemp.size();i++){
+                                        if( (checkDiagnosisSplit[splitN]).equalsIgnoreCase(top5DiseaseTemp.get(i).name)){
+                                            top5DiseaseTemp.get(i).count=top5DiseaseTemp.get(i).count+1;
+                                            checker=1;
+                                        }
+                                    }
+                                    if(checker==0){
+                                        object1= new nameCount(checkDiagnosisSplit[splitN],1);
+                                        top5DiseaseTemp.add(object1);
+                                    }
                                 }
                             }
-                            if(checker2==0){
-                                object1= new nameCount(postSnapshot.child("visitReason").getValue().toString(),1);
-                                top5ComplaintsTemp.add(object1);
+                        }
+                        Log.d(TAG,"top 5 Disease Temp"+top5DiseaseTemp);
+
+
+                        //COMPLAINTS
+                        if(top5ComplaintsTemp.size()==0){
+                            if(!postSnapshot.child("visitReason").getValue().toString().equals("")){
+                                checkVisitReasonSplit= (postSnapshot.child("visitReason").getValue().toString()).split(", ");
+                                for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
+                                    object1= new nameCount(checkVisitReasonSplit[splitN],1);
+                                    top5ComplaintsTemp.add(object1);
+                                }
+
+                            }
+                        }
+                        else{
+                            if(!postSnapshot.child("visitReason").getValue().toString().equals("")){
+                                checkVisitReasonSplit= (postSnapshot.child("visitReason").getValue().toString()).split(", ");
+                                for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
+                                    checker2=0;
+                                    for(i=0; i<top5ComplaintsTemp.size();i++){
+                                        if( (checkVisitReasonSplit[splitN]).equalsIgnoreCase(top5ComplaintsTemp.get(i).name)){
+                                            top5ComplaintsTemp.get(i).count=top5ComplaintsTemp.get(i).count+1;
+                                            checker2=1;
+                                        }
+                                    }
+                                    if(checker2==0){
+                                        object1= new nameCount(checkVisitReasonSplit[splitN],1);
+                                        top5ComplaintsTemp.add(object1);
+                                    }
+                                }
                             }
                         }
                     }
