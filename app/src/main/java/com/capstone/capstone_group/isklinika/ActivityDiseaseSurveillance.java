@@ -564,8 +564,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 endDate.set(Calendar.YEAR, Integer.parseInt(parts2[0]));
                 endDate.set(Calendar.MONTH, Integer.parseInt(parts2[1])-1);
                 endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]));
-                Integer checker,checker2,i;
+                Integer checker,checker2,i,splitN;
                 nameCount object1,sec1,sec2,sec3,sec4,sec5,sec6;
+                String[] checkDiagnosisSplit;
 
                 switch(grade){
                     case "1":
@@ -669,11 +670,14 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
                     //Used to filter based on chosen date range and group according to the diagnosis/visitReason
                     if( ((startDate.before(dataDate)) ||(startDate.equals(dataDate))) && ((dataDate.before(endDate)) ||(dataDate.equals(endDate)))){
-                        if(selected.equalsIgnoreCase(postSnapshot.child("diagnosis").getValue().toString())){
-                            for(i=0;i<6;i++){
-                                if(sectionCount.get(i).name.equalsIgnoreCase(postSnapshot.child("section").getValue().toString())){
-                                    sectionCount.get(i).count=sectionCount.get(i).count+1;
-                                    break;
+                        checkDiagnosisSplit=postSnapshot.child("diagnosis").getValue().toString().split(", ");
+                        for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
+                            if(selected.equalsIgnoreCase(checkDiagnosisSplit[splitN])){
+                                for(i=0;i<6;i++){
+                                    if(sectionCount.get(i).name.equalsIgnoreCase(postSnapshot.child("section").getValue().toString())){
+                                        sectionCount.get(i).count=sectionCount.get(i).count+1;
+                                        break;
+                                    }
                                 }
                             }
                         }
@@ -701,9 +705,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 String vDate;
-                String[] parts1;
-                String[] parts2;
-                String[] parts3;
+                String[] parts1,parts2,parts3;
+                String[] checkVisitReasonSplit;
 
                 ArrayList<nameCount> sectionCount = new ArrayList<nameCount>();
 
@@ -717,7 +720,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 endDate.set(Calendar.YEAR, Integer.parseInt(parts2[0]));
                 endDate.set(Calendar.MONTH, Integer.parseInt(parts2[1])-1);
                 endDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts2[2]));
-                Integer checker,checker2,i;
+                Integer checker,checker2,i,splitN;
                 nameCount object1,sec1,sec2,sec3,sec4,sec5,sec6;
 
                 switch(grade){
@@ -822,10 +825,13 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
                     //Used to filter based on chosen date range and group according to the diagnosis/visitReason
                     if( ((startDate.before(dataDate)) ||(startDate.equals(dataDate))) && ((dataDate.before(endDate)) ||(dataDate.equals(endDate)))){
-                        if(selected.equalsIgnoreCase(postSnapshot.child("visitReason").getValue().toString())){
-                            for(i=0;i<6;i++){
-                                if(sectionCount.get(i).name.equalsIgnoreCase(postSnapshot.child("section").getValue().toString())){
-                                    sectionCount.get(i).count=sectionCount.get(i).count+1;
+                        checkVisitReasonSplit=postSnapshot.child("visitReason").getValue().toString().split(", ");
+                        for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
+                            if(selected.equalsIgnoreCase(checkVisitReasonSplit[splitN])){
+                                for(i=0;i<6;i++){
+                                    if(sectionCount.get(i).name.equalsIgnoreCase(postSnapshot.child("section").getValue().toString())){
+                                        sectionCount.get(i).count=sectionCount.get(i).count+1;
+                                    }
                                 }
                             }
                         }
