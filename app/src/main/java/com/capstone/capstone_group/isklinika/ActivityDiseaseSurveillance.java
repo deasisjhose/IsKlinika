@@ -39,7 +39,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-
+//disease
 public class ActivityDiseaseSurveillance extends AppCompatActivity implements View.OnClickListener{
 
     private ArrayList<ClassStudentInfo> children ;
