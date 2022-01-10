@@ -159,11 +159,172 @@
                                 android:id="@+id/txt_topDisease"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/helvetica"
+                                android:fontFamily="@font/helveticabold"
+                                android:gravity="center"
                                 android:text="Top Disease"
                                 android:textColor="@color/primary_Text"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
+
+                            <TableRow
+                                android:id="@+id/tr_disease1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_disease1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_diseaseCount1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_disease2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_disease2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_diseaseCount2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_disease3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_disease3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_diseaseCount3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_disease4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_disease4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_diseaseCount4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_disease5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_disease5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_diseaseCount5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:paddingRight="8dp" />
+                            </TableRow>
 
                             <EditText
                                 android:id="@+id/topDiseaseList"
@@ -176,7 +337,8 @@
                                 android:gravity="start|top"
                                 android:inputType="textMultiLine"
                                 android:textColor="@color/information_text"
-                                android:textSize="16sp" />
+                                android:textSize="16sp"
+                                android:visibility="gone" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -197,7 +359,8 @@
                         android:id="@+id/top5Complaints"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="4dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -208,11 +371,173 @@
                                 android:id="@+id/txt_topComplaints"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/helvetica"
-                                android:text="Top Complaints"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/helveticabold"
+                                android:gravity="center"
+                                android:text="Top Complaints "
                                 android:textColor="@color/primary_Text"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
+
+                            <TableRow
+                                android:id="@+id/tr_complaint1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_complaint1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_complaintCount1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_complaint2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_complaint2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_complaintCount2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_complaint3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_complaint3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_complaintCount3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_complaint4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_complaint4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_complaintCount4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:paddingRight="8dp"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tr_complaint5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_complaint5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/helvetica"
+                                    android:gravity="center_vertical"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_complaintCount5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center_vertical|end"
+                                    android:text="TextView"
+                                    android:textColor="@color/pink"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:paddingRight="8dp" />
+                            </TableRow>
 
                             <EditText
                                 android:id="@+id/topComplaintsList"
@@ -226,7 +551,8 @@
                                 android:gravity="start|top"
                                 android:inputType="textMultiLine"
                                 android:textColor="@color/information_text"
-                                android:textSize="16sp" />
+                                android:textSize="16sp"
+                                android:visibility="gone" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -260,10 +586,26 @@
                                 android:layout_height="match_parent"
                                 android:orientation="vertical" >
 
+                                <TextView
+                                    android:id="@+id/tv_chartDiseaseTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:gravity="center"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp"
+                                    android:visibility="gone" />
+
                                 <com.github.mikephil.charting.charts.BarChart
                                     android:id="@+id/barChart_diseaseCount"
                                     android:layout_width="500dp"
-                                    android:layout_height="180dp" />
+                                    android:layout_height="230dp">
+
+                                </com.github.mikephil.charting.charts.BarChart>
+
                             </LinearLayout>
                         </HorizontalScrollView>
 
@@ -299,10 +641,24 @@
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
 
+                                <TextView
+                                    android:id="@+id/tv_chartComplaintTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/helveticabold"
+                                    android:text="TextView"
+                                    android:textColor="@color/primary_Text"
+                                    android:textSize="15sp"
+                                    android:visibility="gone"
+                                    android:gravity="center" />
+
                                 <com.github.mikephil.charting.charts.BarChart
                                     android:id="@+id/barChart_complaintCount"
                                     android:layout_width="500dp"
-                                    android:layout_height="200dp" />
+                                    android:layout_height="230dp" />
+
                             </LinearLayout>
                         </HorizontalScrollView>
 

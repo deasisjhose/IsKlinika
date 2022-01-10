@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -63,6 +64,10 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     private MaterialDatePicker materialDatePicker ;
     private Spinner spinnerDisease, spinnerComplaints;
     private TextView topDiseaseList, topComplaintList;
+    private TableRow tr_disease1, tr_disease2, tr_disease3, tr_disease4, tr_disease5, tr_complaint1, tr_complaint2, tr_complaint3, tr_complaint4, tr_complaint5 ;
+    private TextView tv_disease1, tv_disease2,  tv_disease3, tv_disease4, tv_disease5, tv_complaint1, tv_complaint2, tv_complaint3, tv_complaint4, tv_complaint5 ;
+    private TextView tv_diseaseCount1, tv_diseaseCount2, tv_diseaseCount3, tv_diseaseCount4, tv_diseaseCount5,
+            tv_complaintCount1,  tv_complaintCount2,  tv_complaintCount3,  tv_complaintCount4,  tv_complaintCount5 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         this.userType = intent.getStringExtra("userType") ;
         buildBar();
         buildView();
+        buildTop5Builds();
         checkUser();
 
     }
@@ -170,23 +176,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         });
     }
 
-    @Override
-    public void onClick(View view) {
-        if(view.getId() == R.id.input_startDate){
-            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
-            selectedDate = 10 ;
-
-        }else if(view.getId() == R.id.input_endDate){
-            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
-            selectedDate = 20 ;
-        }
-    }
-
+    //This is a class
     private static class nameCount{
         public String name;
         public int count;
 
-        public nameCount(String name, Integer count){
+        public nameCount(String name, int count){
             this.name = name;
             this.count = count;
         }
@@ -195,10 +190,62 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         public String toString() {
             return name;
         }
+
+        public String getCount() {
+            return Integer.toString(count);
+        }
+    }
+
+    //
+    public void buildTop5Builds(){
+        this.tr_disease1 = findViewById(R.id.tr_disease1) ;
+        this.tr_disease2 = findViewById(R.id.tr_disease2) ;
+        this.tr_disease3 = findViewById(R.id.tr_disease3) ;
+        this.tr_disease4 = findViewById(R.id.tr_disease4) ;
+        this.tr_disease5 = findViewById(R.id.tr_disease5) ;
+        this.tr_complaint1 = findViewById(R.id.tr_complaint1) ;
+        this.tr_complaint2 = findViewById(R.id.tr_complaint2) ;
+        this.tr_complaint3 = findViewById(R.id.tr_complaint3) ;
+        this.tr_complaint4 = findViewById(R.id.tr_complaint4) ;
+        this.tr_complaint5 = findViewById(R.id.tr_complaint5) ;
+
+        this.tv_disease1 = findViewById(R.id.tv_disease1) ;
+        this.tv_disease2 = findViewById(R.id.tv_disease2) ;
+        this.tv_disease3 = findViewById(R.id.tv_disease3) ;
+        this.tv_disease4 = findViewById(R.id.tv_disease4) ;
+        this.tv_disease5 = findViewById(R.id.tv_disease5) ;
+        this.tv_complaint1 = findViewById(R.id.tv_complaint1) ;
+        this.tv_complaint2 = findViewById(R.id.tv_complaint2) ;
+        this.tv_complaint3 = findViewById(R.id.tv_complaint3) ;
+        this.tv_complaint4 = findViewById(R.id.tv_complaint4) ;
+        this.tv_complaint5 = findViewById(R.id.tv_complaint5) ;
+
+        this.tv_diseaseCount1 = findViewById(R.id.tv_diseaseCount1) ;
+        this.tv_diseaseCount2 = findViewById(R.id.tv_diseaseCount2) ;
+        this.tv_diseaseCount3 = findViewById(R.id.tv_diseaseCount3) ;
+        this.tv_diseaseCount4 = findViewById(R.id.tv_diseaseCount4) ;
+        this.tv_diseaseCount5 = findViewById(R.id.tv_diseaseCount5) ;
+        this.tv_complaintCount1 = findViewById(R.id.tv_complaintCount1) ;
+        this.tv_complaintCount2 = findViewById(R.id.tv_complaintCount2) ;
+        this.tv_complaintCount3 = findViewById(R.id.tv_complaintCount3) ;
+        this.tv_complaintCount4 = findViewById(R.id.tv_complaintCount4) ;
+        this.tv_complaintCount5 = findViewById(R.id.tv_complaintCount5) ;
     }
 
     //This function is used to get and show the top 5 disease and visitReasons
     public void getTop5(String start, String end){
+
+        tr_disease1.setVisibility(View.GONE);
+        tr_disease2.setVisibility(View.GONE);
+        tr_disease3.setVisibility(View.GONE);
+        tr_disease4.setVisibility(View.GONE);
+        tr_disease5.setVisibility(View.GONE);
+
+        tr_complaint1.setVisibility(View.GONE);
+        tr_complaint2.setVisibility(View.GONE);
+        tr_complaint3.setVisibility(View.GONE);
+        tr_complaint4.setVisibility(View.GONE);
+        tr_complaint5.setVisibility(View.GONE);
 
         databaseClinicVisit.addValueEventListener(new ValueEventListener() {
             @Override
@@ -234,18 +281,14 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
                     checker=0;
                     checker2=0;
-//                    Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
-//                    //Log.d(TAG,"postSnapshot Value:"+ postSnapshot.getValue());
-//                    Log.d(TAG,"visitDate:"+ postSnapshot.child("visitDate").getValue());
+
                     vDate= postSnapshot.child("visitDate").getValue().toString();
                     parts3=vDate.split("-");
                     Calendar dataDate = Calendar.getInstance();
                     dataDate.set(Calendar.YEAR, Integer.parseInt(parts3[0]));
                     dataDate.set(Calendar.MONTH, Integer.parseInt(parts3[1])-1);
                     dataDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(parts3[2]));
-//                    Log.d(TAG,"Start Date: " + startDate);
-//                    Log.d(TAG,"End Date: " + endDate);
-//                    Log.d(TAG,"Data Date: " + dataDate);
+
                     //Used to filter based on chosen date range and group according to the diagnosis/visitReason
                     if( ((startDate.before(dataDate)) ||(startDate.equals(dataDate))) && ((dataDate.before(endDate)) ||(dataDate.equals(endDate)))){
                         if(top5DiseaseTemp.size()==0){
@@ -298,6 +341,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                     }
                 });
 
+
                 if(top5DiseaseTemp.size()<=5){
                     for(i=0;i<top5DiseaseTemp.size();i++){
                         object1=new nameCount(top5DiseaseTemp.get(i).name,top5DiseaseTemp.get(i).count);
@@ -323,17 +367,81 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         top5ComplaintsFinal.add(object1);
                     }
                 }
+                if (!top5DiseaseFinal.isEmpty()){
+                    for(i=0;i<top5DiseaseFinal.size();i++){
 
-                for(i=0;i<top5DiseaseFinal.size();i++){
+                        switch (i){
+                            case 0:
+                                tr_disease1.setVisibility(View.VISIBLE);
+                                tv_disease1.setText(top5DiseaseFinal.get(i).name);
+                                tv_diseaseCount1.setText(top5DiseaseFinal.get(i).getCount());
+                                break;
+                            case 1:
+                                tr_disease2.setVisibility(View.VISIBLE);
+                                tv_disease2.setText(top5DiseaseFinal.get(i).name);
+                                tv_diseaseCount2.setText(top5DiseaseFinal.get(i).getCount());
+                                break;
+                            case 2:
+                                tr_disease3.setVisibility(View.VISIBLE);
+                                tv_disease3.setText(top5DiseaseFinal.get(i).name);
+                                tv_diseaseCount3.setText(top5DiseaseFinal.get(i).getCount());
+                                break;
+                            case 3:
+                                tr_disease4.setVisibility(View.VISIBLE);
+                                tv_disease4.setText(top5DiseaseFinal.get(i).name);
+                                tv_diseaseCount4.setText(top5DiseaseFinal.get(i).getCount());
+                                break;
+                            case 4:
+                                tr_disease5.setVisibility(View.VISIBLE);
+                                tv_disease5.setText(top5DiseaseFinal.get(i).name);
+                                tv_diseaseCount5.setText(top5DiseaseFinal.get(i).getCount());
+                                break;
+                        }
 
-                    topDiseaseString=topDiseaseString+top5DiseaseFinal.get(i).name + "(Count: " + top5DiseaseFinal.get(i).count + ")" + "\n";
-
+//                    topDiseaseString=topDiseaseString+top5DiseaseFinal.get(i).name + "(Count: " + top5DiseaseFinal.get(i).count + ")" + "\n";
+                    }
                 }
-                for(i=0;i<top5ComplaintsFinal.size();i++){
-                    topComplaintString=topComplaintString+ top5ComplaintsFinal.get(i).name + "(Count: " + top5ComplaintsFinal.get(i).count + ")" + "\n";
+
+
+                if(!top5ComplaintsFinal.isEmpty()){
+                    for(i=0;i<top5ComplaintsFinal.size();i++){
+
+                        switch (i){
+                            case 0:
+                                tr_complaint1.setVisibility(View.VISIBLE);
+                                tv_complaint1.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaintCount1.setText(top5ComplaintsFinal.get(i).getCount());
+                                break;
+                            case 1:
+                                tr_complaint2.setVisibility(View.VISIBLE);
+                                tv_complaint2.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaintCount2.setText(top5ComplaintsFinal.get(i).getCount());
+                                break;
+                            case 2:
+                                tr_complaint3.setVisibility(View.VISIBLE);
+                                tv_complaint3.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaintCount3.setText(top5ComplaintsFinal.get(i).getCount());
+                                break;
+                            case 3:
+                                tr_complaint4.setVisibility(View.VISIBLE);
+                                tv_complaint4.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaintCount4.setText(top5ComplaintsFinal.get(i).getCount());
+                                break;
+                            case 4:
+                                tr_complaint5.setVisibility(View.VISIBLE);
+                                tv_complaint5.setText(top5ComplaintsFinal.get(i).name);
+                                tv_complaintCount5.setText(top5ComplaintsFinal.get(i).getCount());
+                                break;
+                        }
+
+//                    topComplaintString=topComplaintString+ top5ComplaintsFinal.get(i).name + "(Count: " + top5ComplaintsFinal.get(i).count + ")" + "\n";
+                    }
                 }
-                topDiseaseList.setText(topDiseaseString);
-                topComplaintList.setText(topComplaintString);
+
+
+
+//                topDiseaseList.setText(topDiseaseString);
+//                topComplaintList.setText(topComplaintString);
 
                 makeSpinnerDisease(top5DiseaseFinal);
                 makeSpinnerComplaints(top5ComplaintsFinal);
@@ -360,7 +468,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                String selectedDisease = top5DiseaseFinal.get(position).name;
                getCountBySectionDisease(selectedDisease);
-               //retrieveDataVaxList();
+                getCountBySectionComplaint(selectedDisease);
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -380,7 +489,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedComplaint = top5ComplaintsFinal.get(position).name;
                 getCountBySectionComplaint(selectedComplaint);
-                //retrieveDataVaxList();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -511,9 +620,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
                     checker=0;
                     checker2=0;
-//                    Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
-//                    //Log.d(TAG,"postSnapshot Value:"+ postSnapshot.getValue());
-//                    Log.d(TAG,"visitDate:"+ postSnapshot.child("visitDate").getValue());
+
                     vDate= postSnapshot.child("visitDate").getValue().toString();
                     parts3=vDate.split("-");
                     Calendar dataDate = Calendar.getInstance();
@@ -666,9 +773,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
                     checker=0;
                     checker2=0;
-//                    Log.d(TAG, "postSnapshot Key: "+postSnapshot.getKey());
-//                    //Log.d(TAG,"postSnapshot Value:"+ postSnapshot.getValue());
-//                    Log.d(TAG,"visitDate:"+ postSnapshot.child("visitDate").getValue());
+
                     vDate= postSnapshot.child("visitDate").getValue().toString();
                     parts3=vDate.split("-");
                     Calendar dataDate = Calendar.getInstance();
@@ -698,6 +803,11 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     }
 
     public void makeDiseaseCountChart(ArrayList<nameCount> sectionCount, String selected){
+        TextView tv_chartDiseaseTitle ;
+        tv_chartDiseaseTitle = findViewById(R.id.tv_chartDiseaseTitle) ;
+        tv_chartDiseaseTitle.setVisibility(View.VISIBLE);
+        tv_chartDiseaseTitle.setText("Disease Count By Section From: " + input_startDate.getText().toString() + " To: " + input_endDate.getText().toString());
+
         String grade = studentInfo.getGrade() ;
         int i;
         ArrayList<BarEntry> diseaseCountData = new ArrayList<BarEntry>();
@@ -729,9 +839,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         }
 
         BarDataSet diseaseCount = new BarDataSet(diseaseCountData,"Disease count in other sections Grade " + grade);
-        diseaseCount.setColor(Color.BLUE);
+        diseaseCount.setColor(Color.parseColor("#F4C22F"));
         BarDataSet chosenDiseaseCount = new BarDataSet(chosenDiseaseCountData,"Disease count in child's section");
-        chosenDiseaseCount.setColor(Color.RED);
+        chosenDiseaseCount.setColor(Color.parseColor("#f282a7"));
         BarData barData = new BarData();
         barData.addDataSet(chosenDiseaseCount);
         barData.addDataSet(diseaseCount);
@@ -749,6 +859,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     }
 
     public void makeComplaintCountChart(ArrayList<nameCount> sectionCount,String selected){
+
+        TextView tv_chartComplaintTitle ;
+        tv_chartComplaintTitle = findViewById(R.id.tv_chartComplaintTitle) ;
+        tv_chartComplaintTitle.setVisibility(View.VISIBLE);
+        tv_chartComplaintTitle.setText("Complaint Count By Section From: " + input_startDate.getText().toString() + " To: " + input_endDate.getText().toString());
+
         String grade = studentInfo.getGrade() ;
         int i,j;
         ArrayList<BarEntry> complaintCountData = new ArrayList<BarEntry>();
@@ -773,9 +889,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         }
 
         BarDataSet complaintCount = new BarDataSet(complaintCountData,"Complaint count in other sections Grade " + grade);
-        complaintCount.setColor(Color.BLUE);
+        complaintCount.setColor(Color.parseColor("#F4C22F"));
         BarDataSet chosenComplaintCount = new BarDataSet(chosenComplaintCountData,"Complaint count in child's section");
-        chosenComplaintCount.setColor((Color.RED));
+        chosenComplaintCount.setColor(Color.parseColor("#f282a7"));
         BarData barData = new BarData();
         barData.addDataSet(chosenComplaintCount);
         barData.addDataSet(complaintCount);
@@ -790,6 +906,18 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         complaintCountBarChart.invalidate();
 
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.input_startDate){
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 10 ;
+
+        }else if(view.getId() == R.id.input_endDate){
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 20 ;
+        }
     }
 
 }

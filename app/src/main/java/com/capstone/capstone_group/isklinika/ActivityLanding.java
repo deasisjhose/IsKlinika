@@ -127,7 +127,8 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
                 break;
             case "Parent":
                 this.parentInfo = intent.getParcelableExtra("parentInfo") ;
-                retrieveDataParentUser();
+                makeSpinnerChildren(intent.getParcelableArrayListExtra("children"));
+//                retrieveDataParentUser();
                 break;
         }
     }
@@ -135,33 +136,33 @@ public class ActivityLanding extends AppCompatActivity implements InterfaceIskli
 
     @Override
     public void retrieveDataParentUser() {
-        ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
-
-        database.child("studentInfo").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(childrenInfo.size() != 0){
-                    childrenInfo.clear();
-                }
-                int i ;
-                for (DataSnapshot postSnapshot: snapshot.getChildren()){
-
-                    for(i = 0 ; i < parentInfo.getChildrenSize() ; i++){
-                        if(postSnapshot.getKey().equals(parentInfo.getIdNumber(i))){
-                            ClassStudentInfo child = postSnapshot.getValue(ClassStudentInfo.class) ;
-                            child.setIdNum(postSnapshot.getKey());
-                            childrenInfo.add(child) ;
-                        }
-                    }
-                }
-
-                 makeSpinnerChildren(childrenInfo);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
+//
+//        database.child("studentInfo").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(childrenInfo.size() != 0){
+//                    childrenInfo.clear();
+//                }
+//                int i ;
+//                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+//
+//                    for(i = 0 ; i < parentInfo.getChildrenSize() ; i++){
+//                        if(postSnapshot.getKey().equals(parentInfo.getIdNumber(i))){
+//                            ClassStudentInfo child = postSnapshot.getValue(ClassStudentInfo.class) ;
+//                            child.setIdNum(postSnapshot.getKey());
+//                            childrenInfo.add(child) ;
+//                        }
+//                    }
+//                }
+//
+//                 makeSpinnerChildren(childrenInfo);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 
     public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){

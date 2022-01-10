@@ -26,10 +26,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    public  DatabaseReference studentInfoReference = db.getReference("studentInfo") ;
     public DatabaseReference studentReference= db.getReference("studentUsers");
     public DatabaseReference parentReference= db.getReference("parentUsers");
     public DatabaseReference clinicReference= db.getReference("clinicUsers");
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             if(snapshot.exists()){  // if the id number exists in the database
                                 if(snapshot.child("password").getValue().equals(pass)){ // matches password in the database
 
-                                    DatabaseReference studentInfoReference = db.getReference("studentInfo") ;
+
 
                                     studentInfoReference.child(idNum).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
@@ -199,11 +202,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             }
                                             parentUser.setKey(snapshot.getKey());
 
-                                            intent = new Intent(getBaseContext(), ActivityLanding.class);
-                                            intent.putExtra("userType", "Parent") ;
-//                                            intent.putExtra("parentKey", key) ;
-                                            intent.putExtra("parentInfo", parentUser);
-                                            startActivity(intent);
+
+                                            retrieveDataParentUser(parentUser) ;
                                         }
 
                                         @Override
@@ -278,7 +278,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void retrieveDataParentUser(ClassParentInfo parentUser) {
+        ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
 
+        studentInfoReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(childrenInfo.size() != 0){
+                    childrenInfo.clear();
+                }
+                int i ;
+                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+
+                    for(i = 0 ; i < parentUser.getChildrenSize() ; i++){
+                        if(postSnapshot.getKey().equals(parentUser.getIdNumber(i))){
+                            ClassStudentInfo child = postSnapshot.getValue(ClassStudentInfo.class) ;
+                            child.setIdNum(postSnapshot.getKey());
+                            childrenInfo.add(child) ;
+                        }
+                    }
+                }
+
+                intent = new Intent(getBaseContext(), ActivityLanding.class);
+                intent.putExtra("userType", "Parent") ;
+                intent.putParcelableArrayListExtra("children", childrenInfo) ;
+                intent.putExtra("parentInfo", parentUser);
+                Log.d(TAG, "onDataChange: "+ parentUser.toString());
+                startActivity(intent);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 
 }

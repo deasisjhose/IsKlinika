@@ -8,12 +8,12 @@ import java.util.List;
 
 public class ClassParentInfo implements Parcelable {
 
-    private List<String> childrenIds  = new ArrayList<>() ;
+    private List<String> childrenIds;
     private String email;
     private String key;
 
     public ClassParentInfo(){
-
+        this.childrenIds  = new ArrayList<>() ;
     }
 
     public String getKey() {
@@ -80,5 +80,12 @@ public class ClassParentInfo implements Parcelable {
 
     public  void addChild(String childId){
         childrenIds.add(childId) ;
+    }
+
+    @Override
+    public String toString() {
+        return "ClassParentInfo{" +
+                "email='" + email + '\'' + "childrenSize='" + getChildrenSize() + '\'' +
+                '}';
     }
 }
