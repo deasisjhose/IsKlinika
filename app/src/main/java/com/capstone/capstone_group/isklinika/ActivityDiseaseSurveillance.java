@@ -134,14 +134,35 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                 case 10:
                     input_startDate.setText(dateConvert.getConverted());
                     if(!input_endDate.getText().toString().equals("")){
-                        getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        if(input_startDate.getText().toString().compareTo(input_endDate.getText().toString())==0){
+                            getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        }
+                        else if(input_startDate.getText().toString().compareTo(input_endDate.getText().toString())<0){
+                            getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        }
+                        else{
+                            input_startDate.setText(input_endDate.getText().toString());
+                            getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        }
                     }
+
                     break;
 
                 case 20:
                     input_endDate.setText(dateConvert.getConverted());
-                    if(!input_startDate.getText().toString().equals(""))
-                        getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                    if(!input_startDate.getText().toString().equals("")){
+                        if(input_startDate.getText().toString().compareTo(input_endDate.getText().toString())==0){
+                            getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        }
+                        else if(input_endDate.getText().toString().compareTo(input_startDate.getText().toString())<0){
+                            input_endDate.setText(input_startDate.getText().toString());
+                            getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        }
+                        else{
+                            getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+                        }
+                    }
+
                     break;
             }
         }) ;
