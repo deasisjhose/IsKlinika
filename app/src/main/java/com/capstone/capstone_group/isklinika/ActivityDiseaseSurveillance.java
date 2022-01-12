@@ -99,6 +99,24 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
         input_startDate.setOnClickListener(this);
         input_endDate.setOnClickListener(this);
+        if(input_startDate.getText().toString().equals("") && input_endDate.getText().toString().equals("")){
+            Calendar cal = Calendar.getInstance();
+            int lastDay = cal.getActualMaximum(Calendar.DATE);
+            int firstDay = cal.getActualMinimum(Calendar.DATE);
+            int currMonth=cal.get(Calendar.MONTH);
+            int currYear=cal.get(Calendar.YEAR);
+            if((currMonth+1)<10){
+                input_startDate.setText(currYear + "-0" + (currMonth+1) + "-0" + firstDay);
+                input_endDate.setText(currYear + "-0" + (currMonth+1) + "-" + lastDay);
+                //getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+            }
+            else{
+                input_startDate.setText(currYear + "-" + (currMonth+1) + "-0" + firstDay);
+                input_endDate.setText(currYear + "-" + (currMonth+1) + "-" + lastDay);
+                //getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
+            }
+
+        }
 
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
@@ -118,8 +136,8 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                     if(!input_endDate.getText().toString().equals("")){
                         getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
                     }
-
                     break;
+
                 case 20:
                     input_endDate.setText(dateConvert.getConverted());
                     if(!input_startDate.getText().toString().equals(""))
