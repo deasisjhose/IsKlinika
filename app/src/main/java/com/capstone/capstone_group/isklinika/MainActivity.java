@@ -16,9 +16,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.radiobutton.MaterialRadioButton;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -224,56 +228,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
             } else if(radio_clinician.isChecked()){ // if user is clinician
-                intent = new Intent(getBaseContext(), ActivityClinicianLanding.class);
-                intent.putExtra("userType", "Clinician") ;
-                startActivity(intent);
+
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
-                Query query = clinicReference.child(idNum);
-//                query.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if(idNum.isEmpty() && !pass.isEmpty()){
-//                            Toast.makeText(MainActivity.this, "Please enter email.", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else if(!idNum.isEmpty() && pass.isEmpty()){
-//                            Toast.makeText(MainActivity.this, "Please enter password.", Toast.LENGTH_SHORT).show();
-//                        } else if(idNum.isEmpty() && pass.isEmpty()){
-//                            Toast.makeText(MainActivity.this, "Please enter email and password.", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else {
-//                            auth.signInWithEmailAndPassword(idNum, pass)
-//                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                                            if(task.isSuccessful()) {
-//                                                Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-////                                intent = new Intent(getBaseContext(), Landing.class);
-////                                intent.putExtra("id",idNum.toString());
-////                                startActivity(intent);
-//                                            } else {
-//                                                String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
-//
-//                                                if(errorCode.equalsIgnoreCase("ERROR_WRONG_PASSWORD")){
-//                                                    Toast.makeText(MainActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
-//                                                } else if(errorCode.equalsIgnoreCase("ERROR_INVALID_EMAIL")){
-//                                                    Toast.makeText(MainActivity.this, "Please enter a valid email!", Toast.LENGTH_SHORT).show();
-//                                                } else if(errorCode.equalsIgnoreCase("ERROR_USER_NOT_FOUND")) {
-//                                                    Toast.makeText(MainActivity.this, "No user with such email!", Toast.LENGTH_SHORT).show();
-//                                                } else if(errorCode.equalsIgnoreCase("ERROR_USER_DISABLED")) {
-//                                                    Toast.makeText(MainActivity.this, "Account disabled by Admin!.", Toast.LENGTH_SHORT).show();
-//                                                } else{
-//                                                    Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                                                }
-//                                            }
-//                                        }
-//                                    });
-//                        }
-//                    }
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        throw error.toException();
-//                    }
-//                });
+                Query query = clinicReference;
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(idNum.isEmpty() && !pass.isEmpty()){
+                            Toast.makeText(MainActivity.this, "Please enter email.", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(!idNum.isEmpty() && pass.isEmpty()){
+                            Toast.makeText(MainActivity.this, "Please enter password.", Toast.LENGTH_SHORT).show();
+                        } else if(idNum.isEmpty() && pass.isEmpty()){
+                            Toast.makeText(MainActivity.this, "Please enter email and password.", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            auth.signInWithEmailAndPassword(idNum, pass)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()) {
+                                        Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                                        intent = new Intent(getBaseContext(), ActivityClinicianLanding.class);
+                                        intent.putExtra("userType", "Clinician") ;
+                                        startActivity(intent);
+                                    } else {
+                                        String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+
+                                        if(errorCode.equalsIgnoreCase("ERROR_WRONG_PASSWORD")){
+                                            Toast.makeText(MainActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
+                                        } else if(errorCode.equalsIgnoreCase("ERROR_INVALID_EMAIL")){
+                                            Toast.makeText(MainActivity.this, "Please enter a valid email!", Toast.LENGTH_SHORT).show();
+                                        } else if(errorCode.equalsIgnoreCase("ERROR_USER_NOT_FOUND")) {
+                                            Toast.makeText(MainActivity.this, "No user with such email!", Toast.LENGTH_SHORT).show();
+                                        } else if(errorCode.equalsIgnoreCase("ERROR_USER_DISABLED")) {
+                                            Toast.makeText(MainActivity.this, "Account disabled by Admin!.", Toast.LENGTH_SHORT).show();
+                                        } else{
+                                            Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        throw error.toException();
+                    }
+                });
             }
         }
     }
