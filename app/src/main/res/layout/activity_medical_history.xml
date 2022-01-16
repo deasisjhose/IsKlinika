@@ -208,7 +208,7 @@
             android:visibility="gone">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/ibtn_editAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"

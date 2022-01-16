@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class AdapaterExpandPastIllness extends BaseExpandableListAdapter {
+public class AdapaterExpandPastIllness extends BaseExpandableListAdapter implements View.OnClickListener{
 
     private Context context;
     private Map<ClassPastIllness, ClassPastIllness> pastIllnessMap  ;
@@ -114,7 +114,22 @@ public class AdapaterExpandPastIllness extends BaseExpandableListAdapter {
         tv_pastTreatment.setText(pastIllness.getTreatment());
         tv_pastNotes.setText(pastIllness.getNotes());
 
-        ibtn_editPast.setOnClickListener(view1 -> {
+        ibtn_editPast.setOnClickListener(this) ;
+        ibtn_savePast.setOnClickListener(this) ;
+
+
+
+        return view ;
+    }
+
+    @Override
+    public boolean isChildSelectable(int i, int i1) {
+        return false;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.ibtn_editPast){
             ibtn_editPast.setVisibility(View.GONE);
             ibtn_savePast.setVisibility(View.VISIBLE);
 
@@ -131,38 +146,22 @@ public class AdapaterExpandPastIllness extends BaseExpandableListAdapter {
             tv_pastNotes.setClickable(true);
             tv_pastNotes.setEnabled(true);
 
-        });
+        }else if(view.getId() == R.id.ibtn_savePast){
+            ibtn_editPast.setVisibility(View.VISIBLE);
+            ibtn_savePast.setVisibility(View.GONE);
 
-        ibtn_savePast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("MEDICALHISTORY//", "onClick: SAVE");
-                ibtn_savePast.setVisibility(View.GONE);
-                ibtn_editPast.setVisibility(View.VISIBLE);
-
-
-                tv_pastDisease.setClickable(false);
-                tv_pastDisease.setEnabled(false);
-                tv_pastStatus.setClickable(false);
-                tv_pastStatus.setEnabled(false);
-                tv_pastStart.setClickable(false);
-                tv_pastStart.setEnabled(false);
-                tv_pastEnd.setClickable(false);
-                tv_pastEnd.setEnabled(false);
-                tv_pastTreatment.setClickable(false);
-                tv_pastTreatment.setEnabled(false);
-                tv_pastNotes.setClickable(false);
-                tv_pastNotes.setEnabled(false);
-            }
-        }) ;
-
-
-
-        return view ;
-    }
-
-    @Override
-    public boolean isChildSelectable(int i, int i1) {
-        return false;
+            tv_pastDisease.setClickable(false);
+            tv_pastDisease.setEnabled(false);
+            tv_pastStatus.setClickable(false);
+            tv_pastStatus.setEnabled(false);
+            tv_pastStart.setClickable(false);
+            tv_pastStart.setEnabled(false);
+            tv_pastEnd.setClickable(false);
+            tv_pastEnd.setEnabled(false);
+            tv_pastTreatment.setClickable(false);
+            tv_pastTreatment.setEnabled(false);
+            tv_pastNotes.setClickable(false);
+            tv_pastNotes.setEnabled(false);
+        }
     }
 }

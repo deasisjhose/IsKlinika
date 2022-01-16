@@ -80,7 +80,7 @@ public class AdapterImmunizationHistory extends RecyclerView.Adapter<AdapterImmu
                     holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_yellow);
                 }
             }else{
-                if(matchCounter == Integer.parseInt(String.valueOf(dose.charAt(0))) || matchCounter == Integer.parseInt(String.valueOf(dose.charAt(2)))){
+                if(matchCounter >= Integer.parseInt(String.valueOf(dose.charAt(0))) || matchCounter <= Integer.parseInt(String.valueOf(dose.charAt(2)))){
                     holder.tv_recycleVaccineStatus.setText("Complete");
                     holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_green);
                 } else if(matchCounter < Integer.parseInt(String.valueOf(dose.charAt(0)))){

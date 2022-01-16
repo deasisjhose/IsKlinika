@@ -239,17 +239,20 @@ public class FragmentChildrenProfile extends Fragment {
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/nationality", tv_pNationality.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/religion", tv_pReligion.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianName", tv_pGuardian.getText().toString()) ;
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianEmail", tv_pGuardianEmail.getText().toString()) ;
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaName", tv_pPedia.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaEmail", tv_pPediaEmail.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistName", tv_pDentist.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistEmail", tv_pDentistEmail.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", Long.parseLong(tv_pDentistContact.getText().toString()));
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/preferredHospital", tv_pHospital.getText().toString());
                 personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/hospitalAddress", tv_pHospitalAddress.getText().toString());
 
+                if(!tv_pGuardianContact.getText().toString().equals(""))
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
+                if(!tv_pPediaContact.getText().toString().equals(""))
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
+                if(!tv_pDentistContact.getText().toString().equals(""))
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", Long.parseLong(tv_pDentistContact.getText().toString()));
 
                 database.updateChildren(personalValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
                     Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();

@@ -306,7 +306,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
                         break;
                     case 20:
                         if(immunizationList.isEmpty()){
-                            Toast.makeText(getApplicationContext(), "No data in immunization", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "No data in immunization", Toast.LENGTH_SHORT).show();
                             dataInImmunizationDate(immunizationList);
                         }
                         dataInImmunizationDate(immunizationList);

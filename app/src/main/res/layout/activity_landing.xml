@@ -21,7 +21,9 @@
             android:layout_height="30dp"
             android:background="@android:color/transparent"
             app:menu="@menu/bottom_menu"
-            app:titleTextColor="#D1C2C2"></com.google.android.material.appbar.MaterialToolbar>
+            app:title="IsKlinika"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Menu"
+            app:titleTextColor="#FFFCFC"></com.google.android.material.appbar.MaterialToolbar>
 
         <view
             android:id="@+id/mtv_pageTitle"

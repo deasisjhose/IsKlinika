@@ -230,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if(radio_clinician.isChecked()){ // if user is clinician
 
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
+
                 Query query = clinicReference;
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -276,6 +277,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         throw error.toException();
                     }
                 });
+
+
             }
         }
     }

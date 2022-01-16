@@ -16,10 +16,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ActivityAddAllergy extends AppCompatActivity implements View.OnClickListener{
 
@@ -30,7 +32,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     public String TAG="MEDICALHISTORY//";
     private String idNum ;
     private int selectedDate ; // selected from the activity_immune
-
+    private int checkEditAdd ;
 
     private Spinner spinner_addAllergyChild;
     private TextView tv_addAllergyDate, tv_addAllergyLast ;
@@ -38,6 +40,11 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     private MaterialButton mbtn_addAllergyCancel, mbtn_addAllergyAdd ;
     private MaterialDatePicker materialDatePicker ;
     private ArrayList<ClassStudentInfo> children ;
+
+    //edit allergy
+    private MaterialTextView mtv_titleAllergy ;
+    private Spinner spinner_editAllergy ;
+    private ArrayList<ClassAllergy> allergyArrayList ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         intent = getIntent() ;
         this.children = new ArrayList<>() ;
         children = intent.getParcelableArrayListExtra("children") ;
+        checkEditAdd = intent.getIntExtra("checkEditAdd", 0) ;
         buildViews();
 
         makeSpinnerChildren();
@@ -66,12 +74,26 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         mbtn_addAllergyCancel.setOnClickListener(this);
         mbtn_addAllergyAdd.setOnClickListener(this);
 
-        tv_addAllergyDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
-            }
-        });
+        if(checkEditAdd == 1){
+            mbtn_addAllergyAdd.setText("Update");
+            this.allergyArrayList = intent.getParcelableArrayListExtra("allergyList") ;
+            this.mtv_titleAllergy = findViewById(R.id.mtv_titleAllergy) ;
+            this.spinner_editAllergy = findViewById(R.id.spinner_editAllergy) ;
+
+            mtv_titleAllergy.setText("Edit Allergy Information");
+            edit_addAllergyAllergy.setVisibility(View.GONE);
+            spinner_editAllergy.setVisibility(View.VISIBLE);
+
+            makeSpinnerAllergy();
+        }
+
+
+//        tv_addAllergyDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+//            }
+//        });
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
         builder.setTitleText("Select Date (MM-DD-YY)") ;
@@ -114,25 +136,57 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     }
 
 
-    public void addAllergy(){
-        if(edit_addAllergyAllergy.getText().toString().equals("")){
-            Toast.makeText(this, "Add an allergy on!", Toast.LENGTH_SHORT).show();
-            edit_addAllergyAllergy.setBackgroundColor(Color.parseColor("#FFFD6868"));
-        } else {
-            String allergy, type, diagnosisDate, lastOccurrence ;
-            allergy =  edit_addAllergyAllergy.getText().toString() ;
-            type = edit_addAllergyType.getText().toString() ;
-            diagnosisDate = tv_addAllergyDate.getText().toString() ;
-            lastOccurrence = tv_addAllergyLast.getText().toString() ;
-            ClassAllergy allergyObj = new ClassAllergy(allergy, type, diagnosisDate, lastOccurrence) ;
+    public void makeSpinnerAllergy(){
+        ArrayAdapter<ClassAllergy> adapter = new ArrayAdapter<ClassAllergy>(this, R.layout.spinner_medicalhistory, allergyArrayList) ;
+        adapter.setDropDownViewResource(R.layout.spinner_immune_down);
+        spinner_editAllergy.setAdapter(adapter);
+        spinner_editAllergy.setSelection(0);
+        spinner_editAllergy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            databaseReference.child("studentHealthHistory/" +idNum + "/allergies/").push().setValue(allergyObj).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                edit_addAllergyType.setText(allergyArrayList.get(position).getType());
+                tv_addAllergyDate.setText(allergyArrayList.get(position).getDiagnosisDate());
+                tv_addAllergyLast.setText(allergyArrayList.get(position).getLastOccurrence());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    public void addAllergy(){
+        if(checkEditAdd == 0){
+            if(edit_addAllergyAllergy.getText().toString().equals("")){
+                Toast.makeText(this, "Add an allergy on!", Toast.LENGTH_SHORT).show();
+                edit_addAllergyAllergy.setBackgroundColor(Color.parseColor("#FFFD6868"));
+            } else {
+                String allergy, type, diagnosisDate, lastOccurrence ;
+                allergy =  edit_addAllergyAllergy.getText().toString() ;
+                type = edit_addAllergyType.getText().toString() ;
+                diagnosisDate = tv_addAllergyDate.getText().toString() ;
+                lastOccurrence = tv_addAllergyLast.getText().toString() ;
+                ClassAllergy allergyObj = new ClassAllergy(allergy, type, diagnosisDate, lastOccurrence) ;
+
+                databaseReference.child("studentHealthHistory/" +idNum + "/allergies/").push().setValue(allergyObj).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                    Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                    resetViews();
+                }).addOnFailureListener((error) -> {
+                    Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
+                });
+            }
+        }else{
+            HashMap<String, Object> allergyValues = new HashMap<>();
+            allergyValues.put("studentHealthHistory/" +idNum + "/allergies/" + allergyArrayList.get(spinner_editAllergy.getSelectedItemPosition()).getKey() + "/allergy/", spinner_editAllergy.getSelectedItem().toString());
+            allergyValues.put("studentHealthHistory/" +idNum + "/allergies/" + allergyArrayList.get(spinner_editAllergy.getSelectedItemPosition()).getKey() + "/diagnosisDate/", tv_addAllergyDate.getText().toString());
+            allergyValues.put("studentHealthHistory/" +idNum + "/allergies/" + allergyArrayList.get(spinner_editAllergy.getSelectedItemPosition()).getKey() + "/lastOccurrence/", tv_addAllergyLast.getText().toString());
+            allergyValues.put("studentHealthHistory/" +idNum + "/allergies/" + allergyArrayList.get(spinner_editAllergy.getSelectedItemPosition()).getKey() + "/type/", edit_addAllergyType.getText().toString());
+
+            databaseReference.updateChildren(allergyValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
                 Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
-                resetViews();
             }).addOnFailureListener((error) -> {
                 Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
-            }); ;
-
+            });
         }
     }
 
@@ -143,12 +197,11 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         }else if(view.getId() == R.id.mbtn_addAllergyAdd){
             addAllergy();
         }else if(view.getId() == R.id.tv_addAllergyDate){
-            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
             selectedDate = 10 ;
-
-        }else if(view.getId() == R.id.tv_addAllergyLast){
             materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+        }else if(view.getId() == R.id.tv_addAllergyLast){
             selectedDate = 20 ;
+            materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
         }
     }
 

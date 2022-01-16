@@ -79,21 +79,9 @@
                     android:gravity="center|center_vertical">
 
                     <TextView
-                        android:id="@+id/ds_startDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/helvetica"
-                        android:text="Start Date"
-                        android:textColor="#FFCF43"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
                         android:id="@+id/input_startDate"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="16dp"
                         android:background="@drawable/border_circle_outline_yellow"
                         android:clickable="true"
                         android:fontFamily="@font/helvetica"
@@ -109,18 +97,20 @@
                     <TextView
                         android:id="@+id/ds_endDate"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
                         android:fontFamily="@font/helvetica"
-                        android:text="End Date"
+                        android:gravity="center"
+                        android:text="-"
                         android:textColor="#FFCF43"
-                        android:textSize="13sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/input_endDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
                         android:background="@drawable/border_circle_outline_yellow"
                         android:clickable="true"
                         android:fontFamily="@font/helvetica"
@@ -579,6 +569,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
+                        <TextView
+                            android:id="@+id/tv_chartDiseaseTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/helveticabold"
+                            android:gravity="center|center_vertical"
+                            android:text="TextView"
+                            android:textColor="@color/primary_Text"
+                            android:textSize="13sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_chartDiseaseTitleDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/helvetica"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/primary_Text"
+                            android:textSize="11sp"
+                            android:visibility="gone" />
+
                         <HorizontalScrollView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -587,19 +601,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical" >
-
-                                <TextView
-                                    android:id="@+id/tv_chartDiseaseTitle"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="16dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/helveticabold"
-                                    android:gravity="center"
-                                    android:text="TextView"
-                                    android:textColor="@color/primary_Text"
-                                    android:textSize="15sp"
-                                    android:visibility="gone" />
 
                                 <com.github.mikephil.charting.charts.BarChart
                                     android:id="@+id/barChart_diseaseCount"
@@ -634,6 +635,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
+                        <TextView
+                            android:id="@+id/tv_chartComplaintTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/helveticabold"
+                            android:gravity="center|center_vertical"
+                            android:text="TextView"
+                            android:textColor="@color/primary_Text"
+                            android:textSize="13sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_chartComplaintTitleDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/helvetica"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textColor="@color/primary_Text"
+                            android:textSize="11sp"
+                            android:visibility="gone" />
+
                         <HorizontalScrollView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -642,19 +667,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tv_chartComplaintTitle"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="16dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/helveticabold"
-                                    android:text="TextView"
-                                    android:textColor="@color/primary_Text"
-                                    android:textSize="15sp"
-                                    android:visibility="gone"
-                                    android:gravity="center" />
 
                                 <com.github.mikephil.charting.charts.BarChart
                                     android:id="@+id/barChart_complaintCount"

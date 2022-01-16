@@ -367,7 +367,7 @@
                             android:background="#FFF4F1"
                             android:clickable="false"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -379,7 +379,7 @@
                             android:background="#FFF4F1"
                             android:clickable="false"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
                     </TableRow>
@@ -428,7 +428,7 @@
                             android:background="#FFF4F1"
                             android:clickable="false"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -440,7 +440,7 @@
                             android:background="#FFF4F1"
                             android:clickable="false"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -503,7 +503,7 @@
                             android:layout_weight="1"
                             android:background="#FFF4F1"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -514,7 +514,7 @@
                             android:layout_weight="1"
                             android:background="#FFF4F1"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -561,7 +561,7 @@
                             android:layout_weight="1"
                             android:background="#FFF4F1"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -572,7 +572,7 @@
                             android:layout_weight="1"
                             android:background="#FFF4F1"
                             android:fontFamily="@font/helvetica"
-                            android:text="TextView"
+                            android:hint="No information available"
                             android:textColor="@color/information_text"
                             android:textSize="11.5sp" />
 
@@ -612,7 +612,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:background="#FFF4F1"
-                        android:text="TextView"
+                        android:hint="No information available"
                         android:textColor="@color/information_text"
                         android:textSize="11.5sp" />
 
@@ -633,7 +633,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:background="#FFF4F1"
-                        android:text="TextView"
+                        android:hint="No information available"
                         android:textColor="@color/information_text"
                         android:textSize="11.5sp" />
 
@@ -653,7 +653,7 @@
                         android:layout_marginBottom="4dp"
                         android:background="#FFF4F1"
                         android:fontFamily="@font/helvetica"
-                        android:text="TextView"
+                        android:hint="No information available"
                         android:textColor="@color/information_text"
                         android:textSize="11.5sp" />
 
@@ -674,7 +674,7 @@
                         android:layout_marginBottom="4dp"
                         android:background="#FFF4F1"
                         android:fontFamily="@font/helvetica"
-                        android:text="TextView"
+                        android:hint="No information available"
                         android:textSize="11.5sp" />
 
                     <TextView
@@ -694,7 +694,7 @@
                         android:layout_marginBottom="4dp"
                         android:background="#FFF4F1"
                         android:fontFamily="@font/helvetica"
-                        android:text="TextView"
+                        android:hint="No information available"
                         android:textSize="11.5sp" />
 
                     <CheckBox

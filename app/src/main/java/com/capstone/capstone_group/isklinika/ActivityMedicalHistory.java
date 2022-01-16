@@ -73,6 +73,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
     private LinearLayout layout_allergies ;
     private RecyclerView recycle_medicalAllergy ;
     private ArrayList<ClassAllergy> allergyArrayList ;
+    private ImageButton ibtn_editAllergy ;
 
 
     @Override
@@ -136,7 +137,9 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 
         //allergy tab
         this.layout_allergies = findViewById(R.id.layout_allergies) ;
+        this.ibtn_editAllergy = findViewById(R.id.ibtn_editAllergy) ;
 
+        ibtn_editAllergy.setOnClickListener(this);
 
         this.mbtg_medicalHistory = findViewById(R.id.mbtg_medicalHistory) ;
 
@@ -185,6 +188,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());
                 fbtn_medicalHistory.setVisibility(View.GONE);
+                ibtn_editAllergy.setVisibility(View.GONE);
                 studentId = studentInfo.getIdNum() ;
                 retrieveDataPastIllness() ;
                 break;
@@ -347,8 +351,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "onItemSelected: selectedSort = " + spinner_sort.getSelectedItem());
-
-
+                retrieveDataPastIllness();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -428,6 +431,12 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         }else if(view.getId() == R.id.tv_cvToDate){
             materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
             selectedDate = 20 ;
+        }else if(view.getId() == R.id.ibtn_editAllergy){
+            intent = new Intent(getBaseContext(), ActivityAddAllergy.class) ;
+            intent.putParcelableArrayListExtra("children", children) ;
+            intent.putParcelableArrayListExtra("allergyList", allergyArrayList) ;
+            intent.putExtra("checkEditAdd", 1) ;
+            startActivity(intent);
         }
     }
 }

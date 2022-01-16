@@ -1,6 +1,9 @@
 package com.capstone.capstone_group.isklinika;
 
-public class ClassAllergy {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ClassAllergy implements Parcelable {
 
     private String allergy, type, diagnosisDate, lastOccurrence ;
     private String key ;
@@ -14,6 +17,40 @@ public class ClassAllergy {
         this.diagnosisDate = diagnosisDate;
         this.lastOccurrence = lastOccurrence;
     }
+
+    protected ClassAllergy(Parcel in) {
+        allergy = in.readString();
+        type = in.readString();
+        diagnosisDate = in.readString();
+        lastOccurrence = in.readString();
+        key = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(allergy);
+        dest.writeString(type);
+        dest.writeString(diagnosisDate);
+        dest.writeString(lastOccurrence);
+        dest.writeString(key);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ClassAllergy> CREATOR = new Creator<ClassAllergy>() {
+        @Override
+        public ClassAllergy createFromParcel(Parcel in) {
+            return new ClassAllergy(in);
+        }
+
+        @Override
+        public ClassAllergy[] newArray(int size) {
+            return new ClassAllergy[size];
+        }
+    };
 
     public String getAllergy() {
         return allergy;
@@ -53,5 +90,10 @@ public class ClassAllergy {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    @Override
+    public String toString() {
+        return allergy ;
     }
 }

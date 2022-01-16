@@ -354,6 +354,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
 
 
                 if (medHistoryList.size() != 0){
+                    Collections.reverse(medHistoryList);
                     dataInMedHistory(medHistoryList, studentId);
                 } else{
                     Toast.makeText(ActivityMedication.this, "No data in medication history.", Toast.LENGTH_LONG).show();

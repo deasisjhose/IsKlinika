@@ -888,12 +888,17 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     public void makeDiseaseCountChart(ArrayList<nameCount> sectionCount, String selected){
         TextView tv_chartDiseaseTitle ;
+        TextView tv_chartDiseaseTitleDate ;
         tv_chartDiseaseTitle = findViewById(R.id.tv_chartDiseaseTitle) ;
         tv_chartDiseaseTitle.setVisibility(View.VISIBLE);
+        tv_chartDiseaseTitleDate = findViewById(R.id.tv_chartDiseaseTitleDate) ;
+        tv_chartDiseaseTitleDate.setVisibility(View.VISIBLE);
+
         ClassDateConvert fromDate, toDate ;
         fromDate = new ClassDateConvert(0, input_startDate.getText().toString()) ;
         toDate = new ClassDateConvert(0, input_endDate.getText().toString()) ;
-        tv_chartDiseaseTitle.setText("Disease Count By Section From: " + fromDate.getReversed() + " To: " + toDate.getReversed());
+        tv_chartDiseaseTitle.setText( spinnerDisease.getSelectedItem().toString() + " Count In Grade " + studentInfo.getGrade());
+        tv_chartDiseaseTitleDate.setText(fromDate.getReversed() + " - " + toDate.getReversed());
 
         String grade = studentInfo.getGrade() ;
         int i;
@@ -946,14 +951,17 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     }
 
     public void makeComplaintCountChart(ArrayList<nameCount> sectionCount,String selected){
-
         TextView tv_chartComplaintTitle ;
+        TextView tv_chartComplaintTitleDate ;
         tv_chartComplaintTitle = findViewById(R.id.tv_chartComplaintTitle) ;
         tv_chartComplaintTitle.setVisibility(View.VISIBLE);
+        tv_chartComplaintTitleDate = findViewById(R.id.tv_chartComplaintTitleDate) ;
+        tv_chartComplaintTitleDate.setVisibility(View.VISIBLE);
         ClassDateConvert fromDate, toDate ;
         fromDate = new ClassDateConvert(0, input_startDate.getText().toString()) ;
         toDate = new ClassDateConvert(0, input_endDate.getText().toString()) ;
-        tv_chartComplaintTitle.setText("Complaint Count By Section From: " + fromDate.getReversed() + " To: " + toDate.getReversed());
+        tv_chartComplaintTitle.setText( spinnerComplaints.getSelectedItem().toString() + " Complaints In Grade " + studentInfo.getGrade());
+        tv_chartComplaintTitleDate.setText( fromDate.getReversed() + " - " + toDate.getReversed());
 
         String grade = studentInfo.getGrade() ;
         int i,j;
