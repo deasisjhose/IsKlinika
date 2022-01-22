@@ -280,10 +280,10 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
 
-            yAxisLeft.setAxisMaximum(20);
+            //yAxisLeft.setAxisMaximum(20);
             yAxisLeft.setAxisMinimum(5);
             yAxisLeft.setTextColor(Color.BLUE);
-            yAxisRight.setAxisMaximum(20);
+            //yAxisRight.setAxisMaximum(20);
             yAxisRight.setAxisMinimum(5);
             yAxisRight.setTextColor(Color.BLUE);
 
