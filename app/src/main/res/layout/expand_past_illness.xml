@@ -8,7 +8,7 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
     app:contentPadding="4dp"
-    app:rippleColor="@color/pastel_orange_inactive">
+    app:rippleColor="@color/pastel_green_inactive">
 
 
     <LinearLayout
@@ -20,30 +20,23 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_top_round"
+            android:backgroundTint="#A0D564">
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_pastDisease"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/helvetica"
+                android:background="#CCEEFFDC"
+                android:backgroundTint="@color/past_illness_edit"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/dinpro"
                 android:padding="1dp"
                 android:paddingStart="5dp"
-                android:text="Disease"
-                android:textColor="@color/primary_Text"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView88"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/helvetica"
-                android:padding="1dp"
-                android:text="Status"
-                android:textColor="@color/primary_Text"
+                android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -52,7 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:tint="#81B545"
+                android:tint="@color/white"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_edit" />
 
             <ImageButton
@@ -60,6 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:tint="@color/white"
                 android:visibility="gone"
                 app:srcCompat="@drawable/check_ic" />
 
@@ -70,21 +65,17 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tv_pastDisease"
+            <TextView
+                android:id="@+id/textView88"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:background="#CCEEFFDC"
-                android:backgroundTint="@color/past_illness_edit"
-                android:clickable="false"
-                android:enabled="false"
-                android:fontFamily="@font/dinpro"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/helvetica"
                 android:padding="1dp"
-                android:paddingStart="5dp"
-                android:textColor="@color/information_text"
-                android:textSize="13sp" />
+                android:text="Status"
+                android:textColor="#474646"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastStatus"
@@ -97,58 +88,32 @@
                 android:enabled="false"
                 android:fontFamily="@font/dinpro"
                 android:padding="1dp"
+                android:paddingStart="5dp"
                 android:textColor="@color/information_text"
                 android:textSize="13sp" />
 
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_edit" />
-
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:fontFamily="@font/helvetica"
                 android:padding="1dp"
-                android:paddingStart="5dp"
-                android:text="Start Date"
-                android:textColor="@color/primary_Text"
+                android:text="From"
+                android:textColor="#474646"
                 android:textSize="13sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/helvetica"
-                android:padding="1dp"
-                android:text="End Date"
-                android:textColor="@color/primary_Text"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastStart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="#CCEEFFDC"
                 android:backgroundTint="@color/past_illness_edit"
@@ -159,6 +124,24 @@
                 android:paddingStart="5dp"
                 android:textColor="@color/information_text"
                 android:textSize="13sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/helvetica"
+                android:padding="1dp"
+                android:text="Date Recovered"
+                android:textColor="#474646"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_pastEnd"
@@ -171,6 +154,7 @@
                 android:enabled="false"
                 android:fontFamily="@font/dinpro"
                 android:padding="1dp"
+                android:paddingStart="5dp"
                 android:textColor="@color/information_text"
                 android:textSize="13sp" />
 
@@ -183,7 +167,7 @@
             android:fontFamily="@font/helvetica"
             android:padding="1dp"
             android:text="Treatment"
-            android:textColor="@color/primary_Text"
+            android:textColor="#474646"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -196,6 +180,7 @@
             android:clickable="false"
             android:enabled="false"
             android:fontFamily="@font/dinpro"
+            android:paddingStart="5dp"
             android:textColor="@color/information_text"
             android:textSize="13sp" />
 
@@ -207,7 +192,7 @@
             android:layout_marginEnd="2dp"
             android:fontFamily="@font/helvetica"
             android:text="Notes"
-            android:textColor="@color/primary_Text"
+            android:textColor="#474646"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -223,6 +208,7 @@
             android:clickable="false"
             android:enabled="false"
             android:fontFamily="@font/dinpro"
+            android:paddingStart="5dp"
             android:textColor="@color/information_text"
             android:textSize="13sp" />
 
@@ -234,7 +220,7 @@
             android:layout_marginEnd="2dp"
             android:fontFamily="@font/helvetica"
             android:text="Management Plan"
-            android:textColor="@color/primary_Text"
+            android:textColor="#474646"
             android:textSize="13sp"
             android:textStyle="bold" />
 

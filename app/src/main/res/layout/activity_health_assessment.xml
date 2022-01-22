@@ -146,7 +146,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="300dp"
                 android:orientation="vertical"
                 app:cardCornerRadius="8dp"
                 app:cardPreventCornerOverlap="true"
@@ -160,7 +160,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/lineChart_growthChart"

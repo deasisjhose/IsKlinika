@@ -2,7 +2,7 @@ package com.capstone.capstone_group.isklinika;
 
 public class ClassPastIllness {
 
-    private String disease, endDate, notes, startDate, status, treatment ;
+    private String disease, endDate, notes, startDate, status, treatment, key ;
 
     public ClassPastIllness(String disease, String endDate, String notes, String startDate, String status, String treatment) {
         this.disease = disease;
@@ -62,6 +62,14 @@ public class ClassPastIllness {
 
     public void setTreatment(String treatment) {
         this.treatment = treatment;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     @Override

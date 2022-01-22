@@ -63,6 +63,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
     private LinearLayout layout_pastIllness ;
     private ExpandableListView expand_pastIllness ;
     private ExpandableListAdapter expandPastIllnessAdapter ;
+    private RecyclerView recycle_past_illness ;
     private ArrayList<ClassPastIllness> illnessHistoryArrayList ;
     private TextView tv_cvFromDate, tv_cvToDate ;
     private Spinner spinner_sort ;
@@ -271,7 +272,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                     ClassPastIllness illnessHistory = new ClassPastIllness() ;
 
                     if(!tv_cvFromDate.getText().toString().equals("YYYY-MM-DD") && !tv_cvToDate.getText().toString().equals("YYYY-MM-DD")) {
-                        vDate = postSnapshot.child("dateTaken").getValue().toString();
+                        vDate = postSnapshot.child("endDate").getValue().toString();
                         parts3 = vDate.split("-");
                         Calendar dataDate = Calendar.getInstance();
                         dataDate.set(Calendar.YEAR, Integer.parseInt(parts3[0]));
@@ -280,10 +281,12 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 
                         if (((startDate.before(dataDate)) || (startDate.equals(dataDate))) && ((dataDate.before(endDate)) || (dataDate.equals(endDate)))) {
                             illnessHistory = postSnapshot.getValue(ClassPastIllness.class) ;
+                            illnessHistory.setKey(postSnapshot.getKey());
                             illnessHistoryArrayList.add(illnessHistory) ;
                         }
                     }else{
                         illnessHistory = postSnapshot.getValue(ClassPastIllness.class) ;
+                        illnessHistory.setKey(postSnapshot.getKey());
                         Log.d(TAG, "onDataChange: illnessHistory = " + illnessHistory.toString());
                         illnessHistoryArrayList.add(illnessHistory) ;
                     }
@@ -292,7 +295,8 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                 if (illnessHistoryArrayList.isEmpty())
                     Toast.makeText(ActivityMedicalHistory.this, "No data in past illnesses .", Toast.LENGTH_LONG).show();
 
-                dataInExpandPastIllness(illnessHistoryArrayList);
+//                dataInExpandPastIllness(illnessHistoryArrayList);
+                dataInPastIllness(illnessHistoryArrayList) ;
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -339,6 +343,21 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         });
 
     }
+
+    public void dataInPastIllness(ArrayList<ClassPastIllness> allergyArrayList){
+        if(spinner_sort.getSelectedItem().toString().equals("Latest")){
+            Collections.reverse(allergyArrayList);
+            Log.d(TAG, "dataInExpandPastIllness: size = " +allergyArrayList.size());
+        }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        AdapterPastIllness adapterPastIllness = new AdapterPastIllness(getBaseContext(), allergyArrayList, studentId) ;
+        adapterPastIllness.setUserType(userType);
+        this.recycle_past_illness = findViewById(R.id.recycle_past_illness) ;
+        recycle_past_illness.setLayoutManager(layoutManager);
+        recycle_past_illness.setAdapter(adapterPastIllness);
+    }
+
     public void makeSpinnerSort(){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,R.layout.spinner_medicalhistory2) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
