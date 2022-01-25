@@ -92,6 +92,22 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
         tv_cvFromDate.setOnClickListener(this);
         tv_cvToDate.setOnClickListener(this);
 
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int currMonth=cal.get(Calendar.MONTH);
+        int currYear=cal.get(Calendar.YEAR);
+
+        String dayy = Integer.toString(day) ;
+        String month = Integer.toString(currMonth) ;
+        if(dayy.length() == 1){
+            dayy = "0" + day ;
+        }
+        if(month.length() == 1){
+            month = "0" + (currMonth+1) ;
+        }
+
+        tv_cvToDate.setText(currYear + "-" + month + "-" + dayy);
+
         makeSpinnerSort();
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
         builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;

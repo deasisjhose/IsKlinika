@@ -115,6 +115,16 @@ public class FragmentUserProfile extends Fragment {
             tv_parentContact.setClickable(false);
 
 
+            switch (checkParent){
+                case 0:
+                    activity_landing.setNewChildInfo("mother", tv_parentName.getText().toString(), tv_parentEmail.getText().toString(), Long.parseLong(tv_parentContact.getText().toString()));
+                    break;
+                case 1:
+                    activity_landing.setNewChildInfo("father", tv_parentName.getText().toString(), tv_parentEmail.getText().toString(), Long.parseLong(tv_parentContact.getText().toString()));
+                    break;
+
+            }
+
             //updating parent information
             HashMap<String, Object> parentValues = new HashMap<String, Object>() ;
             int i ;

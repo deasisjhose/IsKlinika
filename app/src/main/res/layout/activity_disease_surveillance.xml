@@ -573,7 +573,7 @@
                             android:id="@+id/tv_chartDiseaseTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/helveticabold"
                             android:gravity="center|center_vertical"
@@ -593,24 +593,12 @@
                             android:textSize="11sp"
                             android:visibility="gone" />
 
-                        <HorizontalScrollView
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChart_diseaseCount"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="210dp">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical" >
-
-                                <com.github.mikephil.charting.charts.BarChart
-                                    android:id="@+id/barChart_diseaseCount"
-                                    android:layout_width="500dp"
-                                    android:layout_height="230dp">
-
-                                </com.github.mikephil.charting.charts.BarChart>
-
-                            </LinearLayout>
-                        </HorizontalScrollView>
+                        </com.github.mikephil.charting.charts.BarChart>
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -639,7 +627,7 @@
                             android:id="@+id/tv_chartComplaintTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/helveticabold"
                             android:gravity="center|center_vertical"
@@ -659,22 +647,10 @@
                             android:textSize="11sp"
                             android:visibility="gone" />
 
-                        <HorizontalScrollView
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChart_complaintCount"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <com.github.mikephil.charting.charts.BarChart
-                                    android:id="@+id/barChart_complaintCount"
-                                    android:layout_width="500dp"
-                                    android:layout_height="230dp" />
-
-                            </LinearLayout>
-                        </HorizontalScrollView>
+                            android:layout_height="230dp" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>

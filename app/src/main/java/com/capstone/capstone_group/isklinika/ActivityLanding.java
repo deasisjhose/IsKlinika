@@ -129,37 +129,6 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
                 break;
         }
     }
-    
-
-//    public void retrieveDataParentUser() {
-//        ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
-//
-//        database.child("studentInfo").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(childrenInfo.size() != 0){
-//                    childrenInfo.clear();
-//                }
-//                int i ;
-//                for (DataSnapshot postSnapshot: snapshot.getChildren()){
-//
-//                    for(i = 0 ; i < parentInfo.getChildrenSize() ; i++){
-//                        if(postSnapshot.getKey().equals(parentInfo.getIdNumber(i))){
-//                            ClassStudentInfo child = postSnapshot.getValue(ClassStudentInfo.class) ;
-//                            child.setIdNum(postSnapshot.getKey());
-//                            childrenInfo.add(child) ;
-//                        }
-//                    }
-//                }
-//
-//                 makeSpinnerChildren(childrenInfo);
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
     public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){
         this.children = new ArrayList<>() ;
@@ -267,12 +236,34 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         botNav.btn_nav_parent_profile.setIconTint(getColorStateList(R.color.inactive_nav_btn));
     }
 
+
+
     public ClassStudentInfo getStudentInfo(){
         return studentInfo ;
     }
     public ArrayList<ClassStudentInfo> getChildren() {
         return children;
     }
+    public void setChildrenUpdate(String idNum, ClassStudentInfo studentInfo){
+//        for(int i = 0 ; i < children.size() ; i++){
+//            if(children.get(i).getIdNum() == idNum) {
+//                children.set(i, studentInfo) ;
+//            }
+//        }
+    }
+
+    public void setNewChildInfo(String parent, String name, String email, Long contact){
+        if(parent.equals("mother")){
+            children.get(0).setMotherName(name);
+            children.get(0).setMotherEmail(email);
+            children.get(0).setMotherContact(contact);
+        }else{
+            children.get(0).setFatherName(name);
+            children.get(0).setFatherEmail(email);
+            children.get(0).setFatherContact(contact);
+        }
+    }
+
     public String getUserType() {
         return userType;
     }

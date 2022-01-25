@@ -1,5 +1,7 @@
 package com.capstone.capstone_group.isklinika;
 
+import java.util.Calendar;
+
 public class ClassDateConvert {
 
     private String date ;
@@ -165,9 +167,22 @@ public class ClassDateConvert {
     }
 
 
-//    public static void main(String[] args) {
-//        ClassDateConvert dateConvert = new ClassDateConvert(0, "2021-01-01") ;
-//
-//        System.out.println(dateConvert.getReversed());
-//    }
+    public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int firstDay = cal.getActualMinimum(Calendar.DATE);
+        int currMonth=cal.get(Calendar.MONTH);
+        int currYear=cal.get(Calendar.YEAR);
+
+        String dayy = Integer.toString(day) ;
+        String month = Integer.toString(currMonth) ;
+        if(dayy.length() == 1){
+            dayy = "0" + day ;
+        }
+        if(month.length() == 1){
+            month = "0" + (currMonth+1) ;
+        }
+
+        System.out.println(currYear + "-" + month + "-" + dayy);
+    }
 }

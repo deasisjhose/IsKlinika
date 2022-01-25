@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/pink_inactive">
+    android:color="@color/yellow_inactive">
     <item>
         <shape
             android:layout_width="match_parent"

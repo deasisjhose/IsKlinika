@@ -109,6 +109,22 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         tv_cvFromDate.setOnClickListener(this);
         tv_cvToDate.setOnClickListener(this);
 
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int currMonth=cal.get(Calendar.MONTH);
+        int currYear=cal.get(Calendar.YEAR);
+
+        String dayy = Integer.toString(day) ;
+        String month = Integer.toString(currMonth) ;
+        if(dayy.length() == 1){
+            dayy = "0" + day ;
+        }
+        if(month.length() == 1){
+            month = "0" + (currMonth+1) ;
+        }
+
+        tv_cvToDate.setText(currYear + "-" + month + "-" + dayy);
+
         makeSpinnerSort();
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
         builder.setTitleText("Select Past Illness Date (MM-DD-YY)") ;
@@ -239,7 +255,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
     public void retrieveDataPastIllness(){
         this.illnessHistoryArrayList = new ArrayList<>() ;
 
-        databaseStudentHealthHistory.child(studentId).child("pastIllness").orderByChild("dateTaken").addValueEventListener(new ValueEventListener() {
+        databaseStudentHealthHistory.child(studentId).child("pastIllness").orderByChild("startDate").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(illnessHistoryArrayList.size() != 0){

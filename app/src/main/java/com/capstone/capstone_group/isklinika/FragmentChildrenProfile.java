@@ -20,8 +20,11 @@ import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -93,7 +96,29 @@ public class FragmentChildrenProfile extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ClassStudentInfo studentInfo = activity_landing.getStudentInfo() ;
-        Log.d("LANDING//", "FRAGMENT_PROFILEonViewCreated: childSelected = " + studentInfo.getFullName());
+
+        databaseReference.child(studentInfo.getIdNum()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ClassStudentInfo studentInfoUser = new ClassStudentInfo() ;
+                studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
+                studentInfoUser.setIdNum(snapshot.getKey());
+                setViews(studentInfoUser);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        }) ;
+
+
+//        Log.d("LANDING//", "FRAGMENT_PROFILEonViewCreated: childSelected = " + studentInfo.getFullName());
+
+
+    }
+
+    public void setViews(ClassStudentInfo studentInfo){
+        activity_landing.setChildrenUpdate(studentInfo.getIdNum(), studentInfo);
         tv_pBirthday.setText(studentInfo.getBirthday());
         tv_pAge.setText(studentInfo.getAge());
         tv_pAddress.setText(studentInfo.getAddress());
@@ -109,36 +134,36 @@ public class FragmentChildrenProfile extends Fragment {
         tv_pHeightStatus.setText(studentInfo.getHeightStatus());
 
         if(studentInfo.getBmiStatus().equals("Normal")){
-            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.green));
+            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.green));
         }else if(studentInfo.getBmiStatus().equals("")){
             tv_pBMIStatus.setText("No data");
-            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.yellow)) ;
+            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.yellow)) ;
         } else{
-            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.error_container));
+            tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.error_container));
         }
 
         if(studentInfo.getHeightStatus().equals("Normal") || studentInfo.getHeightStatus().equals("Above Normal")  ){
-            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.green));
+            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.green));
         }else if(studentInfo.getHeightStatus().equals("")){
             tv_pHeightStatus.setText("No data");
-            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.yellow)) ;
+            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.yellow)) ;
         } else{
-            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.error_container));
+            tv_pHeightStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.error_container));
         }
         if(studentInfo.getWeightStatus().equals("Normal")){
-            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.green));
+            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.green));
         }else if(studentInfo.getWeightStatus().equals("")){
             tv_pWeightStatus.setText("No data");
-            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.yellow)) ;
+            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.yellow)) ;
         } else{
-            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(view.getContext(), R.color.error_container));
+            tv_pWeightStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.error_container));
         }
 
 
         tv_pGuardian.setText(studentInfo.getGuardianName());
         tv_pGuardianEmail.setText(studentInfo.getGuardianEmail());
         if(!studentInfo.getGuardianContact().equals("0"))
-        tv_pGuardianContact.setText(studentInfo.getGuardianContact());
+            tv_pGuardianContact.setText(studentInfo.getGuardianContact());
 
         tv_pPedia.setText(studentInfo.getPediaName());
         if(!studentInfo.getPediaContact().equals("0"))
@@ -268,7 +293,7 @@ public class FragmentChildrenProfile extends Fragment {
         builder.setTheme(R.style.ThemeOverlay_App_DatePicker_Profile) ;
         builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
         builder.setInputMode(MaterialDatePicker.INPUT_MODE_TEXT) ;
-        
+
         this.materialDatePicker = builder.build() ;
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
 
@@ -293,6 +318,5 @@ public class FragmentChildrenProfile extends Fragment {
 
             }
         });
-
     }
 }

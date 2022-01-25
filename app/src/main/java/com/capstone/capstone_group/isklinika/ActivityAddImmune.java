@@ -76,7 +76,7 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
 
         if(mtv_immuneDate.getText().toString().equals("") || mtv_immuneDate.getText().toString().equals("YYYY-MM-DD")){
             Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
-            mtv_immuneDate.setBackgroundColor(Color.parseColor("#FFFD6868"));
+            mtv_immuneDate.getBackground().setTint(Color.parseColor("#FFFD6868"));
         } else {
             ClassImmuneRecord immuneRecord = new ClassImmuneRecord( mtv_immuneDate.getText().toString(), mEdit_immuneBrand.getText().toString(), vaccineSelected) ;
 
@@ -173,5 +173,6 @@ public class ActivityAddImmune extends AppCompatActivity implements View.OnClick
         mEdit_immuneBrand.setText("");
         mtv_immuneDate.setText("");
         mtv_immuneDate.setText("MM-DD-YYYY");
+        mtv_immuneDate.getBackground().setTint(Color.parseColor("#99C4E8F8"));
     }
 }

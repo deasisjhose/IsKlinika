@@ -219,12 +219,43 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     private static class nameCount{
         public String name;
         public int count;
+        public int num ;
+        public String position ;
+
+        public nameCount(String name, int count, int num){
+            this.name = name;
+            this.count = count;
+            this.num = num ;
+
+            switch (num){
+                case 1:
+                    this.position = "a" ;
+                    break;
+                case 2:
+                    this.position = "b" ;
+                    break;
+                case 3:
+                    this.position = "c" ;
+                    break;
+                case 4:
+                    this.position = "d" ;
+                    break;
+                case 5:
+                    this.position = "e" ;
+                    break;
+                case 6:
+                    position = "f" ;
+                    break;
+                default:
+                    position = "x" ;
+                    break;
+            }
+        }
 
         public nameCount(String name, int count){
             this.name = name;
             this.count = count;
         }
-
         @Override
         public String toString() {
             return name;
@@ -232,6 +263,10 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
         public String getCount() {
             return Integer.toString(count);
+        }
+
+        public String getPosition() {
+            return position;
         }
     }
 
@@ -609,12 +644,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
                 switch(grade){
                     case "1":
-                        sec1 = new nameCount("Truthfulness",0);
-                        sec2 = new nameCount("Sincerity",0);
-                        sec3 = new nameCount("Honesty",0);
-                        sec4 = new nameCount("Faithfulness",0);
-                        sec5 = new nameCount("Humility",0);
-                        sec6 = new nameCount("Politeness",0);
+                        sec1 = new nameCount("Truthfulness",0, 1);
+                        sec2 = new nameCount("Sincerity",0, 2);
+                        sec3 = new nameCount("Honesty",0, 3);
+                        sec4 = new nameCount("Faithfulness",0, 4);
+                        sec5 = new nameCount("Humility",0, 5);
+                        sec6 = new nameCount("Politeness",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -623,12 +658,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "2":
-                        sec1 = new nameCount("Simplicity",0);
-                        sec2 = new nameCount("Charity",0);
-                        sec3 = new nameCount("Helpfulness",0);
-                        sec4 = new nameCount("Gratefulness",0);
-                        sec5 = new nameCount("Gratitude",0);
-                        sec6 = new nameCount("Meekness",0);
+                        sec1 = new nameCount("Simplicity",0, 1);
+                        sec2 = new nameCount("Charity",0, 2);
+                        sec3 = new nameCount("Helpfulness",0, 3);
+                        sec4 = new nameCount("Gratefulness",0, 4);
+                        sec5 = new nameCount("Gratitude",0, 5);
+                        sec6 = new nameCount("Meekness",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -637,12 +672,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "3" :
-                        sec1 = new nameCount("Respect",0);
-                        sec2 = new nameCount("Courtesy",0);
-                        sec3 = new nameCount("Trust",0);
-                        sec4 = new nameCount("Kindness",0);
-                        sec5 = new nameCount("Piety",0);
-                        sec6 = new nameCount("Prayerfulness",0);
+                        sec1 = new nameCount("Respect",0, 1);
+                        sec2 = new nameCount("Courtesy",0, 2);
+                        sec3 = new nameCount("Trust",0, 3);
+                        sec4 = new nameCount("Kindness",0, 4);
+                        sec5 = new nameCount("Piety",0, 5);
+                        sec6 = new nameCount("Prayerfulness",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -651,12 +686,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "4":
-                        sec1 = new nameCount("Unity",0);
-                        sec2 = new nameCount("Purity",0);
-                        sec3 = new nameCount("Fidelity",0);
-                        sec4 = new nameCount("Equality",0);
-                        sec5 = new nameCount("Harmony",0);
-                        sec6 = new nameCount("Solidarity",0);
+                        sec1 = new nameCount("Unity",0, 1);
+                        sec2 = new nameCount("Purity",0, 2);
+                        sec3 = new nameCount("Fidelity",0, 3);
+                        sec4 = new nameCount("Equality",0, 4);
+                        sec5 = new nameCount("Harmony",0, 5);
+                        sec6 = new nameCount("Solidarity",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -665,12 +700,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "5":
-                        sec1 = new nameCount("Trustworthiness",0);
-                        sec2 = new nameCount("Reliability",0);
-                        sec3 = new nameCount("Dependability",0);
-                        sec4 = new nameCount("Responsibility",0);
-                        sec5 = new nameCount("Serenity",0);
-                        sec6 = new nameCount("Flexibility",0);
+                        sec1 = new nameCount("Trustworthiness",0, 1);
+                        sec2 = new nameCount("Reliability",0,2 );
+                        sec3 = new nameCount("Dependability",0, 3);
+                        sec4 = new nameCount("Responsibility",0,4);
+                        sec5 = new nameCount("Serenity",0, 5);
+                        sec6 = new nameCount("Flexibility",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -679,12 +714,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "6":
-                        sec1 = new nameCount("Self-Discipline",0);
-                        sec2 = new nameCount("Abnegation",0);
-                        sec3 = new nameCount("Self-Giving",0);
-                        sec4 = new nameCount("Integrity",0);
-                        sec5 = new nameCount("Perseverance",0);
-                        sec6 = new nameCount("Patience",0);
+                        sec1 = new nameCount("Self-Discipline",0, 1);
+                        sec2 = new nameCount("Abnegation",0, 2);
+                        sec3 = new nameCount("Self-Giving",0, 3);
+                        sec4 = new nameCount("Integrity",0, 4);
+                        sec5 = new nameCount("Perseverance",0, 5);
+                        sec6 = new nameCount("Patience",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -764,12 +799,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
                 switch(grade){
                     case "1":
-                        sec1 = new nameCount("Truthfulness",0);
-                        sec2 = new nameCount("Sincerity",0);
-                        sec3 = new nameCount("Honesty",0);
-                        sec4 = new nameCount("Faithfulness",0);
-                        sec5 = new nameCount("Humility",0);
-                        sec6 = new nameCount("Politeness",0);
+                        sec1 = new nameCount("Truthfulness",0, 1);
+                        sec2 = new nameCount("Sincerity",0, 2);
+                        sec3 = new nameCount("Honesty",0, 3);
+                        sec4 = new nameCount("Faithfulness",0, 4);
+                        sec5 = new nameCount("Humility",0, 5);
+                        sec6 = new nameCount("Politeness",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -778,12 +813,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "2":
-                        sec1 = new nameCount("Simplicity",0);
-                        sec2 = new nameCount("Charity",0);
-                        sec3 = new nameCount("Helpfulness",0);
-                        sec4 = new nameCount("Gratefulness",0);
-                        sec5 = new nameCount("Gratitude",0);
-                        sec6 = new nameCount("Meekness",0);
+                        sec1 = new nameCount("Simplicity",0, 1);
+                        sec2 = new nameCount("Charity",0, 2);
+                        sec3 = new nameCount("Helpfulness",0, 3);
+                        sec4 = new nameCount("Gratefulness",0, 4);
+                        sec5 = new nameCount("Gratitude",0, 5);
+                        sec6 = new nameCount("Meekness",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -792,12 +827,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "3" :
-                        sec1 = new nameCount("Respect",0);
-                        sec2 = new nameCount("Courtesy",0);
-                        sec3 = new nameCount("Trust",0);
-                        sec4 = new nameCount("Kindness",0);
-                        sec5 = new nameCount("Piety",0);
-                        sec6 = new nameCount("Prayerfulness",0);
+                        sec1 = new nameCount("Respect",0, 1);
+                        sec2 = new nameCount("Courtesy",0, 2);
+                        sec3 = new nameCount("Trust",0, 3);
+                        sec4 = new nameCount("Kindness",0, 4);
+                        sec5 = new nameCount("Piety",0, 5);
+                        sec6 = new nameCount("Prayerfulness",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -806,12 +841,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "4":
-                        sec1 = new nameCount("Unity",0);
-                        sec2 = new nameCount("Purity",0);
-                        sec3 = new nameCount("Fidelity",0);
-                        sec4 = new nameCount("Equality",0);
-                        sec5 = new nameCount("Harmony",0);
-                        sec6 = new nameCount("Solidarity",0);
+                        sec1 = new nameCount("Unity",0, 1);
+                        sec2 = new nameCount("Purity",0, 2);
+                        sec3 = new nameCount("Fidelity",0, 3);
+                        sec4 = new nameCount("Equality",0, 4);
+                        sec5 = new nameCount("Harmony",0, 5);
+                        sec6 = new nameCount("Solidarity",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -820,12 +855,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "5":
-                        sec1 = new nameCount("Trustworthiness",0);
-                        sec2 = new nameCount("Reliability",0);
-                        sec3 = new nameCount("Dependability",0);
-                        sec4 = new nameCount("Responsibility",0);
-                        sec5 = new nameCount("Serenity",0);
-                        sec6 = new nameCount("Flexibility",0);
+                        sec1 = new nameCount("Trustworthiness",0, 1);
+                        sec2 = new nameCount("Reliability",0,2 );
+                        sec3 = new nameCount("Dependability",0, 3);
+                        sec4 = new nameCount("Responsibility",0,4);
+                        sec5 = new nameCount("Serenity",0, 5);
+                        sec6 = new nameCount("Flexibility",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -834,12 +869,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         sectionCount.add(sec6);
                         break;
                     case "6":
-                        sec1 = new nameCount("Self-Discipline",0);
-                        sec2 = new nameCount("Abnegation",0);
-                        sec3 = new nameCount("Self-Giving",0);
-                        sec4 = new nameCount("Integrity",0);
-                        sec5 = new nameCount("Perseverance",0);
-                        sec6 = new nameCount("Patience",0);
+                        sec1 = new nameCount("Self-Discipline",0, 1);
+                        sec2 = new nameCount("Abnegation",0, 2);
+                        sec3 = new nameCount("Self-Giving",0, 3);
+                        sec4 = new nameCount("Integrity",0, 4);
+                        sec5 = new nameCount("Perseverance",0, 5);
+                        sec6 = new nameCount("Patience",0, 6);
                         sectionCount.add(sec1);
                         sectionCount.add(sec2);
                         sectionCount.add(sec3);
@@ -849,7 +884,6 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         break;
 
                 }
-
 
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) { //get school year APE keys
                     checker=0;
@@ -922,7 +956,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             else{
                 diseaseCountData.add(new BarEntry(i,sectionCount.get(i).count));
             }
-            diseaseNames.add(sectionCount.get(i).name);
+            diseaseNames.add(sectionCount.get(i).position);
         }
 
         //finalNames.add(chosenDiseaseNames.get(0));
@@ -930,9 +964,9 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
            finalNames.add(diseaseNames.get(i));
         }
 
-        BarDataSet diseaseCount = new BarDataSet(diseaseCountData,"Disease count in other sections Grade " + grade);
+        BarDataSet diseaseCount = new BarDataSet(diseaseCountData,"other sections in " + grade);
         diseaseCount.setColor(Color.parseColor("#F4C22F"));
-        BarDataSet chosenDiseaseCount = new BarDataSet(chosenDiseaseCountData,"Disease count in child's section");
+        BarDataSet chosenDiseaseCount = new BarDataSet(chosenDiseaseCountData,"child's section");
         chosenDiseaseCount.setColor(Color.parseColor("#f282a7"));
         BarData barData = new BarData();
         barData.addDataSet(chosenDiseaseCount);
@@ -983,12 +1017,12 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             else{
                 complaintCountData.add(new BarEntry(i,sectionCount.get(i).count));
             }
-            complaintNames.add(sectionCount.get(i).name);
+            complaintNames.add(sectionCount.get(i).position);
         }
 
-        BarDataSet complaintCount = new BarDataSet(complaintCountData,"Complaint count in other sections Grade " + grade);
+        BarDataSet complaintCount = new BarDataSet(complaintCountData,"other sections in " + grade);
         complaintCount.setColor(Color.parseColor("#F4C22F"));
-        BarDataSet chosenComplaintCount = new BarDataSet(chosenComplaintCountData,"Complaint count in child's section");
+        BarDataSet chosenComplaintCount = new BarDataSet(chosenComplaintCountData,"child's section");
         chosenComplaintCount.setColor(Color.parseColor("#f282a7"));
         BarData barData = new BarData();
         barData.addDataSet(chosenComplaintCount);

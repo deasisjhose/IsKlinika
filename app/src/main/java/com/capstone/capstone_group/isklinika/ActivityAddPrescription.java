@@ -164,10 +164,10 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
 
     public void resetViews(){
         edit_addPrescriptionAmount.setText("");
-        edit_addPrescriptionPurpose.setText("");
+//        edit_addPrescriptionPurpose.setText("");
         edit_addPrescriptionInterval.setText("");
         edit_addPrescriptionMedicine.setText("");
-        tv_addPrescriptionStart.setText("");
-        tv_addPrescriptionEnd.setText("");
+//        tv_addPrescriptionStart.setText("");
+//        tv_addPrescriptionEnd.setText("");
     }
 }

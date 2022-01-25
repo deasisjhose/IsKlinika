@@ -113,7 +113,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
     public void addPastIllness(){
         if(edit_addPastIllness.getText().toString().equals("")){
             Toast.makeText(this, "Add a disease!", Toast.LENGTH_SHORT).show();
-            edit_addPastIllness.setBackgroundColor(Color.parseColor("#FFFD6868"));
+            edit_addPastIllness.getBackground().setTint(Color.parseColor("#FFFD6868"));
         } else {
 
             ClassPastIllness pastIllness = new ClassPastIllness(edit_addPastIllness.getText().toString(), tv_addPastEnd.getText().toString(), edit_addPastNote.getText().toString(),
@@ -134,7 +134,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
         edit_addPastNote.setText("");
         edit_addPastTreatment.setText("");
         edit_addPastStatus.setText("");
-        edit_addPastIllness.setBackgroundColor(Color.parseColor("#CCDDF6C0"));
+        edit_addPastIllness.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
         tv_addPastStart.setText("");
         tv_addPastEnd.setText("");
 
