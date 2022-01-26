@@ -12,6 +12,45 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/layout_notifAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_notif_others"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border_circle"
+                android:backgroundTint="@color/primary_blue"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewzxc"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_mail"
+                    android:tint="@color/white" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView172"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:text="Referrals"
+                android:textColor="@color/primary_Text"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/layout_notifCV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -115,59 +154,31 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView172"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/helvetica"
-                android:gravity="center"
-                android:text="Referrals"
-                android:textColor="@color/primary_Text"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_notifAll"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/ripple_notif_others"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/border_circle"
-                android:backgroundTint="@color/primary_blue"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageViewzxc"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/ic_mail"
-                    android:tint="@color/white" />
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/helvetica"
                 android:gravity="center"
-                android:text="Others"
+                android:letterSpacing="-0.04"
+                android:text="Announcements"
                 android:textColor="@color/primary_Text"
                 android:textSize="12sp"
                 android:textStyle="normal" />
+
         </LinearLayout>
 
     </TableRow>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_notif"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp" />
+
+    <include
+        layout="@layout/recycle_notif_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
 </LinearLayout>

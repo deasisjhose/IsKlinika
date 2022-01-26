@@ -153,20 +153,22 @@
                 app:cardUseCompatPadding="true"
                 app:contentPadding="4dp">
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart_growthChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp"
+                    android:layout_above="@+id/seekBar1" />
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <com.github.mikephil.charting.charts.LineChart
-                            android:id="@+id/lineChart_growthChart"
-                            android:layout_width="500dp"
-                            android:layout_height="match_parent"
-                            android:layout_above="@+id/seekBar1" />
                     </LinearLayout>
                 </HorizontalScrollView>
             </com.google.android.material.card.MaterialCardView>

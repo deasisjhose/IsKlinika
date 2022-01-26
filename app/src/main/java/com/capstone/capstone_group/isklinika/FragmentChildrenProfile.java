@@ -274,10 +274,16 @@ public class FragmentChildrenProfile extends Fragment {
 
                 if(!tv_pGuardianContact.getText().toString().equals(""))
                     personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
+                else
+                    databaseReference.child(studentInfo.getIdNum()).child("guardianContact").removeValue() ;
                 if(!tv_pPediaContact.getText().toString().equals(""))
                     personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
+                else
+                    databaseReference.child(studentInfo.getIdNum()).child("pediaContact").removeValue() ;
                 if(!tv_pDentistContact.getText().toString().equals(""))
                     personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", Long.parseLong(tv_pDentistContact.getText().toString()));
+                else
+                    databaseReference.child(studentInfo.getIdNum()).child("dentistContact").removeValue() ;
 
                 database.updateChildren(personalValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
                     Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
