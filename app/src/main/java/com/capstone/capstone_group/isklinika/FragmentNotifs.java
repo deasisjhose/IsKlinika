@@ -21,7 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
+/*
+This fragment contains the notifications received by a Parent user
+ */
 public class FragmentNotifs extends Fragment implements View.OnClickListener {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -86,6 +88,7 @@ public class FragmentNotifs extends Fragment implements View.OnClickListener {
         }
     }
 
+    //This method retrieves the notifications received in the database
     public void retrieveNotif(int clicked){
         ArrayList<ClassNotif> notifArrayList = new ArrayList<>() ;
 
@@ -127,6 +130,7 @@ public class FragmentNotifs extends Fragment implements View.OnClickListener {
         }) ;
     }
 
+    //This method is used to add the notifications in the recycler adapter to be displayed
     public void dataInNotif(ArrayList<ClassNotif> notifArrayList){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL, false);
         AdapterNotification adapterNotification = new AdapterNotification(getView().getContext(), notifArrayList, clickedNotif) ;

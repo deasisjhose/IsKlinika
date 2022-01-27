@@ -35,7 +35,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
+This activity is the Clinic Visit Module.
+ */
 public class ActivityClinicVisit extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -78,12 +80,14 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
         checkUser();
     }
 
+    //This method is used to build the bar
     public void buildBar(){
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
         this.btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(view -> finish());;
     }
 
+    //This method is used to initialize the views used in this activity
     public void buildView(){
         this.tv_cvFromDate = findViewById(R.id.tv_cvFromDate) ;
         this.tv_cvToDate = findViewById(R.id.tv_cvToDate) ;
@@ -136,6 +140,7 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
 
     }
 
+    //This method is used to check the userType
     public void checkUser() {
 
         switch (userType){
@@ -187,6 +192,7 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
         });
     }
 
+    //This method is used to retrieve the clinic visits of the student
     public void retrieveClinicVisit(){
         this.classClinicVisitArrayList = new ArrayList<>() ;
 
@@ -300,6 +306,7 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
         }) ;
     }
 
+    //This method is used to put the retrieved clinic visits in an expander list
     public void dataInExpandClinicVisit(ArrayList<ClassClinicVisit> clinicVisitArrayList){
         if(spinner_sort.getSelectedItem().toString().equals("Latest")){
 //            Collections.reverse(clinicVisitsDiagnosisDate);
@@ -343,20 +350,18 @@ public class ActivityClinicVisit extends AppCompatActivity implements View.OnCli
 
     }
 
+    //This method is used to build the dropdown for sorting
     public void makeSpinnerSort(){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,R.layout.spinner_clinicvisit) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
         spinner_sort.setAdapter(adapter);
         spinner_sort.setSelection(0);
-//        prescriptionStatus = spinner_medicationStatus.getSelectedItem().toString() ;
-//        Log.d(TAG, "onItemSelected: selectedSort = " + spinner_medicationStatus.getSelectedItem());
 
         spinner_sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "onItemSelected: selectedSort = " + spinner_sort.getSelectedItem());
-                //sort function
-//                prescriptionStatus = spinner_medicationStatus.getSelectedItem().toString() ;
+
                 retrieveClinicVisit();
             }
             @Override

@@ -33,6 +33,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/*This activity is where the users land after logging in. This activity contains the different
+    modules that the users can use.
+ */
 public class ActivityLanding extends AppCompatActivity implements View.OnClickListener{
 
     //Firebase
@@ -86,7 +89,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
     }
 
 
-    @SuppressLint("ResourceAsColor")
+    //This method is used to build the bottom nav bar and as well as some of the other views
     public void buildBar() {
         this.botNav = new ClassBotnav(this) ;
         botNav.btn_nav_home.setOnClickListener(this);
@@ -104,6 +107,8 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         this.mbtg_childrenButton = findViewById(R.id.mbtg_childrenButton) ;
     }
 
+
+    //This method is used to initialize the used views in the activity
     public void buildViews() {
         this.coordinatorLayout = findViewById(R.id.coordinatorLayout);
         this.appBar = findViewById(R.id.appbar) ;
@@ -116,6 +121,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    //This method is used to check the user that logged in
     public void checkUser() {
         Log.d(TAG, "checkUser: ");
         switch (userType){
@@ -130,6 +136,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    // This method creates the dropdown option in the children information tab.
     public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){
         this.children = new ArrayList<>() ;
         children = childrenArrayList ;
@@ -229,6 +236,8 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
                     }
     }
 
+
+    //This method is used to set the colors of the inactive tabs on the bottom navigation bottom bar
     public void setBtnInactive(){
         botNav.btn_nav_home.setIconTint(getColorStateList(R.color.inactive_nav_btn));
         botNav.btn_nav_profile.setIconTint(getColorStateList(R.color.inactive_nav_btn));
@@ -237,21 +246,18 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
+    //This method returns a ClassStudentInfo
     public ClassStudentInfo getStudentInfo(){
         return studentInfo ;
     }
+
+    //This method returns an ArrayList<ClassStudentInfo>
     public ArrayList<ClassStudentInfo> getChildren() {
         return children;
     }
-    public void setChildrenUpdate(String idNum, ClassStudentInfo studentInfo){
-//        for(int i = 0 ; i < children.size() ; i++){
-//            if(children.get(i).getIdNum() == idNum) {
-//                children.set(i, studentInfo) ;
-//            }
-//        }
-    }
 
+
+    //This method is used to set the child info
     public void setNewChildInfo(String parent, String name, String email, Long contact){
         if(parent.equals("mother")){
             children.get(0).setMotherName(name);
@@ -264,9 +270,12 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    //This method returns the userType
     public String getUserType() {
         return userType;
     }
+
+    //This method is used to return the parent information
     public ClassParentInfo getParentInfo(){
         return parentInfo ;
     }

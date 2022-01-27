@@ -26,7 +26,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+/*
+This activity the landing page of the clinician user.
+ */
 public class ActivityClinicianLanding extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -100,6 +102,7 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
 
     }
 
+    //This method is called to retrieve the data of the student being searched.
     public void retrieveStudent(){
 
         studentReference.child(searchStudentEt.getText().toString()).addValueEventListener(new ValueEventListener() {
@@ -124,6 +127,7 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
 
     }
 
+    //This method is used t o display th information of the student after retrieving the data.
     public void displayStudent(ClassStudentInfo studentInfoUser){
         searchStudentEt.setText("");
         searchedStudent = studentInfoUser ;

@@ -9,64 +9,102 @@
     android:paddingRight="4dp"
     android:paddingBottom="45dp">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcard_editProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layout_marginRight="4dp"
-        android:clickable="true"
-        app:cardElevation="0dp"
-        app:rippleColor="@color/active_nav_btn"
-        tools:ignore="TouchTargetSizeCheck">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end">
 
-        <view
-            class="com.google.android.material.textview.MaterialTextView"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcard_uploadMedcert"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/accent_layout_tester"
-            android:backgroundTint="@color/accent_layout_tester"
-            android:drawableLeft="@drawable/ic_edit"
-            android:drawableTint="@color/active_nav_btn"
-            android:fontFamily="@font/dinpro"
-            android:gravity="center_vertical"
-            android:padding="4dp"
-            android:text="EDIT PROFILE"
-            android:textColor="@color/primary_blue"
-            android:textSize="10sp"
-            tools:ignore="TextContrastCheck" />
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="4dp"
+            android:clickable="true"
+            app:cardElevation="0dp"
+            app:rippleColor="@color/active_nav_btn"
+            tools:ignore="TouchTargetSizeCheck">
 
-    </com.google.android.material.card.MaterialCardView>
+            <view
+                class="com.google.android.material.textview.MaterialTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/accent_layout_tester"
+                android:backgroundTint="@color/accent_layout_tester"
+                android:drawableLeft="@drawable/ic_baseline_photo_camera_24"
+                android:drawableTint="@color/active_nav_btn"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="Medical Certificates"
+                android:textColor="@color/primary_blue"
+                android:textSize="10sp"
+                tools:ignore="TextContrastCheck" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcard_saveProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layout_marginRight="4dp"
-        android:clickable="true"
-        android:visibility="gone"
-        app:cardElevation="0dp"
-        app:rippleColor="@color/success_container"
-        tools:ignore="TouchTargetSizeCheck">
+        </com.google.android.material.card.MaterialCardView>
 
-        <view
-            class="com.google.android.material.textview.MaterialTextView"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcard_editProfile"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/accent_layout_tester"
-            android:backgroundTint="@color/accent_layout_tester"
-            android:drawableLeft="@drawable/check_ic"
-            android:drawableTint="@color/green"
-            android:fontFamily="@font/dinpro"
-            android:gravity="center_vertical"
-            android:padding="4dp"
-            android:text="SAVE PROFILE"
-            android:textColor="@color/success_container"
-            android:textSize="10sp"
-            tools:ignore="TextContrastCheck" />
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="4dp"
+            android:clickable="true"
+            app:cardElevation="0dp"
+            app:rippleColor="@color/active_nav_btn"
+            tools:ignore="TouchTargetSizeCheck">
 
-    </com.google.android.material.card.MaterialCardView>
+            <view
+                class="com.google.android.material.textview.MaterialTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/accent_layout_tester"
+                android:backgroundTint="@color/accent_layout_tester"
+                android:drawableLeft="@drawable/ic_edit"
+                android:drawableTint="@color/active_nav_btn"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="Edit Profile"
+                android:textColor="@color/primary_blue"
+                android:textSize="10sp"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcard_saveProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="4dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:cardElevation="0dp"
+            app:rippleColor="@color/success_container"
+            tools:ignore="TouchTargetSizeCheck">
+
+            <view
+                class="com.google.android.material.textview.MaterialTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/accent_layout_tester"
+                android:backgroundTint="@color/accent_layout_tester"
+                android:drawableLeft="@drawable/check_ic"
+                android:drawableTint="@color/green"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="SAVE PROFILE"
+                android:textColor="@color/success_container"
+                android:textSize="10sp"
+                tools:ignore="TextContrastCheck" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </TableRow>
+
+
 
     <view
         android:id="@+id/card_personal"

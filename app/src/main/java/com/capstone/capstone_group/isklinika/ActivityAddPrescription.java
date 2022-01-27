@@ -23,7 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-
+/*
+This activity allows the parent user to add current and past prescriptions given to their child.
+ */
 public class ActivityAddPrescription extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -55,6 +57,7 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
         makeSpinnerPrescription();
     }
 
+    //This method is used to build and initialize the views used in this activity
     public void buildViews(){
         this.spinner_addPrescriptionChild = findViewById(R.id.spinner_addPrescriptionChild) ;
         this.spinner_addPrescriptionStatus = findViewById(R.id.spinner_addPrescriptionStatus) ;
@@ -121,6 +124,7 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
         spinner_addPrescriptionStatus.setSelection(0);
     }
 
+    //This method is called when the add button is press. This saves the prescription to the database
     public void addPrescription(){
         if(tv_addPrescriptionStart.getText().toString().equals("") || tv_addPrescriptionStart.getText().toString().equals("YYYY-MM-DD")){
             Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
@@ -164,10 +168,8 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
 
     public void resetViews(){
         edit_addPrescriptionAmount.setText("");
-//        edit_addPrescriptionPurpose.setText("");
         edit_addPrescriptionInterval.setText("");
         edit_addPrescriptionMedicine.setText("");
-//        tv_addPrescriptionStart.setText("");
-//        tv_addPrescriptionEnd.setText("");
+
     }
 }

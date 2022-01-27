@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
+/*
+This activity is used to display the student information when the user is the clinician.
+ */
 public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
 
     private Intent intent ;

@@ -19,7 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/*
+This function contains the user profile. The parent user can edit their information here as well
+ */
 public class FragmentUserProfile extends Fragment {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database

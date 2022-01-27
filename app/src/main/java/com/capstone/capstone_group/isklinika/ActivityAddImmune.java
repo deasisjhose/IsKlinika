@@ -35,7 +35,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
-
+/*
+This activity allows the parent user to add immunization information.
+ */
 public class ActivityAddImmune extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database

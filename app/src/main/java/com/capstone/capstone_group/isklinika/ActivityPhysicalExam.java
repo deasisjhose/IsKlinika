@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
+/*
+This activity is used to display the physical exam details.
+ */
 public class ActivityPhysicalExam extends AppCompatActivity implements View.OnClickListener {
 
     private Intent intent ;
@@ -27,10 +30,16 @@ public class ActivityPhysicalExam extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_physical_exam);
 
+        ImageButton btn_back ;
+        btn_back = findViewById(R.id.btn_back) ;
+        btn_back.setOnClickListener(view -> finish());
+
         intent = getIntent() ;
         ape = intent.getParcelableExtra("ape") ;
         Log.d("HEALTHASSESSMENT//", "onCreate: " + ape.getName());
         buildViews();
+
+
 
     }
 

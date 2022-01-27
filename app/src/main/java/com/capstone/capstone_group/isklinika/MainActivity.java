@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buildViews();
     }
 
+    //This method is used to initialize the views
     public void buildViews() {
         this.edit_user = findViewById(R.id.edit_username) ;
         this.edit_password = findViewById(R.id.edit_password) ;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
+    //This method is checks the selected radio button
     public void checkRadioChecked(View v){
         int radioId = radio_users.getCheckedRadioButtonId();
 
@@ -283,6 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //This method retrieves the parent's child/children and retrieve their information in the studentInfo table.
     public void retrieveDataParentUser(ClassParentInfo parentUser) {
         ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
 

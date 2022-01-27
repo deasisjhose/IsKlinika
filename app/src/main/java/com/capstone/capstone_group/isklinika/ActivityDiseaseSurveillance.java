@@ -40,6 +40,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 //disease
+/*
+This activity is the Disease Surveillance Module.
+ */
 public class ActivityDiseaseSurveillance extends AppCompatActivity implements View.OnClickListener{
 
     private ArrayList<ClassStudentInfo> children ;
@@ -84,11 +87,11 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     }
 
+    //This method is used to build the bar of the activity
     public void buildBar(){
         this.tv_moduleFullName = findViewById(R.id.tv_moduleFullName) ;
         this.btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(view -> finish());
-
     }
 
     public void buildView(){
@@ -108,12 +111,10 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
             if((currMonth+1)<10){
                 input_startDate.setText(currYear + "-0" + (currMonth+1) + "-0" + firstDay);
                 input_endDate.setText(currYear + "-0" + (currMonth+1) + "-" + lastDay);
-                //getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
             }
             else{
                 input_startDate.setText(currYear + "-" + (currMonth+1) + "-0" + firstDay);
                 input_endDate.setText(currYear + "-" + (currMonth+1) + "-" + lastDay);
-                //getTop5(input_startDate.getText().toString(), input_endDate.getText().toString());
             }
 
         }
@@ -169,7 +170,6 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
     }
 
     public void checkUser() {
-
         switch (userType){
             case "Student":
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
@@ -270,7 +270,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         }
     }
 
-    //
+    //This method is used to initialize and build the views used for the list of top 5 disease and complaints
     public void buildTop5Builds(){
         
         this.tr_disease1 = findViewById(R.id.tr_disease1) ;
@@ -569,6 +569,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     }
 
+    //This method is used to build the dropdown for the disease chart
     public void makeSpinnerDisease(ArrayList<nameCount> top5DiseaseFinal){
         this.spinnerDisease = findViewById(R.id.spinner_disease) ;
         ArrayAdapter<nameCount> adapter = new ArrayAdapter<nameCount>(this, R.layout.spinner_child_diseasesurveillance, top5DiseaseFinal) ;
@@ -590,6 +591,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         });
     }
 
+    //This method is used to build the dropdown for the complaint chart
     public void makeSpinnerComplaints(ArrayList<nameCount> top5ComplaintsFinal){
         this.spinnerComplaints = findViewById(R.id.spinner_complaints) ;
         ArrayAdapter<nameCount> adapter = new ArrayAdapter<nameCount>(this, R.layout.spinner_child_diseasesurveillance, top5ComplaintsFinal) ;
@@ -610,6 +612,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         });
     }
 
+    //This method is used to retrieve the data that will be used for the disease chart
     public void getCountBySectionDisease(String selected){
 
         String stringStart= input_startDate.getText().toString();
@@ -767,6 +770,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         });
     }
 
+    //This method is used to retrieve the data that will be used for the complaint chart
     public void getCountBySectionComplaint(String selected){
 
         String stringStart= input_startDate.getText().toString();
@@ -920,6 +924,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
         });
     }
 
+    //This method creates the disease chart
     public void makeDiseaseCountChart(ArrayList<nameCount> sectionCount, String selected){
         TextView tv_chartDiseaseTitle ;
         TextView tv_chartDiseaseTitleDate ;
@@ -984,6 +989,7 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
     }
 
+    //This method creates the complaint chart
     public void makeComplaintCountChart(ArrayList<nameCount> sectionCount,String selected){
         TextView tv_chartComplaintTitle ;
         TextView tv_chartComplaintTitleDate ;

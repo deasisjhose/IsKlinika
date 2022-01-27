@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.card.MaterialCardView;
 
+/*
+This fragment contains the six modules that the users can use to monitor their child's health
+ */
 public class FragmentModule extends Fragment implements View.OnClickListener {
 
     private MaterialCardView mcard_clinicVisit, mcard_healthAssess, mcard_diseaseSurveillance,
@@ -17,6 +20,7 @@ public class FragmentModule extends Fragment implements View.OnClickListener {
 
     private ActivityLanding activity_landing ;
 
+    //This is a required blank constructor
     public FragmentModule() {
     }
 

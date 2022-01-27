@@ -31,8 +31,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-public class ActivityImmunization extends AppCompatActivity implements InterfaceIsklinika{
+/*
+This is the Immunization Module
+ */
+public class ActivityImmunization extends AppCompatActivity{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
     public DatabaseReference databaseImmunization = db.getReference("studentHealthHistory");
@@ -74,14 +76,11 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 
     }
 
-
-    @Override
     public void buildBar() {
         this.btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(view -> finish());
     }
 
-    @Override
     public void buildViews() {
         this.tv_immuneFullName = findViewById(R.id.tv_moduleFullName) ;
         this.layout_immune_history = findViewById(R.id.layout_immune_history) ;
@@ -139,7 +138,6 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
 
     }
 
-    @Override
     public void checkUser() {
 
         switch (userType){
@@ -164,11 +162,6 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
                 retrieveDataVaxList();
                 break;
         }
-    }
-
-    @Override
-    public void retrieveDataParentUser() {
-
     }
 
     //This function is used to build the recycler of the dates for the vaccine information. checkActive = 20
@@ -209,6 +202,7 @@ public class ActivityImmunization extends AppCompatActivity implements Interface
             }
         });
     }
+
 
     public void makeSpinnerChildren(){
         this.spinner_childNameModules = findViewById(R.id.spinner_childNameModules) ;

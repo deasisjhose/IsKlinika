@@ -1,5 +1,6 @@
 package com.capstone.capstone_group.isklinika;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +34,9 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-
+/*
+This fragment displays the student information. Parent users can also edit some of the information displayed.
+ */
 public class FragmentChildrenProfile extends Fragment {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -43,10 +46,11 @@ public class FragmentChildrenProfile extends Fragment {
     private TextView tv_pBirthday, tv_pAge, tv_pSex, tv_pStudentType, tv_pBMI, tv_pBMIStatus, tv_pWeight, tv_pWeightStatus, tv_pHeight, tv_pHeightStatus ;
     private TextInputEditText tv_pAddress, tv_pReligion, tv_pNationality, tv_pGuardian, tv_pGuardianEmail,  tv_pGuardianContact, tv_pPedia, tv_pPediaEmail, tv_pPediaContact,
             tv_pDentist, tv_pDentistEmail, tv_pDentistContact, tv_pHospital, tv_pHospitalAddress;
-    private MaterialCardView mcard_editProfile, mcard_saveProfile ;
+    private MaterialCardView mcard_editProfile, mcard_saveProfile, mcard_uploadMedcert ;
     private ActivityLanding activity_landing ;
     private MaterialDatePicker materialDatePicker ;
 
+    private ClassStudentInfo studentInfoDisplayed ;
 
     public FragmentChildrenProfile() {
     }
@@ -58,6 +62,7 @@ public class FragmentChildrenProfile extends Fragment {
         View view = inflater.inflate(R.layout.fragment_children_profile, container, false);
         this.mcard_editProfile = view.findViewById(R.id.mcard_editProfile) ;
         this.mcard_saveProfile = view.findViewById(R.id.mcard_saveProfile) ;
+        this.mcard_uploadMedcert = view.findViewById(R.id.mcard_uploadMedcert) ;
         this.activity_landing = (ActivityLanding) getActivity() ;
 
         this.tv_pBirthday = view.findViewById(R.id.tv_pBirthday) ;
@@ -112,13 +117,12 @@ public class FragmentChildrenProfile extends Fragment {
         }) ;
 
 
-//        Log.d("LANDING//", "FRAGMENT_PROFILEonViewCreated: childSelected = " + studentInfo.getFullName());
-
 
     }
 
+    //This method is used to display the information texts
     public void setViews(ClassStudentInfo studentInfo){
-        activity_landing.setChildrenUpdate(studentInfo.getIdNum(), studentInfo);
+        studentInfoDisplayed = studentInfo ;
         tv_pBirthday.setText(studentInfo.getBirthday());
         tv_pAge.setText(studentInfo.getAge());
         tv_pAddress.setText(studentInfo.getAddress());
@@ -291,6 +295,16 @@ public class FragmentChildrenProfile extends Fragment {
                     Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
                 });
 
+            }
+        });
+
+        mcard_uploadMedcert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ActivityAddMedCert.class) ;
+                intent.putExtra("userType", activity_landing.getUserType()) ;
+                intent.putExtra("studentChild", studentInfoDisplayed) ;
+                startActivity(intent);
             }
         });
 

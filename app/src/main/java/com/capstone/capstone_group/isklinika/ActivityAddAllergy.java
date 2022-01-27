@@ -23,6 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/*
+This activity allows the parent user to add an allergy in the allergies list.
+ */
 public class ActivityAddAllergy extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -135,7 +138,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         });
     }
 
-
+    //This method is called when editing an existing allergy in the list.
     public void makeSpinnerAllergy(){
         ArrayAdapter<ClassAllergy> adapter = new ArrayAdapter<ClassAllergy>(this, R.layout.spinner_medicalhistory, allergyArrayList) ;
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
@@ -155,6 +158,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         });
     }
 
+    //This method is called when the add button is pressed. This allows allergies to be added on the list
     public void addAllergy(){
         if(checkEditAdd == 0){
             if(edit_addAllergyAllergy.getText().toString().equals("")){

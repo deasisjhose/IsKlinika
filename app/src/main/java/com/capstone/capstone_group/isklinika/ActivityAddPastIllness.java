@@ -20,7 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-
+/*
+This activity allow the parent user to add some of the past illnesses that their child experienced to allow the school physician to use
+these information.
+ */
 public class ActivityAddPastIllness extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -51,6 +54,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
         makeSpinnerChildren();
     }
 
+    //This method is used to initialize and build the views in the activity
     public void buildViews(){
         this.spinner_addPastChild = findViewById(R.id.spinner_addPastChild) ;
         this.edit_addPastIllness = findViewById(R.id.edit_addPastIllness) ;
@@ -110,6 +114,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
     }
 
 
+    //This method is called when the add button is clicked.
     public void addPastIllness(){
         if(edit_addPastIllness.getText().toString().equals("")){
             Toast.makeText(this, "Add a disease!", Toast.LENGTH_SHORT).show();

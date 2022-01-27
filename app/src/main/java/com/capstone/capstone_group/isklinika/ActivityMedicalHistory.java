@@ -37,7 +37,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+This is the Mediical History module
+ */
 public class ActivityMedicalHistory extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -252,6 +254,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         });
     }
 
+    //This method is used to retrieve the past illness records
     public void retrieveDataPastIllness(){
         this.illnessHistoryArrayList = new ArrayList<>() ;
 
@@ -322,44 +325,45 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 //        Log.d(TAG, "retrieveDataMedicationsList: total list = " + medHistoryList.size());
     }
 
-    public void dataInExpandPastIllness(ArrayList<ClassPastIllness> allergyArrayList){
-        if(spinner_sort.getSelectedItem().toString().equals("Latest")){
-            Collections.reverse(allergyArrayList);
-            Log.d(TAG, "dataInExpandPastIllness: size = " +allergyArrayList.size());
-        }
-        ArrayList<ClassPastIllness> pastIllnessesInDate = allergyArrayList;
-        Map<ClassPastIllness, ClassPastIllness> pastIllnessMap ;
+//    public void dataInExpandPastIllness(ArrayList<ClassPastIllness> allergyArrayList){
+//        if(spinner_sort.getSelectedItem().toString().equals("Latest")){
+//            Collections.reverse(allergyArrayList);
+//            Log.d(TAG, "dataInExpandPastIllness: size = " +allergyArrayList.size());
+//        }
+//        ArrayList<ClassPastIllness> pastIllnessesInDate = allergyArrayList;
+//        Map<ClassPastIllness, ClassPastIllness> pastIllnessMap ;
+//
+//
+//        pastIllnessMap = new HashMap<ClassPastIllness, ClassPastIllness>() ;
+//        int i  ;
+//        for(i = 0 ; i <allergyArrayList.size() ; i++){
+//            pastIllnessMap.put(pastIllnessesInDate.get(i), pastIllnessesInDate.get(i)) ;
+//        }
+//
+//        this.expand_pastIllness = findViewById(R.id.expand_pastIllness) ;
+//        this.expandPastIllnessAdapter = new AdapaterExpandPastIllness(this, pastIllnessesInDate, pastIllnessMap) ;
+//        expand_pastIllness.setAdapter(expandPastIllnessAdapter);
+//        expand_pastIllness.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//            int lastExpandedPosition = -1;
+//            @Override
+//            public void onGroupExpand(int i) {
+//                if(lastExpandedPosition != -1 && i != lastExpandedPosition){
+//                    expand_pastIllness.collapseGroup(lastExpandedPosition);
+//                }
+//                lastExpandedPosition = i;
+//            }
+//        });
+//        expand_pastIllness.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//            @Override
+//            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+//
+//                return true;
+//            }
+//        });
+//
+//    }
 
-
-        pastIllnessMap = new HashMap<ClassPastIllness, ClassPastIllness>() ;
-        int i  ;
-        for(i = 0 ; i <allergyArrayList.size() ; i++){
-            pastIllnessMap.put(pastIllnessesInDate.get(i), pastIllnessesInDate.get(i)) ;
-        }
-
-        this.expand_pastIllness = findViewById(R.id.expand_pastIllness) ;
-        this.expandPastIllnessAdapter = new AdapaterExpandPastIllness(this, pastIllnessesInDate, pastIllnessMap) ;
-        expand_pastIllness.setAdapter(expandPastIllnessAdapter);
-        expand_pastIllness.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            int lastExpandedPosition = -1;
-            @Override
-            public void onGroupExpand(int i) {
-                if(lastExpandedPosition != -1 && i != lastExpandedPosition){
-                    expand_pastIllness.collapseGroup(lastExpandedPosition);
-                }
-                lastExpandedPosition = i;
-            }
-        });
-        expand_pastIllness.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-
-                return true;
-            }
-        });
-
-    }
-
+    //This method is used to display the retrieved past illness records to the recyclerview
     public void dataInPastIllness(ArrayList<ClassPastIllness> allergyArrayList){
         if(spinner_sort.getSelectedItem().toString().equals("Latest")){
             Collections.reverse(allergyArrayList);

@@ -41,10 +41,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-/**To do
- * 1. Indicators line 55, 119, 192
- * 2. Reuse some of the old codes na lang from capstone mobile
- * */
+/*
+This activity is the Health Assessment Module
+ */
 public class ActivityHealthAssessment extends AppCompatActivity {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -235,6 +234,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
         });
     }
 
+    //This method is used to create the chart for BMI
     public void makeChart(ArrayList<Integer> dataAge, ArrayList<Double> dataHeight, ArrayList<Double> dataWeight, ArrayList<Double> dataBMI ){
         Log.d(TAG,"age1: " + dataAge.get(0));
         LineChart lineChart = findViewById(R.id.lineChart_growthChart);
@@ -354,6 +354,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
 
     }
 
+    //This method is used to create the chart for height and weight
     public void makeGrowthChart(String id){
         ArrayList<Integer> dataAge = new ArrayList<>();
         ArrayList<Double> dataHeight = new ArrayList<>();
@@ -504,7 +505,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
     }
 
     //checkActive == 30
-    //
+    //function is used to retrieve the data in ade
     public void retrieveDataDental(){
         ArrayList<ClassDental> dentalArrayList = new ArrayList<>() ;
 

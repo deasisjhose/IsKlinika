@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.capstone.capstone_group.isklinika">
+
 
     <application
         android:allowBackup="true"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IsKlinika">
-        <activity android:name=".ActivityAddIntake"></activity>
+        <activity android:name=".ActivityAddMedCert"></activity>
+        <activity android:name=".ActivityAddIntake" />
         <activity android:name=".ActivityDentalExam" />
         <activity android:name=".ActivityAddPastIllness" />
         <activity android:name=".ActivityAddPrescription" />
@@ -40,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
     </application>
 
 </manifest>

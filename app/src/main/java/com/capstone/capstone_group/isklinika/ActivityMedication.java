@@ -41,7 +41,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-
+/*
+This is the Medication module
+ */
 public class ActivityMedication extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
@@ -235,7 +237,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
             }
         }) ;
     }
-
 
     public void checkUser() {
 
@@ -559,7 +560,6 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
     //check == 30 ; From  to
     //this function is used to display the intake history
     public void dataInIntakeHistory(ArrayList<ClassIntakeHistory> intakeHistoryList){
-//        this.intakeHistoryListForSort = intakeHistoryList ;
 
         if(spinner_sort.getSelectedItem().toString().equals("Latest") && intakeHistoryList.size() > 0){
             Collections.reverse(intakeHistoryList);
