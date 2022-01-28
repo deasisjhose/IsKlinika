@@ -162,7 +162,7 @@
                 android:drawableTint="@color/primary_blue"
                 android:fontFamily="@font/helveticacompressed"
                 android:gravity="center_vertical"
-                android:text="Welcome, "
+                android:text="Welcome"
                 android:textColor="@color/primary_Text"
                 android:textSize="30sp" />
 

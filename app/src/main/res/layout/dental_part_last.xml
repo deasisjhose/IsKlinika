@@ -179,7 +179,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView174"
+                android:id="@+id/tv_calculusYes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -190,7 +190,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView175"
+                android:id="@+id/tv_gingivaYes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -201,7 +201,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView176"
+                android:id="@+id/tv_pocketYes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -212,7 +212,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView177"
+                android:id="@+id/tv_facialYes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -331,7 +331,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView190"
+                android:id="@+id/tv_calculusNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -342,7 +342,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView191"
+                android:id="@+id/tv_gingivaNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -353,7 +353,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView192"
+                android:id="@+id/tv_pocketNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"
@@ -364,7 +364,7 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView193"
+                android:id="@+id/tv_facialNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_square_black"

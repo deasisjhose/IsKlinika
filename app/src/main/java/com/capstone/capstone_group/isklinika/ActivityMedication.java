@@ -337,7 +337,7 @@ public class ActivityMedication extends AppCompatActivity implements View.OnClic
         }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        this.adapterMedPrescriptions = new AdapterMedPrescriptions(getBaseContext(), medMatchSpinnerList, studentId, prescriptionStatus) ;
+        this.adapterMedPrescriptions = new AdapterMedPrescriptions(getBaseContext(), medMatchSpinnerList, studentId, prescriptionStatus, userType) ;
         adapterMedPrescriptions.setUserType(userType);
         this.recycle_medicationPrescription = findViewById(R.id.recycle_medicationPrescription) ;
         recycle_medicationPrescription.setLayoutManager(layoutManager);

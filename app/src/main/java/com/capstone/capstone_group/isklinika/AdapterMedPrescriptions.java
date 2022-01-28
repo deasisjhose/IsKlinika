@@ -46,11 +46,12 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
         tvListener = listener ;
     }
 
-    public AdapterMedPrescriptions(Context tvContext, ArrayList<ClassMedication> tvData, String studentId, String status) {
+    public AdapterMedPrescriptions(Context tvContext, ArrayList<ClassMedication> tvData, String studentId, String status, String userType) {
         this.tvContext = tvContext;
         this.tvData = tvData;
         this.studentId = studentId ;
         this.prescriptionStatus = status ;
+        this.userType = userType ;
     }
 
     @NonNull
@@ -84,7 +85,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
                 holder.img_saveMH.setVisibility(View.GONE);
 
             }
-            if(userType.equals("Student")){
+            if(userType.equals("Student") || userType.equals("Clinician") ){
                 holder.img_editMH.setVisibility(View.INVISIBLE);
                 holder.txt_medStart.setClickable(false);
                 holder.txt_medEnd.setClickable(false);

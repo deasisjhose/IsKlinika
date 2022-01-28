@@ -97,6 +97,10 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         botNav.btn_nav_mail.setOnClickListener(this);
         botNav.btn_nav_parent_profile.setOnClickListener(this);
 
+        if(userType.equals("Student")){
+            botNav.btn_nav_mail.setVisibility(View.GONE);
+            botNav.btn_nav_parent_profile.setVisibility(View.GONE);
+        }
         //set active btn tint
         botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
 

@@ -155,7 +155,7 @@ public class ActivityHealthAssessment extends AppCompatActivity {
             case "Clinician":
                 if(userType.equals("Clinician")){
                     ImageView img_logoHealthAssess = findViewById(R.id.img_logoHealthAssess) ;
-                    img_logoHealthAssess.setImageResource(R.drawable.clinician_immunization);
+                    img_logoHealthAssess.setImageResource(R.drawable.growth);
                 }
                 this.studentInfo = intent.getParcelableExtra("studentInfo") ;
                 tv_moduleFullName.setText(studentInfo.getFullName());

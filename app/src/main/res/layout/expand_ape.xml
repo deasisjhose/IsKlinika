@@ -304,6 +304,7 @@
                 android:layout_marginLeft="-18dp"
                 android:layout_weight="1"
                 android:buttonTint="@color/checkbox_recycle_pae"
+                android:checked="true"
                 android:clickable="false"
                 android:fontFamily="@font/dinpro"
                 android:scaleX="0.80"

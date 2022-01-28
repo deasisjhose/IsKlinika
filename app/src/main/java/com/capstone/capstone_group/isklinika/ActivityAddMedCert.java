@@ -60,6 +60,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -239,7 +241,7 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
             reference = "/" +studentInfo.getIdNum() + "/uploads/" + "labResult/";
         }
 
-        databaseReference.child(reference).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(reference).orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -249,7 +251,7 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
                     uploadedPDF.add(file) ;
 //                    dateList.add(file) ;
                 }
-
+                Collections.reverse(uploadedPDF);
                 dataInFiles(uploadedPDF);
             }
 
