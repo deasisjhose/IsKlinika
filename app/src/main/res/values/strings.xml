@@ -31,4 +31,9 @@
         <item>Oldest</item>
     </string-array>
 
+    <string-array name="upload">
+        <item>Medical Certificate</item>
+        <item>Lab Result</item>
+    </string-array>
+
 </resources>

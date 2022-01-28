@@ -23,7 +23,7 @@
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/helveticabold"
         android:gravity="center"
-        android:text="Medical Certificates"
+        android:text="Uploads"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -42,9 +42,29 @@
             android:id="@+id/mbtg_medCertTab"
             android:layout_width="match_parent"
             android:layout_height="33dp"
-            app:checkedButton="@id/mbtn_medCerts"
+            app:checkedButton="@id/mbtn_addMedCert"
             app:selectionRequired="true"
             app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbtn_addMedCert"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/med_cert"
+                android:fontFamily="@font/helvetica"
+                android:letterSpacing="0.06"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="Upload a file"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                android:theme="@style/Widget.Material3.Button.TextButton"
+                app:backgroundTint="@color/med_cert" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/mbtn_medCerts"
@@ -60,13 +80,13 @@
                 android:paddingBottom="2dp"
                 android:text="Medical Certificate"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_Text"
                 android:textSize="11sp"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/med_cert" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/mbtn_addMedCert"
+                android:id="@+id/mbtn_labResult"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -77,13 +97,14 @@
                 android:paddingTop="2dp"
                 android:paddingRight="4dp"
                 android:paddingBottom="2dp"
-                android:text="Add Medical Certificate"
+                android:text="Lab Results"
                 android:textAllCaps="false"
                 android:textColor="@color/primary_Text"
                 android:textSize="11sp"
                 android:textStyle="normal"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/med_cert" />
+
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
@@ -91,45 +112,20 @@
             android:id="@+id/layout_addMedCert"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginTop="8dp"
                 android:gravity="end">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/mcard_uploadCamera"
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/spinner_upload"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="8dp"
-                    android:clickable="true"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/accent_layout_tester"
-                    app:cardCornerRadius="4dp"
-                    app:cardElevation="0dp"
-                    app:rippleColor="@color/active_nav_btn"
-                    tools:ignore="TouchTargetSizeCheck">
-
-                    <view
-                        class="com.google.android.material.textview.MaterialTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@color/accent_layout_tester"
-                        android:backgroundTint="@color/accent_layout_tester"
-                        android:drawableLeft="@drawable/ic_baseline_photo_camera_24"
-                        android:drawableTint="@color/active_nav_btn"
-                        android:fontFamily="@font/dinpro"
-                        android:padding="4dp"
-                        android:text="Take Picture"
-                        android:textColor="@color/primary_blue"
-                        android:textSize="12sp"
-                        tools:ignore="TextContrastCheck" />
-
-                </com.google.android.material.card.MaterialCardView>
+                    android:layout_weight="1"
+                    android:overlapAnchor="false" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mcard_uploadFile"
@@ -150,7 +146,7 @@
                         android:layout_gravity="center"
                         android:background="@color/accent_layout_tester"
                         android:backgroundTint="@color/accent_layout_tester"
-                        android:drawableLeft="@drawable/ic_baseline_photo_camera_24"
+                        android:drawableLeft="@drawable/ic_baseline_file_upload_24"
                         android:drawableTint="@color/active_nav_btn"
                         android:fontFamily="@font/dinpro"
                         android:padding="4dp"
@@ -161,6 +157,26 @@
 
                 </com.google.android.material.card.MaterialCardView>
             </TableRow>
+
+            <ProgressBar
+                android:id="@+id/progress_upload"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_filename"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_baseline_sticky_note_2_24"
+                android:drawableTint="@color/primary_blue"
+                android:fontFamily="@font/helvetica"
+                android:text="TextView"
+                android:textColor="@color/primary_Text"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/img_newUploadMC"
@@ -216,7 +232,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/list_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </LinearLayout>
 
