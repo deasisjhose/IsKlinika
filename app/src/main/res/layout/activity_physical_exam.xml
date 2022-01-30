@@ -701,6 +701,8 @@
                         android:id="@+id/check_apeYes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:buttonTint="@color/checkbox_recycle_pae"
+                        android:checked="true"
                         android:clickable="false"
                         android:text="Essentially Normal P.E"
                         android:textColor="#5A5A5A"

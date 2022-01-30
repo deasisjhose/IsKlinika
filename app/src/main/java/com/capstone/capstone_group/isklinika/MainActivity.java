@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public DatabaseReference studentReference= db.getReference("studentUsers");
     public DatabaseReference parentReference= db.getReference("parentUsers");
     public DatabaseReference clinicReference= db.getReference("clinicUsers");
+    public DatabaseReference teacherReference= db.getReference("teacherUsers");
 
     private Intent intent ;
     private String key;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edit_user, edit_password ;
     private TextView tv_username, tv_forgotPassword ;
     private RadioGroup radio_users ;
-    private MaterialRadioButton radio_student, radio_parent, radio_clinician ;
+    private MaterialRadioButton radio_student, radio_parent, radio_clinician, radio_teacher;
     private MaterialButton btn_login ;
 
     private static final String TAG="MAIN//" ;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.radio_student = findViewById(R.id.radio_student) ;
         this.radio_parent = findViewById(R.id.radio_parent) ;
         this.radio_clinician = findViewById(R.id.radio_clinician) ;
+        this.radio_teacher = findViewById(R.id.radio_teacher) ;
 
         this.btn_login = findViewById(R.id.btn_login) ;
 
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         RadioButton radioButton = findViewById(radioId);
 
-        if(radio_parent.isChecked() || radio_clinician.isChecked()){
+        if(radio_parent.isChecked() || radio_clinician.isChecked() || radio_teacher.isChecked()){
             tv_username.setText("Email");
             edit_user.setText("");
             edit_user.setHint("email");
@@ -130,8 +132,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else {
                             if(snapshot.exists()){  // if the id number exists in the database
                                 if(snapshot.child("password").getValue().equals(pass)){ // matches password in the database
-
-
 
                                     studentInfoReference.child(idNum).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         public void onCancelled(@NonNull DatabaseError error) {
                                         }
                                     }) ;
+                                    break;
                                 }
                                 else{
                                     Toast.makeText(MainActivity.this, "Wrong password.", Toast.LENGTH_SHORT).show();
@@ -273,6 +274,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             });
                         }
                     }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        throw error.toException();
+                    }
+                });
+            } else if(radio_teacher.isChecked()){ // if user is clinician
+
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out );
+
+                Query query = teacherReference.orderByChild("email").equalTo(idNum);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(idNum.isEmpty() && !pass.isEmpty()){
+                            Toast.makeText(MainActivity.this, "Please enter email.", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(!idNum.isEmpty() && pass.isEmpty()){
+                            Toast.makeText(MainActivity.this, "Please enter password.", Toast.LENGTH_SHORT).show();
+                        } else if(idNum.isEmpty() && pass.isEmpty()){
+                            Toast.makeText(MainActivity.this, "Please enter email and password.", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(snapshot.exists()){  // if the id number exists in the database
+//                                if(snapshot.child("password").getValue().equals(pass)){ // matches password in the database
+                            ClassTeacher teacher = null ;
+                            for(DataSnapshot childSnapshot : snapshot.getChildren()){
+
+                                if(childSnapshot.child("email").getValue().toString().equals(idNum)){
+                                        teacher= childSnapshot.getValue(ClassTeacher.class) ;
+                                        teacher.setKey(childSnapshot.getKey());
+                                        Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
+                                        intent = new Intent(getBaseContext(), ActivityLandingTeacher.class);
+                                        intent.putExtra("teacherUser", teacher ) ;
+                                        startActivity(intent);
+                                        break;
+                                }
+                            }
+//                                }
+//                                else{
+//                                    Toast.makeText(MainActivity.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+                            } else{
+                                Toast.makeText(MainActivity.this, "No teacher with that account.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         throw error.toException();

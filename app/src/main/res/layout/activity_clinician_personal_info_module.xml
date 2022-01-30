@@ -93,6 +93,35 @@
             android:paddingTop="8dp"
             android:paddingRight="8dp">
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcard_uploadMedcert"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:clickable="true"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/active_nav_btn"
+                tools:ignore="TouchTargetSizeCheck">
+
+                <view
+                    class="com.google.android.material.textview.MaterialTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/accent_layout_tester"
+                    android:backgroundTint="@color/accent_layout_tester"
+                    android:drawableLeft="@drawable/ic_baseline_file_upload_24"
+                    android:drawableTint="@color/active_nav_btn"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"
+                    android:text="Uploads"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="10sp"
+                    tools:ignore="TextContrastCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
             <view
                 android:id="@+id/card_personal"
                 class="com.google.android.material.card.MaterialCardView"

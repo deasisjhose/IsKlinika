@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_blue"
+    android:orientation="vertical"
+    tools:context=".ActivityLandingTeacher">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_clinicLandWelcome2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:drawableStart="@drawable/ic_user_md_solid"
+        android:drawableTint="@color/white"
+        android:fontFamily="@font/helveticacompressed"
+        android:gravity="center_vertical"
+        android:text="Welcome"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_bottom_nav"
+        android:backgroundTint="@color/accent_layout_tester"
+        android:orientation="vertical"
+        android:paddingLeft="18dp"
+        android:paddingTop="16dp"
+        android:paddingRight="18dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_notifAll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_notif_others"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/border_circle"
+                    android:backgroundTint="@color/primary_blue"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewzxc"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_mail"
+                        android:tint="@color/white" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView172"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Medical Certificate"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_notifCV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_notif"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/border_circle_outline"
+                    android:backgroundTint="@color/pastel_red"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/first_aid_kit__1_"
+                        app:srcCompat="@drawable/clinician_visit" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:text="Clinic Visits"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_notifReferral"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_notif_referral"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/border_circle"
+                    android:backgroundTint="@color/yellow"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageViewdddfd"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/bell" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvetica"
+                    android:gravity="center"
+                    android:letterSpacing="-0.04"
+                    android:text="Announcements"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_teacherNotif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -152,7 +152,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/helveticabold"
                                 android:gravity="center"
-                                android:text="Top Disease"
+                                android:text="Top Illnesses"
                                 android:textColor="@color/primary_Text"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />

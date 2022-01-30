@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background"
     android:orientation="vertical"
-    android:paddingLeft="48dp"
-    android:paddingRight="48dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     tools:context=".MainActivity">
 
-
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
+        android:id="@+id/materialTextView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/helveticabold"
         android:text="IsKlinika"
         android:textColor="@color/primary_blue"
@@ -28,9 +27,11 @@
 
     <TableRow
         android:id="@+id/tableRow"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView">
@@ -38,32 +39,44 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="0dp"
-            android:layout_height="110dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/student" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="110dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/stuparent" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="0dp"
-            android:layout_height="110dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
+            android:scaleY="0.9"
             app:srcCompat="@drawable/clinic">
 
         </ImageView>
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_weight="1"
+            android:scaleY="1.1"
+            app:srcCompat="@drawable/teacher" />
+
     </TableRow>
 
     <RadioGroup
         android:id="@+id/radio_users"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableRow">
@@ -74,11 +87,13 @@
             android:layout_height="20dp"
             android:layout_weight="1"
             android:buttonTint="@color/pastel_red"
-            android:fontFamily="@font/helveticalight"
+            android:fontFamily="@font/helvetica"
             android:onClick="checkRadioChecked"
+            android:paddingStart="-5dp"
+            android:scaleX="0.85"
+            android:scaleY="0.8"
             android:text="Student"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
             app:buttonTint="@color/pastel_red" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -87,11 +102,13 @@
             android:layout_height="20dp"
             android:layout_weight="1"
             android:buttonTint="@color/yellow"
-            android:fontFamily="@font/helveticalight"
+            android:fontFamily="@font/helvetica"
             android:onClick="checkRadioChecked"
+            android:paddingStart="-5dp"
+            android:scaleX="0.85"
+            android:scaleY="0.8"
             android:text="Parent"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
             app:buttonTint="@color/yellow" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -100,19 +117,39 @@
             android:layout_height="20dp"
             android:layout_weight="1"
             android:buttonTint="@color/quarternary_blue"
-            android:fontFamily="@font/helveticalight"
+            android:fontFamily="@font/helvetica"
             android:onClick="checkRadioChecked"
+            android:paddingStart="-5dp"
+            android:scaleX="0.85"
+            android:scaleY="0.8"
             android:text="Clinician"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
             app:buttonTint="@color/quarternary_blue" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_teacher"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:buttonTint="@color/success_container"
+            android:fontFamily="@font/helvetica"
+            android:onClick="checkRadioChecked"
+            android:paddingStart="-5dp"
+            android:scaleX="0.85"
+            android:scaleY="0.8"
+            android:text="Teacher"
+            android:textSize="12sp"
+            app:buttonTint="@color/success_container" />
     </RadioGroup>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        android:layout_width="230dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="60dp"
         app:cardBackgroundColor="@color/light"
         app:cardCornerRadius="8dp"
         app:cardElevation="3dp"
@@ -142,15 +179,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/quarternary_blue"
-                android:fontFamily="@font/helveticalight"
+                android:fontFamily="@font/helvetica"
                 android:hint="email"
                 android:singleLine="true"
                 android:textColorHighlight="@color/active_input_text"
                 android:textColorHint="@color/hint"
                 android:textColorLink="@color/active_input_text"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textSize="13sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_password"
@@ -168,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/quarternary_blue"
-                android:fontFamily="@font/helveticalight"
+                android:fontFamily="@font/helvetica"
                 android:hint="password"
                 android:inputType="textPassword"
                 android:singleLine="true"
@@ -176,18 +212,19 @@
                 android:textColorHint="@color/hint"
                 android:textColorLink="@color/active_input_text"
                 android:textCursorDrawable="@drawable/edittext_cursor"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textSize="13sp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="72dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="72dp"
         android:fontFamily="@font/helvetica"
         android:text="Log In"
         android:textColor="@color/white"
@@ -200,12 +237,12 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_forgotPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:clickable="true"
-        android:fontFamily="@font/helveticalight"
+        android:fontFamily="@font/helvetica"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:gravity="center"
         android:text="Forgot Password?"
@@ -215,5 +252,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

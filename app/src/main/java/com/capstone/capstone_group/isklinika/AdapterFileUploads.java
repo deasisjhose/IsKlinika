@@ -46,15 +46,12 @@ public class AdapterFileUploads extends RecyclerView.Adapter<AdapterFileUploads.
 
        holder.tv_recycleFileDate.setText(file.getDate());
 
-       holder.tv_recycleFileDate.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(Intent.ACTION_VIEW) ;
-                intent.setType("application/*") ;
-                intent.setData(Uri.parse(file.getUrl())) ;
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;
-                tvContext.startActivity(intent);
-           }
+       holder.tv_recycleFileDate.setOnClickListener(view -> {
+           Intent intent = new Intent(Intent.ACTION_VIEW) ;
+            intent.setType("application/*") ;
+            intent.setData(Uri.parse(file.getUrl())) ;
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;
+            tvContext.startActivity(intent);
        });
 
     }

@@ -316,7 +316,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/helvetica"
-            android:text="Diagnosis"
+            android:text="Illness"
             android:textColor="@color/primary_Text"
             android:textSize="13sp"
             android:textStyle="bold" />

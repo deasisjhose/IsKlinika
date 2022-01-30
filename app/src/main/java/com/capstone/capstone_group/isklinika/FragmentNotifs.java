@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
 This fragment contains the notifications received by a Parent user
@@ -119,7 +120,7 @@ public class FragmentNotifs extends Fragment implements View.OnClickListener {
                         notif = postSnapshot.getValue(ClassNotif.class) ;
                         notifArrayList.add(notif) ;
                     }
-
+                Collections.reverse(notifArrayList);
                 dataInNotif(notifArrayList);
             }
 

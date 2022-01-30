@@ -73,6 +73,7 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
     public DatabaseReference databaseReference = db.getReference("studentHealthHistory");
+    public DatabaseReference database = db.getReference();
 
     private FirebaseStorage storage ;
     private StorageReference storageReference ;
@@ -176,10 +177,7 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
 
         makeSpinnerUpload();
 
-        if(!userType.equals("Parent")){
-            MaterialButton mbtn_addMedCert = findViewById(R.id.mbtn_addMedCert);
-            mbtn_addMedCert.setVisibility(View.GONE);
-        }
+
 
         mbtg_medCertTab.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
             @Override
@@ -212,6 +210,15 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
                 }
             }
         });
+
+        if(!userType.equals("Parent")){
+            layout_addMedCert.setVisibility(View.GONE);
+            layout_medCerts.setVisibility(View.VISIBLE);
+            MaterialButton mbtn_medCerts = findViewById(R.id.mbtn_medCerts);
+            mbtn_medCerts.setChecked(true);
+            MaterialButton mbtn_addMedCert = findViewById(R.id.mbtn_addMedCert);
+            mbtn_addMedCert.setVisibility(View.GONE);
+        }
 
         list_files.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -287,6 +294,39 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
         });
     }
 
+
+    public void sendNotifToTeacher(String url, String date){
+
+        //get teacher
+        database.child("teacherUsers").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String teacherKey ;
+                String reference = null;
+                ClassNotifTeacher notifTeacher = new ClassNotifTeacher();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()){
+                    if (postSnapshot.child("section").getValue().toString().equals(studentInfo.getSection())){
+                        teacherKey = postSnapshot.getKey() ;
+                        reference = "notifications/" + teacherKey + "/medCerts/" ;
+                        String message = studentInfo.getFullName() + ", with ID number " + studentInfo.getIdNum() + " uploaded a medical certificate." ;
+                        notifTeacher = new ClassNotifTeacher(date, studentInfo.getIdNum(),  message, url) ;
+                    }
+                }
+                
+                if(!reference.equals(null)){
+                    database.child(reference).push().setValue(notifTeacher) ;
+                    Toast.makeText(getApplicationContext(), "Class adviser notified", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        }) ;
+    }
+
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.mcard_uploadFile){
@@ -360,6 +400,11 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
                             }).addOnFailureListener((error) -> {
                                 Toast.makeText(getApplicationContext(), "Data was not added to database!", Toast.LENGTH_SHORT).show();
                             });
+                            if(spinner_upload.getSelectedItem().toString().equals("Medical Certificate")){
+                                sendNotifToTeacher(url, date) ;
+                            }
+
+
                         }
                     });
 

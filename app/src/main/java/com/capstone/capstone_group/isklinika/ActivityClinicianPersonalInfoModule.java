@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.android.material.card.MaterialCardView;
+
 /*
 This activity is used to display the student information when the user is the clinician.
  */
@@ -19,7 +22,7 @@ public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
             tv_clinicianFatherEmail, tv_ClinicianFatherContact, tv_clinicianMother, tv_clinicianMotherEmail, tv_ClinicianMotherContact, tv_clinicianGuardian, tv_clinicianGuardianEmail,
             tv_ClinicianGuardianContact, tv_clinicianPediatrician, tv_clinicianPediaEmail, tv_ClinicianPediaContact, tv_clinicianDentist, tv_clinicianDentalEmail, tv_clinicianDentalContact,
             tv_clinicianPreferredHospital, tv_clinicianHospitalAddress ;
-
+    private MaterialCardView mcard_uploadMedcert ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,15 @@ public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
     public void buildViews(){
         this.btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(view -> finish());;
+
+        this.mcard_uploadMedcert = findViewById(R.id.mcard_uploadMedcert) ;
+
+        mcard_uploadMedcert.setOnClickListener(view -> {
+            intent = new Intent(getBaseContext(), ActivityAddMedCert.class) ;
+            intent.putExtra("studentChild", studentInfo) ;
+            intent.putExtra("userType", "Clinician") ;
+            startActivity(intent);
+        });
 
         this.tv_clinicStudentName = findViewById(R.id.tv_clinicStudentName) ;
         this.tv_clinicStudentID = findViewById(R.id.tv_clinicStudentID) ;
