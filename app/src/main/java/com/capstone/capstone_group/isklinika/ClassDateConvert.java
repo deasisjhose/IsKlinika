@@ -19,9 +19,9 @@ public class ClassDateConvert {
 
     public ClassDateConvert(String constraintDate, int different){
         this.date = constraintDate ;
-        this.month = date.substring(5,6) ;
-        this.day = date.substring(8, 9) ;
-        this.year = date.substring(0, 3) ;
+        this.month = date.substring(5,7) ;
+        this.day = date.substring(8, 10) ;
+        this.year = date.substring(2, 4) ;
     }
 
     public ClassDateConvert(int chr, String date){
@@ -29,6 +29,7 @@ public class ClassDateConvert {
         reverseConvertMonth();
         reverseConvert();
     }
+
 
     public void convertDateMonth(){
         String wordMonth = date.substring(0,3);
@@ -142,6 +143,10 @@ public class ClassDateConvert {
         return year + "-" + month + "-" + day ;
     }
 
+    public String getMMDDYY(){
+        return month + "-" + day + "-" + year ;
+    }
+
     public int getMonth() {
         return Integer.parseInt(month);
     }
@@ -184,5 +189,6 @@ public class ClassDateConvert {
         }
 
         System.out.println(currYear + "-" + month + "-" + dayy);
+
     }
 }

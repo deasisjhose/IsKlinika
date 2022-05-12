@@ -3,8 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/border_bottom"
+    android:fontFamily="@font/helvetica"
     android:textColor="#4A4A4A"
-    android:textSize="12sp"
-    android:fontFamily="@font/helvetica">
+    android:textSize="14sp">
 
 </TextView>

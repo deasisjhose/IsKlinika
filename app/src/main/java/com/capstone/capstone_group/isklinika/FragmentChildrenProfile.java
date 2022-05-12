@@ -137,7 +137,8 @@ public class FragmentChildrenProfile extends Fragment {
         tv_pHeight.setText(studentInfo.getHeight());
         tv_pHeightStatus.setText(studentInfo.getHeightStatus());
 
-        if(studentInfo.getBmiStatus().equals("Normal")){
+        if(studentInfo.getBmiStatus().equals("Normal weight")){
+            tv_pBMIStatus.setText("Normal");
             tv_pBMIStatus.getBackground().setTint(ContextCompat.getColor(getView().getContext(), R.color.green));
         }else if(studentInfo.getBmiStatus().equals("")){
             tv_pBMIStatus.setText("No data");
@@ -225,6 +226,10 @@ public class FragmentChildrenProfile extends Fragment {
         mcard_saveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //validate inputs
+
+
                 mcard_saveProfile.setVisibility(View.GONE);
                 mcard_editProfile.setVisibility(View.VISIBLE);
 

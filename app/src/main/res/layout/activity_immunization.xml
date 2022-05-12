@@ -82,10 +82,10 @@
                 android:paddingTop="2dp"
                 android:paddingRight="4dp"
                 android:paddingBottom="2dp"
-                android:text="Immunization Record"
+                android:text="Immunization Dates"
                 android:textAllCaps="false"
                 android:textColor="@color/primary_Text"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/immune_tab" />
@@ -105,7 +105,7 @@
                 android:text="Vaccine Information"
                 android:textAllCaps="false"
                 android:textColor="@color/primary_Text"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:textStyle="normal"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/immune_tab" />
@@ -133,7 +133,8 @@
                     <TableRow
                         android:id="@+id/tbr_immuneHistory"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/textView40"
@@ -223,6 +224,7 @@
                                 android:fontFamily="@font/helvetica"
                                 android:text="Vaccine Name"
                                 android:textColor="@color/primary_Text"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -232,7 +234,7 @@
                                 android:fontFamily="@font/helvetica"
                                 android:text="Purpose "
                                 android:textColor="@color/primary_Text"
-                                android:textSize="13sp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -241,7 +243,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="#99DAF1FA"
                                 android:textColor="@color/information_text"
-                                android:textSize="13sp" />
+                                android:textSize="14sp" />
 
                             <TableRow
                                 android:layout_width="match_parent"
@@ -257,7 +259,7 @@
                                     android:gravity="center|center_horizontal|left|center_vertical"
                                     android:text="Number of doses"
                                     android:textColor="@color/primary_Text"
-                                    android:textSize="13sp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -268,7 +270,7 @@
                                     android:fontFamily="@font/helvetica"
                                     android:text="Expected vaccination age"
                                     android:textColor="@color/primary_Text"
-                                    android:textSize="13sp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
                             </TableRow>
@@ -285,7 +287,7 @@
                                     android:layout_weight="1"
                                     android:background="#99DAF1FA"
                                     android:textColor="@color/information_text"
-                                    android:textSize="13sp" />
+                                    android:textSize="14sp" />
 
                                 <TextView
                                     android:id="@+id/tv_viAgeRange"
@@ -294,7 +296,7 @@
                                     android:layout_weight="1"
                                     android:background="#99DAF1FA"
                                     android:textColor="@color/information_text"
-                                    android:textSize="13sp" />
+                                    android:textSize="14sp" />
 
                             </TableRow>
 
@@ -306,7 +308,7 @@
                                 android:fontFamily="@font/helvetica"
                                 android:text="Notes"
                                 android:textColor="@color/primary_Text"
-                                android:textSize="13sp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -316,7 +318,7 @@
                                 android:background="#99DAF1FA"
                                 android:fontFamily="@font/helvetica"
                                 android:textColor="@color/information_text"
-                                android:textSize="13sp" />
+                                android:textSize="14sp" />
 
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -344,7 +346,7 @@
                                 android:fontFamily="@font/helvetica"
                                 android:text="Immunization Dates"
                                 android:textColor="@color/primary_Text"
-                                android:textSize="12sp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -368,7 +370,6 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
         android:clickable="true"
-        android:visibility="gone"
         app:backgroundTint="@color/pastel_bluegreen"
         app:layout_anchor="@id/nsv_immuneInformation"
         app:layout_anchorGravity="bottom|right"

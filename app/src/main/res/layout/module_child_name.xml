@@ -39,7 +39,7 @@
                 android:fontFamily="@font/dinpro"
                 android:text="Full Name"
                 android:textColor="@color/primary_Text"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <Spinner

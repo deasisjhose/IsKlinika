@@ -39,7 +39,7 @@ public class AdapterImmunizationHistory extends RecyclerView.Adapter<AdapterImmu
     @NonNull
     @Override
     public AdapterImmunizationHistory.ImmunizationHistoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_immunization_status, parent, false) ;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_immunization_status_dates, parent, false) ;
         AdapterImmunizationHistory.ImmunizationHistoryHolder myViewHolder = new AdapterImmunizationHistory.ImmunizationHistoryHolder(v, tvListener) ;
         return myViewHolder ;
     }
@@ -49,8 +49,9 @@ public class AdapterImmunizationHistory extends RecyclerView.Adapter<AdapterImmu
         ClassVaccine vaccine = tvData.get(position) ;
 
         holder.tv_recycleVaccineName.setText(vaccine.getVaccineName());
-        holder.tv_recycleVaccineExpectedAge.setText(vaccine.getExpectedAge());
-        holder.tv_recycleVaccineFrequency.setText(vaccine.getDoses());
+
+//        holder.tv_recycleVaccineExpectedAge.setText(vaccine.getExpectedAge());
+//        holder.tv_recycleVaccineFrequency.setText(vaccine.getDoses());
 
         if(position % 2 == 0){
             holder.tr_status.setBackgroundColor(Color.parseColor("#99B3E8FF"));
@@ -63,35 +64,60 @@ public class AdapterImmunizationHistory extends RecyclerView.Adapter<AdapterImmu
         for(j = 0 ; j < immuneStatus.size() ; j++){
             if(immuneStatus.get(j).getPurpose().equals(vaccine.getVaccineName())){
                 hasMatch = true ;
+                ClassDateConvert dateConvert = new ClassDateConvert(immuneStatus.get(j).getDateGiven(), 1) ;  //1 to differentiate that it is receiving YYYY-MM-DD
+                String date = dateConvert.getMMDDYY();
+                switch (matchCounter){
+                    case 0:
+                        holder.tv_recycleDate1.setText(date);
+                        break;
+                    case 1:
+                        holder.tv_recycleDate2.setText(date);
+                        break;
+                    case 2:
+                        holder.tv_recycleDate3.setText(date);
+                        break;
+                    case 3:
+                        holder.tv_recycleDate4.setText(date) ;
+                        break;
+                    case 4:
+                        holder.tv_recycleDate5.setText(date);
+                        break;
+                    case 5:
+                        holder.tv_recycleDate6.setText(date);
+                        break;
+                }
+
                 matchCounter += 1 ;
                 Log.d("IMMUNIZATION//", "onBindViewHolder: matchcount = " + matchCounter);
             }
         }
-        if(hasMatch){
-            String dose = vaccine.getDoses() ;
-            if(dose.length() == 1){
-                if(matchCounter >= Integer.parseInt(dose)){
-                    int i = Integer.parseInt(dose) ;
-                    Log.d("IMMUNIZATION//", "onBindViewHolder: int = " + i);
-                    holder.tv_recycleVaccineStatus.setText("Complete");
-                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_green);
-                } else{
-                    holder.tv_recycleVaccineStatus.setText("Incomplete");
-                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_yellow);
-                }
-            }else{
-                if(matchCounter >= Integer.parseInt(String.valueOf(dose.charAt(0))) || matchCounter <= Integer.parseInt(String.valueOf(dose.charAt(2)))){
-                    holder.tv_recycleVaccineStatus.setText("Complete");
-                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_green);
-                } else if(matchCounter < Integer.parseInt(String.valueOf(dose.charAt(0)))){
-                    holder.tv_recycleVaccineStatus.setText("Incomplete");
-                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_yellow);
-                }
-            }
-        }else{
-            holder.tv_recycleVaccineStatus.setText("No data");
-            holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_red);
-        }
+
+
+//        if(hasMatch){
+//            String dose = vaccine.getDoses() ;
+//            if(dose.length() == 1){
+//                if(matchCounter >= Integer.parseInt(dose)){
+//                    int i = Integer.parseInt(dose) ;
+//                    Log.d("IMMUNIZATION//", "onBindViewHolder: int = " + i);
+//                    holder.tv_recycleVaccineStatus.setText("Complete");
+//                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_green);
+//                } else{
+//                    holder.tv_recycleVaccineStatus.setText("Incomplete");
+//                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_yellow);
+//                }
+//            }else{
+//                if(matchCounter >= Integer.parseInt(String.valueOf(dose.charAt(0))) || matchCounter <= Integer.parseInt(String.valueOf(dose.charAt(2)))){
+//                    holder.tv_recycleVaccineStatus.setText("Complete");
+//                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_green);
+//                } else if(matchCounter < Integer.parseInt(String.valueOf(dose.charAt(0)))){
+//                    holder.tv_recycleVaccineStatus.setText("Incomplete");
+//                    holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_yellow);
+//                }
+//            }
+//        }else{
+//            holder.tv_recycleVaccineStatus.setText("No data");
+//            holder.tv_recycleVaccineStatus.setBackgroundResource(R.drawable.border_circle_red);
+//        }
     }
 
     @Override
@@ -103,15 +129,22 @@ public class AdapterImmunizationHistory extends RecyclerView.Adapter<AdapterImmu
     public static class ImmunizationHistoryHolder extends RecyclerView.ViewHolder{
 
         TextView tv_recycleVaccineName, tv_recycleVaccineExpectedAge, tv_recycleVaccineFrequency, tv_recycleVaccineStatus ;
+        TextView tv_recycleDate1, tv_recycleDate2, tv_recycleDate3, tv_recycleDate4, tv_recycleDate5, tv_recycleDate6 ;
         TableRow tr_status ;
 
         public ImmunizationHistoryHolder(@NonNull View itemView, AdapterImmunizationHistory.OnItemClickListener listener){
             super(itemView);
 
             tv_recycleVaccineName = itemView.findViewById(R.id.tv_recycleVaccineName) ;
-            tv_recycleVaccineExpectedAge = itemView.findViewById(R.id.tv_recycleVaccineExpectedAge) ;
-            tv_recycleVaccineFrequency = itemView.findViewById(R.id.tv_recycleVaccineDose) ;
-            tv_recycleVaccineStatus = itemView.findViewById(R.id.tv_recycleVaccineStatus) ;
+            tv_recycleDate1 = itemView.findViewById(R.id.tv_recycleDate1) ;
+            tv_recycleDate2 = itemView.findViewById(R.id.tv_recycleDate2) ;
+            tv_recycleDate3 = itemView.findViewById(R.id.tv_recycleDate3) ;
+            tv_recycleDate4 = itemView.findViewById(R.id.tv_recycleDate4) ;
+            tv_recycleDate5 = itemView.findViewById(R.id.tv_recycleDate5) ;
+            tv_recycleDate6 = itemView.findViewById(R.id.tv_recycleDate6) ;
+//            tv_recycleVaccineExpectedAge = itemView.findViewById(R.id.tv_recycleVaccineExpectedAge) ;
+//            tv_recycleVaccineFrequency = itemView.findViewById(R.id.tv_recycleVaccineDose) ;
+//            tv_recycleVaccineStatus = itemView.findViewById(R.id.tv_recycleVaccineStatus) ;
             tr_status = itemView.findViewById(R.id.tr_status) ;
 
         }

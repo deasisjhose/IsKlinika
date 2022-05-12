@@ -30,13 +30,15 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
     public DatabaseReference databaseReference= db.getReference();
 
     private Intent intent ;
+    private int activeTab ;
     public String TAG="MEDICALHISTORY//";
     private String idNum ;
     private int selectedDate ; // selected from the activity_immune
     private ArrayList<ClassStudentInfo> children ;
 
     private Spinner spinner_addPastChild ;
-    private EditText edit_addPastIllness, edit_addPastTreatment, edit_addPastNote, edit_addPastStatus ;
+    private EditText edit_addPastIllness, edit_addPastTreatment, edit_addPastNote;
+    private Spinner edit_addPastStatus ;
     private TextView tv_addPastStart, tv_addPastEnd ;
     private MaterialButton mbtn_addPastCancel, mbtn_addPastAdd ;
     private MaterialDatePicker materialDatePicker ;
@@ -47,6 +49,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_add_past_illness);
 
         intent = getIntent() ;
+        activeTab = intent.getIntExtra("activeTab", 30) ;
         this.children = new ArrayList<>() ;
         children = intent.getParcelableArrayListExtra("children") ;
         buildViews();
@@ -72,6 +75,26 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
         mbtn_addPastAdd.setOnClickListener(this);
         mbtn_addPastCancel.setOnClickListener(this);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getBaseContext(), R.array.illness,R.layout.spinner_medicalhistory) ;
+        adapter.setDropDownViewResource(R.layout.spinner_immune_down);
+        edit_addPastStatus.setAdapter(adapter);
+
+        if (activeTab == 30)
+            edit_addPastStatus.setSelection(0);
+        else
+            edit_addPastStatus.setSelection(1);
+
+
+        edit_addPastStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //sort function
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
         builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;
@@ -116,21 +139,55 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
 
     //This method is called when the add button is clicked.
     public void addPastIllness(){
+
+        int allClear = 0 ;
+
         if(edit_addPastIllness.getText().toString().equals("")){
-            Toast.makeText(this, "Add a disease!", Toast.LENGTH_SHORT).show();
             edit_addPastIllness.getBackground().setTint(Color.parseColor("#FFFD6868"));
-        } else {
+        }else{
+            edit_addPastIllness.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+            allClear += 1 ;
+        }
+        if(edit_addPastTreatment.getText().toString().equals("")){
+            edit_addPastTreatment.getBackground().setTint(Color.parseColor("#FFFD6868"));
+        }else{
+            edit_addPastTreatment.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+            allClear += 1 ;
+        }
+        if(tv_addPastStart.getText().toString().equals("")){
+            tv_addPastStart.getBackground().setTint(Color.parseColor("#FFFD6868"));
+        }else{
+            tv_addPastStart.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+            allClear += 1 ;
+        }
+//        if(edit_addPastIllness.getText().toString().equals("") && edit_addPastTreatment.getText().toString().equals("")){
+//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
+//            edit_addPastIllness.getBackground().setTint(Color.parseColor("#FFFD6868"));
+//            edit_addPastTreatment.getBackground().setTint(Color.parseColor("#FFFD6868"));
+//        }else if(!edit_addPastIllness.getText().toString().equals("") && edit_addPastTreatment.getText().toString().equals("") && tv_addPastStart.getText().toString().equals("")){
+//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
+//            edit_addPastIllness.getBackground().setTint(Color.parseColor("#FFFD6868"));
+//        }else if(edit_addPastIllness.getText().toString().equals("") && !edit_addPastTreatment.getText().toString().equals("")){
+//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
+//            edit_addPastTreatment.getBackground().setTint(Color.parseColor("#FFFD6868"));
+//        } else if(tv_addPastStart.getText().toString().equals("")) {
+//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
+//            tv_addPastStart.getBackground().setTint(Color.parseColor("#FFFD6868"));
+//        }
 
-            ClassPastIllness pastIllness = new ClassPastIllness(edit_addPastIllness.getText().toString(), tv_addPastEnd.getText().toString(), edit_addPastNote.getText().toString(),
-                    tv_addPastStart.getText().toString(), edit_addPastStatus.getText().toString(), edit_addPastTreatment.getText().toString()) ;
+        if(allClear == 3){
+                ClassPastIllness pastIllness = new ClassPastIllness(edit_addPastIllness.getText().toString(), tv_addPastEnd.getText().toString(), edit_addPastNote.getText().toString(),
+                        tv_addPastStart.getText().toString(), edit_addPastStatus.getSelectedItem().toString(), edit_addPastTreatment.getText().toString()) ;
 
-            databaseReference.child("studentHealthHistory/" +idNum + "/pastIllness/").push().setValue(pastIllness).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-                Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
-                resetViews();
-            }).addOnFailureListener((error) -> {
-                Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
-            });
+                databaseReference.child("studentHealthHistory/" +idNum + "/pastIllness/").push().setValue(pastIllness).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                    Toast.makeText(this, "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                    resetViews();
+                }).addOnFailureListener((error) -> {
+                    Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
+                });
 
+        }else{
+            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -138,8 +195,9 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
         edit_addPastIllness.setText("");
         edit_addPastNote.setText("");
         edit_addPastTreatment.setText("");
-        edit_addPastStatus.setText("");
         edit_addPastIllness.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+        edit_addPastTreatment.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+        tv_addPastStart.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
         tv_addPastStart.setText("");
         tv_addPastEnd.setText("");
 

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/helveticacompressed"
             android:gravity="center"
-            android:text="Add Past Illness"
+            android:text="Add Illness Record"
             android:textColor="@color/black"
             android:textSize="30sp" />
     </LinearLayout>
@@ -67,7 +67,7 @@
                 android:fontFamily="@font/helvetica"
                 android:text="Child Name"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,9 +79,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/helvetica"
-                android:text="Disease"
+                android:text="Disease *"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_addPastChild" />
@@ -93,11 +93,10 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
-                android:text="Cancel"
-                android:textSize="10sp"
+                android:text="Back"
+                android:textSize="12sp"
                 app:backgroundTint="@color/error_container"
                 app:cornerRadius="8dp"
-                app:icon="@drawable/close"
                 app:layout_constraintEnd_toStartOf="@+id/mbtn_addPastAdd"
                 app:layout_constraintTop_toBottomOf="@+id/edit_addPastStatus" />
 
@@ -121,9 +120,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/helvetica"
-                android:text="Treatment"
+                android:text="Treatment *"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_addPastIllness" />
@@ -142,7 +141,7 @@
                 android:paddingLeft="6dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
-                android:textSize="12.5sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +162,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12.5sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -183,26 +182,21 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/textView24"
                 app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/edit_addPastStatus"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/border_circle"
-                android:backgroundTint="#CCDDF6C0"
                 android:clickable="true"
-                android:fontFamily="@font/helvetica"
-                android:inputType="text"
-                android:hint="e.g. recovered"
+                android:padding="1dp"
+                android:paddingStart="5dp"
                 android:paddingLeft="6dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
-                android:textColor="@color/information_text"
-                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
@@ -221,7 +215,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12.5sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -233,9 +227,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/helvetica"
-                android:text="Start Date"
+                android:text="Start Date *"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_addPastNote" />
@@ -248,7 +242,7 @@
                 android:fontFamily="@font/helvetica"
                 android:text="End date"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/textView21"
                 app:layout_constraintTop_toTopOf="@+id/textView21" />
@@ -260,7 +254,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Status"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_addPastStart" />
@@ -272,7 +266,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Notes"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_addPastTreatment" />
@@ -291,7 +285,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
 

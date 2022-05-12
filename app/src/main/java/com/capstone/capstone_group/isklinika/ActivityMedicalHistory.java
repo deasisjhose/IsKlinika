@@ -84,7 +84,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_history);
 
-        checkActive = 10 ;
+        checkActive = 30 ;
         intent = getIntent() ;
         this.userType = intent.getStringExtra("userType") ;
         buildBar();
@@ -180,6 +180,12 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                         layout_allergies.setVisibility(View.VISIBLE);
                         retrieveDataMAllergies(studentId);
                     }
+                    else if(checkedId == R.id.mBtn_Illness){
+                        checkActive = 30 ;
+                        layout_allergies.setVisibility(View.GONE);
+                        layout_pastIllness.setVisibility(View.VISIBLE);
+                        retrieveDataPastIllness() ;
+                    }
                 } else {
                     MaterialButton buttonCheck = findViewById(checkedId);
                     buttonCheck.setTypeface(null, Typeface.NORMAL);
@@ -246,6 +252,10 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                     case 20:
                         retrieveDataMAllergies(studentId);
                         break;
+                    case 30:
+                        retrieveDataPastIllness() ;
+                        break;
+
                 }
             }
             @Override
@@ -257,7 +267,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
     //This method is used to retrieve the past illness records
     public void retrieveDataPastIllness(){
         this.illnessHistoryArrayList = new ArrayList<>() ;
-
+        illnessHistoryArrayList.clear();
         databaseStudentHealthHistory.child(studentId).child("pastIllness").orderByChild("startDate").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -306,7 +316,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                     }else{
                         illnessHistory = postSnapshot.getValue(ClassPastIllness.class) ;
                         illnessHistory.setKey(postSnapshot.getKey());
-                        Log.d(TAG, "onDataChange: illnessHistory = " + illnessHistory.toString());
+//                        Log.d(TAG, "onDataChange: illnessHistory = " + illnessHistory.toString());
                         illnessHistoryArrayList.add(illnessHistory) ;
                     }
                 }
@@ -314,8 +324,10 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                 if (illnessHistoryArrayList.isEmpty())
                     Toast.makeText(ActivityMedicalHistory.this, "No data in past illnesses .", Toast.LENGTH_LONG).show();
 
-//                dataInExpandPastIllness(illnessHistoryArrayList);
-                dataInPastIllness(illnessHistoryArrayList) ;
+//                Log.d(TAG, "onDataChange: checkActive sa loob ng retrieve == " + checkActive);
+
+                    dataInPastIllness(illnessHistoryArrayList) ;
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -325,53 +337,27 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 //        Log.d(TAG, "retrieveDataMedicationsList: total list = " + medHistoryList.size());
     }
 
-//    public void dataInExpandPastIllness(ArrayList<ClassPastIllness> allergyArrayList){
-//        if(spinner_sort.getSelectedItem().toString().equals("Latest")){
-//            Collections.reverse(allergyArrayList);
-//            Log.d(TAG, "dataInExpandPastIllness: size = " +allergyArrayList.size());
-//        }
-//        ArrayList<ClassPastIllness> pastIllnessesInDate = allergyArrayList;
-//        Map<ClassPastIllness, ClassPastIllness> pastIllnessMap ;
-//
-//
-//        pastIllnessMap = new HashMap<ClassPastIllness, ClassPastIllness>() ;
-//        int i  ;
-//        for(i = 0 ; i <allergyArrayList.size() ; i++){
-//            pastIllnessMap.put(pastIllnessesInDate.get(i), pastIllnessesInDate.get(i)) ;
-//        }
-//
-//        this.expand_pastIllness = findViewById(R.id.expand_pastIllness) ;
-//        this.expandPastIllnessAdapter = new AdapaterExpandPastIllness(this, pastIllnessesInDate, pastIllnessMap) ;
-//        expand_pastIllness.setAdapter(expandPastIllnessAdapter);
-//        expand_pastIllness.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-//            int lastExpandedPosition = -1;
-//            @Override
-//            public void onGroupExpand(int i) {
-//                if(lastExpandedPosition != -1 && i != lastExpandedPosition){
-//                    expand_pastIllness.collapseGroup(lastExpandedPosition);
-//                }
-//                lastExpandedPosition = i;
-//            }
-//        });
-//        expand_pastIllness.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-//            @Override
-//            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-//
-//                return true;
-//            }
-//        });
-//
-//    }
+
 
     //This method is used to display the retrieved past illness records to the recyclerview
     public void dataInPastIllness(ArrayList<ClassPastIllness> allergyArrayList){
         if(spinner_sort.getSelectedItem().toString().equals("Latest")){
             Collections.reverse(allergyArrayList);
-            Log.d(TAG, "dataInExpandPastIllness: size = " +allergyArrayList.size());
+//            Log.d(TAG, "dataInExpandPastIllness: size = " +allergyArrayList.size());
         }
 
+        ArrayList<ClassPastIllness> illnessesArrayList  = new ArrayList<>();
+        illnessesArrayList.clear();
+        for(int i = 0 ; i < allergyArrayList.size() ; i++){
+            if(allergyArrayList.get(i).getStatus().equalsIgnoreCase("Recovered") && checkActive == 10)
+                illnessesArrayList.add(allergyArrayList.get(i)) ;
+            else if ((allergyArrayList.get(i).getStatus().equalsIgnoreCase("Ongoing") || allergyArrayList.get(i).getStatus().equalsIgnoreCase("Chronic")) && checkActive == 30)
+                illnessesArrayList.add(allergyArrayList.get(i)) ;
+        }
+
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        AdapterPastIllness adapterPastIllness = new AdapterPastIllness(getBaseContext(), allergyArrayList, studentId) ;
+        AdapterPastIllness adapterPastIllness = new AdapterPastIllness(getBaseContext(), illnessesArrayList, studentId) ;
         adapterPastIllness.setUserType(userType);
         this.recycle_past_illness = findViewById(R.id.recycle_past_illness) ;
         recycle_past_illness.setLayoutManager(layoutManager);
@@ -454,8 +440,10 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
         if(view.getId() == R.id.fbtn_medicalHistory){
             switch (checkActive){
                 case 10:
+                case 30:
                     intent = new Intent(getBaseContext(), ActivityAddPastIllness.class) ;
                     intent.putParcelableArrayListExtra("children", children) ;
+                    intent.putExtra("activeTab", checkActive) ;
                     startActivity(intent);
                     break;
                 case 20:

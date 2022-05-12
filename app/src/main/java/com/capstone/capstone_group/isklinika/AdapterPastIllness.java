@@ -1,9 +1,14 @@
 package com.capstone.capstone_group.isklinika;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -15,6 +20,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -70,8 +78,34 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
     public void onBindViewHolder(@NonNull PastIllnessHolder holder, int position) {
         ClassPastIllness pastIllness = tvData.get(position) ;
 
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(tvContext, R.array.illness,R.layout.spinner_child_illness_status) ;
+        adapter.setDropDownViewResource(R.layout.spinner_immune_down);
+        holder.tv_pastStatus.setAdapter(adapter);
+        holder.tv_pastStatus.setEnabled(false);
+
+        if(pastIllness.getStatus().equals("Ongoing"))
+            holder.tv_pastStatus.setSelection(0);
+        else if(pastIllness.getStatus().equalsIgnoreCase("Recovered"))
+            holder.tv_pastStatus.setSelection(1);
+        else if (pastIllness.getStatus().equals("Chronic"))
+            holder.tv_pastStatus.setSelection(2);
+//        for (int i = 0; i < ; i++) {
+//
+//        }
+
+        holder.tv_pastStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //sort function
+                prescriptionStatus = holder.tv_pastStatus.getSelectedItem().toString() ;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         holder.tv_pastDisease.setText(pastIllness.getDisease());
-        holder.tv_pastStatus.setText(pastIllness.getStatus());
         holder.tv_pastStart.setText(pastIllness.getStartDate());
         holder.tv_pastEnd.setText(pastIllness.getEndDate());
         holder.tv_pastTreatment.setText(pastIllness.getTreatment());
@@ -79,6 +113,7 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
 
         if(userType.equals("Parent")){
             holder.ibtn_editPast.setVisibility(View.VISIBLE);
+
         }
 
         holder.ibtn_editPast.setOnClickListener(new View.OnClickListener() {
@@ -86,9 +121,9 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
             public void onClick(View view) {
                 holder.ibtn_editPast.setVisibility(View.GONE);
                 holder.ibtn_savePast.setVisibility(View.VISIBLE);
+                holder.mbtn_deleteIllness.setVisibility(View.VISIBLE);
 
-                holder.tv_pastDisease.setClickable(true);
-                holder.tv_pastDisease.setEnabled(true);
+
                 holder.tv_pastStatus.setClickable(true);
                 holder.tv_pastStatus.setEnabled(true);
                 holder.tv_pastStart.setClickable(true);
@@ -108,9 +143,8 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
             public void onClick(View view) {
                 holder.ibtn_editPast.setVisibility(View.VISIBLE);
                 holder.ibtn_savePast.setVisibility(View.GONE);
+                holder.mbtn_deleteIllness.setVisibility(View.GONE);
 
-                holder.tv_pastDisease.setClickable(false);
-                holder.tv_pastDisease.setEnabled(false);
                 holder.tv_pastStatus.setClickable(false);
                 holder.tv_pastStatus.setEnabled(false);
                 holder.tv_pastStart.setClickable(false);
@@ -129,7 +163,7 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
                 pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/endDate", holder.tv_pastEnd.getText().toString());
                 pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/notes", holder.tv_pastNotes.getText().toString());
                 pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/startDate", holder.tv_pastStart.getText().toString());
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/status", holder.tv_pastStatus.getText().toString());
+                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/status", holder.tv_pastStatus.getSelectedItem().toString());
                 pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/treatment", holder.tv_pastTreatment.getText().toString());
 //                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + pastIllness.getKey() + "/status", holder.spinner_medStatus.getSelectedItem().toString());
 
@@ -140,6 +174,34 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
                 });
             }
         }) ;
+
+        holder.mbtn_deleteIllness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new MaterialAlertDialogBuilder(view.getRootView().getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_Illness)
+                        .setTitle(R.string.title)
+                        .setMessage(R.string.supporting_text)
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setPositiveButton("Remove", new DialogInterface.OnClickListener(){
+
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+
+                .show() ;
+
+
+            }
+        });
     }
 
 
@@ -152,8 +214,10 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
     public static class PastIllnessHolder extends RecyclerView.ViewHolder{
 
         TextView tv_expandDiagnosis, tv_expandVisitDate ;
-        TextInputEditText tv_pastDisease, tv_pastStatus, tv_pastStart, tv_pastEnd, tv_pastTreatment, tv_pastNotes ;
+        Spinner tv_pastStatus ;
+        TextInputEditText tv_pastDisease, tv_pastStart, tv_pastEnd, tv_pastTreatment, tv_pastNotes ;
         ImageButton ibtn_editPast, ibtn_savePast ;
+        MaterialCardView mbtn_deleteIllness ;
 
         public PastIllnessHolder(@NonNull View itemView, AdapterPastIllness.OnItemClickListener listener){
             super(itemView);
@@ -167,7 +231,7 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
 
             this.ibtn_editPast = itemView.findViewById(R.id.ibtn_editPast) ;
             this.ibtn_savePast = itemView.findViewById(R.id.ibtn_savePast) ;
-
+            this.mbtn_deleteIllness = itemView.findViewById(R.id.mbtn_deleteIllness) ;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

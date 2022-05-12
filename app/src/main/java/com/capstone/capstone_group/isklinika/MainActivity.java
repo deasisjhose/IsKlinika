@@ -155,10 +155,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 }
                                 else{
                                     Toast.makeText(MainActivity.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+                                    edit_password.setText("");
                                 }
                             }
                             else{
                                 Toast.makeText(MainActivity.this, "No student with that account.", Toast.LENGTH_SHORT).show();
+                                edit_password.setText("");
                             }
                         }
                     }
@@ -219,6 +221,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 }
                                 else{
                                     Toast.makeText(MainActivity.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+                                    edit_password.setText("");
                                 }
                             }
                         }
@@ -260,6 +263,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                         if(errorCode.equalsIgnoreCase("ERROR_WRONG_PASSWORD")){
                                             Toast.makeText(MainActivity.this, "Wrong password!", Toast.LENGTH_SHORT).show();
+                                            edit_password.setText("");
                                         } else if(errorCode.equalsIgnoreCase("ERROR_INVALID_EMAIL")){
                                             Toast.makeText(MainActivity.this, "Please enter a valid email!", Toast.LENGTH_SHORT).show();
                                         } else if(errorCode.equalsIgnoreCase("ERROR_USER_NOT_FOUND")) {

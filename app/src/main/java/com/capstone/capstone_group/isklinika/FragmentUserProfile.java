@@ -28,9 +28,9 @@ public class FragmentUserProfile extends Fragment {
     public DatabaseReference database = db.getReference();
     public DatabaseReference databaseReference= db.getReference("studentInfo");
 
-    private MaterialCardView mcard_editProfile, mcard_saveProfile ;
+    private MaterialCardView mcard_editProfile, mcard_saveProfile, mbtn_updatePassword  ;
     private ActivityLanding activity_landing ;
-    private TextInputEditText tv_parentName, tv_parentEmail, tv_parentContact ;
+    private TextInputEditText tv_parentName, tv_parentEmail, tv_parentContact, mtv_currentPassword, mtv_newPassword, mtv_confirmPassword;
 
     int checkParent = 0  ; // 0 == mother 1 == father
     String parentNameBeforeEdit = null;
@@ -51,6 +51,11 @@ public class FragmentUserProfile extends Fragment {
         this.tv_parentName = view.findViewById(R.id.tv_parentName) ;
         this.tv_parentEmail = view.findViewById(R.id.tv_parentEmail) ;
         this.tv_parentContact = view.findViewById(R.id.tv_parentContact) ;
+
+        this.mbtn_updatePassword = view.findViewById(R.id.mbtn_updatePassword) ;
+        this.mtv_currentPassword = view.findViewById(R.id.mtv_currentPassword) ;
+        this.mtv_newPassword = view.findViewById(R.id.mtv_newPassword) ;
+        this.mtv_confirmPassword = view.findViewById(R.id.mtv_confirmPassword) ;
 
         return view ;
     }
@@ -87,7 +92,6 @@ public class FragmentUserProfile extends Fragment {
                 tv_parentEmail.setText(children.get(0).getFatherEmail());
                 tv_parentContact.setText(children.get(0).getFatherContact());
                 break;
-
         }
 
         mcard_editProfile.setOnClickListener(view1 -> {
@@ -100,8 +104,16 @@ public class FragmentUserProfile extends Fragment {
             tv_parentEmail.setClickable(true);
             tv_parentContact.setEnabled(true);
             tv_parentContact.setClickable(true);
-        });
 
+            mbtn_updatePassword.setClickable(true);
+            mtv_currentPassword.setEnabled(true);
+            mtv_currentPassword.setClickable(true);
+            mtv_newPassword.setEnabled(true);
+            mtv_newPassword.setClickable(true);
+            mtv_confirmPassword.setEnabled(true);
+            mtv_confirmPassword.setClickable(true);
+
+        });
 
 //        int finalCheckParent = checkParent;
 //        String finalParentNameBeforeEdit = parentNameBeforeEdit;
@@ -116,7 +128,6 @@ public class FragmentUserProfile extends Fragment {
             tv_parentContact.setEnabled(false);
             tv_parentContact.setClickable(false);
 
-
             switch (checkParent){
                 case 0:
                     activity_landing.setNewChildInfo("mother", tv_parentName.getText().toString(), tv_parentEmail.getText().toString(), Long.parseLong(tv_parentContact.getText().toString()));
@@ -124,7 +135,6 @@ public class FragmentUserProfile extends Fragment {
                 case 1:
                     activity_landing.setNewChildInfo("father", tv_parentName.getText().toString(), tv_parentEmail.getText().toString(), Long.parseLong(tv_parentContact.getText().toString()));
                     break;
-
             }
 
             //updating parent information
@@ -146,7 +156,6 @@ public class FragmentUserProfile extends Fragment {
                     parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/motherName", tv_parentName.getText().toString()) ;
                 }
                 parentNameBeforeEdit = tv_parentName.getText().toString() ;
-
 
                 database.updateChildren(parentValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
                     Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();

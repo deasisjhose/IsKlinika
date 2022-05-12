@@ -1,13 +1,17 @@
 package com.capstone.capstone_group.isklinika;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
@@ -46,6 +50,31 @@ public class AdapterImmunization extends RecyclerView.Adapter<AdapterImmunizatio
         if(!immunization.getName().equals(""))
             holder.tv_recycleBrand.setText(immunization.getName());
 
+        holder.ibtn_deleteImmune.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MaterialAlertDialogBuilder(view.getRootView().getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_Immune)
+                        .setTitle(R.string.title)
+                        .setMessage(R.string.supporting_text)
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setPositiveButton("Remove", new DialogInterface.OnClickListener(){
+
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+
+                        .show() ;
+            }
+        });
+
     }
 
     @Override
@@ -56,12 +85,14 @@ public class AdapterImmunization extends RecyclerView.Adapter<AdapterImmunizatio
     public static class ImmunizationHolder extends RecyclerView.ViewHolder{
 
         TextView tv_recycleImmuneDate, tv_recycleBrand ;
+        ImageButton ibtn_deleteImmune ;
 
         public ImmunizationHolder(@NonNull View itemView, AdapterImmunization.OnItemClickListener listener){
             super(itemView);
 
             tv_recycleImmuneDate = itemView.findViewById(R.id.tv_recycleImmuneDate) ;
             tv_recycleBrand = itemView.findViewById(R.id.tv_recycleBrand) ;
+            ibtn_deleteImmune = itemView.findViewById(R.id.ibtn_deleteImmune) ;
         }
     }
 

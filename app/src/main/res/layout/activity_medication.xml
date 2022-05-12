@@ -102,7 +102,7 @@
                 android:text="Prescriptions"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/medication_tab" />
@@ -122,7 +122,7 @@
                 android:text="Allowed Medicines"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/medication_tab" />
 
@@ -141,7 +141,7 @@
                 android:text="Intake History"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:theme="@style/Widget.Material3.Button.TextButton"
                 app:backgroundTint="@color/medication_tab" />
 
@@ -188,7 +188,7 @@
                     android:gravity="center_vertical"
                     android:text="Allowed Medication"
                     android:textColor="@color/primary_Text"
-                    android:textSize="13sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageButton
@@ -240,7 +240,7 @@
                             android:fontFamily="@font/dinpro"
                             android:text="Last updated: "
                             android:textColor="@color/active_input_text"
-                            android:textSize="12sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv_allowedMedicineLastUpdated"
@@ -249,7 +249,7 @@
                             android:layout_marginLeft="4dp"
                             android:fontFamily="@font/dinpro"
                             android:textColor="@color/violet"
-                            android:textSize="12sp" />
+                            android:textSize="14sp" />
                     </TableRow>
 
                     <TableRow
@@ -478,7 +478,7 @@
                         android:paddingBottom="2dp"
                         android:text="YYYY-MM-DD"
                         android:textColor="@color/information_text"
-                        android:textSize="13sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView42"
@@ -504,7 +504,7 @@
                         android:paddingBottom="2dp"
                         android:text="YYYY-MM-DD"
                         android:textColor="@color/information_text"
-                        android:textSize="13sp" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spinner_sort2"
@@ -528,7 +528,7 @@
                         android:gravity="center"
                         android:text="Medicine"
                         android:textColor="@color/primary_Text"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -540,7 +540,7 @@
                         android:gravity="center"
                         android:text="Amount"
                         android:textColor="@color/primary_Text"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -552,7 +552,7 @@
                         android:gravity="center"
                         android:text="Date"
                         android:textColor="@color/primary_Text"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -564,7 +564,7 @@
                         android:gravity="center"
                         android:text="Time"
                         android:textColor="@color/primary_Text"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </TableRow>

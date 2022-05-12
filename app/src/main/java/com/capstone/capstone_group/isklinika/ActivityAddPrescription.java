@@ -126,10 +126,29 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
 
     //This method is called when the add button is press. This saves the prescription to the database
     public void addPrescription(){
-        if(tv_addPrescriptionStart.getText().toString().equals("") || tv_addPrescriptionStart.getText().toString().equals("YYYY-MM-DD")){
-            Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
+
+        int allFilled = 0 ;
+
+        if(tv_addPrescriptionStart.getText().toString().equals("")){
             tv_addPrescriptionStart.getBackground().setTint(Color.parseColor("#FFFD6868"));
-        } else {
+        } else{
+            tv_addPrescriptionStart.getBackground().setTint(Color.parseColor("#E1D6FF"));
+            allFilled += 1 ;
+        }
+        if(edit_addPrescriptionMedicine.getText().toString().equals("")){
+            edit_addPrescriptionMedicine.getBackground().setTint(Color.parseColor("#FFFD6868"));
+        } else{
+            edit_addPrescriptionMedicine.getBackground().setTint(Color.parseColor("#E1D6FF"));
+            allFilled += 1 ;
+        }
+        if(edit_addPrescriptionAmount.getText().toString().equals("")){
+            edit_addPrescriptionAmount.getBackground().setTint(Color.parseColor("#FFFD6868"));
+        } else{
+            edit_addPrescriptionAmount.getBackground().setTint(Color.parseColor("#E1D6FF"));
+            allFilled += 1 ;
+        }
+
+        if(allFilled == 3){
             String amount, endMed, interval, medicine, purpose, startMed,status ;
             amount =  edit_addPrescriptionAmount.getText().toString() ;
             endMed = tv_addPrescriptionEnd.getText().toString() ;
@@ -146,7 +165,8 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
             }).addOnFailureListener((error) -> {
                 Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
             }); ;
-
+        } else {
+            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -170,6 +190,10 @@ public class ActivityAddPrescription extends AppCompatActivity implements View.O
         edit_addPrescriptionAmount.setText("");
         edit_addPrescriptionInterval.setText("");
         edit_addPrescriptionMedicine.setText("");
-
+        tv_addPrescriptionEnd.setText("");
+        tv_addPrescriptionStart.setText("");
+        tv_addPrescriptionStart.getBackground().setTint(Color.parseColor("#E1D6FF"));
+        edit_addPrescriptionMedicine.getBackground().setTint(Color.parseColor("#E1D6FF"));
+        edit_addPrescriptionAmount.getBackground().setTint(Color.parseColor("#E1D6FF"));
     }
 }

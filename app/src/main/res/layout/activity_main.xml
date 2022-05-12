@@ -107,7 +107,7 @@
             android:paddingStart="-5dp"
             android:scaleX="0.85"
             android:scaleY="0.8"
-            android:text="Parent"
+            android:text="Guardian"
             android:textSize="12sp"
             app:buttonTint="@color/yellow" />
 
@@ -169,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/helvetica"
-                android:text="Email"
+                android:text="Email / ID Number"
                 android:textColor="@color/primary_blue"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -180,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/quarternary_blue"
                 android:fontFamily="@font/helvetica"
-                android:hint="email"
+                android:hint="email / id number"
                 android:singleLine="true"
                 android:textColorHighlight="@color/active_input_text"
                 android:textColorHint="@color/hint"

@@ -1,6 +1,7 @@
 package com.capstone.capstone_group.isklinika;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
@@ -107,6 +110,32 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
                 }
             });
 
+            holder.mbtn_deleteMedication.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    new MaterialAlertDialogBuilder(view.getRootView().getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_Medication)
+                            .setTitle(R.string.title)
+                            .setMessage(R.string.supporting_text)
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .setPositiveButton("Remove", new DialogInterface.OnClickListener(){
+
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+
+                            .show() ;
+                }
+            });
+
     }
 
 
@@ -124,6 +153,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
     public void editMedication(AdapterMedPrescriptions.MedPrescriptionsHolder holder){
         holder.img_editMH.setVisibility(View.GONE);
         holder.img_saveMH.setVisibility(View.VISIBLE);
+        holder.mbtn_deleteMedication.setVisibility(View.VISIBLE);
 
         holder.txt_medName.setClickable(true) ;
         holder.txt_medName.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -156,6 +186,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
     public void saveMedication(AdapterMedPrescriptions.MedPrescriptionsHolder holder, ClassMedication medHistory){
         holder.img_editMH.setVisibility(View.VISIBLE);
         holder.img_saveMH.setVisibility(View.GONE);
+        holder.mbtn_deleteMedication.setVisibility(View.GONE);
 
         holder.txt_medName.setClickable(false) ;
         holder.txt_medName.setInputType(InputType.TYPE_NULL);
@@ -219,6 +250,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
         TextView txt_medStart, txt_medEnd ;
         Spinner spinner_medStatus ;
         ImageView img_editMH, img_saveMH;
+        MaterialCardView mbtn_deleteMedication ;
 
         public MedPrescriptionsHolder(@NonNull View itemView, AdapterMedPrescriptions.OnItemClickListener listener){
             super(itemView);
@@ -232,6 +264,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
             spinner_medStatus = itemView.findViewById(R.id.spinner_medStatus) ;
             img_editMH = itemView.findViewById(R.id.img_editMH) ;
             img_saveMH = itemView.findViewById(R.id.img_saveMH) ;
+            mbtn_deleteMedication = itemView.findViewById(R.id.mbtn_deleteMedication) ;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -12,13 +12,6 @@
         <item>Completed</item>
     </string-array>
 
-    <!--    <string-array name="dosage_num">-->
-    <!--        <item>1</item>-->
-    <!--        <item>2</item>-->
-    <!--        <item>3</item>-->
-    <!--        <item>Boost</item>-->
-    <!--    </string-array>-->
-
     <string-array name="charts">
         <item>BMI</item>
         <item>Height and Weight</item>
@@ -34,4 +27,15 @@
         <item>Lab Result</item>
     </string-array>
 
+    <string-array name="illness">
+        <item>Ongoing</item>
+        <item>Recovered</item>
+        <item>Chronic</item>
+    </string-array>
+
+    <string name="title">Do you want to delete the record?</string>
+    <string name="supporting_text">Selecting remove will delete the record</string>
+    <string name="cancel">Cancel</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
 </resources>

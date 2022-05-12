@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="2dp"
         android:orientation="vertical"
-        android:paddingBottom="3dp">
+        android:paddingBottom="2dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:padding="1dp"
                 android:paddingStart="5dp"
                 android:textColor="@color/black"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <ImageButton
@@ -74,23 +74,23 @@
                 android:padding="1dp"
                 android:text="Status"
                 android:textColor="#474646"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <Spinner
                 android:id="@+id/tv_pastStatus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#CCEEFFDC"
-                android:backgroundTint="@color/past_illness_edit"
                 android:clickable="false"
-                android:enabled="false"
-                android:fontFamily="@font/dinpro"
                 android:padding="1dp"
-                android:paddingStart="5dp"
-                android:textColor="@color/information_text"
-                android:textSize="13sp" />
+                android:paddingStart="5dp" />
 
         </TableRow>
 
@@ -107,7 +107,7 @@
                 android:padding="1dp"
                 android:text="From"
                 android:textColor="#474646"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
@@ -123,7 +123,7 @@
                 android:padding="1dp"
                 android:paddingStart="5dp"
                 android:textColor="@color/information_text"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
         </TableRow>
 
@@ -140,7 +140,7 @@
                 android:padding="1dp"
                 android:text="Date Recovered"
                 android:textColor="#474646"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
@@ -156,7 +156,7 @@
                 android:padding="1dp"
                 android:paddingStart="5dp"
                 android:textColor="@color/information_text"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
         </TableRow>
 
@@ -168,7 +168,7 @@
             android:padding="1dp"
             android:text="Treatment"
             android:textColor="#474646"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -182,7 +182,7 @@
             android:fontFamily="@font/dinpro"
             android:paddingStart="5dp"
             android:textColor="@color/information_text"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView99"
@@ -193,7 +193,7 @@
             android:fontFamily="@font/helvetica"
             android:text="Notes"
             android:textColor="#474646"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -210,7 +210,7 @@
             android:fontFamily="@font/dinpro"
             android:paddingStart="5dp"
             android:textColor="@color/information_text"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView101"
@@ -221,7 +221,7 @@
             android:fontFamily="@font/helvetica"
             android:text="Management Plan"
             android:textColor="#474646"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -230,11 +230,37 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="2dp"
             android:fontFamily="@font/dinpro"
             android:text="none"
             android:textColor="@color/information_text"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
 
+        <view
+            android:id="@+id/mbtn_deleteIllness"
+            class="com.google.android.material.card.MaterialCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/mbtn_addImmuneAdd"
+            app:layout_constraintTop_toBottomOf="@+id/mtv_immuneDate"
+            app:rippleColor="@color/pastel_red_inactive">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/delete"
+                android:drawableTint="#F44336"
+                android:fontFamily="@font/dinpro"
+                android:text="Delete record"
+                android:textColor="#F44336" />
+        </view>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

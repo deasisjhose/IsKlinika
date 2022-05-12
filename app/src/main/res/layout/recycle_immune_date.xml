@@ -26,7 +26,7 @@
         android:fontFamily="@font/helvetica"
         android:text="TextView"
         android:textColor="#4E4D4D"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_recycleBrand"
@@ -36,7 +36,18 @@
         android:fontFamily="@font/helvetica"
         android:hint="brand name(optional)"
         android:textColor="#4E4D4D"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
+
+    <ImageButton
+        android:id="@+id/ibtn_deleteImmune"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="32dp"
+        android:layout_weight="0.2"
+        android:backgroundTint="#FFFFFF"
+        android:padding="0dp"
+        android:tint="#F44336"
+        app:srcCompat="@drawable/delete" />
 
 </TableRow>
 

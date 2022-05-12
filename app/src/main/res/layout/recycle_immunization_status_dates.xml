@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tr_status"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_recycleVaccineName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical"
+        android:layout_weight="1"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="fill_vertical"
+        android:hint="Vaccine Name"
+        android:paddingStart="3dp"
+        android:textColor="@color/primary_Text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_recycleDate1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleDate2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleDate3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleDate4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleDate5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_recycleDate6"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.6"
+        android:background="@drawable/border_right"
+        android:fontFamily="@font/helvetica"
+        android:gravity="center"
+        android:textColor="@color/information_text"
+        android:textSize="12sp" />
+
+</TableRow>

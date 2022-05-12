@@ -104,7 +104,7 @@ public class ActivityImmunization extends AppCompatActivity{
                         MaterialButton mbtn_immuneStatus = findViewById(R.id.mbtn_immuneStatus);
                         mbtn_immuneStatus.setTypeface(null, Typeface.BOLD);
                         if(userType.equals("Parent"))
-                            float_addImmune.setVisibility(View.GONE);
+                            float_addImmune.setVisibility(View.VISIBLE);
                         layout_immune_history.setVisibility(View.VISIBLE);
                         layout_vaccineInformation.setVisibility(View.GONE);
                         retrieveDataVaxList();

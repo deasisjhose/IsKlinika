@@ -128,10 +128,31 @@ public class ActivityAddIntake extends AppCompatActivity implements View.OnClick
 
 
     public void addIntake(){
+
+        int allFilled = 0 ;
+
+        if(edit_addIntakeMedicine.getText().toString().equals("")){
+            edit_addIntakeMedicine.getBackground().setTint(Color.parseColor("#FFFD6868"));
+        } else{
+            allFilled += 1 ;
+            edit_addIntakeMedicine.getBackground().setTint(Color.parseColor("#E1D6FF"));
+        }
+
+        if(edit_addIntakeAmount.getText().toString().equals("")){
+            edit_addIntakeAmount.getBackground().setTint(Color.parseColor("#FFFD6868"));
+        } else{
+            allFilled += 1 ;
+            edit_addIntakeAmount.getBackground().setTint(Color.parseColor("#E1D6FF"));
+        }
+
         if(tv_addIntakeStart.getText().toString().equals("")){
-            Toast.makeText(this, "Add a date!", Toast.LENGTH_SHORT).show();
             tv_addIntakeStart.getBackground().setTint(Color.parseColor("#FFFD6868"));
-        } else {
+        } else{
+            allFilled += 1 ;
+            tv_addIntakeStart.getBackground().setTint(Color.parseColor("#E1D6FF"));
+        }
+
+        if (allFilled == 3){
             String dateTaken, specificAmount, specificMedicine, time;
             dateTaken =  tv_addIntakeStart.getText().toString() ;
             specificAmount = edit_addIntakeAmount.getText().toString() ;
@@ -146,7 +167,8 @@ public class ActivityAddIntake extends AppCompatActivity implements View.OnClick
             }).addOnFailureListener((error) -> {
                 Toast.makeText(this, "Data was not updated!", Toast.LENGTH_SHORT).show();
             }); ;
-
+        } else {
+            Toast.makeText(this, "Complete required fields", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -170,6 +192,8 @@ public class ActivityAddIntake extends AppCompatActivity implements View.OnClick
         edit_addIntakeAmount.setText("");
         tv_addIntakeEnd.setText("");
         tv_addIntakeStart.setText("");
+        edit_addIntakeMedicine.getBackground().setTint(Color.parseColor("#E1D6FF"));
+        edit_addIntakeAmount.getBackground().setTint(Color.parseColor("#E1D6FF"));
         tv_addIntakeStart.getBackground().setTint(Color.parseColor("#E1D6FF"));
     }
 }

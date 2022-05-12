@@ -190,7 +190,7 @@
                     android:layout_marginTop="15px"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:letterSpacing="0.02"
-                    android:text="Medical History"
+                    android:text="Illnesses and Allergies"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>

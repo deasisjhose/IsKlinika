@@ -102,7 +102,7 @@
                     android:gravity="center_vertical"
                     android:text="Personal Information"
                     android:textColor="@color/primary_Text"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </TableRow>
@@ -118,7 +118,7 @@
                 android:gravity="center_vertical"
                 android:text="Name"
                 android:textColor="@color/primary_Text"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
@@ -135,7 +135,7 @@
                 android:textColor="@color/information_text"
                 android:textColorHighlight="@color/active_edit"
                 android:textColorLink="@color/active_nav_btn"
-                android:textSize="13sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,7 +155,7 @@
                     android:gravity="center_vertical"
                     android:text="Email"
                     android:textColor="@color/primary_Text"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -167,9 +167,9 @@
                     android:drawableTint="@color/violet"
                     android:fontFamily="@font/dinpro"
                     android:gravity="center_vertical"
-                    android:text="Contact"
+                    android:text="Contact *"
                     android:textColor="@color/primary_Text"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -195,12 +195,12 @@
                     android:textColor="@color/information_text"
                     android:textColorHighlight="@color/active_edit"
                     android:textColorLink="@color/active_nav_btn"
-                    android:textSize="13sp" />
+                    android:textSize="14sp" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_parentContact"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_profile_info"
@@ -208,13 +208,178 @@
                     android:clickable="false"
                     android:enabled="false"
                     android:fontFamily="@font/helvetica"
+                    android:gravity="center_vertical"
                     android:hint="No info available"
                     android:paddingLeft="2dp"
                     android:textColor="@color/information_text"
                     android:textColorHighlight="@color/active_edit"
                     android:textColorLink="@color/active_nav_btn"
-                    android:textSize="13sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
+
+        </LinearLayout>
+    </view>
+
+    <view
+        android:id="@+id/card_personal3"
+        class="com.google.android.material.card.MaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:outlineAmbientShadowColor="@color/indigo"
+        android:outlineProvider="background"
+        android:outlineSpotShadowColor="@color/indigo"
+        app:cardBackgroundColor="@color/accent_layout"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_bottom"
+                    android:drawableLeft="@drawable/ic_baseline_123_24"
+                    android:drawableTint="@color/active_nav_btn"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:text="Password"
+                    android:textColor="@color/primary_Text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:text="Current Password"
+                android:textColor="@color/primary_Text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mtv_currentPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/helvetica"
+                android:hint="No info available"
+                android:inputType="textPassword"
+                android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:text="New Password"
+                android:textColor="@color/primary_Text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mtv_newPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/helvetica"
+                android:hint="No info available"
+                android:inputType="textPassword"
+                android:paddingLeft="2dp"
+                android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/dinpro"
+                android:gravity="center_vertical"
+                android:text="Confirm New Password"
+                android:textColor="@color/primary_Text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mtv_confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_profile_info"
+                android:backgroundTint="@color/profile_edit"
+                android:clickable="false"
+                android:enabled="false"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center_vertical"
+                android:hint="No info available"
+                android:inputType="textPassword"
+                android:paddingLeft="2dp"
+                android:textColor="@color/information_text"
+                android:textColorHighlight="@color/active_edit"
+                android:textColorLink="@color/active_nav_btn"
+                android:textSize="14sp" />
+
+            <view
+                android:id="@+id/mbtn_updatePassword
+"
+                class="com.google.android.material.card.MaterialCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:clickable="false"
+                app:cardBackgroundColor="@color/primary_blue"
+                app:cardElevation="0dp"
+                app:contentPadding="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/mbtn_addImmuneAdd"
+                app:layout_constraintTop_toBottomOf="@+id/mtv_immuneDate"
+                app:rippleColor="@color/accent_layout">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dinpro"
+                    android:text="Update password"
+                    android:textColor="@color/white" />
+            </view>
 
         </LinearLayout>
     </view>

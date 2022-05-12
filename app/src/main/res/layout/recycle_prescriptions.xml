@@ -30,7 +30,7 @@
                 android:fontFamily="@font/helvetica"
                 android:text="Medicine"
                 android:textColor="#494949"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 
@@ -42,7 +42,7 @@
                 android:fontFamily="@font/helvetica"
                 android:text="Status"
                 android:textColor="#494949"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -82,7 +82,7 @@
                 android:hint="No information available"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <Spinner
                 android:id="@+id/spinner_medStatus"
@@ -109,7 +109,7 @@
             android:fontFamily="@font/helvetica"
             android:text="Purpose"
             android:textColor="#494949"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <EditText
@@ -123,7 +123,7 @@
             android:hint="No information available"
             android:paddingLeft="2dp"
             android:textColor="@color/information_text"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView12"
@@ -134,7 +134,7 @@
             android:fontFamily="@font/helvetica"
             android:text="Medicine Intake"
             android:textColor="#494949"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TableRow
@@ -154,7 +154,7 @@
                 android:hint="Amount per interval"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/txt_medInterval"
@@ -168,7 +168,7 @@
                 android:hint="Times in a day"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
         </TableRow>
 
@@ -184,7 +184,7 @@
                 android:layout_weight="1"
                 android:text="Start Date"
                 android:textColor="#494949"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -194,7 +194,7 @@
                 android:layout_weight="1"
                 android:text="End Date"
                 android:textColor="#494949"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -210,10 +210,11 @@
                 android:layout_weight="1"
                 android:background="#F2EFFD"
                 android:clickable="false"
+                android:fontFamily="@font/helvetica"
                 android:hint="MM-DD-YYYY"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txt_medEnd"
@@ -222,11 +223,39 @@
                 android:layout_weight="1"
                 android:background="#F2EFFD"
                 android:clickable="false"
+                android:fontFamily="@font/helvetica"
                 android:hint="MM-DD-YYYY"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
         </TableRow>
+
+        <view
+            android:id="@+id/mbtn_deleteMedication"
+            class="com.google.android.material.card.MaterialCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/mbtn_addImmuneAdd"
+            app:layout_constraintTop_toBottomOf="@+id/mtv_immuneDate"
+            app:rippleColor="@color/pastel_red_inactive">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/delete"
+                android:drawableTint="#F44336"
+                android:fontFamily="@font/dinpro"
+                android:text="Delete record"
+                android:textColor="#F44336" />
+        </view>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

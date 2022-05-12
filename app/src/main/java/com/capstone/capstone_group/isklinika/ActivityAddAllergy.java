@@ -2,6 +2,7 @@ package com.capstone.capstone_group.isklinika;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,6 +44,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     private TextView tv_addAllergyDate, tv_addAllergyLast ;
     private EditText edit_addAllergyAllergy, edit_addAllergyType;
     private MaterialButton mbtn_addAllergyCancel, mbtn_addAllergyAdd ;
+    private MaterialCardView mcard_deleteAllergy ;
     private MaterialDatePicker materialDatePicker ;
     private ArrayList<ClassStudentInfo> children ;
 
@@ -71,11 +75,13 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         this.edit_addAllergyType = findViewById(R.id.edit_addAllergyType) ;
         this.mbtn_addAllergyCancel = findViewById(R.id.mbtn_addAllergyCancel) ;
         this.mbtn_addAllergyAdd = findViewById(R.id.mbtn_addAllergyAdd) ;
+        this.mcard_deleteAllergy = findViewById(R.id.mcard_deleteAllergy) ;
 
         tv_addAllergyDate.setOnClickListener(this);
         tv_addAllergyLast.setOnClickListener(this);
         mbtn_addAllergyCancel.setOnClickListener(this);
         mbtn_addAllergyAdd.setOnClickListener(this);
+        mcard_deleteAllergy.setOnClickListener(this);
 
         if(checkEditAdd == 1){
             mbtn_addAllergyAdd.setText("Update");
@@ -86,7 +92,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
             mtv_titleAllergy.setText("Edit Allergy Information");
             edit_addAllergyAllergy.setVisibility(View.GONE);
             spinner_editAllergy.setVisibility(View.VISIBLE);
-
+            mcard_deleteAllergy.setVisibility(View.VISIBLE);
             makeSpinnerAllergy();
         }
 
@@ -161,10 +167,20 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     //This method is called when the add button is pressed. This allows allergies to be added on the list
     public void addAllergy(){
         if(checkEditAdd == 0){
-            if(edit_addAllergyAllergy.getText().toString().equals("")){
+
+            if(edit_addAllergyAllergy.getText().toString().equals("") && tv_addAllergyLast.getText().toString().equals("")){
+                Toast.makeText(this, "Add an allergy on and last occurrence!", Toast.LENGTH_SHORT).show();
+                edit_addAllergyAllergy.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                tv_addAllergyLast.getBackground().setTint(Color.parseColor("#FFFD6868"));
+            } else if(edit_addAllergyAllergy.getText().toString().equals("") && !tv_addAllergyLast.getText().toString().equals("")){
                 Toast.makeText(this, "Add an allergy on!", Toast.LENGTH_SHORT).show();
-                edit_addAllergyAllergy.setBackgroundColor(Color.parseColor("#FFFD6868"));
-            } else {
+                edit_addAllergyAllergy.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                tv_addAllergyLast.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+            }else if(!edit_addAllergyAllergy.getText().toString().equals("") && tv_addAllergyLast.getText().toString().equals("")){
+                Toast.makeText(this, "Add an last occurrence!", Toast.LENGTH_SHORT).show();
+                edit_addAllergyAllergy.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+                tv_addAllergyLast.getBackground().setTint(Color.parseColor("#FFFD6868"));
+            }else{
                 String allergy, type, diagnosisDate, lastOccurrence ;
                 allergy =  edit_addAllergyAllergy.getText().toString() ;
                 type = edit_addAllergyType.getText().toString() ;
@@ -206,6 +222,26 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         }else if(view.getId() == R.id.tv_addAllergyLast){
             selectedDate = 20 ;
             materialDatePicker.show(getSupportFragmentManager(), "DATE PICKER");
+        }else if(view.getId() == R.id.mcard_deleteAllergy){
+            new MaterialAlertDialogBuilder(view.getRootView().getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_Illness)
+                    .setTitle(R.string.title)
+                    .setMessage(R.string.supporting_text)
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .setPositiveButton("Remove", new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+
+                    .show() ;
         }
     }
 
@@ -214,7 +250,8 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         edit_addAllergyAllergy.setText("");
         tv_addAllergyLast.setText("");
         tv_addAllergyDate.setText("");
-        edit_addAllergyAllergy.setBackgroundColor(Color.parseColor("#CCDDF6C0"));
+        edit_addAllergyAllergy.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+        tv_addAllergyLast.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
 
     }
 }
