@@ -133,26 +133,26 @@
                     <TableRow
                         android:id="@+id/tbr_immuneHistory"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/textView40"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:visibility="invisible" />
+                            android:layout_weight="0.4"
+                            android:text="Vaccine Name"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/textView41"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="0.4"
                             android:fontFamily="@font/helvetica"
                             android:gravity="center"
-                            android:text="Expected Age"
+                            android:text="Vaccine"
                             android:textColor="@color/primary_blue"
-                            android:textSize="11sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -162,9 +162,9 @@
                             android:layout_weight="0.7"
                             android:fontFamily="@font/helvetica"
                             android:gravity="center"
-                            android:text="Dosage"
+                            android:text="Immunization Dates"
                             android:textColor="@color/primary_blue"
-                            android:textSize="11sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -177,7 +177,8 @@
                             android:text="Status"
                             android:textColor="@color/primary_blue"
                             android:textSize="11sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:visibility="gone" />
                     </TableRow>
 
                     <androidx.recyclerview.widget.RecyclerView

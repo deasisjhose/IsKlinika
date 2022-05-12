@@ -128,6 +128,15 @@ public class FragmentUserProfile extends Fragment {
             tv_parentContact.setEnabled(false);
             tv_parentContact.setClickable(false);
 
+            mbtn_updatePassword.setClickable(false);
+            mtv_currentPassword.setEnabled(false);
+            mtv_currentPassword.setClickable(false);
+            mtv_newPassword.setEnabled(false);
+            mtv_newPassword.setClickable(false);
+            mtv_confirmPassword.setEnabled(false);
+            mtv_confirmPassword.setClickable(false);
+
+
             switch (checkParent){
                 case 0:
                     activity_landing.setNewChildInfo("mother", tv_parentName.getText().toString(), tv_parentEmail.getText().toString(), Long.parseLong(tv_parentContact.getText().toString()));
