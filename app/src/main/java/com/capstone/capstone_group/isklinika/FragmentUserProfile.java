@@ -52,7 +52,7 @@ public class FragmentUserProfile extends Fragment {
         this.tv_parentEmail = view.findViewById(R.id.tv_parentEmail) ;
         this.tv_parentContact = view.findViewById(R.id.tv_parentContact) ;
 
-        this.mbtn_updatePassword = view.findViewById(R.id.mbtn_updatePassword) ;
+        this.mbtn_updatePassword = view.findViewById(R.id.mtn_updatePassword) ;
         this.mtv_currentPassword = view.findViewById(R.id.mtv_currentPassword) ;
         this.mtv_newPassword = view.findViewById(R.id.mtv_newPassword) ;
         this.mtv_confirmPassword = view.findViewById(R.id.mtv_confirmPassword) ;

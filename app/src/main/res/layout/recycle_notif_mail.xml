@@ -19,8 +19,8 @@
 
         <LinearLayout
             android:id="@+id/layout_notifBg"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/border_circle"
             android:backgroundTint="@color/primary_blue"
@@ -50,7 +50,7 @@
                 android:fontFamily="@font/helvetica"
                 android:text="TextView"
                 android:textColor="@color/information_text"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_notifDate"
@@ -59,7 +59,7 @@
                 android:fontFamily="@font/dinpro"
                 android:paddingLeft="8dp"
                 android:text="TextView"
-                android:textSize="11sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

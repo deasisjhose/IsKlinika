@@ -356,8 +356,7 @@
                 android:textSize="14sp" />
 
             <view
-                android:id="@+id/mbtn_updatePassword
-"
+                android:id="@+id/mtn_updatePassword"
                 class="com.google.android.material.card.MaterialCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
