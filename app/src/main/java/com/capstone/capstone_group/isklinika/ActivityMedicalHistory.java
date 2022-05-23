@@ -357,7 +357,7 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        AdapterPastIllness adapterPastIllness = new AdapterPastIllness(getBaseContext(), illnessesArrayList, studentId) ;
+        AdapterPastIllness adapterPastIllness = new AdapterPastIllness(this, illnessesArrayList, studentId) ;
         adapterPastIllness.setUserType(userType);
         this.recycle_past_illness = findViewById(R.id.recycle_past_illness) ;
         recycle_past_illness.setLayoutManager(layoutManager);

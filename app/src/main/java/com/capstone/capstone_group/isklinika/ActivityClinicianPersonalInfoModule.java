@@ -1,6 +1,7 @@
 package com.capstone.capstone_group.isklinika;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
             tv_clinicianBirthday, tv_clinicianAge, tv_clinicianReligion, tv_clinicianNationality, tv_clinicianAddress, tv_clinicianBMI, tv_clinicianWeight, tv_clinicianHeight, tv_clinicianFather,
             tv_clinicianFatherEmail, tv_ClinicianFatherContact, tv_clinicianMother, tv_clinicianMotherEmail, tv_ClinicianMotherContact, tv_clinicianGuardian, tv_clinicianGuardianEmail,
             tv_ClinicianGuardianContact, tv_clinicianPediatrician, tv_clinicianPediaEmail, tv_ClinicianPediaContact, tv_clinicianDentist, tv_clinicianDentalEmail, tv_clinicianDentalContact,
-            tv_clinicianPreferredHospital, tv_clinicianHospitalAddress ;
+            tv_clinicianPreferredHospital, tv_clinicianHospitalAddress, tv_pBMIStatus2, tv_pWeightStatus2,  tv_pHeightStatus2;
     private MaterialCardView mcard_uploadMedcert ;
 
     @Override
@@ -80,6 +81,36 @@ public class ActivityClinicianPersonalInfoModule extends AppCompatActivity {
         this.tv_clinicianDentalContact = findViewById(R.id.tv_clinicianDentalContact) ;
         this.tv_clinicianPreferredHospital = findViewById(R.id.tv_clinicianPreferredHospital) ;
         this.tv_clinicianHospitalAddress = findViewById(R.id.tv_clinicianHospitalAddress) ;
+        this.tv_pBMIStatus2 = findViewById(R.id.tv_pBMIStatus2) ;
+        this.tv_pWeightStatus2 = findViewById(R.id.tv_pWeightStatus2) ;
+        this.tv_pHeightStatus2 = findViewById(R.id.tv_pHeightStatus2) ;
+
+        if(studentInfo.getBmiStatus().equals("Normal weight")){
+            tv_pBMIStatus2.setText("Normal");
+            tv_pBMIStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.green));
+        }else if(studentInfo.getBmiStatus().equals("")){
+            tv_pBMIStatus2.setText("No data");
+            tv_pBMIStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.yellow)) ;
+        } else{
+            tv_pBMIStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.error_container));
+        }
+
+        if(studentInfo.getHeightStatus().equals("Normal") || studentInfo.getHeightStatus().equals("Above Normal")  ){
+            tv_pHeightStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.green));
+        }else if(studentInfo.getHeightStatus().equals("")){
+            tv_pHeightStatus2.setText("No data");
+            tv_pHeightStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.yellow)) ;
+        } else{
+            tv_pHeightStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.error_container));
+        }
+        if(studentInfo.getWeightStatus().equals("Normal")){
+            tv_pWeightStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.green));
+        }else if(studentInfo.getWeightStatus().equals("")){
+            tv_pWeightStatus2.setText("No data");
+            tv_pWeightStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.yellow)) ;
+        } else{
+            tv_pWeightStatus2.getBackground().setTint(ContextCompat.getColor(getBaseContext(), R.color.error_container));
+        }
 
         tv_clinicStudentName.setText(studentInfo.getFullName());
         tv_clinicStudentID.setText(studentInfo.getIdNum());

@@ -125,17 +125,32 @@
             android:textColor="@color/information_text"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/textView12"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/helvetica"
-            android:text="Medicine Intake"
-            android:textColor="#494949"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Amount"
+                android:textColor="#494949"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Interval"
+                android:textColor="#494949"
+                android:textStyle="bold" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"

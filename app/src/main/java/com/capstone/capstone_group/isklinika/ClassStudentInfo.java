@@ -8,8 +8,16 @@ public class ClassStudentInfo implements Parcelable {
     private Long  age,grade, dentistContact, fatherContact, guardianContact, motherContact, pediaContact;
     private String address, birthday, bmi, bmiStatus, dentistEmail, dentistName, fatherEmail,fatherName, firstName,
             guardianEmail, guardianName, hasSpecialNeeds, height, heightStatus, hospitalAddress, idNum, lastCheckedWandH, lastName, middleName,  motherEmail, motherName, nationality,
-            pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType, weight, weightStatus ;
+            pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType, weight, weightStatus;
+    private String password ;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public ClassStudentInfo(){
         this.address = "" ;
@@ -94,6 +102,7 @@ public class ClassStudentInfo implements Parcelable {
         studentType = in.readString();
         weight = in.readString();
         weightStatus = in.readString();
+        password = in.readString() ;
     }
 
     @Override
@@ -136,6 +145,7 @@ public class ClassStudentInfo implements Parcelable {
         dest.writeString(studentType);
         dest.writeString(weight);
         dest.writeString(weightStatus);
+        dest.writeString(password);
     }
 
     @Override

@@ -115,7 +115,7 @@
                     android:fontFamily="@font/dinpro"
                     android:gravity="center_vertical"
                     android:padding="4dp"
-                    android:text="Uploads"
+                    android:text="Med Certs and Lab Results"
                     android:textColor="@color/primary_blue"
                     android:textSize="10sp"
                     tools:ignore="TextContrastCheck" />
@@ -512,6 +512,21 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_pBMIStatus2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_circle"
+                            android:backgroundTint="@color/error_container"
+                            android:fontFamily="@font/helvetica"
+                            android:gravity="center"
+                            android:letterSpacing="-0.04"
+                            android:text="Underweight"
+                            android:textColor="@color/light"
+                            android:textSize="10sp" />
+
+                        <TextView
                             android:id="@+id/tv_clinicianWeight"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -524,6 +539,21 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_pWeightStatus2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_circle"
+                            android:backgroundTint="@color/error_container"
+                            android:fontFamily="@font/helvetica"
+                            android:gravity="center"
+                            android:letterSpacing="-0.04"
+                            android:text="Underweight"
+                            android:textColor="@color/light"
+                            android:textSize="10sp" />
+
+                        <TextView
                             android:id="@+id/tv_clinicianHeight"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -533,6 +563,22 @@
                             android:paddingLeft="2dp"
                             android:textColor="@color/information_text"
                             android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_pHeightStatus2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_circle"
+                            android:backgroundTint="@color/error_container"
+                            android:fontFamily="@font/helvetica"
+                            android:gravity="center"
+                            android:letterSpacing="-0.04"
+                            android:text="Underweight"
+                            android:textColor="@color/light"
+                            android:textSize="10sp" />
+
                     </TableRow>
 
                 </LinearLayout>

@@ -82,6 +82,7 @@
         app:cardUseCompatPadding="true">
 
         <LinearLayout
+            android:id="@+id/layout_parentProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -279,7 +280,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/bg_profile_info"
-                android:backgroundTint="@color/profile_edit"
+                android:backgroundTint="#ADC2FF"
                 android:clickable="false"
                 android:enabled="false"
                 android:fontFamily="@font/helvetica"
@@ -311,7 +312,7 @@
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_profile_info"
-                android:backgroundTint="@color/profile_edit"
+                android:backgroundTint="#ADC2FF"
                 android:clickable="false"
                 android:enabled="false"
                 android:fontFamily="@font/helvetica"
@@ -342,7 +343,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_profile_info"
-                android:backgroundTint="@color/profile_edit"
+                android:backgroundTint="#ADC2FF"
                 android:clickable="false"
                 android:enabled="false"
                 android:fontFamily="@font/helvetica"
@@ -355,30 +356,82 @@
                 android:textColorLink="@color/active_nav_btn"
                 android:textSize="14sp" />
 
-            <view
-                android:id="@+id/mtn_updatePassword"
-                class="com.google.android.material.card.MaterialCardView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginBottom="4dp"
-                android:clickable="false"
-                app:cardBackgroundColor="@color/primary_blue"
-                app:cardElevation="0dp"
-                app:contentPadding="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/mbtn_addImmuneAdd"
-                app:layout_constraintTop_toBottomOf="@+id/mtv_immuneDate"
-                app:rippleColor="@color/accent_layout">
+                android:gravity="end">
 
-                <com.google.android.material.textview.MaterialTextView
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/tv_characters"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="*Must be at least 8 characters"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_uppercase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="*At least 1 uppercase letter (A, B, C, ...)"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_numeric"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="*Must have numeric characters (1, 2,...)"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_specialChar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="*Must have at least 1 special chacter (!, @,...)"
+                        android:textColor="@color/primary_Text"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <view
+                    android:id="@+id/mtn_updatePassword"
+                    class="com.google.android.material.card.MaterialCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/dinpro"
-                    android:text="Update password"
-                    android:textColor="@color/white" />
-            </view>
+                    android:layout_gravity="center_vertical|end"
+                    android:clickable="false"
+                    app:cardBackgroundColor="@color/primary_blue"
+                    app:cardElevation="0dp"
+                    app:contentPadding="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/mbtn_addImmuneAdd"
+                    app:layout_constraintTop_toBottomOf="@+id/mtv_immuneDate"
+                    app:rippleColor="@color/accent_layout">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dinpro"
+                        android:text="Update password"
+                        android:textColor="@color/white" />
+                </view>
+            </TableRow>
 
         </LinearLayout>
     </view>

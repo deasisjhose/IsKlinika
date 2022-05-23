@@ -1,6 +1,7 @@
 package com.capstone.capstone_group.isklinika;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -205,6 +206,10 @@ public class FragmentChildrenProfile extends Fragment {
             tv_pGuardianContact.setEnabled(true);
             tv_pGuardianContact.setClickable(true);
 
+            tv_pAddress.getBackground().setTint(Color.parseColor("#ADC2FF"));
+            tv_pGuardian.getBackground().setTint(Color.parseColor("#ADC2FF"));
+            tv_pGuardianContact.getBackground().setTint(Color.parseColor("#ADC2FF"));
+
             tv_pPedia.setEnabled(true);
             tv_pPedia.setClickable(true);
             tv_pPediaContact.setEnabled(true);
@@ -228,77 +233,104 @@ public class FragmentChildrenProfile extends Fragment {
             public void onClick(View view) {
 
                 //validate inputs
+                int allFilled = 0 ;
+
+                if(tv_pAddress.getText().toString().equals("")){
+                    tv_pAddress.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                } else{
+                    allFilled += 1 ;
+                }
+                if(tv_pGuardian.getText().toString().equals("")){
+                    tv_pGuardian.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                } else{
+                    allFilled += 1 ;
+                }
+                if(tv_pGuardianContact.getText().toString().equals("")){
+                    tv_pGuardianContact.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                } else{
+                    allFilled += 1 ;
+
+                }
 
 
-                mcard_saveProfile.setVisibility(View.GONE);
-                mcard_editProfile.setVisibility(View.VISIBLE);
+                if(allFilled == 3){
+                    mcard_saveProfile.setVisibility(View.GONE);
+                    mcard_editProfile.setVisibility(View.VISIBLE);
 
-                tv_pBirthday.setEnabled(false);
-                tv_pBirthday.setClickable(false);
-                tv_pAddress.setEnabled(false);
-                tv_pAddress.setClickable(false);
-                tv_pReligion.setEnabled(false);
-                tv_pReligion.setClickable(false);
-                tv_pNationality.setEnabled(false);
-                tv_pNationality.setClickable(false);
+                    tv_pAddress.getBackground().setTint(Color.parseColor("#E6E9F3FF"));
+                    tv_pGuardian.getBackground().setTint(Color.parseColor("#E6E9F3FF"));
+                    tv_pGuardianContact.getBackground().setTint(Color.parseColor("#E6E9F3FF"));
 
-                tv_pGuardian.setEnabled(false);
-                tv_pGuardian.setClickable(false);
-                tv_pGuardianEmail.setEnabled(false);
-                tv_pGuardianEmail.setClickable(false);
-                tv_pGuardianContact.setEnabled(false);
-                tv_pGuardianContact.setClickable(false);
+                    tv_pBirthday.setEnabled(false);
+                    tv_pBirthday.setClickable(false);
+                    tv_pAddress.setEnabled(false);
+                    tv_pAddress.setClickable(false);
+                    tv_pReligion.setEnabled(false);
+                    tv_pReligion.setClickable(false);
+                    tv_pNationality.setEnabled(false);
+                    tv_pNationality.setClickable(false);
 
-                tv_pPedia.setEnabled(false);
-                tv_pPedia.setClickable(false);
-                tv_pPediaContact.setEnabled(false);
-                tv_pPediaContact.setClickable(false);
-                tv_pPediaEmail.setEnabled(false);
-                tv_pPediaEmail.setClickable(false);
-                tv_pDentist.setEnabled(false);
-                tv_pDentist.setClickable(false);
-                tv_pDentistEmail.setEnabled(false);
-                tv_pDentistEmail.setClickable(false);
-                tv_pDentistContact.setEnabled(false);
-                tv_pDentistContact.setClickable(false);
-                tv_pHospital.setEnabled(false);
-                tv_pHospital.setClickable(false);
-                tv_pHospitalAddress.setEnabled(false);
-                tv_pHospitalAddress.setClickable(false);
+                    tv_pGuardian.setEnabled(false);
+                    tv_pGuardian.setClickable(false);
+                    tv_pGuardianEmail.setEnabled(false);
+                    tv_pGuardianEmail.setClickable(false);
+                    tv_pGuardianContact.setEnabled(false);
+                    tv_pGuardianContact.setClickable(false);
 
-                HashMap<String, Object> personalValues = new HashMap<>();
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/birthday", tv_pBirthday.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/age", Long.parseLong(tv_pAge.getText().toString()));
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/address", tv_pAddress.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/nationality", tv_pNationality.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/religion", tv_pReligion.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianName", tv_pGuardian.getText().toString()) ;
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianEmail", tv_pGuardianEmail.getText().toString()) ;
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaName", tv_pPedia.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaEmail", tv_pPediaEmail.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistName", tv_pDentist.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistEmail", tv_pDentistEmail.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/preferredHospital", tv_pHospital.getText().toString());
-                personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/hospitalAddress", tv_pHospitalAddress.getText().toString());
+                    tv_pPedia.setEnabled(false);
+                    tv_pPedia.setClickable(false);
+                    tv_pPediaContact.setEnabled(false);
+                    tv_pPediaContact.setClickable(false);
+                    tv_pPediaEmail.setEnabled(false);
+                    tv_pPediaEmail.setClickable(false);
+                    tv_pDentist.setEnabled(false);
+                    tv_pDentist.setClickable(false);
+                    tv_pDentistEmail.setEnabled(false);
+                    tv_pDentistEmail.setClickable(false);
+                    tv_pDentistContact.setEnabled(false);
+                    tv_pDentistContact.setClickable(false);
+                    tv_pHospital.setEnabled(false);
+                    tv_pHospital.setClickable(false);
+                    tv_pHospitalAddress.setEnabled(false);
+                    tv_pHospitalAddress.setClickable(false);
 
-                if(!tv_pGuardianContact.getText().toString().equals(""))
-                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
-                else
-                    databaseReference.child(studentInfo.getIdNum()).child("guardianContact").removeValue() ;
-                if(!tv_pPediaContact.getText().toString().equals(""))
-                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
-                else
-                    databaseReference.child(studentInfo.getIdNum()).child("pediaContact").removeValue() ;
-                if(!tv_pDentistContact.getText().toString().equals(""))
-                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", Long.parseLong(tv_pDentistContact.getText().toString()));
-                else
-                    databaseReference.child(studentInfo.getIdNum()).child("dentistContact").removeValue() ;
+                    HashMap<String, Object> personalValues = new HashMap<>();
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/birthday", tv_pBirthday.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/age", Long.parseLong(tv_pAge.getText().toString()));
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/address", tv_pAddress.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/nationality", tv_pNationality.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/religion", tv_pReligion.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianName", tv_pGuardian.getText().toString()) ;
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianEmail", tv_pGuardianEmail.getText().toString()) ;
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaName", tv_pPedia.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaEmail", tv_pPediaEmail.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistName", tv_pDentist.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistEmail", tv_pDentistEmail.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/preferredHospital", tv_pHospital.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/hospitalAddress", tv_pHospitalAddress.getText().toString());
 
-                database.updateChildren(personalValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-                    Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
-                }).addOnFailureListener((error) -> {
-                    Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
-                });
+                    if(!tv_pGuardianContact.getText().toString().equals(""))
+                        personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
+                    else
+                        databaseReference.child(studentInfo.getIdNum()).child("guardianContact").removeValue() ;
+                    if(!tv_pPediaContact.getText().toString().equals(""))
+                        personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
+                    else
+                        databaseReference.child(studentInfo.getIdNum()).child("pediaContact").removeValue() ;
+                    if(!tv_pDentistContact.getText().toString().equals(""))
+                        personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistContact", Long.parseLong(tv_pDentistContact.getText().toString()));
+                    else
+                        databaseReference.child(studentInfo.getIdNum()).child("dentistContact").removeValue() ;
+
+                    database.updateChildren(personalValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                        Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
+
+                    }).addOnFailureListener((error) -> {
+                        Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
+                    });
+                } else {
+                    Toast.makeText(view.getContext(), "Complete required fields!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

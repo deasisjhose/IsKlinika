@@ -33,9 +33,18 @@
         <item>Chronic</item>
     </string-array>
 
+    <string name="title_password">Are you sure you want to update your password</string>
+
     <string name="title">Do you want to delete the record?</string>
     <string name="supporting_text">Selecting remove will delete the record</string>
     <string name="cancel">Cancel</string>
     <string name="decline">Decline</string>
     <string name="accept">Accept</string>
+    <string name="update">Update</string>
+
+    <string name="privacy">
+        <b>Lorem ipsum dolor sit amet,</b> consectetur adipiscing elit. Mauris porta nunc eu nibh blandit scelerisque. Suspendisse posuere lectus nec sagittis mollis. Curabitur vel facilisis ex, at feugiat sem. Cras volutpat dui a nibh bibendum fringilla. Fusce iaculis efficitur lectus quis varius. In metus turpis, rutrum at congue sit amet, dignissim ac ipsum. Mauris gravida bibendum laoreet. Nunc interdum rutrum fermentum. Donec finibus semper tempus. Aenean blandit, turpis sit amet placerat euismod, arcu est condimentum eros, venenatis mollis elit lorem eu tortor.
+        \n \n Integer rhoncus non ex nec malesuada. Nulla molestie euismod felis vel mattis. Praesent feugiat nunc sed velit euismod pellentesque. Morbi molestie elit ac nulla sollicitudin, non malesuada ante maximus. In sit amet magna semper, iaculis erat sit amet, dapibus libero. Donec scelerisque neque in orci tincidunt posuere. Aenean porttitor faucibus ex, non pretium justo fermentum nec. Nullam suscipit dui leo, id facilisis elit viverra id. Aliquam id metus vehicula, ultricies leo ut, tempus ipsum.
+    </string>
+
 </resources>

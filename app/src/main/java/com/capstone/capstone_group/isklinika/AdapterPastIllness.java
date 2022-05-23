@@ -17,11 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
@@ -33,15 +35,16 @@ import java.util.HashMap;
 public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness.PastIllnessHolder> {
 
 
-    private Context tvContext;
+    private AppCompatActivity tvContext;
     private ArrayList<ClassPastIllness> tvData;
     private AdapterPastIllness.OnItemClickListener tvListener ;
     private String studentId ;
     private String userType ;
     private String prescriptionStatus ;
+    private MaterialDatePicker materialDatePicker ;
+    int selectedDate = 0 ;
     public AdapterPastIllness.PastIllnessHolder pastIllnessHolder ;
     public String TAG="MEDICATION//";
-
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
     public DatabaseReference database = db.getReference();
@@ -59,10 +62,15 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
     }
 
 
-    public AdapterPastIllness(Context tvContext, ArrayList<ClassPastIllness> tvData, String studentId) {
+    public AdapterPastIllness(AppCompatActivity tvContext, ArrayList<ClassPastIllness> tvData, String studentId) {
         this.tvContext = tvContext;
         this.tvData = tvData;
         this.studentId = studentId ;
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
+        builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;
+        builder.setTheme(R.style.ThemeOverlay_App_DatePicker_MedicalHistory) ;
+        builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
+        this.materialDatePicker = builder.build() ;
     }
 
     @NonNull
@@ -116,13 +124,38 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
 
         }
 
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+
+            ClassDateConvert dateConvert = new ClassDateConvert(materialDatePicker.getHeaderText()) ;
+
+
+            switch (selectedDate){
+                case 10:
+                    holder.tv_pastStart.setText(dateConvert.getConverted());
+                    break;
+                case 20:
+                    holder.tv_pastEnd.setText(dateConvert.getConverted());
+                    break;
+            }
+        }) ;
+
+        holder.tv_pastStart.setOnClickListener(view -> {
+            materialDatePicker.show(tvContext.getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 10 ;
+        });
+
+        holder.tv_pastEnd.setOnClickListener(view -> {
+            materialDatePicker.show(tvContext.getSupportFragmentManager(), "DATE PICKER");
+            selectedDate = 20 ;
+        });
+
         holder.ibtn_editPast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 holder.ibtn_editPast.setVisibility(View.GONE);
                 holder.ibtn_savePast.setVisibility(View.VISIBLE);
-                holder.mbtn_deleteIllness.setVisibility(View.VISIBLE);
-
+                if(!holder.tv_pastStatus.getSelectedItem().toString().equals("Recovered"))
+                    holder.mbtn_deleteIllness.setVisibility(View.VISIBLE);
 
                 holder.tv_pastStatus.setClickable(true);
                 holder.tv_pastStatus.setEnabled(true);
@@ -189,11 +222,15 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
 
                             }
                         })
-                        .setPositiveButton("Remove", new DialogInterface.OnClickListener(){
-
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener(){
+                            //deletet
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                database.child("studentHealthHistory").child(studentId).child("pastIllness").child(pastIllness.getKey()).removeValue().addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                    Toast.makeText(tvContext, "Data successfully deleted!", Toast.LENGTH_SHORT).show();
+                                }).addOnFailureListener((error) -> {
+                                    Toast.makeText(tvContext, "Data was not deleted!", Toast.LENGTH_SHORT).show();
+                                });
                             }
                         })
 
@@ -204,7 +241,9 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
         });
     }
 
+    public void deleteIllness(){
 
+    }
 
     @Override
     public int getItemCount() {

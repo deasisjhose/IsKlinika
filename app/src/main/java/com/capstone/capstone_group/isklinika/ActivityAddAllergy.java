@@ -52,7 +52,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
     private MaterialTextView mtv_titleAllergy ;
     private Spinner spinner_editAllergy ;
     private ArrayList<ClassAllergy> allergyArrayList ;
-
+    private ClassAllergy selectedAllergy ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,6 +150,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
         adapter.setDropDownViewResource(R.layout.spinner_immune_down);
         spinner_editAllergy.setAdapter(adapter);
         spinner_editAllergy.setSelection(0);
+        selectedAllergy = allergyArrayList.get(0) ;
         spinner_editAllergy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -157,6 +158,7 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
                 edit_addAllergyType.setText(allergyArrayList.get(position).getType());
                 tv_addAllergyDate.setText(allergyArrayList.get(position).getDiagnosisDate());
                 tv_addAllergyLast.setText(allergyArrayList.get(position).getLastOccurrence());
+                selectedAllergy = allergyArrayList.get(position) ;
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -237,7 +239,16 @@ public class ActivityAddAllergy extends AppCompatActivity implements View.OnClic
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
+                            databaseReference.child("studentHealthHistory").child(idNum).child("allergies").child(selectedAllergy.getKey()).removeValue().addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                Toast.makeText(getBaseContext(), "Data successfully deleted!", Toast.LENGTH_SHORT).show();
+                                allergyArrayList.remove(selectedAllergy) ;
+                                selectedAllergy = allergyArrayList.get(0) ;
+                                edit_addAllergyType.setText(selectedAllergy.getType());
+                                tv_addAllergyDate.setText(selectedAllergy.getDiagnosisDate());
+                                tv_addAllergyLast.setText(selectedAllergy.getLastOccurrence());
+                            }).addOnFailureListener((error) -> {
+                                Toast.makeText(getBaseContext(), "Data was not deleted!", Toast.LENGTH_SHORT).show();
+                            });;
                         }
                     })
 

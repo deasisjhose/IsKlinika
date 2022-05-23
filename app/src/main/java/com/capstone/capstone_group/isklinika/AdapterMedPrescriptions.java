@@ -15,10 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,12 +31,14 @@ import java.util.HashMap;
 
 public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPrescriptions.MedPrescriptionsHolder>{
 
-    private Context tvContext;
+    private AppCompatActivity tvContext;
     private ArrayList<ClassMedication> tvData;
     private AdapterMedPrescriptions.OnItemClickListener tvListener ;
     private String studentId ;
     private String userType ;
     private String prescriptionStatus ;
+    private MaterialDatePicker materialDatePicker ;
+    int selectedDate = 0 ;
     public AdapterMedPrescriptions.MedPrescriptionsHolder medHistoryHolder ;
     public String TAG="MEDICATION//";
 
@@ -49,12 +53,18 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
         tvListener = listener ;
     }
 
-    public AdapterMedPrescriptions(Context tvContext, ArrayList<ClassMedication> tvData, String studentId, String status, String userType) {
+    public AdapterMedPrescriptions(AppCompatActivity tvContext, ArrayList<ClassMedication> tvData, String studentId, String status, String userType) {
         this.tvContext = tvContext;
         this.tvData = tvData;
         this.studentId = studentId ;
         this.prescriptionStatus = status ;
         this.userType = userType ;
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker() ;
+        builder.setTitleText("Select Immunization Date (MM-DD-YY)") ;
+        builder.setTheme(R.style.ThemeOverlay_App_DatePicker_Medication) ;
+        builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds()) ;
+        this.materialDatePicker = builder.build() ;
+
     }
 
     @NonNull
@@ -96,6 +106,32 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
 //        else
 //            dateDatePicker(holder);
 
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+
+            ClassDateConvert dateConvert = new ClassDateConvert(materialDatePicker.getHeaderText()) ;
+
+
+            switch (selectedDate){
+                case 10:
+                    holder.txt_medStart.setText(dateConvert.getConverted());
+                    break;
+                case 20:
+                    holder.txt_medEnd.setText(dateConvert.getConverted());
+                    break;
+            }
+        }) ;
+
+
+            holder.txt_medStart.setOnClickListener(view -> {
+                materialDatePicker.show(tvContext.getSupportFragmentManager(), "DATE PICKER");
+                selectedDate = 10 ;
+            });
+
+            holder.txt_medEnd.setOnClickListener(view -> {
+                materialDatePicker.show(tvContext.getSupportFragmentManager(), "DATE PICKER");
+                selectedDate = 20 ;
+            });
+
             holder.img_editMH.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,10 +161,13 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
                                 }
                             })
                             .setPositiveButton("Remove", new DialogInterface.OnClickListener(){
-
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                                    database.child("studentHealthHistory").child(studentId).child("prescriptionHistory").child(medHistory.getKey()).removeValue().addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                        Toast.makeText(tvContext, "Data successfully deleted!", Toast.LENGTH_SHORT).show();
+                                    }).addOnFailureListener((error) -> {
+                                        Toast.makeText(tvContext, "Data was not deleted!", Toast.LENGTH_SHORT).show();
+                                    });
                                 }
                             })
 
@@ -153,7 +192,9 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
     public void editMedication(AdapterMedPrescriptions.MedPrescriptionsHolder holder){
         holder.img_editMH.setVisibility(View.GONE);
         holder.img_saveMH.setVisibility(View.VISIBLE);
-        holder.mbtn_deleteMedication.setVisibility(View.VISIBLE);
+
+        if(!holder.spinner_medStatus.getSelectedItem().toString().equals("Completed"))
+            holder.mbtn_deleteMedication.setVisibility(View.VISIBLE);
 
         holder.txt_medName.setClickable(true) ;
         holder.txt_medName.setInputType(InputType.TYPE_CLASS_TEXT);

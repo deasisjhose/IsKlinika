@@ -1,7 +1,7 @@
 package com.capstone.capstone_group.isklinika;
 
 public class ClassImmuneRecord {
-    private String dateGiven, name, purpose ;
+    private String dateGiven, name, purpose, key ;
 
     public String getDateGiven() {
         return dateGiven;
@@ -31,6 +31,14 @@ public class ClassImmuneRecord {
         this.dateGiven = dateGiven;
         this.name = name;
         this.purpose = purpose;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public ClassImmuneRecord() {

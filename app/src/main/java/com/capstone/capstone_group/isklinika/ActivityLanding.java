@@ -99,7 +99,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
 
         if(userType.equals("Student")){
             botNav.btn_nav_mail.setVisibility(View.GONE);
-            botNav.btn_nav_parent_profile.setVisibility(View.GONE);
+
         }
         //set active btn tint
         botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
@@ -134,6 +134,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
                 break;
             case "Parent":
                 this.parentInfo = intent.getParcelableExtra("parentInfo") ;
+                Log.d(TAG, "checkUser: PASSWORD = " + parentInfo.getPassword());
                 makeSpinnerChildren(intent.getParcelableArrayListExtra("children"));
 //                retrieveDataParentUser();
                 break;
@@ -180,7 +181,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
 //            checkActive = 10 ; //check ative activity
             layout_pageTitle_Children.setVisibility(View.GONE);
             mtv_pageTitle.setVisibility(View.VISIBLE);
-            mtv_pageTitle.setText("Child Health");
+            mtv_pageTitle.setText("Welcome");
             mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_home, null), null, null, null);
 
             selectedFragment = new FragmentModule() ;

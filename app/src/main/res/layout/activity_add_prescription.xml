@@ -91,6 +91,17 @@
             android:layout_marginTop="8dp">
 
             <TextView
+                android:id="@+id/textView17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/helvetica"
+                android:text="Amount *"
+                android:textColor="@color/primary_Text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/textView20"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -101,16 +112,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/helvetica"
-                android:text="Amount *"
-                android:textColor="@color/primary_Text"
-                android:textSize="14sp"
-                android:textStyle="bold" />
         </TableRow>
 
         <TableRow

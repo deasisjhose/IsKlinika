@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IsKlinika">
-        <activity android:name=".ActivityLandingTeacher"></activity>
+        <activity android:name=".ActivityFirstTime"></activity>
+        <activity android:name=".ActivityLandingTeacher" />
         <activity android:name=".ActivityAddMedCert" />
         <activity android:name=".ActivityAddIntake" />
         <activity android:name=".ActivityDentalExam" />

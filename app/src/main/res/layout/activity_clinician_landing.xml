@@ -363,7 +363,7 @@
                             android:layout_marginLeft="8dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/helvetica"
-                            android:text="Medical History"
+                            android:text="Illness and Allergies"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityFirstTime" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/active_nav_btn">
+
+        <ImageView
+            android:id="@+id/img_welcome"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/aa" />
+
+        <view
+            android:id="@+id/mbtn_getStart"
+            class="com.google.android.material.button.MaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Started!"
+            android:textColor="@color/active_nav_btn"
+            android:textSize="24sp"
+            app:backgroundTint="#FFFFFF"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_welcome"
+            app:layout_constraintVertical_bias="0.81"
+            app:rippleColor="@color/primary_blue_inactive" />
+
+        <ImageView
+            android:id="@+id/img_welcome1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ab" />
+
+        <ImageView
+            android:id="@+id/img_welcome2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ac" />
+
+        <ImageView
+            android:id="@+id/img_welcome3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ad" />
+
+        <ImageView
+            android:id="@+id/img_welcome4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ae" />
+
+        <ImageView
+            android:id="@+id/img_welcome5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/af" />
+
+        <ImageView
+            android:id="@+id/img_welcome6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ag" />
+
+        <ImageView
+            android:id="@+id/img_welcome7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ah" />
+
+        <ImageView
+            android:id="@+id/img_welcome8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ai" />
+
+        <ImageView
+            android:id="@+id/img_welcome9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/aj" />
+
+        <ImageView
+            android:id="@+id/img_welcome10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ak" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbtn_startNext"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="2dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="4dp"
+            android:text="➜"
+            android:textColor="@color/active_nav_btn"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:backgroundTint="@color/accent_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.98"
+            app:rippleColor="@color/primary_blue_inactive"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbtn_startPrev"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="2dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="4dp"
+            android:rotation="180"
+            android:text="➜"
+            android:textColor="@color/active_nav_btn"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:backgroundTint="@color/accent_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.98"
+            app:rippleColor="@color/primary_blue_inactive"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_terms"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_blue"
+        android:visibility="gone">
+
+        <view
+            android:id="@+id/view2"
+            class="com.google.android.material.card.MaterialCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Terms and Conditions"
+                android:textColor="@color/primary_blue"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="14dp" />
+        </view>
+
+        <LinearLayout
+            android:id="@+id/scrollView3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/accent_layout_tester"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox_terms"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/accent_layout_tester">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <view
+                        android:id="@+id/view4"
+                        class="com.google.android.material.textview.MaterialTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textLongMessage|textMultiLine"
+                        android:text="@string/privacy"
+                        android:textColor="@color/information_text" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkBox_terms"
+            android:layout_width="258dp"
+            android:layout_height="53dp"
+            android:layout_marginBottom="16dp"
+            android:buttonTint="@color/checkbox_terms"
+            android:letterSpacing="0.13"
+            android:text="I agree with the terms and conditions"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_termsContinue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_termsContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#FFF8F8"
+            android:text="Continue"
+            android:textColor="@color/active_nav_btn"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="@color/primary_blue_inactive" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

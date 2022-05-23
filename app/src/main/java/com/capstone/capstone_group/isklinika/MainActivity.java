@@ -132,16 +132,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else {
                             if(snapshot.exists()){  // if the id number exists in the database
                                 if(snapshot.child("password").getValue().equals(pass)){ // matches password in the database
-
+                                    String password = snapshot.child("password").getValue().toString() ;
                                     studentInfoReference.child(idNum).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             ClassStudentInfo studentInfoUser = new ClassStudentInfo() ;
                                             studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
                                             studentInfoUser.setIdNum(snapshot.getKey());
-
+                                            studentInfoUser.setPassword(password);
                                             Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
-                                            intent = new Intent(getBaseContext(), ActivityLanding.class);
+                                            intent = new Intent(getBaseContext(), ActivityFirstTime.class);
                                             intent.putExtra("userType", "Student") ;
                                             intent.putExtra("studentInfo", studentInfoUser ) ;
                                             startActivity(intent);
@@ -195,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if(childSnapshot.child("password").getValue().equals(pass)){
                                     Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
                                     String email = childSnapshot.child("email").getValue().toString() ;
+                                    String password = childSnapshot.child("password").getValue().toString();
 
                                     DatabaseReference  parentInfoReference = db.getReference("parentInfo") ;
 
@@ -208,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                 parentUser.addChild(postSnapshot.getValue().toString());
                                             }
                                             parentUser.setKey(snapshot.getKey());
-
+                                            parentUser.setPassword(password);
 
                                             retrieveDataParentUser(parentUser) ;
                                         }
@@ -354,7 +355,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
 
-                intent = new Intent(getBaseContext(), ActivityLanding.class);
+                intent = new Intent(getBaseContext(), ActivityFirstTime.class);
                 intent.putExtra("userType", "Parent") ;
                 intent.putParcelableArrayListExtra("children", childrenInfo) ;
                 intent.putExtra("parentInfo", parentUser);
