@@ -376,11 +376,13 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
 
                         if(top5DiseaseTemp.size()==0){
                             if(!postSnapshot.child("diagnosis").getValue().toString().equals("")){
-                                if(postSnapshot.child("communicable").getValue().toString().equals("true")){
-                                    checkDiagnosisSplit= (postSnapshot.child("diagnosis").getValue().toString()).split(", ");
-                                    for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
-                                        object1= new nameCount(checkDiagnosisSplit[splitN],1);
-                                        top5DiseaseTemp.add(object1);
+                                if(postSnapshot.hasChild("communicable")){
+                                    if(postSnapshot.child("communicable").getValue().toString().equals("true")){
+                                        checkDiagnosisSplit= (postSnapshot.child("diagnosis").getValue().toString()).split(", ");
+                                        for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
+                                            object1= new nameCount(checkDiagnosisSplit[splitN],1);
+                                            top5DiseaseTemp.add(object1);
+                                        }
                                     }
                                 }
 
@@ -389,19 +391,21 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         }
                         else{
                             if(!postSnapshot.child("diagnosis").getValue().toString().equals("")){
-                                if(postSnapshot.child("communicable").getValue().toString().equals("true")){
-                                    checkDiagnosisSplit= (postSnapshot.child("diagnosis").getValue().toString()).split(", ");
-                                    for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
-                                        checker=0;
-                                        for(i=0; i<top5DiseaseTemp.size();i++){
-                                            if( (checkDiagnosisSplit[splitN]).equalsIgnoreCase(top5DiseaseTemp.get(i).name)){
-                                                top5DiseaseTemp.get(i).count=top5DiseaseTemp.get(i).count+1;
-                                                checker=1;
+                                if(postSnapshot.hasChild("communicable")){
+                                    if(postSnapshot.child("communicable").getValue().toString().equals("true")){
+                                        checkDiagnosisSplit= (postSnapshot.child("diagnosis").getValue().toString()).split(", ");
+                                        for(splitN=0;splitN<checkDiagnosisSplit.length;splitN++){
+                                            checker=0;
+                                            for(i=0; i<top5DiseaseTemp.size();i++){
+                                                if( (checkDiagnosisSplit[splitN]).equalsIgnoreCase(top5DiseaseTemp.get(i).name)){
+                                                    top5DiseaseTemp.get(i).count=top5DiseaseTemp.get(i).count+1;
+                                                    checker=1;
+                                                }
                                             }
-                                        }
-                                        if(checker==0){
-                                            object1= new nameCount(checkDiagnosisSplit[splitN],1);
-                                            top5DiseaseTemp.add(object1);
+                                            if(checker==0){
+                                                object1= new nameCount(checkDiagnosisSplit[splitN],1);
+                                                top5DiseaseTemp.add(object1);
+                                            }
                                         }
                                     }
                                 }
@@ -413,33 +417,39 @@ public class ActivityDiseaseSurveillance extends AppCompatActivity implements Vi
                         //COMPLAINTS
                         if(top5ComplaintsTemp.size()==0){
                             if(!postSnapshot.child("visitReason").getValue().toString().equals("")){
-                                if(postSnapshot.child("communicable").getValue().toString().equals("true")){
-                                    checkVisitReasonSplit= (postSnapshot.child("visitReason").getValue().toString()).split(", ");
-                                    for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
-                                        object1= new nameCount(checkVisitReasonSplit[splitN],1);
-                                        top5ComplaintsTemp.add(object1);
-                                    }
-                                }
-                            }
-                        }
-                        else{
-                            if(!postSnapshot.child("visitReason").getValue().toString().equals("")){
-                                if(postSnapshot.child("communicable").getValue().toString().equals("true")){
-                                    checkVisitReasonSplit= (postSnapshot.child("visitReason").getValue().toString()).split(", ");
-                                    for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
-                                        checker2=0;
-                                        for(i=0; i<top5ComplaintsTemp.size();i++){
-                                            if( (checkVisitReasonSplit[splitN]).equalsIgnoreCase(top5ComplaintsTemp.get(i).name)){
-                                                top5ComplaintsTemp.get(i).count=top5ComplaintsTemp.get(i).count+1;
-                                                checker2=1;
-                                            }
-                                        }
-                                        if(checker2==0){
+                                if(postSnapshot.hasChild("communicable")){
+                                    if(postSnapshot.child("communicable").getValue().toString().equals("true")){
+                                        checkVisitReasonSplit= (postSnapshot.child("visitReason").getValue().toString()).split(", ");
+                                        for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
                                             object1= new nameCount(checkVisitReasonSplit[splitN],1);
                                             top5ComplaintsTemp.add(object1);
                                         }
                                     }
                                 }
+
+                            }
+                        }
+                        else{
+                            if(!postSnapshot.child("visitReason").getValue().toString().equals("")){
+                                if(postSnapshot.hasChild("communicable")){
+                                    if(postSnapshot.child("communicable").getValue().toString().equals("true")){
+                                        checkVisitReasonSplit= (postSnapshot.child("visitReason").getValue().toString()).split(", ");
+                                        for(splitN=0;splitN<checkVisitReasonSplit.length;splitN++){
+                                            checker2=0;
+                                            for(i=0; i<top5ComplaintsTemp.size();i++){
+                                                if( (checkVisitReasonSplit[splitN]).equalsIgnoreCase(top5ComplaintsTemp.get(i).name)){
+                                                    top5ComplaintsTemp.get(i).count=top5ComplaintsTemp.get(i).count+1;
+                                                    checker2=1;
+                                                }
+                                            }
+                                            if(checker2==0){
+                                                object1= new nameCount(checkVisitReasonSplit[splitN],1);
+                                                top5ComplaintsTemp.add(object1);
+                                            }
+                                        }
+                                    }
+                                }
+
                             }
                         }
                     }
