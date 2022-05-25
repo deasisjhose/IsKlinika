@@ -8,6 +8,16 @@
     android:orientation="vertical"
     tools:context=".ActivityClinicianLanding">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        app:menu="@menu/bottom_menu"
+        app:title="IsKlinika"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Menu"
+        app:titleTextColor="#FFFCFC"></com.google.android.material.appbar.MaterialToolbar>
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"

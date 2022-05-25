@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.capstone.capstone_group.isklinika">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IsKlinika">
-        <activity android:name=".ActivityFirstTime"></activity>
+        <activity android:name=".ActivityForgotPassword"></activity>
+        <activity android:name=".ActivityFirstTime" />
         <activity android:name=".ActivityLandingTeacher" />
         <activity android:name=".ActivityAddMedCert" />
         <activity android:name=".ActivityAddIntake" />
@@ -45,5 +47,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>

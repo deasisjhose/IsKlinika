@@ -302,6 +302,9 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
 
                     if(!tv_cvFromDate.getText().toString().equals("YYYY-MM-DD") && !tv_cvToDate.getText().toString().equals("YYYY-MM-DD")) {
                         vDate = postSnapshot.child("endDate").getValue().toString();
+                        if(vDate.equals("")){
+                            tv_cvToDate.getText().toString() ;
+                        }
                         parts3 = vDate.split("-");
                         Calendar dataDate = Calendar.getInstance();
                         dataDate.set(Calendar.YEAR, Integer.parseInt(parts3[0]));

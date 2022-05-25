@@ -2,6 +2,7 @@ package com.capstone.capstone_group.isklinika;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
@@ -13,6 +14,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -62,6 +67,8 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
     private MaterialTextView mtv_pageTitle ; // collapsible title
     private FrameLayout fragment_layout ;
     private NestedScrollView nestedScrollView ;
+    private MaterialToolbar materialToolbar ;
+
 
     // children profile active check == 20
     private LinearLayout layout_pageTitle_Children ;
@@ -115,13 +122,23 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
     //This method is used to initialize the used views in the activity
     public void buildViews() {
         this.coordinatorLayout = findViewById(R.id.coordinatorLayout);
-        this.appBar = findViewById(R.id.appbar) ;
-        this.nestedScrollView = findViewById(R.id.navScroller) ;
-        this.fragment_layout = findViewById(R.id.fragment_layout) ;
-        this.layout_pageTitle_Children = findViewById(R.id.layout_pageTitle_Children) ;
+        this.appBar = findViewById(R.id.appbar);
+        this.nestedScrollView = findViewById(R.id.navScroller);
+        this.fragment_layout = findViewById(R.id.fragment_layout);
+        this.layout_pageTitle_Children = findViewById(R.id.layout_pageTitle_Children);
 
-        this.mtv_pageTitle = findViewById(R.id.mtv_pageTitle) ;
+        this.mtv_pageTitle = findViewById(R.id.mtv_pageTitle);
         mtv_pageTitle.setVisibility(View.VISIBLE);
+
+        this.materialToolbar = findViewById(R.id.toolbar) ;
+        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.menu_logout)
+                    finish();
+                return false;
+            }
+        });
 
     }
 
@@ -140,6 +157,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
                 break;
         }
     }
+
 
     // This method creates the dropdown option in the children information tab.
     public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){

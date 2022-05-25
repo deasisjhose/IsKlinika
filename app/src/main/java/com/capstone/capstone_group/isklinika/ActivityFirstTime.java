@@ -232,6 +232,7 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
             }
         } else if(view.getId() == R.id.btn_termsContinue){
             if(checkBox_terms.isChecked()){
+
                 intent = new Intent(getBaseContext(), ActivityLanding.class);
                 intent.putExtra("userType", userType) ;
                 switch (userType){
@@ -245,6 +246,7 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
                 }
 
                 startActivity(intent);
+                finish();
             }
         }
     }

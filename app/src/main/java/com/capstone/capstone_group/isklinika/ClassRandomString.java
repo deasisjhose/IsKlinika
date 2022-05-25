@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class ClassRandomString {
 
-    private final String DATA = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private final String DATA = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private Random RANDOM ;
     private int length ;
     private StringBuilder sb ;

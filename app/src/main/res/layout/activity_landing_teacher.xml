@@ -8,13 +8,23 @@
     android:orientation="vertical"
     tools:context=".ActivityLandingTeacher">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        app:menu="@menu/bottom_menu"
+        app:title="IsKlinika"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Menu"
+        app:titleTextColor="#FFFCFC"></com.google.android.material.appbar.MaterialToolbar>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_clinicLandWelcome2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:drawableStart="@drawable/ic_user_md_solid"
         android:drawableTint="@color/white"
         android:fontFamily="@font/helveticacompressed"

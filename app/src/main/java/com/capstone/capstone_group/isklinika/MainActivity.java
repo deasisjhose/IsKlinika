@@ -331,6 +331,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         }
+        else if(view.getId() == R.id.tv_forgotPassword){
+            intent = new Intent(getBaseContext(), ActivityForgotPassword.class);
+            startActivity(intent);
+        }
+
     }
 
     //This method retrieves the parent's child/children and retrieve their information in the studentInfo table.

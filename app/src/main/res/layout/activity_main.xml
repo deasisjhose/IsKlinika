@@ -233,7 +233,8 @@
         app:backgroundTint="@color/primary_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:rippleColor="#B5FFFFFF" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_forgotPassword"

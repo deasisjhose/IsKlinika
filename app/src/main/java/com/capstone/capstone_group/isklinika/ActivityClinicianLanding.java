@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -17,7 +18,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +45,7 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
     private ShapeableImageView searchList ;
     private ImageButton ibtn_closeSearch ;
     private MaterialTextView tv_clinicLandWelcome ;
+    private MaterialToolbar  materialToolbar ;
     private LinearLayout layout_clinicStudentInfo, layout_clinicStudentModule ;
     private TextView studentNameTv, idNumTv, gradeSectionTv, studentTypeTv ;
     private LinearLayout personalInfoModule, growthMonitoringModule, clinicVisitModule, immunizationModule, medicalHistoryModule, allergyModule, medicationModule;
@@ -99,6 +103,17 @@ public class ActivityClinicianLanding extends AppCompatActivity implements View.
         medicalHistoryModule.setOnClickListener(this);
         allergyModule.setOnClickListener(this);
         medicationModule.setOnClickListener(this);
+
+
+        this.materialToolbar = findViewById(R.id.toolbar) ;
+        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.menu_logout)
+                    finish();
+                return false;
+            }
+        });
 
     }
 

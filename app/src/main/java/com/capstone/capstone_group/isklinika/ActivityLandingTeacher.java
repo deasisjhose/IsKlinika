@@ -2,15 +2,18 @@ package com.capstone.capstone_group.isklinika;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,7 @@ public class ActivityLandingTeacher extends AppCompatActivity implements View.On
     private ClassTeacher teacher ;
     private RecyclerView recycler_teacherNotif ;
     private int clickedNotif = 10 ;
+    private MaterialToolbar materialToolbar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,16 @@ public class ActivityLandingTeacher extends AppCompatActivity implements View.On
         layout_notifAll.setOnClickListener(this);
         layout_notifCV.setOnClickListener(this);
         layout_notifReferral.setOnClickListener(this);
+
+        this.materialToolbar = findViewById(R.id.toolbar) ;
+        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.menu_logout)
+                    finish();
+                return false;
+            }
+        });
     }
 
     public void retrieveNotif(){
