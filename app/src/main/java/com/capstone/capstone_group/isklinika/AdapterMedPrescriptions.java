@@ -93,11 +93,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
             holder.spinner_medStatus.setSelection(getStatus(holder.spinner_medStatus, medHistory.getStatus()));
             holder.spinner_medStatus.setEnabled(false);
 
-            if(medHistory.getStatus().equals("From clinic")){
-                holder.img_editMH.setVisibility(View.GONE);
-                holder.img_saveMH.setVisibility(View.GONE);
 
-            }
             if(userType.equals("Student") || userType.equals("Clinician") ){
                 holder.img_editMH.setVisibility(View.INVISIBLE);
                 holder.txt_medStart.setClickable(false);

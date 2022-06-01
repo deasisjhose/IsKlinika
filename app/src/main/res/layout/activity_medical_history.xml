@@ -184,7 +184,8 @@
                             android:paddingBottom="2dp"
                             android:text="YYYY-MM-DD"
                             android:textColor="@color/information_text"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/textView42"
@@ -210,7 +211,8 @@
                             android:paddingBottom="2dp"
                             android:text="YYYY-MM-DD"
                             android:textColor="@color/information_text"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:visibility="gone" />
 
                         <Spinner
                             android:id="@+id/spinner_sort2"

@@ -173,9 +173,12 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                         checkActive = 10 ;
                         layout_allergies.setVisibility(View.GONE);
                         layout_pastIllness.setVisibility(View.VISIBLE);
+                        tv_cvFromDate.setVisibility(View.VISIBLE);
+                        tv_cvToDate.setVisibility(View.VISIBLE);
                         retrieveDataPastIllness() ;
                     }else if(checkedId == R.id.mBtn_allergies){
                         checkActive = 20 ;
+
                         layout_pastIllness.setVisibility(View.GONE);
                         layout_allergies.setVisibility(View.VISIBLE);
                         retrieveDataMAllergies(studentId);
@@ -184,6 +187,8 @@ public class ActivityMedicalHistory extends AppCompatActivity implements View.On
                         checkActive = 30 ;
                         layout_allergies.setVisibility(View.GONE);
                         layout_pastIllness.setVisibility(View.VISIBLE);
+                        tv_cvFromDate.setVisibility(View.GONE);
+                        tv_cvToDate.setVisibility(View.GONE);
                         retrieveDataPastIllness() ;
                     }
                 } else {

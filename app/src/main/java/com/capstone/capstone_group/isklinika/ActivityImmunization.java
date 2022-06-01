@@ -167,7 +167,7 @@ public class ActivityImmunization extends AppCompatActivity{
     //This function is used to build the recycler of the dates for the vaccine information. checkActive = 20
     public void dataInImmunizationDate(ArrayList<ClassImmuneRecord> immunizationList){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        this.adapterImmunization = new AdapterImmunization(getBaseContext(), immunizationList, studentInfo) ;
+        this.adapterImmunization = new AdapterImmunization(getBaseContext(), immunizationList, studentInfo, userType) ;
         this.recycler_immuneDates = findViewById(R.id.recycler_immuneDates) ;
         recycler_immuneDates.setLayoutManager(layoutManager);
         recycler_immuneDates.setAdapter(adapterImmunization);

@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -39,10 +40,11 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
     private ImageView img_welcome, img_welcome1, img_welcome2, img_welcome3, img_welcome4, img_welcome5, img_welcome6,img_welcome7, img_welcome8, img_welcome9, img_welcome10 ;
     private MaterialButton mbtn_getStart, mbtn_startNext, mbtn_startPrev, button_termsContinue ;
     private CheckBox checkBox_terms ;
-
+    private MaterialTextView mtv_termPrivacy, mtv_termText ;
 
     //next checker
     private int checkWelcome ;
+    private int checkTerms ;
 
 
     @Override
@@ -51,8 +53,10 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_first_time);
 
         intent = getIntent() ;
+
         buildViews() ;
         this.checkWelcome = 0 ;
+        this.checkTerms = 0 ;
 
         this.userType = intent.getStringExtra("userType") ;
         Log.d(TAG, "onCreate: USERTYPE = " + userType);
@@ -81,6 +85,9 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
         this.checkBox_terms = findViewById(R.id.checkBox_terms) ;
         this.button_termsContinue = findViewById(R.id.btn_termsContinue) ;
 
+        this.mtv_termPrivacy = findViewById(R.id.mtv_termPrivacy) ;
+        this.mtv_termText = findViewById(R.id.mtv_termText) ;
+
         mbtn_getStart.setOnClickListener(this);
         mbtn_startNext.setOnClickListener(this);
         mbtn_startPrev.setOnClickListener(this);
@@ -97,6 +104,9 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
             case "Parent":
                 this.parentInfo = intent.getParcelableExtra("parentInfo") ;
                 this.children = intent.getParcelableArrayListExtra("children") ;
+                break;
+            case "About":
+                checkBox_terms.setVisibility(View.GONE);
                 break;
         }
     }
@@ -231,23 +241,49 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
                         break;
             }
         } else if(view.getId() == R.id.btn_termsContinue){
-            if(checkBox_terms.isChecked()){
 
-                intent = new Intent(getBaseContext(), ActivityLanding.class);
-                intent.putExtra("userType", userType) ;
-                switch (userType){
-                    case "Student":
-                        intent.putExtra("studentInfo", studentInfo) ;
-                        break;
-                    case "Parent":
-                        intent.putParcelableArrayListExtra("children", children) ;
-                        intent.putExtra("parentInfo", parentInfo);
-                        break;
+            if(userType.equals("About")){
+                checkTerms += 1 ;
+
+
+                if(checkTerms == 2)
+                    finish();
+                else{
+                    button_termsContinue.setText("Close");
+                    mtv_termPrivacy.setText("Privacy");
+                    mtv_termText.setText(R.string.privacy_data);
                 }
 
-                startActivity(intent);
-                finish();
+            } else {
+                if(checkBox_terms.isChecked() ){
+                    checkTerms += 1 ;
+
+                    Log.d(TAG, "onClick: checkWelcome == " + checkWelcome);
+                    if(checkTerms == 2){
+                        intent = new Intent(getBaseContext(), ActivityLanding.class);
+                        intent.putExtra("userType", userType) ;
+                        switch (userType){
+                            case "Student":
+                                intent.putExtra("studentInfo", studentInfo) ;
+                                break;
+                            case "Parent":
+                                intent.putParcelableArrayListExtra("children", children) ;
+                                intent.putExtra("parentInfo", parentInfo);
+                                break;
+                        }
+
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        mtv_termPrivacy.setText("Privacy");
+                        mtv_termText.setText(R.string.privacy_data);
+                        checkBox_terms.setChecked(false);
+                        checkBox_terms.setText("I agree with the privacy policy");
+                    }
+                }
             }
+
+
         }
     }
 }

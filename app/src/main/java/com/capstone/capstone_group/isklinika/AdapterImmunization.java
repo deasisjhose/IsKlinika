@@ -25,6 +25,7 @@ public class AdapterImmunization extends RecyclerView.Adapter<AdapterImmunizatio
     private ArrayList<ClassImmuneRecord> tvData;
     private OnItemClickListener tvListener ;
     private ClassStudentInfo studentInfo ;
+    private String userType ;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
     public DatabaseReference database = db.getReference();
@@ -37,10 +38,11 @@ public class AdapterImmunization extends RecyclerView.Adapter<AdapterImmunizatio
         tvListener = listener ;
     }
 
-    public AdapterImmunization(Context tvContext, ArrayList<ClassImmuneRecord> tvData, ClassStudentInfo studentInfo) {
+    public AdapterImmunization(Context tvContext, ArrayList<ClassImmuneRecord> tvData, ClassStudentInfo studentInfo, String userType) {
         this.tvContext = tvContext;
         this.tvData = tvData;
         this.studentInfo = studentInfo ;
+        this.userType = userType ;
     }
 
     @NonNull
@@ -58,6 +60,9 @@ public class AdapterImmunization extends RecyclerView.Adapter<AdapterImmunizatio
         holder.tv_recycleImmuneDate.setText(immunization.getDateGiven());
         if(!immunization.getName().equals(""))
             holder.tv_recycleBrand.setText(immunization.getName());
+
+        if(userType.equals("Student") || userType.equals("Clinician"))
+            holder.ibtn_deleteImmune.setVisibility(View.GONE);
 
         holder.ibtn_deleteImmune.setOnClickListener(new View.OnClickListener() {
             @Override

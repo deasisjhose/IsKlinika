@@ -134,8 +134,16 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.menu_logout)
+                if (item.getItemId() == R.id.menu_logout){
+                    intent = new Intent(getBaseContext(), MainActivity.class) ;
+                    startActivity(intent);
                     finish();
+                } if (item.getItemId() == R.id.menu_terms){
+                    intent = new Intent(getBaseContext(), ActivityFirstTime.class) ;
+                    intent.putExtra("userType", "About") ;
+                    startActivity(intent);
+                }
+
                 return false;
             }
         });
@@ -151,7 +159,6 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
                 break;
             case "Parent":
                 this.parentInfo = intent.getParcelableExtra("parentInfo") ;
-                Log.d(TAG, "checkUser: PASSWORD = " + parentInfo.getPassword());
                 makeSpinnerChildren(intent.getParcelableArrayListExtra("children"));
 //                retrieveDataParentUser();
                 break;
@@ -161,7 +168,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
 
     // This method creates the dropdown option in the children information tab.
     public void makeSpinnerChildren(ArrayList<ClassStudentInfo> childrenArrayList){
-        this.children = new ArrayList<>() ;
+        this.children = new ArrayList<ClassStudentInfo>() ;
         children = childrenArrayList ;
         this.spinner_childName = findViewById(R.id.spinner_childName) ;
         ArrayAdapter<ClassStudentInfo> adapter = new ArrayAdapter<>(this, R.layout.spinner_child_profile, childrenArrayList) ;

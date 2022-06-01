@@ -92,7 +92,7 @@
                         android:paddingRight="3dp"
                         android:paddingBottom="2dp"
                         android:textColor="@color/information_text"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/ds_endDate"
@@ -121,7 +121,7 @@
                         android:paddingRight="3dp"
                         android:paddingBottom="2dp"
                         android:textColor="@color/information_text"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <com.google.android.material.card.MaterialCardView
@@ -152,7 +152,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/helveticabold"
                                 android:gravity="center"
-                                android:text="Top Illnesses"
+                                android:text="Top Communicable Diseases"
                                 android:textColor="@color/primary_Text"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -366,7 +366,7 @@
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/helveticabold"
                                 android:gravity="center"
-                                android:text="Top Complaints "
+                                android:text="Top Complaints/Symptoms"
                                 android:textColor="@color/primary_Text"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />

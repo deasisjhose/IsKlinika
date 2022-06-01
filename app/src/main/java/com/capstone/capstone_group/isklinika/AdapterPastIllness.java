@@ -254,7 +254,8 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
 
         TextView tv_expandDiagnosis, tv_expandVisitDate ;
         Spinner tv_pastStatus ;
-        TextInputEditText tv_pastDisease, tv_pastStart, tv_pastEnd, tv_pastTreatment, tv_pastNotes ;
+        TextView tv_pastStart, tv_pastEnd ;
+        TextInputEditText tv_pastDisease, tv_pastTreatment, tv_pastNotes ;
         ImageButton ibtn_editPast, ibtn_savePast ;
         MaterialCardView mbtn_deleteIllness ;
 

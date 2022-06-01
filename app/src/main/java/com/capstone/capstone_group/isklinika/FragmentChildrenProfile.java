@@ -22,6 +22,7 @@ import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +52,9 @@ public class FragmentChildrenProfile extends Fragment {
     private ActivityLanding activity_landing ;
     private MaterialDatePicker materialDatePicker ;
 
-    private ClassStudentInfo studentInfoDisplayed ;
+    private ClassStudentInfo studentInfoDisplayed, studentInfo ;
+
+    private ValueEventListener databaseRefListener ;
 
     public FragmentChildrenProfile() {
     }
@@ -80,7 +83,6 @@ public class FragmentChildrenProfile extends Fragment {
         this.tv_pHeight = view.findViewById(R.id.tv_pHeight) ;
         this.tv_pHeightStatus = view.findViewById(R.id.tv_pHeightStatus) ;
 
-
         this.tv_pGuardian = view.findViewById(R.id.tv_pGuardian) ;
         this.tv_pGuardianEmail = view.findViewById(R.id.tv_pGuardianEmail) ;
         this.tv_pGuardianContact = view.findViewById(R.id.tv_pGuardianContact) ;
@@ -100,12 +102,14 @@ public class FragmentChildrenProfile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.d("CHILDP//", "onStop: onVIEWCREATE");
+        studentInfo = activity_landing.getStudentInfo() ;
 
-        ClassStudentInfo studentInfo = activity_landing.getStudentInfo() ;
 
-        databaseReference.child(studentInfo.getIdNum()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseRefListener = databaseReference.child(studentInfo.getIdNum()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("CHILDP//", "onStop: database refListen");
                 ClassStudentInfo studentInfoUser = new ClassStudentInfo() ;
                 studentInfoUser= snapshot.getValue(ClassStudentInfo.class) ;
                 studentInfoUser.setIdNum(snapshot.getKey());
@@ -117,13 +121,29 @@ public class FragmentChildrenProfile extends Fragment {
             }
         }) ;
 
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("CHILDP//", "PAUSE");
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("CHILDP//", "RESUME");
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        databaseReference.child(studentInfo.getIdNum()).removeEventListener(databaseRefListener);
+        Log.d("CHILDP//", "onDestroy: DESTROY");
     }
 
     //This method is used to display the information texts
     public void setViews(ClassStudentInfo studentInfo){
-        studentInfoDisplayed = studentInfo ;
+        this.studentInfoDisplayed = studentInfo ;
         tv_pBirthday.setText(studentInfo.getBirthday());
         tv_pAge.setText(studentInfo.getAge());
         tv_pAddress.setText(studentInfo.getAddress());
@@ -308,11 +328,8 @@ public class FragmentChildrenProfile extends Fragment {
                     personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/dentistEmail", tv_pDentistEmail.getText().toString());
                     personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/preferredHospital", tv_pHospital.getText().toString());
                     personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/hospitalAddress", tv_pHospitalAddress.getText().toString());
+                    personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
 
-                    if(!tv_pGuardianContact.getText().toString().equals(""))
-                        personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/guardianContact", Long.parseLong(tv_pGuardianContact.getText().toString())) ;
-                    else
-                        databaseReference.child(studentInfo.getIdNum()).child("guardianContact").removeValue() ;
                     if(!tv_pPediaContact.getText().toString().equals(""))
                         personalValues.put("/studentInfo/" + studentInfo.getIdNum() + "/pediaContact", Long.parseLong(tv_pPediaContact.getText().toString()));
                     else

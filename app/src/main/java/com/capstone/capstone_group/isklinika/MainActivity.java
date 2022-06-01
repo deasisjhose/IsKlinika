@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
             } else if(radio_parent.isChecked()) {    // User is parent
                 Query query = parentReference.orderByChild("email").equalTo(idNum);
-                query.addValueEventListener(new ValueEventListener() {
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(idNum.isEmpty() && !pass.isEmpty()){
@@ -210,8 +210,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             }
                                             parentUser.setKey(snapshot.getKey());
                                             parentUser.setPassword(password);
-
                                             retrieveDataParentUser(parentUser) ;
+
                                         }
 
                                         @Override
@@ -222,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 }
                                 else{
                                     Toast.makeText(MainActivity.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "onDataChange: MAIN WRONG PASSWORD");
                                     edit_password.setText("");
                                 }
                             }
@@ -342,7 +343,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void retrieveDataParentUser(ClassParentInfo parentUser) {
         ArrayList<ClassStudentInfo> childrenInfo = new ArrayList<>();
 
-        studentInfoReference.addValueEventListener(new ValueEventListener() {
+        ValueEventListener studentValueListener ;
+
+        studentInfoReference.addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(childrenInfo.size() != 0){
@@ -367,6 +370,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, "onDataChange: "+ parentUser.toString());
                 startActivity(intent);
 
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -375,5 +379,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+    }
 }

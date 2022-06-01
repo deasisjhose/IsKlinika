@@ -203,7 +203,7 @@
                 <view
                     android:id="@+id/mbtn_addMedCertCancel"
                     class="com.google.android.material.button.MaterialButton"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginRight="8dp"
                     android:text="Cancel"
@@ -216,7 +216,7 @@
                 <view
                     android:id="@+id/mbtn_addMedCertAdd"
                     class="com.google.android.material.button.MaterialButton"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:text="Submit"
                     android:textSize="12sp"

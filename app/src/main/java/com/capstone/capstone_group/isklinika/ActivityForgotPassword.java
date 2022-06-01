@@ -379,7 +379,9 @@ public class ActivityForgotPassword extends AppCompatActivity {
         });
 
         mbtn_backtologin.setOnClickListener(view -> {
-                finish();
+           Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
             });
 
     }

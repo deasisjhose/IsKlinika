@@ -3,6 +3,7 @@ package com.capstone.capstone_group.isklinika;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -167,11 +168,7 @@ public class FragmentUserProfile extends Fragment {
                 HashMap<String, Object> parentValues = new HashMap<String, Object>() ;
                 int i ;
                 for (i = 0 ; i < parentInfo.getChildrenSize() ; i++){
-                    if(parentNameBeforeEdit.equals(children.get(i).getGuardianName())){
-                        parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/guardianContact", Long.parseLong(tv_parentContact.getText().toString())) ;
-                        parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/guardianEmail", tv_parentEmail.getText().toString()) ;
-                        parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/guardianName", tv_parentName.getText().toString()) ;
-                    }
+
                     if(checkParent == 1){
                         parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/fatherContact", Long.parseLong(tv_parentContact.getText().toString())) ;
                         parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/fatherEmail", tv_parentEmail.getText().toString()) ;
@@ -181,10 +178,19 @@ public class FragmentUserProfile extends Fragment {
                         parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/motherEmail", tv_parentEmail.getText().toString()) ;
                         parentValues.put("/studentInfo/" + children.get(i).getIdNum() + "/motherName", tv_parentName.getText().toString()) ;
                     }
+
+                    parentValues.put("/parentUsers/" + parentInfo.getKey() + "/email",tv_parentEmail.getText().toString()) ;
+                    parentValues.put("/parentInfo/" + parentInfo.getKey() + "/email",tv_parentEmail.getText().toString()) ;
+
                     parentNameBeforeEdit = tv_parentName.getText().toString() ;
 
+                    activity_landing.getParentInfo().setEmail(tv_parentEmail.getText().toString());
+
                     database.updateChildren(parentValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                        Log.d("LANDING//", "onViewCreated: before toast");
+                        Log.d("LANDING//", "onViewCreated: checkparent = " + checkParent);
                         Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                        Log.d("LANDING//", "onViewCreated: after toast");
                     }).addOnFailureListener((error) -> {
                         Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
                     });
@@ -196,113 +202,121 @@ public class FragmentUserProfile extends Fragment {
 
         mbtn_updatePassword.setOnClickListener(view1 -> {
 
-            if((mtv_newPassword.getText().toString().equals(mtv_confirmPassword.getText().toString()) && mtv_currentPassword.getText().toString().equals(password))
-            && (!mtv_newPassword.getText().toString().equals("") && !mtv_confirmPassword.getText().toString().equals("") && !mtv_confirmPassword.getText().toString().equals("")) ){
+            if(mtv_currentPassword.getText().toString().equals(password)){
+                mtv_currentPassword.getBackground().setTint(Color.parseColor("#ADC2FF"));
+                if(mtv_newPassword.getText().toString().equals(mtv_confirmPassword.getText().toString())
+                        && !mtv_newPassword.getText().toString().equals("") && !mtv_confirmPassword.getText().toString().equals("")) {
 
-                passTest = 0 ;
+                    mtv_newPassword.getBackground().setTint(Color.parseColor("#ADC2FF"));
+                    mtv_confirmPassword.getBackground().setTint(Color.parseColor("#ADC2FF"));
 
-                if(mtv_newPassword.getText().toString().length() >= 8){
-                    passTest += 1 ;
-                    tv_characters.setTextColor(Color.parseColor("#252525")) ;
-                }else {
                     passTest = 0 ;
-                    tv_characters.setTextColor(Color.parseColor("#e74a3b"));
-                }
 
-                int specialCount = 0 ;
-                int upperCount = 0 ;
-                int numeric = 0 ;
-
-                for(int i = 0 ; i < mtv_newPassword.getText().toString().length() ; i++){
-                    char c = mtv_newPassword.getText().toString().charAt(i) ;
-                    if(Character.isLetter(c) && Character.isUpperCase(c)){
-                        upperCount += 1 ;
+                    if(mtv_newPassword.getText().toString().length() >= 8){
+                        passTest += 1 ;
+                        tv_characters.setTextColor(Color.parseColor("#252525")) ;
+                    }else {
+                        passTest = 0 ;
+                        tv_characters.setTextColor(Color.parseColor("#e74a3b"));
                     }
-                    if(!Character.isLetter(c) && !Character.isDigit(c)){
-                        specialCount += 1 ;
+
+                    int specialCount = 0 ;
+                    int upperCount = 0 ;
+                    int numeric = 0 ;
+
+                    for(int i = 0 ; i < mtv_newPassword.getText().toString().length() ; i++){
+                        char c = mtv_newPassword.getText().toString().charAt(i) ;
+                        if(Character.isLetter(c) && Character.isUpperCase(c)){
+                            upperCount += 1 ;
+                        }
+                        if(!Character.isLetter(c) && !Character.isDigit(c)){
+                            specialCount += 1 ;
+                        }
+                        if(Character.isDigit(c)){
+                            numeric += 1 ;
+                        }
                     }
-                    if(Character.isDigit(c)){
-                        numeric += 1 ;
+
+                    if(specialCount >= 1){
+                        passTest += 1 ;
+                        tv_specialChar.setTextColor(Color.parseColor("#252525")) ;
+                    }else {
+                        passTest = 0 ;
+                        tv_specialChar.setTextColor(Color.parseColor("#e74a3b"));
                     }
-                }
-
-                if(specialCount >= 1){
-                    passTest += 1 ;
-                    tv_specialChar.setTextColor(Color.parseColor("#252525")) ;
-                }else {
-                    passTest = 0 ;
-                    tv_specialChar.setTextColor(Color.parseColor("#e74a3b"));
-                }
 
 
-                if(upperCount >= 1){
-                    passTest += 1 ;
-                    tv_uppercase.setTextColor(Color.parseColor("#252525")) ;
-                }else {
-                    passTest = 0 ;
-                    tv_uppercase.setTextColor(Color.parseColor("#e74a3b"));
-                }
+                    if(upperCount >= 1){
+                        passTest += 1 ;
+                        tv_uppercase.setTextColor(Color.parseColor("#252525")) ;
+                    }else {
+                        passTest = 0 ;
+                        tv_uppercase.setTextColor(Color.parseColor("#e74a3b"));
+                    }
 
-                if(numeric >= 1){
-                    passTest += 1 ;
-                    tv_numeric.setTextColor(Color.parseColor("#252525")) ;
-                }else {
-                    passTest = 0 ;
-                    tv_numeric.setTextColor(Color.parseColor("#e74a3b"));
-                }
+                    if(numeric >= 1){
+                        passTest += 1 ;
+                        tv_numeric.setTextColor(Color.parseColor("#252525")) ;
+                    }else {
+                        passTest = 0 ;
+                        tv_numeric.setTextColor(Color.parseColor("#e74a3b"));
+                    }
 
-                if(passTest == 4){
-                    new MaterialAlertDialogBuilder(view.getRootView().getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_Immune)
-                            .setTitle(R.string.title_password)
-                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                    if(passTest == 4){
+                        new MaterialAlertDialogBuilder(view.getRootView().getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_Immune)
+                                .setTitle(R.string.title_password)
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
 
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                                }
-                            })
-                            .setPositiveButton("Update", new DialogInterface.OnClickListener(){
-
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    mtv_currentPassword.getBackground().setTint(Color.parseColor("#ADC2FF"));
-                                    mtv_newPassword.getBackground().setTint(Color.parseColor("#ADC2FF"));
-                                    mtv_confirmPassword.getBackground().setTint(Color.parseColor("#ADC2FF"));
-
-                                    HashMap<String, Object> passwordHash = new HashMap<String, Object>() ;
-
-                                    switch (activity_landing.getUserType()){
-                                        case "Student":
-                                            passwordHash.put("/studentUsers/" + studentInfo.getIdNum() + "/password", mtv_confirmPassword.getText().toString()) ;
-                                            break;
-                                        case "Parent":
-                                            passwordHash.put("/parentUsers/" + parentInfo.getKey() + "/password", mtv_confirmPassword.getText().toString()) ;
-                                            break;
                                     }
+                                })
+                                .setPositiveButton("Update", new DialogInterface.OnClickListener(){
 
-                                    database.updateChildren(passwordHash).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-                                        Toast.makeText(view.getContext(), "Password successfully updated!", Toast.LENGTH_SHORT).show();
-                                        mtv_confirmPassword.setText("");
-                                        mtv_currentPassword.setText("");
-                                        mtv_newPassword.setText("");
-                                    }).addOnFailureListener((error) -> {
-                                        Toast.makeText(view.getContext(), "Password was not updated!", Toast.LENGTH_SHORT).show();
-                                    });
-                                }
-                            })
-                            .show() ;
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        HashMap<String, Object> passwordHash = new HashMap<String, Object>() ;
+
+                                        switch (activity_landing.getUserType()){
+                                            case "Student":
+                                                passwordHash.put("/studentUsers/" + studentInfo.getIdNum() + "/password", mtv_confirmPassword.getText().toString()) ;
+                                                break;
+                                            case "Parent":
+                                                passwordHash.put("/parentUsers/" + parentInfo.getKey() + "/password", mtv_confirmPassword.getText().toString()) ;
+                                                break;
+                                        }
+
+                                        database.updateChildren(passwordHash).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                            Toast.makeText(view.getContext(), "Password successfully updated!", Toast.LENGTH_SHORT).show();
+                                            password = mtv_confirmPassword.getText().toString() ;
+                                            activity_landing.getParentInfo().setPassword(mtv_confirmPassword.getText().toString());
+                                            mtv_confirmPassword.setText("");
+                                            mtv_currentPassword.setText("");
+                                            mtv_newPassword.setText("");
+
+                                        }).addOnFailureListener((error) -> {
+                                            Toast.makeText(view.getContext(), "Password was not updated!", Toast.LENGTH_SHORT).show();
+                                        });
+                                    }
+                                })
+                                .show() ;
+                    }
+                } else {
+                    if(!mtv_newPassword.getText().toString().equals(mtv_confirmPassword.getText().toString())){
+                        mtv_newPassword.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                        mtv_confirmPassword.getBackground().setTint(Color.parseColor("#FFFD6868"));
+                        Toast.makeText(view.getContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
-            } else {
-                if(!mtv_currentPassword.getText().toString().equals(parentInfo.getPassword())){
+
+            }else{
+                if(!mtv_currentPassword.getText().toString().equals("")){
                     mtv_currentPassword.getBackground().setTint(Color.parseColor("#FFFD6868"));
                     Toast.makeText(view.getContext(), "Password does not much with current password", Toast.LENGTH_SHORT).show();
-                }
-
-                if(!mtv_newPassword.getText().toString().equals(mtv_confirmPassword.getText().toString())){
-                    mtv_newPassword.getBackground().setTint(Color.parseColor("#FFFD6868"));
-                    mtv_confirmPassword.getBackground().setTint(Color.parseColor("#FFFD6868"));
-                    Toast.makeText(view.getContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                    Log.d("USER//", "onViewCreated: Current Password = " + parentInfo.getPassword());
                 }
             }
         });

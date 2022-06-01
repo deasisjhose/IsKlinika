@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IsKlinika">
         <activity android:name=".ActivityForgotPassword"></activity>
-        <activity android:name=".ActivityFirstTime" />
+        <activity android:name=".ActivityFirstTime"/>
         <activity android:name=".ActivityLandingTeacher" />
         <activity android:name=".ActivityAddMedCert" />
         <activity android:name=".ActivityAddIntake" />
@@ -39,6 +39,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

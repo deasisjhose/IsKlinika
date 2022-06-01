@@ -72,8 +72,8 @@ import static android.content.Intent.ACTION_PICK;
 public class ActivityAddMedCert extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();   // getting real time database
-    public DatabaseReference databaseReference = db.getReference("studentHealthHistory");
-    public DatabaseReference database = db.getReference();
+    public DatabaseReference databaseReferenceFILES = db.getReference("studentHealthHistory");
+    public DatabaseReference databaseFILES = db.getReference();
 
     private FirebaseStorage storage ;
     private StorageReference storageReference ;
@@ -117,6 +117,7 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
 
         intent = getIntent() ;
         this.studentInfo = intent.getParcelableExtra("studentChild") ;
+        Log.d("LANDING//", "onCreate: studentID = " + studentInfo.getIdNum());
         this.userType = intent.getStringExtra("userType") ;
         buildViews();
 
@@ -248,7 +249,7 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
             reference = "/" +studentInfo.getIdNum() + "/uploads/" + "labResult/";
         }
 
-        databaseReference.child(reference).orderByChild("date").addValueEventListener(new ValueEventListener() {
+        databaseReferenceFILES.child(reference).orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -298,26 +299,28 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
     public void sendNotifToTeacher(String url, String date){
 
         //get teacher
-        database.child("teacherUsers").addValueEventListener(new ValueEventListener() {
+        databaseFILES.child("teacherUsers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String teacherKey ;
-                String reference = null;
+                String reference = "";
                 ClassNotifTeacher notifTeacher = new ClassNotifTeacher();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()){
+                    Log.d(TAG, "onDataChange: TEACHER EMAIL = " + postSnapshot.child("email").getValue().toString());
                     if (postSnapshot.child("section").getValue().toString().equals(studentInfo.getSection())){
+                        Log.d(TAG, "onDataChange: inside sendNotifToTeacher");
                         teacherKey = postSnapshot.getKey() ;
                         reference = "notifications/" + teacherKey + "/medCerts/" ;
                         String message = studentInfo.getFullName() + ", with ID number " + studentInfo.getIdNum() + " uploaded a medical certificate." ;
                         notifTeacher = new ClassNotifTeacher(date, studentInfo.getIdNum(),  message, url) ;
+
                     }
                 }
                 
-                if(!reference.equals(null)){
-                    database.child(reference).push().setValue(notifTeacher) ;
+                if(!reference.equals("")){
+                    databaseFILES.child(reference).push().setValue(notifTeacher) ;
                     Toast.makeText(getApplicationContext(), "Class adviser notified", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
@@ -391,19 +394,16 @@ public class ActivityAddMedCert extends AppCompatActivity implements View.OnClic
                             String reference ;
                             if(spinner_upload.getSelectedItem().toString().equals("Medical Certificate")){
                                 reference = "/" +studentInfo.getIdNum() + "/uploads/" + "medCert/" ;
+                                sendNotifToTeacher(url, date) ;
                             }else{
                                 reference = "/" +studentInfo.getIdNum() + "/uploads/" + "labResult/";
                             }
 
-                            databaseReference.child(reference).push().setValue(file).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-                                Toast.makeText(getApplicationContext(), "Data successfully added to database!", Toast.LENGTH_SHORT).show();
+                            databaseReferenceFILES.child(reference).push().setValue(file).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                Toast.makeText(getBaseContext(), "Data successfully added to database!", Toast.LENGTH_SHORT).show();
                             }).addOnFailureListener((error) -> {
-                                Toast.makeText(getApplicationContext(), "Data was not added to database!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getBaseContext(), "Data was not added to database!", Toast.LENGTH_SHORT).show();
                             });
-                            if(spinner_upload.getSelectedItem().toString().equals("Medical Certificate")){
-                                sendNotifToTeacher(url, date) ;
-                            }
-
 
                         }
                     });

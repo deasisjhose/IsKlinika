@@ -106,6 +106,13 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_addAllergyType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:overlapAnchor="false" />
+
         <EditText
             android:id="@+id/edit_addAllergyType"
             android:layout_width="match_parent"
@@ -121,7 +128,8 @@
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:textColor="@color/information_text"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
 
         <TableRow
             android:layout_width="match_parent"
