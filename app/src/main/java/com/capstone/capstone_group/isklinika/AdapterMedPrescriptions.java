@@ -102,6 +102,7 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
 //        else
 //            dateDatePicker(holder);
 
+
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
 
             ClassDateConvert dateConvert = new ClassDateConvert(materialDatePicker.getHeaderText()) ;
@@ -189,34 +190,38 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
         holder.img_editMH.setVisibility(View.GONE);
         holder.img_saveMH.setVisibility(View.VISIBLE);
 
-        if(!holder.spinner_medStatus.getSelectedItem().toString().equals("Completed"))
+        if(holder.spinner_medStatus.getSelectedItem().toString().equals("Completed"))
             holder.mbtn_deleteMedication.setVisibility(View.VISIBLE);
 
-        holder.txt_medName.setClickable(true) ;
-        holder.txt_medName.setInputType(InputType.TYPE_CLASS_TEXT);
-        holder.txt_medName.setBackgroundColor(Color.parseColor("#e4e4e4"));
 
-        holder.txt_medPurpose.setClickable(true) ;
-        holder.txt_medPurpose.setInputType(InputType.TYPE_CLASS_TEXT);
-        holder.txt_medPurpose.setBackgroundColor(Color.parseColor("#e4e4e4"));
 
-        holder.txt_medDosage.setClickable(true) ;
-        holder.txt_medDosage.setInputType(InputType.TYPE_CLASS_TEXT);
-        holder.txt_medDosage.setBackgroundColor(Color.parseColor("#e4e4e4"));
+       if(holder.spinner_medStatus.getSelectedItem().toString().equals("Currently Taking") || holder.spinner_medStatus.getSelectedItem().toString().equals("Completed")) {
+           holder.txt_medName.setClickable(true);
+           holder.txt_medName.setInputType(InputType.TYPE_CLASS_TEXT);
+           holder.txt_medName.setBackgroundColor(Color.parseColor("#e4e4e4"));
 
-        holder.txt_medInterval.setClickable(true) ;
-        holder.txt_medInterval.setInputType(InputType.TYPE_CLASS_TEXT);
-        holder.txt_medInterval.setBackgroundColor(Color.parseColor("#e4e4e4"));
+           holder.txt_medPurpose.setClickable(true);
+           holder.txt_medPurpose.setInputType(InputType.TYPE_CLASS_TEXT);
+           holder.txt_medPurpose.setBackgroundColor(Color.parseColor("#e4e4e4"));
 
-        holder.txt_medStart.setClickable(true) ;
-        holder.txt_medStart.setInputType(InputType.TYPE_CLASS_TEXT);
-        holder.txt_medStart.setBackgroundColor(Color.parseColor("#e4e4e4"));
+           holder.txt_medDosage.setClickable(true);
+           holder.txt_medDosage.setInputType(InputType.TYPE_CLASS_TEXT);
+           holder.txt_medDosage.setBackgroundColor(Color.parseColor("#e4e4e4"));
 
-        holder.txt_medEnd.setClickable(true) ;
-        holder.txt_medEnd.setInputType(InputType.TYPE_CLASS_TEXT);
-        holder.txt_medEnd.setBackgroundColor(Color.parseColor("#e4e4e4"));
+           holder.txt_medInterval.setClickable(true);
+           holder.txt_medInterval.setInputType(InputType.TYPE_CLASS_TEXT);
+           holder.txt_medInterval.setBackgroundColor(Color.parseColor("#e4e4e4"));
 
-        holder.spinner_medStatus.setEnabled(true);
+           holder.txt_medStart.setClickable(true);
+           holder.txt_medStart.setInputType(InputType.TYPE_CLASS_TEXT);
+           holder.txt_medStart.setBackgroundColor(Color.parseColor("#e4e4e4"));
+
+           holder.spinner_medStatus.setEnabled(true);
+       }
+
+           holder.txt_medEnd.setClickable(true) ;
+           holder.txt_medEnd.setInputType(InputType.TYPE_CLASS_TEXT);
+           holder.txt_medEnd.setBackgroundColor(Color.parseColor("#e4e4e4"));
     }
 
     //This function is used to activate the edittable fields of the medication history

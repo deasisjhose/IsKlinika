@@ -118,16 +118,32 @@
         <b><u>Table of Content</u></b> \n
         \n \t I. Privacy Statement
         \n \t II. The Collection and Use of Personal Information
-        \n \t \t IIa. What kind of information is collected?
+        \n \n \t \t IIa. What kind of information is collected?
         \n \t \t IIb. How it is collected?
-        \n \t \t IIc. How it is managed and stored
+        \n \t \t IIc. How it is managed and stored?
         \n \t \t IId. How it is used?
-        \n \t \t IIe. CHow you can update and access information relating to you?
+        \n \t \t IIe. How you can update and access information relating to you?
         \n \n
         <b><u> I. Privacy Statement</u></b> \n
-        This PRIVACY STATEMENT sets out how IsKlinika uses personal information of the students in the clinic and explains the collection of personal information.
+        This PRIVACY STATEMENT sets out how <b>IsKlinika</b> uses personal information of the students in the clinic and explains the collection of personal information.
         \n \n
-
+        The IsKlinika privacy policy applies to all information acquired from the clinic and parent users.
+        \n \n
+        Information collected and held by IsKlinika is subject to the <b>Data Privacy Act of 2012</b>, and IsKlinika respects and supports privacy protection in relation to information collected. IsKlinika is committed to comply with the <b>Data Privacy Act (Republic Act No. 10173).</b>
+        \n \n
+        \n
+        <b><u> II. The Collection and Use of Personal Information</u></b> \n
+        \n \t <b>IIa. What kind of information is collected?</b>
+        \n \n \t <b>IsKlinika</b> collects and hold information relating to students personal and health-related information. This information includes name, address, gender, guardian information, and healthcare provider information.
+        \n \n \t <b>IIb. How it is collected?</b>
+        \n \n \t The collection of data happens whenever the student enrolls for the current school year. The school\'s IT department sets up the account for all the users. The school clinic collects the different personal information from the registrar and as well as the forms that parents fill-up during enrollment. Health-related information are collected from the student\'s visit in the clinic and the information added by the parent.
+        \n \n \t <b>IIc. How it is managed and stored?</b>
+        \n \n \t  All the collected information are stored in a cloud database and it is managed by the school\'s IT department.
+        \n \n \t <b>IId. How it is used?</b>
+        \n \n \t  IsKlinika uses the information contained in the database to allow the school clinic to come up with a better overall health understanding of the student patient. The school clinic also uses this as a guide on how they will provide immediate and preventive care to the students. The school clinic and IsKlinika ensures that all information are not used for any purposes outside the school setting.
+        \n No persons other than the school clinic and the IT department are authorized to access any information stored in the cloud database. All person who can access the information are required to maintain its confidentiality and comply with privacy laws.
+        \n \n \t <b>IIe. How you can update and access information relating to you?</b>
+        \n \n \t The application allows the parent user to update their user information such as their name, email, and contact number. They are also allowed to update the personal information of their children that are currently enrolled in the school. Meanwhile, users are also allowed to update their passwords, and in situations that they have forgotten about their passwords they can easily change it through the "Forgot password".
 
     </string>
     <string name="emailSent">

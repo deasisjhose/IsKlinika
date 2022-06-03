@@ -119,7 +119,7 @@ public class AdapaterExpandClinicVisit extends BaseExpandableListAdapter {
         tv_cvVisitDate.setText(clinicVisit.getVisitDate());
         tv_cvTimeIn.setText(clinicVisit.getTimeIn());
         tv_cvTimeOut.setText(clinicVisit.getTimeOut());
-        tv_cvTemp.setText(clinicVisit.getBodyTem());
+        tv_cvTemp.setText(clinicVisit.getBodyTemp());
         tv_cvBP.setText(clinicVisit.getSystolicBP() + "/" + clinicVisit.getDiastolicBP());
         tv_cvPR.setText(clinicVisit.getPulseRateStatus());
         tv_cvRR.setText(clinicVisit.getRespRateStatus());
