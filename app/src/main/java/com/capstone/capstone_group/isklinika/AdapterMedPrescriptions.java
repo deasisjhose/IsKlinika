@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPrescriptions.MedPrescriptionsHolder>{
@@ -226,53 +229,98 @@ public class AdapterMedPrescriptions extends  RecyclerView.Adapter<AdapterMedPre
 
     //This function is used to activate the edittable fields of the medication history
     public void saveMedication(AdapterMedPrescriptions.MedPrescriptionsHolder holder, ClassMedication medHistory){
-        holder.img_editMH.setVisibility(View.VISIBLE);
-        holder.img_saveMH.setVisibility(View.GONE);
-        holder.mbtn_deleteMedication.setVisibility(View.GONE);
+        int pass = 0 ;
 
-        holder.txt_medName.setClickable(false) ;
-        holder.txt_medName.setInputType(InputType.TYPE_NULL);
-        holder.txt_medName.setBackgroundColor(Color.parseColor("#F2EFFD"));
+        if(holder.txt_medName.getText().toString().equals("")){
+            holder.txt_medName.setBackgroundColor(Color.parseColor("#FFFD6868"));
+        }else{
+            pass += 1 ;
+            holder.txt_medName.setBackgroundColor(Color.parseColor("#e4e4e4"));
+        }
 
-        holder.txt_medPurpose.setClickable(false) ;
-        holder.txt_medPurpose.setInputType(InputType.TYPE_NULL);
-        holder.txt_medPurpose.setBackgroundColor(Color.parseColor("#F2EFFD"));
+        if(holder.txt_medDosage.getText().toString().equals("")){
+            holder.txt_medDosage.setBackgroundColor(Color.parseColor("#FFFD6868"));
+        }else{
+            pass += 1 ;
+            holder.txt_medDosage.setBackgroundColor(Color.parseColor("#e4e4e4"));
+        }
 
-        holder.txt_medDosage.setClickable(false) ;
-        holder.txt_medDosage.setInputType(InputType.TYPE_NULL);
-        holder.txt_medDosage.setBackgroundColor(Color.parseColor("#F2EFFD"));
+        if(holder.spinner_medStatus.getSelectedItem().toString().equals("Completed")){
 
-        holder.txt_medInterval.setClickable(false) ;
-        holder.txt_medInterval.setInputType(InputType.TYPE_NULL);
-        holder.txt_medInterval.setBackgroundColor(Color.parseColor("#F2EFFD"));
+            if(!holder.txt_medEnd.getText().toString().equals("")){
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        holder.txt_medStart.setClickable(false) ;
-        holder.txt_medStart.setInputType(InputType.TYPE_NULL);
-        holder.txt_medStart.setBackgroundColor(Color.parseColor("#F2EFFD"));
+                Date date1 = null;
+                Date date2 = null;
+                try {
+                    date1 = sdf.parse(holder.txt_medStart.getText().toString()) ;
+                    date2 = sdf.parse(holder.txt_medEnd.getText().toString()) ;
+                }catch (Exception e){
+                    
+                }
+             
+                if(date2.before(date1)){
+                    holder.txt_medEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
+                }else{
+                    pass += 1 ;
+                    holder.txt_medEnd.setBackgroundColor(Color.parseColor("#e4e4e4"));
+                }
+            }else {
+                holder.txt_medEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
+            }
+        } else{
+            pass += 1 ;
+        }
 
-        holder.txt_medEnd.setClickable(true) ;
-        holder.txt_medEnd.setInputType(InputType.TYPE_NULL);
-        holder.txt_medEnd.setBackgroundColor(Color.parseColor("#F2EFFD"));
+       if(pass == 3){
+           holder.img_editMH.setVisibility(View.VISIBLE);
+           holder.img_saveMH.setVisibility(View.GONE);
+           holder.mbtn_deleteMedication.setVisibility(View.GONE);
 
-        holder.spinner_medStatus.setEnabled(false);
+           holder.txt_medName.setClickable(false) ;
+           holder.txt_medName.setInputType(InputType.TYPE_NULL);
+           holder.txt_medName.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
-        //Saving to firebase **refer to AdapterStudentInfo line 199 for reference
-        //change 121206 to idNum
-        HashMap medHistoryValues = new HashMap();
-        //dosageAmount, interval, name, purpose, status
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/amount", holder.txt_medDosage.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/endMed", holder.txt_medEnd.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/interval", holder.txt_medInterval.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/medicine", holder.txt_medName.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/purpose", holder.txt_medPurpose.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/startMed", holder.txt_medStart.getText().toString());
-        medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/status", holder.spinner_medStatus.getSelectedItem().toString());
+           holder.txt_medPurpose.setClickable(false) ;
+           holder.txt_medPurpose.setInputType(InputType.TYPE_NULL);
+           holder.txt_medPurpose.setBackgroundColor(Color.parseColor("#F2EFFD"));
 
-        database.updateChildren(medHistoryValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-            Toast.makeText(tvContext, "Data successfully updated!", Toast.LENGTH_SHORT).show();
-        }).addOnFailureListener((error) -> {
-            Toast.makeText(tvContext, "Data was not updated!", Toast.LENGTH_SHORT).show();
-        });
+           holder.txt_medDosage.setClickable(false) ;
+           holder.txt_medDosage.setInputType(InputType.TYPE_NULL);
+           holder.txt_medDosage.setBackgroundColor(Color.parseColor("#F2EFFD"));
+
+           holder.txt_medInterval.setClickable(false) ;
+           holder.txt_medInterval.setInputType(InputType.TYPE_NULL);
+           holder.txt_medInterval.setBackgroundColor(Color.parseColor("#F2EFFD"));
+
+           holder.txt_medStart.setClickable(false) ;
+           holder.txt_medStart.setInputType(InputType.TYPE_NULL);
+           holder.txt_medStart.setBackgroundColor(Color.parseColor("#F2EFFD"));
+
+           holder.txt_medEnd.setClickable(true) ;
+           holder.txt_medEnd.setInputType(InputType.TYPE_NULL);
+           holder.txt_medEnd.setBackgroundColor(Color.parseColor("#F2EFFD"));
+
+           holder.spinner_medStatus.setEnabled(false);
+
+           //Saving to firebase **refer to AdapterStudentInfo line 199 for reference
+           //change 121206 to idNum
+           HashMap medHistoryValues = new HashMap();
+           //dosageAmount, interval, name, purpose, status
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/amount", holder.txt_medDosage.getText().toString());
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/endMed", holder.txt_medEnd.getText().toString());
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/interval", holder.txt_medInterval.getText().toString());
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/medicine", holder.txt_medName.getText().toString());
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/purpose", holder.txt_medPurpose.getText().toString());
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/startMed", holder.txt_medStart.getText().toString());
+           medHistoryValues.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + medHistory.getKey() + "/status", holder.spinner_medStatus.getSelectedItem().toString());
+
+           database.updateChildren(medHistoryValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+               Toast.makeText(tvContext, "Data successfully updated!", Toast.LENGTH_SHORT).show();
+           }).addOnFailureListener((error) -> {
+               Toast.makeText(tvContext, "Data was not updated!", Toast.LENGTH_SHORT).show();
+           });
+       }
 
     }
 

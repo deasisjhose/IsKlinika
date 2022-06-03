@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +31,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness.PastIllnessHolder> {
@@ -167,6 +171,9 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
                 holder.tv_pastTreatment.setEnabled(true);
                 holder.tv_pastNotes.setClickable(true);
                 holder.tv_pastNotes.setEnabled(true);
+
+                holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#EBABF15C"));
+                holder.tv_pastTreatment.setBackgroundColor(Color.parseColor("#EBABF15C"));
             }
         }) ;
 
@@ -174,37 +181,78 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
         holder.ibtn_savePast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.ibtn_editPast.setVisibility(View.VISIBLE);
-                holder.ibtn_savePast.setVisibility(View.GONE);
-                holder.mbtn_deleteIllness.setVisibility(View.GONE);
+                int pass = 0 ;
 
-                holder.tv_pastStatus.setClickable(false);
-                holder.tv_pastStatus.setEnabled(false);
-                holder.tv_pastStart.setClickable(false);
-                holder.tv_pastStart.setEnabled(false);
-                holder.tv_pastEnd.setClickable(false);
-                holder.tv_pastEnd.setEnabled(false);
-                holder.tv_pastTreatment.setClickable(false);
-                holder.tv_pastTreatment.setEnabled(false);
-                holder.tv_pastNotes.setClickable(false);
-                holder.tv_pastNotes.setEnabled(false);
+                if(holder.tv_pastTreatment.getText().toString().equals("")){
+                    holder.tv_pastTreatment.setBackgroundColor(Color.parseColor("#FFFD6868"));
+                }else{
+                    pass += 1;
+                    holder.tv_pastTreatment.setBackgroundColor(Color.parseColor("#EBABF15C"));
+                }
+
+                if(holder.tv_pastStatus.getSelectedItem().toString().equals("Recovered")){
+
+                    if(!holder.tv_pastEnd.getText().toString().equals("")){
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                        Date date1 = null;
+                        Date date2 = null;
+                        try {
+                            date1 = sdf.parse(holder.tv_pastStart.getText().toString()) ;
+                            date2 = sdf.parse(holder.tv_pastEnd.getText().toString()) ;
+                        }catch (Exception e){
+
+                        }
+
+                        if(date2.before(date1)){
+                            holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
+                        }else{
+                            holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#EBABF15C"));
+                            pass = 1 ;
+                        }
+                    }else{
+                        holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
+                    }
+                } else{
+                    pass += 1 ;
+                }
 
 
-                HashMap pastIllnessValue = new HashMap();
-                //dosageAmount, interval, name, purpose, status
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/disease", holder.tv_pastDisease.getText().toString());
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/endDate", holder.tv_pastEnd.getText().toString());
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/notes", holder.tv_pastNotes.getText().toString());
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/startDate", holder.tv_pastStart.getText().toString());
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/status", holder.tv_pastStatus.getSelectedItem().toString());
-                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/treatment", holder.tv_pastTreatment.getText().toString());
+                if(pass == 2 ){
+                    holder.ibtn_editPast.setVisibility(View.VISIBLE);
+                    holder.ibtn_savePast.setVisibility(View.GONE);
+                    holder.mbtn_deleteIllness.setVisibility(View.GONE);
+
+                    holder.tv_pastStatus.setClickable(false);
+                    holder.tv_pastStatus.setEnabled(false);
+                    holder.tv_pastStart.setClickable(false);
+                    holder.tv_pastStart.setEnabled(false);
+                    holder.tv_pastEnd.setClickable(false);
+                    holder.tv_pastEnd.setEnabled(false);
+                    holder.tv_pastTreatment.setClickable(false);
+                    holder.tv_pastTreatment.setEnabled(false);
+                    holder.tv_pastNotes.setClickable(false);
+                    holder.tv_pastNotes.setEnabled(false);
+
+                    holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#CCEEFFDC"));
+                    holder.tv_pastTreatment.setBackgroundColor(Color.parseColor("#CCEEFFDC"));
+
+                    HashMap pastIllnessValue = new HashMap();
+                    //dosageAmount, interval, name, purpose, status
+                    pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/disease", holder.tv_pastDisease.getText().toString());
+                    pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/endDate", holder.tv_pastEnd.getText().toString());
+                    pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/notes", holder.tv_pastNotes.getText().toString());
+                    pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/startDate", holder.tv_pastStart.getText().toString());
+                    pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/status", holder.tv_pastStatus.getSelectedItem().toString());
+                    pastIllnessValue.put("/studentHealthHistory/" + studentId + "/pastIllness/" + pastIllness.getKey() + "/treatment", holder.tv_pastTreatment.getText().toString());
 //                pastIllnessValue.put("/studentHealthHistory/" + studentId + "/prescriptionHistory/" + pastIllness.getKey() + "/status", holder.spinner_medStatus.getSelectedItem().toString());
 
-                database.updateChildren(pastIllnessValue).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-                    Toast.makeText(tvContext, "Data successfully updated!", Toast.LENGTH_SHORT).show();
-                }).addOnFailureListener((error) -> {
-                    Toast.makeText(tvContext, "Data was not updated!", Toast.LENGTH_SHORT).show();
-                });
+                    database.updateChildren(pastIllnessValue).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                        Toast.makeText(tvContext, "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                    }).addOnFailureListener((error) -> {
+                        Toast.makeText(tvContext, "Data was not updated!", Toast.LENGTH_SHORT).show();
+                    });
+                }
             }
         }) ;
 

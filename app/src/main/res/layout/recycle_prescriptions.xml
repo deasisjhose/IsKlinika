@@ -226,7 +226,7 @@
                 android:background="#F2EFFD"
                 android:clickable="false"
                 android:fontFamily="@font/helvetica"
-                android:hint="MM-DD-YYYY"
+                android:hint="YYYY-MM-DD"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="14sp" />
@@ -239,7 +239,7 @@
                 android:background="#F2EFFD"
                 android:clickable="false"
                 android:fontFamily="@font/helvetica"
-                android:hint="MM-DD-YYYY"
+                android:hint="YYYY-MM-DD"
                 android:paddingLeft="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="14sp" />
