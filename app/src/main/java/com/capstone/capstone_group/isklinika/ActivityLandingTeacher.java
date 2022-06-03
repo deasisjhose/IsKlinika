@@ -59,12 +59,13 @@ public class ActivityLandingTeacher extends AppCompatActivity implements View.On
         layout_notifCV.setOnClickListener(this);
         layout_notifReferral.setOnClickListener(this);
 
-        this.materialToolbar = findViewById(R.id.toolbar) ;
+        this.materialToolbar = findViewById(R.id.toolbar2) ;
         materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.menu_logout)
                     finish();
+
                 return false;
             }
         });

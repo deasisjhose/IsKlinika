@@ -179,7 +179,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_addIntakeAmount" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/tv_enddate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="104dp"
@@ -226,8 +226,8 @@
                 android:paddingBottom="2dp"
                 android:textColor="@color/information_text"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/textView24"
-                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                app:layout_constraintStart_toStartOf="@+id/tv_enddate"
+                app:layout_constraintTop_toBottomOf="@+id/tv_enddate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

@@ -19,7 +19,10 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 /*
 This activity allow the parent user to add some of the past illnesses that their child experienced to allow the school physician to use
 these information.
@@ -39,7 +42,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
     private Spinner spinner_addPastChild ;
     private EditText edit_addPastIllness, edit_addPastTreatment, edit_addPastNote;
     private Spinner edit_addPastStatus ;
-    private TextView tv_addPastStart, tv_addPastEnd ;
+    private TextView tv_addPastStart, tv_addPastEnd, tv_enddate ;
     private MaterialButton mbtn_addPastCancel, mbtn_addPastAdd ;
     private MaterialDatePicker materialDatePicker ;
 
@@ -68,6 +71,7 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
         this.tv_addPastEnd = findViewById(R.id.tv_addPastEnd) ;
         this.mbtn_addPastAdd = findViewById(R.id.mbtn_addPastAdd) ;
         this.mbtn_addPastCancel = findViewById(R.id.mbtn_addPastCancel) ;
+        this.tv_enddate = findViewById(R.id.tv_enddate) ;
 
 
         tv_addPastStart.setOnClickListener(this);
@@ -89,7 +93,11 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //sort function
-
+                if(position == 1){
+                    tv_enddate.setText("End date *");
+                }else{
+                    tv_enddate.setText("End date");
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -160,22 +168,37 @@ public class ActivityAddPastIllness extends AppCompatActivity implements View.On
             tv_addPastStart.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
             allClear += 1 ;
         }
-//        if(edit_addPastIllness.getText().toString().equals("") && edit_addPastTreatment.getText().toString().equals("")){
-//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
-//            edit_addPastIllness.getBackground().setTint(Color.parseColor("#FFFD6868"));
-//            edit_addPastTreatment.getBackground().setTint(Color.parseColor("#FFFD6868"));
-//        }else if(!edit_addPastIllness.getText().toString().equals("") && edit_addPastTreatment.getText().toString().equals("") && tv_addPastStart.getText().toString().equals("")){
-//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
-//            edit_addPastIllness.getBackground().setTint(Color.parseColor("#FFFD6868"));
-//        }else if(edit_addPastIllness.getText().toString().equals("") && !edit_addPastTreatment.getText().toString().equals("")){
-//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
-//            edit_addPastTreatment.getBackground().setTint(Color.parseColor("#FFFD6868"));
-//        } else if(tv_addPastStart.getText().toString().equals("")) {
-//            Toast.makeText(this, "Complete required fields!", Toast.LENGTH_SHORT).show();
-//            tv_addPastStart.getBackground().setTint(Color.parseColor("#FFFD6868"));
-//        }
 
-        if(allClear == 3){
+        if(edit_addPastStatus.getSelectedItem().toString().equals("Recovered")){
+            if(tv_addPastEnd.getText().toString().equals("")){
+                tv_addPastEnd.getBackground().setTint(Color.parseColor("#FFFD6868"));
+            }else{
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                Date date1 = null;
+                Date date2 = null;
+                try {
+                    date1 = sdf.parse(tv_addPastStart.getText().toString()) ;
+                    date2 = sdf.parse(tv_addPastEnd.getText().toString()) ;
+                }catch (Exception e){
+
+                }
+
+                if(date2.before(date1)){
+                    tv_addPastEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
+                }else{
+                    allClear += 1 ; 
+                    tv_addPastEnd.setBackgroundColor(Color.parseColor("#e4e4e4"));
+                }
+
+
+
+                tv_addPastEnd.getBackground().setTint(Color.parseColor("#CCDDF6C0"));
+                allClear += 1 ;
+            }
+        }
+
+        if(allClear >= 3){
                 ClassPastIllness pastIllness = new ClassPastIllness(edit_addPastIllness.getText().toString(), tv_addPastEnd.getText().toString(), edit_addPastNote.getText().toString(),
                         tv_addPastStart.getText().toString(), edit_addPastStatus.getSelectedItem().toString(), edit_addPastTreatment.getText().toString()) ;
 
