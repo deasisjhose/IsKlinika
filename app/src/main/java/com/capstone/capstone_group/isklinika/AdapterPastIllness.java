@@ -208,7 +208,7 @@ public class AdapterPastIllness extends  RecyclerView.Adapter<AdapterPastIllness
                             holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
                         }else{
                             holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#EBABF15C"));
-                            pass = 1 ;
+                            pass += 1 ;
                         }
                     }else{
                         holder.tv_pastEnd.setBackgroundColor(Color.parseColor("#FFFD6868"));
