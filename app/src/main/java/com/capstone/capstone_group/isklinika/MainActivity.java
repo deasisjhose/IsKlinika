@@ -141,7 +141,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             studentInfoUser.setIdNum(snapshot.getKey());
                                             studentInfoUser.setPassword(password);
                                             Toast.makeText(MainActivity.this, "User found and login successfully", Toast.LENGTH_SHORT).show();
-                                            intent = new Intent(getBaseContext(), ActivityFirstTime.class);
+
+                                            if(studentInfoUser.getFirstTime().equals(null) || studentInfoUser.getFirstTime().equals("")){
+                                                intent = new Intent(getBaseContext(), ActivityFirstTime.class);
+                                            }else{
+                                                intent = new Intent(getBaseContext(), ActivityLanding.class);
+                                            }
+
                                             intent.putExtra("userType", "Student") ;
                                             intent.putExtra("studentInfo", studentInfoUser ) ;
                                             startActivity(intent);
@@ -363,7 +369,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
 
-                intent = new Intent(getBaseContext(), ActivityFirstTime.class);
+                if(parentUser.getFirstTime().equals(null) || parentUser.getFirstTime().equals("")){
+                    intent = new Intent(getBaseContext(), ActivityFirstTime.class);
+                }else{
+                    intent = new Intent(getBaseContext(), ActivityLanding.class);
+                }
                 intent.putExtra("userType", "Parent") ;
                 intent.putParcelableArrayListExtra("children", childrenInfo) ;
                 intent.putExtra("parentInfo", parentUser);

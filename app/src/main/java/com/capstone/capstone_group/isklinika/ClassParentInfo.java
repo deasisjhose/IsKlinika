@@ -10,11 +10,13 @@ public class ClassParentInfo implements Parcelable {
 
     private List<String> childrenIds;
     private String email;
+    private String firstTime ;
     private String key;
     private String password ;
 
     public ClassParentInfo(){
         this.childrenIds  = new ArrayList<>() ;
+        this.firstTime = "" ;
     }
 
     public String getKey() {
@@ -33,9 +35,18 @@ public class ClassParentInfo implements Parcelable {
         this.password = password;
     }
 
+    public String getFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(String firstTime) {
+        this.firstTime = firstTime;
+    }
+
     protected ClassParentInfo(Parcel in) {
         childrenIds = in.createStringArrayList();
         email = in.readString() ;
+        firstTime = in.readString() ;
         key = in.readString() ;
         password = in.readString() ;
     }
@@ -44,6 +55,7 @@ public class ClassParentInfo implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringList(childrenIds);
         dest.writeString(email);
+        dest.writeString(firstTime);
         dest.writeString(key);
         dest.writeString(password);
     }

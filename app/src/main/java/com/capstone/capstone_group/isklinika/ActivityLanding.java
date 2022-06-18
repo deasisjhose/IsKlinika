@@ -87,12 +87,12 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
         this.userType = intent.getStringExtra("userType") ;
         checkUser();
 
-        checkActive = 10 ;
+        checkActive = 30 ;
 
         buildBar();
         buildViews();
 
-        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, new FragmentModule()).commit() ;
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim).replace(R.id.fragment_layout, new FragmentNotifs()).commit() ;
     }
 
 
@@ -109,7 +109,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
 
         }
         //set active btn tint
-        botNav.btn_nav_home.setIconTint(getColorStateList(R.color.active_nav_btn));
+        botNav.btn_nav_mail.setIconTint(getColorStateList(R.color.active_nav_btn));
 
         //profile fragment top
         this.shapeImg_profileChildIdPic = findViewById(R.id.shapeImg_profileChildIdPic) ;
@@ -206,7 +206,7 @@ public class ActivityLanding extends AppCompatActivity implements View.OnClickLi
 //            checkActive = 10 ; //check ative activity
             layout_pageTitle_Children.setVisibility(View.GONE);
             mtv_pageTitle.setVisibility(View.VISIBLE);
-            mtv_pageTitle.setText("Welcome");
+            mtv_pageTitle.setText("Home");
             mtv_pageTitle.setCompoundDrawablesWithIntrinsicBounds(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_home, null), null, null, null);
 
             selectedFragment = new FragmentModule() ;

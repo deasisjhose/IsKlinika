@@ -35,7 +35,7 @@ public class FragmentNotifs extends Fragment implements View.OnClickListener {
     private RecyclerView recycler_notif ;
     private ClassParentInfo parentInfo ;
     private ActivityLanding activity_landing ;
-    private int clickedNotif = 10 ; //10 == announcements ; 20 == clinic visits ; 30 == med intakes ; 40 == referrals
+    private int clickedNotif = 20 ; //10 == announcements ; 20 == clinic visits ; 30 == med intakes ; 40 == referrals
 
     public FragmentNotifs() {
         // Required empty public constructor
@@ -68,7 +68,8 @@ public class FragmentNotifs extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         parentInfo = activity_landing.getParentInfo() ;
-
+        clickedNotif = 20 ;
+        retrieveNotif(clickedNotif) ;
     }
 
     @Override

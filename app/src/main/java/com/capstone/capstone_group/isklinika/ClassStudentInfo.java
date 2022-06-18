@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class ClassStudentInfo implements Parcelable {
 
     private Long  age,grade, dentistContact, fatherContact, guardianContact, motherContact, pediaContact;
-    private String address, birthday, bmi, bmiStatus, dentistEmail, dentistName, fatherEmail,fatherName, firstName,
+    private String address, birthday, bmi, bmiStatus, dentistEmail, dentistName, fatherEmail,fatherName, firstTime, firstName,
             guardianEmail, guardianName, hasSpecialNeeds, height, heightStatus, hospitalAddress, idNum, lastCheckedWandH, lastName, middleName,  motherEmail, motherName, nationality,
             pediaEmail, pediaName, preferredHospital, religion, section, sex, studentType, weight, weightStatus;
     private String password ;
@@ -28,6 +28,7 @@ public class ClassStudentInfo implements Parcelable {
         this.dentistName = "" ;
         this.fatherEmail = "" ;
         this.fatherName = "" ;
+        this.firstTime = "" ;
         this.firstName = "" ;
         this.guardianEmail = "" ;
         this.guardianName = "" ;
@@ -75,6 +76,7 @@ public class ClassStudentInfo implements Parcelable {
         fatherContact = in.readLong();
         fatherEmail = in.readString();
         fatherName = in.readString();
+        firstTime = in.readString();
         firstName = in.readString();
         grade = in.readLong();
         guardianContact = in.readLong();
@@ -118,6 +120,7 @@ public class ClassStudentInfo implements Parcelable {
         dest.writeLong(fatherContact);
         dest.writeString(fatherEmail);
         dest.writeString(fatherName);
+        dest.writeString(firstTime);
         dest.writeString(firstName);
         dest.writeLong(grade);
         dest.writeLong(guardianContact);
@@ -193,6 +196,11 @@ public class ClassStudentInfo implements Parcelable {
         if(fatherName.equals(null)){
             fatherName = "" ;
         }
+
+        if(firstTime.equals(null)){
+            firstTime = "" ;
+        }
+
         if(firstName.equals(null)){
             firstName = "" ;
         }
@@ -267,6 +275,14 @@ public class ClassStudentInfo implements Parcelable {
         if(weightStatus.equals(null)){
             weightStatus = "" ;
         }
+    }
+
+    public String getFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(String firstTime) {
+        this.firstTime = firstTime;
     }
 
     public String getAddress() {

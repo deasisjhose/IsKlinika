@@ -11,13 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ActivityFirstTime extends AppCompatActivity implements View.OnClickListener {
 
@@ -262,11 +265,29 @@ public class ActivityFirstTime extends AppCompatActivity implements View.OnClick
                     if(checkTerms == 2){
                         intent = new Intent(getBaseContext(), ActivityLanding.class);
                         intent.putExtra("userType", userType) ;
+
+                        HashMap<String, Object> userValues = new HashMap<String, Object>() ;
+
                         switch (userType){
                             case "Student":
                                 intent.putExtra("studentInfo", studentInfo) ;
+
+                                userValues.put("/studentInfo/" + studentInfo.getIdNum() + "/firstTime/", "true") ;
+                                database.updateChildren(userValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                    Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                                }).addOnFailureListener((error) -> {
+                                    Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
+                                });
                                 break;
                             case "Parent":
+
+                                userValues.put("/parentInfo/" + parentInfo.getKey() + "/firstTime/", "true") ;
+                                database.updateChildren(userValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
+                                    Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
+                                }).addOnFailureListener((error) -> {
+                                    Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
+                                });
+
                                 intent.putParcelableArrayListExtra("children", children) ;
                                 intent.putExtra("parentInfo", parentInfo);
                                 break;

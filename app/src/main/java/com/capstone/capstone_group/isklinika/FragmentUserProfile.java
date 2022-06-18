@@ -187,10 +187,8 @@ public class FragmentUserProfile extends Fragment {
                     activity_landing.getParentInfo().setEmail(tv_parentEmail.getText().toString());
 
                     database.updateChildren(parentValues).addOnSuccessListener((OnSuccessListener) (aVoid) -> {
-                        Log.d("LANDING//", "onViewCreated: before toast");
                         Log.d("LANDING//", "onViewCreated: checkparent = " + checkParent);
                         Toast.makeText(view.getContext(), "Data successfully updated!", Toast.LENGTH_SHORT).show();
-                        Log.d("LANDING//", "onViewCreated: after toast");
                     }).addOnFailureListener((error) -> {
                         Toast.makeText(view.getContext(), "Data was not updated!", Toast.LENGTH_SHORT).show();
                     });
